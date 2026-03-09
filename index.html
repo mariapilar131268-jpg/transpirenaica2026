@@ -1077,7 +1077,13 @@ function renderRuta(){
 <script>
 
 // ── MODO CONDUCCIÓN ──────────────────────────────────────────────────────
+let mcDiaActual = 0; // día seleccionado en el modo conducción
+
 function abrirMC(){
+  // Seleccionar día actual si estamos en viaje, si no el primero
+  const hoy = diaHoy();
+  mcDiaActual = hoy >= 0 ? hoy : 0;
+  mcDiaActual = Math.min(mcDiaActual, D.length - 1);
   renderMC();
   document.getElementById('modoConduccion').classList.add('activo');
   window.scrollTo(0,0);
@@ -1085,57 +1091,142 @@ function abrirMC(){
 function cerrarMC(){
   document.getElementById('modoConduccion').classList.remove('activo');
 }
+function mcCambiarDia(idx){
+  mcDiaActual = Math.min(Math.max(0, idx), D.length - 1);
+  renderMC();
+}
+
+// Extrae el valor ?q= de una URL Google Maps para usarlo en /maps/dir/
+function qDeMapa(url){
+  if(!url) return null;
+  const m = url.match(/[?&]q=([^&]+)/);
+  return m ? m[1] : null; // ya viene URL-encoded, no decodificar
+}
+
+// Construye URL Google Maps multi-parada:
+// gas crítica → comida (alm si hay, si no cen) → hotel
+function buildGmapsUrl(d, almIdx){
+  const partes = [];
+
+  // 1. Gasolinera crítica
+  if(d.gas && d.gas.length > 0){
+    const gasCrit = d.gas.find(g => g.key) || d.gas[0];
+    const q = qDeMapa(gasCrit.map);
+    if(q) partes.push(q);
+  }
+
+  // 2. Comida: alm[] si tiene entradas, si no usar cen[] (p.ej. Día 0 solo tiene cena)
+  const listaComida = (d.alm && d.alm.length > 0) ? d.alm
+                    : (d.cen && d.cen.length > 0)  ? d.cen : [];
+  if(listaComida.length > 0){
+    const item = listaComida[almIdx] || listaComida[0];
+    const q = qDeMapa(item.map);
+    if(q) partes.push(q);
+  }
+
+  // 3. Hotel destino
+  if(d.hotel && d.hotel.map){
+    const q = qDeMapa(d.hotel.map);
+    if(q) partes.push(q);
+  }
+
+  if(partes.length === 0) return null;
+  return 'https://www.google.com/maps/dir/' + partes.join('/');
+}
 
 function renderMC(){
-  const hoy = diaHoy();
-  const idx = hoy >= 0 ? hoy : 0;
-  // Seguridad: nunca acceder fuera del array
-  const idxSeguro = Math.min(idx, D.length - 1);
-  const d = D[idxSeguro];
+  const d = D[mcDiaActual];
   const body = document.getElementById('mc-body');
-  if(!body) return;
+  if(!body || !d) return;
 
-  // Gasolinera crítica del día (la marcada como key, o la primera si no hay)
+  const hoy = diaHoy();
+
+  // Gasolinera crítica
   const gasCrit = (d.gas && d.gas.length > 0)
-    ? (d.gas.find(g => g.key) || d.gas[0])
-    : null;
+    ? (d.gas.find(g => g.key) || d.gas[0]) : null;
 
-  // Hotel del día — extracción segura del nombre
+  // Hotel
   const h = d.hotel || null;
   const hotelNm = h && h.nm
-    ? h.nm.split('·')[0].replace(/⭐+/g,'').replace('⏳','').trim()
-    : '—';
+    ? h.nm.split('·')[0].replace(/⭐+/g,'').replace('⏳','').trim() : '—';
   const hotelTel = h && h.tel ? h.tel : null;
   const hotelPend = h && !h.ok;
 
-  // Alerta personal del piloto (primera del array si existe)
-  const alertaPiloto = (curP && curP.al && curP.al.length > 0)
-    ? curP.al[0]
-    : null;
+  // Alerta personal
+  const alertaPiloto = (curP && curP.al && curP.al.length > 0) ? curP.al[0] : null;
+
+  // Lista de comidas: alm si tiene, si no cen (día 0 solo tiene cena)
+  const listaComida = (d.alm && d.alm.length > 0) ? d.alm
+                    : (d.cen && d.cen.length > 0)  ? d.cen : [];
+  const labelComida = (d.alm && d.alm.length > 0) ? '🍽️ Elige dónde comer' : '🌙 Elige dónde cenar';
 
   let html = '';
 
+  // ── SELECTOR DE DÍA ──
+  html += `<div style="display:flex;gap:5px;flex-wrap:wrap;padding:4px 0 10px">`;
+  D.forEach((dia, i) => {
+    const esActivo = i === mcDiaActual;
+    const esHoy = i === hoy;
+    html += `<button onclick="mcCambiarDia(${i})"
+      style="flex:1;min-width:42px;padding:10px 4px;border-radius:10px;
+      border:2px solid ${esActivo?'#7ec87e':'#2a4a2a'};
+      background:${esActivo?'#2a5a2a':'#132613'};
+      color:${esActivo?'#ffffff':'#5a9a5a'};
+      font-size:13px;font-weight:700;cursor:pointer;position:relative">
+      ${esHoy ? '<span style="position:absolute;top:-5px;right:-3px;background:#f0a030;color:#000;border-radius:50%;width:14px;height:14px;font-size:9px;line-height:14px;text-align:center">★</span>' : ''}
+      ${dia.emo}<br><span style="font-size:10px;opacity:.8">D${dia.n}</span>
+    </button>`;
+  });
+  html += `</div>`;
+
   // ── Info del día ──
   html += `<div class="mc-dia-info">
-    <div class="mc-dia-txt">${d.f}</div>
-    <div class="mc-dia-num">DÍA ${d.n} · ${d.ti}</div>
+    <div class="mc-dia-txt">${d.f}${hoy === mcDiaActual ? ' <span style="color:#f0a030">★ HOY</span>' : ''}</div>
+    <div class="mc-dia-num" style="font-size:16px">${d.ti}</div>
   </div>`;
 
-  // ── Etapa: km totales ──
+  // ── Km etapa ──
   html += `<div class="mc-bloque">
-    <div class="mc-label">📏 Etapa de hoy</div>
-    <div class="mc-valor">${d.km} km</div>
-    <div class="mc-sub">Destino: ${d.dest}</div>
+    <div class="mc-label">📏 Etapa</div>
+    <div class="mc-valor">${d.km} km → ${d.dest}</div>
   </div>`;
+
+  // ── BOTÓN GOOGLE MAPS (siempre visible arriba) ──
+  const mapsUrlInicial = buildGmapsUrl(d, 0);
+  html += `<div id="mc-maps-btn">
+    ${mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank" class="mc-btn-mc"
+      style="background:#1a4a1a;border-color:#4a8a4a;color:#c8e87a;width:100%;
+      justify-content:center;font-size:15px;font-weight:700;padding:14px;text-align:center">
+      🗺️ Abrir ruta del día en Google Maps
+    </a>` : ''}
+  </div>`;
+
+  // ── Selector comida / cena ──
+  if(listaComida.length > 0){
+    html += `<div class="mc-bloque" style="border-color:#3a5a3a">
+      <div class="mc-label">${labelComida} <span style="font-size:11px;color:#5a9a5a">(cambia la parada en el mapa)</span></div>`;
+    listaComida.forEach((item, i) => {
+      const medal = i===0?'🏆':i===1?'🥈':'🥉';
+      html += `<button onclick="mcSelComida(${i})" id="mc-alm-${mcDiaActual}-${i}"
+        style="width:100%;text-align:left;background:${i===0?'#1a3a1a':'#0f2a0f'};
+        border:2px solid ${i===0?'#7ec87e':'#2a4a2a'};
+        border-radius:10px;padding:10px 14px;color:#c8e8a8;font-size:13px;
+        cursor:pointer;margin-bottom:6px">
+        ${medal} <strong>${item.nm}</strong>
+        <span style="color:#5a9a5a;font-size:11px;display:block;margin-top:2px">${item.loc||''} ${item.pr?'· '+item.pr:''}</span>
+      </button>`;
+    });
+    html += `</div>`;
+  }
 
   // ── Gasolinera crítica ──
   if(gasCrit){
     html += `<div class="mc-bloque ${gasCrit.key ? 'rojo' : ''}">
       <div class="mc-label">⛽ ${gasCrit.key ? '⚠️ GASOLINERA CRÍTICA' : 'Gasolinera del día'}</div>
-      <div class="mc-valor ${gasCrit.key ? 'rojo' : ''}" style="font-size:20px">${gasCrit.nm}</div>
+      <div class="mc-valor ${gasCrit.key ? 'rojo' : ''}" style="font-size:18px">${gasCrit.nm}</div>
       <div class="mc-sub ${gasCrit.key ? 'rojo' : ''}">${gasCrit.dir}<br>${gasCrit.not}</div>
-      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-        <a href="${gasCrit.map}" target="_blank" class="mc-btn-mc">🗺️ Ver en mapa</a>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <a href="${gasCrit.map}" target="_blank" class="mc-btn-mc">🗺️ Mapa</a>
         ${gasCrit.tel ? `<a href="tel:${gasCrit.tel}" class="mc-btn-mc">📞 ${gasCrit.tel}</a>` : ''}
       </div>
     </div>`;
@@ -1145,25 +1236,57 @@ function renderMC(){
   if(h){
     html += `<div class="mc-bloque ${hotelPend ? 'naranja' : ''}">
       <div class="mc-label">🛏️ Esta noche</div>
-      <div class="mc-valor ${hotelPend ? 'naranja' : ''}" style="font-size:20px">${hotelNm}</div>
+      <div class="mc-valor ${hotelPend ? 'naranja' : ''}" style="font-size:18px">${hotelNm}</div>
       ${h.dir ? `<div class="mc-sub ${hotelPend ? 'naranja' : ''}">${h.dir}</div>` : ''}
       ${hotelPend ? `<div class="mc-sub naranja" style="margin-top:4px">⏳ Pendiente confirmar</div>` : ''}
-      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
         ${h.map ? `<a href="${h.map}" target="_blank" class="mc-btn-mc">🗺️ Cómo llegar</a>` : ''}
         ${hotelTel ? `<a href="tel:${hotelTel}" class="mc-btn-mc">📞 Llamar</a>` : ''}
       </div>
     </div>`;
   }
 
-  // ── Alerta personal del piloto ──
+  // ── Alerta personal ──
   if(alertaPiloto){
     html += `<div class="mc-bloque naranja">
-      <div class="mc-label">⚠️ Tu alerta del día</div>
-      <div class="mc-sub naranja" style="font-size:16px;color:#f0c060">${alertaPiloto.b}</div>
+      <div class="mc-label">⚠️ Tu alerta</div>
+      <div class="mc-sub naranja" style="font-size:15px;color:#f0c060">${alertaPiloto.b}</div>
     </div>`;
   }
 
   body.innerHTML = html;
+}
+
+// Cuando el piloto elige restaurante/cena, actualiza el botón Maps
+function mcSelComida(almIdx){
+  const d = D[mcDiaActual];
+  if(!d) return;
+
+  // Lista unificada (igual que en renderMC)
+  const listaComida = (d.alm && d.alm.length > 0) ? d.alm
+                    : (d.cen && d.cen.length > 0)  ? d.cen : [];
+
+  // Resaltar botón seleccionado, desmarcar resto
+  listaComida.forEach((_, i) => {
+    const btn = document.getElementById('mc-alm-' + mcDiaActual + '-' + i);
+    if(btn){
+      btn.style.borderColor = i === almIdx ? '#7ec87e' : '#2a4a2a';
+      btn.style.background  = i === almIdx ? '#1a3a1a' : '#0f2a0f';
+    }
+  });
+
+  // Actualizar botón Google Maps con la parada de comida elegida
+  const mapsUrl = buildGmapsUrl(d, almIdx);
+  const btnDiv = document.getElementById('mc-maps-btn');
+  if(btnDiv){
+    btnDiv.innerHTML = mapsUrl
+      ? `<a href="${mapsUrl}" target="_blank" class="mc-btn-mc"
+          style="background:#1a4a1a;border-color:#4a8a4a;color:#c8e87a;width:100%;
+          justify-content:center;font-size:15px;font-weight:700;padding:14px;text-align:center">
+          🗺️ Abrir ruta del día en Google Maps
+        </a>`
+      : '';
+  }
 }
 
 // ━━━ PWA: Registro del Service Worker ━━━
