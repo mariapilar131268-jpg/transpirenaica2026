@@ -31,7 +31,7 @@
   --r:10px;--sh:0 2px 12px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;font-size:15px;min-height:100vh}
+body{background:var(--bg);color:var(--tx);font-family:'DM Sans',system-ui,sans-serif;font-size:15px;min-height:100vh}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* SELECTOR */
@@ -40,25 +40,25 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ltit{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8faa6a;margin-bottom:20px}
 .mtit{font-size:clamp(32px,8vw,58px);font-weight:400;color:#ffffff;line-height:1.05;text-align:center}
 .mtit span{color:#ffffff}
-.msub{font-size:13px;color:#8faa6a;letter-spacing:2px;margin-top:12px;margin-bottom:36px;text-align:center}
-.slbl{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#8faa6a;margin-bottom:20px}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;width:100%;max-width:560px}
-.pbtn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);
-  padding:18px 12px;display:flex;flex-direction:column;gap:7px;align-items:center;transition:all .2s;color:#f0ead8;min-height:110px;justify-content:center}
-.pbtn:hover,.pbtn:active{background:rgba(200,217,138,.15);border-color:#c8d98a;transform:translateY(-2px)}
-.pbtn .pico{font-size:32px}.pbtn .pnm{font-size:16px;font-weight:700;text-align:center;line-height:1.2}
-.pbtn .pmot{font-size:12px;color:#8faa6a;text-align:center;line-height:1.3}
-.rtabtn{margin-top:20px;width:100%;max-width:560px;padding:16px 20px;background:#3a5c1e;border:1px solid #4a7228;border-radius:var(--r);color:#e8f4c8;font-family:Georgia,'Times New Roman',serif;font-size:16px;cursor:pointer;letter-spacing:.5px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.msub{font-size:16px;color:#d4e8b0;letter-spacing:2px;margin-top:12px;margin-bottom:28px;text-align:center;font-weight:600}
+.slbl{font-size:16px;letter-spacing:4px;text-transform:uppercase;color:#ffffff;margin-bottom:20px;font-weight:700;border-bottom:1px solid rgba(200,217,138,0.3);padding-bottom:14px;width:100%;max-width:560px;text-align:center}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:560px}
+.pbtn{background:linear-gradient(135deg,#e8e0cc 0%,#d8d0bc 100%);border:2px solid #b8a880;border-radius:var(--r);
+  padding:14px 16px;display:flex;flex-direction:row;gap:12px;align-items:center;transition:all .2s;color:#1a2a0a;min-height:64px}
+.pbtn:hover,.pbtn:active{background:linear-gradient(135deg,#f0e8d4 0%,#e0d8c4 100%);border-color:#4a7a2a;transform:translateY(-1px)}
+.pbtn .pico{font-size:26px;flex-shrink:0}.pbtn .pnm{font-size:16px;font-weight:700;text-align:left;line-height:1.2;color:#1a2a0a}
+.pbtn .pmot{font-size:11px;color:#3a5a1a;text-align:left;line-height:1.3}
+.rtabtn{margin-top:20px;width:100%;max-width:560px;padding:16px 20px;background:#3a5c1e;border:1px solid #4a7228;border-radius:var(--r);color:#e8f4c8;font-family:'DM Sans',system-ui,sans-serif;font-size:16px;cursor:pointer;letter-spacing:.5px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .rtabtn:active{background:#4a7228}
 #rutaview{background:#f0ede6}
 .rutahdr{background:#2e4a12;padding:14px 16px;padding-top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;align-items:center;gap:10px;border-bottom:3px solid #4a7228;position:sticky;top:0;z-index:99}
 .rutahdr .bbk{color:#e8f4c8;font-size:20px;padding:4px 8px;background:rgba(255,255,255,.1);border-radius:6px}
-.rutahdr-tit{font-family:Georgia,serif;font-size:17px;font-weight:bold;color:#e8f4c8}
+.rutahdr-tit{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:bold;color:#e8f4c8}
 .rutahdr-sub{font-size:12px;color:#b8d888;margin-left:auto}
 .rcard{background:#fff;border-radius:12px;border:1px solid #d4cfc6;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07)}
 .rcard-hdr{padding:13px 15px;background:#2e4a12;display:flex;align-items:flex-start;gap:8px}
 .rcard-hdr .rdia{font-size:10px;letter-spacing:2px;color:#b8d888;text-transform:uppercase;margin-bottom:3px}
-.rcard-hdr .rtit{font-family:Georgia,serif;font-size:15px;font-weight:bold;color:#ffffff}
+.rcard-hdr .rtit{font-family:'DM Sans',system-ui,sans-serif;font-size:15px;font-weight:bold;color:#ffffff}
 .rcard-hdr .rtip2{font-size:11px;color:#c8e8a0;margin-top:2px}
 .rcard-hdr .rkm{background:rgba(255,255,255,.15);border-radius:20px;padding:4px 10px;font-size:12px;color:#e8f4c8;white-space:nowrap;margin-left:auto;margin-top:2px}
 .rcard-body{padding:14px 15px}
@@ -82,17 +82,17 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rpoi-det{font-size:11.5px;color:#5a5040;line-height:1.5;margin-bottom:4px}
 .rpoi-det .tt{background:#fff3e0;color:#7a4a00;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600;margin-right:4px}
 .rpoi-det .tm{background:#e8f0d8;color:#2e4a12;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600;margin-right:4px}
-.rpoi-map{display:inline-block;margin-top:5px;padding:4px 10px;background:#2e4a12;color:#e8f4c8 !important;border-radius:6px;font-size:11px;text-decoration:none;font-family:Georgia,serif}
+.rpoi-map{display:inline-block;margin-top:5px;padding:4px 10px;background:#2e4a12;color:#e8f4c8 !important;border-radius:6px;font-size:11px;text-decoration:none;font-family:'DM Sans',system-ui,sans-serif}
 .rmeteo{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;padding:10px 12px;background:#e8f4ff;border-radius:8px;border:1px solid #b8d8f0}
 .rmeteo-tit{width:100%;font-size:11px;font-weight:700;color:#3a6080;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
 .rmeteo-item{text-align:center;min-width:70px;background:#fff;border-radius:6px;padding:6px 8px;border:1px solid #c8e0f0}
 .rmeteo-item .mlab{font-size:10px;color:#3a6080;letter-spacing:.5px;text-transform:uppercase}
 .rmeteo-item .mval{font-size:14px;font-weight:700;color:#1a3a50;margin-top:2px}
 .rgeneral{background:#fffbf0;border:1px solid #e8d890;border-radius:12px;padding:14px 15px;margin-bottom:16px}
-.rgeneral-tit{font-family:Georgia,serif;font-size:14px;font-weight:bold;color:#6a4a00;margin-bottom:10px}
+.rgeneral-tit{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;font-weight:bold;color:#6a4a00;margin-bottom:10px}
 .rgeneral .rtip{border-bottom-color:#f0e8c0}
 .rgeneral .rtip-tx strong{color:#6a4a00}
-.a2tag{font-size:11px;background:rgba(200,217,138,.25);color:#c8d98a;padding:2px 6px;border-radius:10px;vertical-align:middle;margin-left:4px}
+.a2tag{font-size:11px;background:#3a6a1a;color:#e8f4c8;padding:2px 6px;border-radius:10px;vertical-align:middle;margin-left:4px}
 
 /* APP */
 #app{display:none;min-height:100vh;flex-direction:column}
@@ -238,7 +238,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pr .prn{flex:1}.pr .pra{font-weight:700;white-space:nowrap}
 .ppf{padding:12px 16px;background:var(--s2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .ppfl{font-size:11px;color:var(--mu)}.ppfv{font-size:17px;font-weight:700}
-.calb{font-size:11px;padding:7px 12px;border-radius:7px;cursor:pointer;font-family:Georgia,serif;font-weight:700;color:#fff}
+.calb{font-size:11px;padding:7px 12px;border-radius:7px;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;font-weight:700;color:#fff}
 
 /* Tabla cobros */
 .ctab{width:100%;border-collapse:collapse;font-size:12px}
@@ -258,28 +258,28 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .mc-hdr{display:flex;align-items:center;justify-content:space-between;
   padding:14px 20px 12px;border-bottom:2px solid #1e3a1e;
   padding-top:calc(env(safe-area-inset-top,0px) + 14px)}
-.mc-titulo{color:#7ec87e;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
-.mc-cerrar{background:#1a3a1a;color:#7ec87e;border:2px solid #3a6a3a;
+.mc-titulo{color:#d4f0a8;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
+.mc-cerrar{background:#c8e8a8;color:#0a1a0a;border:2px solid #8ab870;
   border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;min-height:48px}
 .mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
 .mc-dia-info{text-align:center;padding:10px 0 4px}
-.mc-dia-txt{color:#5a9a5a;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
-.mc-dia-num{color:#ffffff;font-size:22px;font-weight:700;margin-top:2px}
-.mc-bloque{background:#132613;border-radius:14px;padding:18px 20px;border:1.5px solid #1e4a1e}
+.mc-dia-txt{color:#c8e8a8;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
+.mc-dia-num{color:#ffffff;font-size:24px;font-weight:700;margin-top:2px}
+.mc-bloque{background:#1a3018;border-radius:14px;padding:18px 20px;border:1.5px solid #2a5a20}
 .mc-bloque.naranja{border-color:#6a4400;background:#1f1500}
 .mc-bloque.rojo{border-color:#6a1a00;background:#1f0800}
 .mc-ico{font-size:28px;margin-bottom:6px}
-.mc-label{color:#5a9a5a;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.mc-valor{color:#ffffff;font-size:30px;font-weight:700;line-height:1.2}
+.mc-label{color:#c8e8a8;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;font-weight:700}
+.mc-valor{color:#ffffff;font-size:32px;font-weight:700;line-height:1.2}
 .mc-valor.naranja{color:#f0a030}
 .mc-valor.rojo{color:#f07050}
-.mc-sub{color:#7ec87e;font-size:14px;margin-top:6px;line-height:1.5}
-.mc-sub.naranja{color:#c08030}
-.mc-sub.rojo{color:#c07060}
-.mc-btn-mc{display:flex;align-items:center;gap:8px;background:#1a3a1a;color:#7ec87e;
-  border:2px solid #3a6a3a;border-radius:12px;padding:14px 18px;font-size:14px;
-  font-weight:700;cursor:pointer;width:100%;text-align:left;min-height:52px;margin-top:2px}
-.mc-btn-mc:active{background:#0f2a0f}
+.mc-sub{color:#e0ecd0;font-size:17px;margin-top:8px;line-height:1.5}
+.mc-sub.naranja{color:#f0b840;font-size:17px}
+.mc-sub.rojo{color:#ff8060;font-size:17px}
+.mc-btn-mc{display:flex;align-items:center;gap:10px;background:#d4e8a8;color:#0a1a0a;
+  border:2px solid #8ab850;border-radius:14px;padding:16px 20px;font-size:17px;
+  font-weight:700;cursor:pointer;text-align:left;min-height:60px;margin-top:4px}
+.mc-btn-mc:active{background:#b4c890}
 </style>
 </head>
 <body>
@@ -309,7 +309,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <button onclick="document.getElementById('modalInstall').style.display='flex'"
     style="margin-top:12px;width:100%;max-width:560px;padding:13px 16px;
     background:transparent;border:1px solid rgba(200,217,138,0.3);border-radius:var(--r);
-    color:#8faa6a;font-family:Georgia,'Times New Roman',serif;font-size:13px;
+    color:#8faa6a;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;
     cursor:pointer;letter-spacing:.5px">
     📲 Cómo instalar la app en tu móvil
   </button>
@@ -674,8 +674,10 @@ function renderSel(){
  document.getElementById('pgrid').innerHTML=PI.map(p=>`
   <button class="pbtn" onclick="selectP('${p.id}')">
    <span class="pico">${p.ico}</span>
-   <span class="pnm">${p.nm}${p.badge==='A2'?'<span class="a2tag">A2</span>':''}</span>
-   <span class="pmot">${p.mot}</span>
+   <span style="display:flex;flex-direction:column;gap:3px;text-align:left">
+    <span class="pnm">${p.nm}${p.badge==='A2'?'<span class="a2tag">A2</span>':''}</span>
+    <span class="pmot">${p.mot}</span>
+   </span>
   </button>`).join('');
 }
 
@@ -1309,13 +1311,15 @@ function renderMC(){
     const esActivo = i === mcDiaActual;
     const esHoy = i === hoy;
     html += `<button onclick="mcCambiarDia(${i})"
-      style="flex:1;min-width:42px;padding:10px 4px;border-radius:10px;
-      border:2px solid ${esActivo?'#7ec87e':'#2a4a2a'};
-      background:${esActivo?'#2a5a2a':'#132613'};
-      color:${esActivo?'#ffffff':'#5a9a5a'};
-      font-size:13px;font-weight:700;cursor:pointer;position:relative">
-      ${esHoy ? '<span style="position:absolute;top:-5px;right:-3px;background:#f0a030;color:#000;border-radius:50%;width:14px;height:14px;font-size:9px;line-height:14px;text-align:center">★</span>' : ''}
-      ${dia.emo}<br><span style="font-size:10px;opacity:.8">D${dia.n}</span>
+      style="flex:1;min-width:44px;padding:10px 8px;border-radius:12px;
+      border:2px solid ${esActivo?'#8ab850':'#3a5a20'};
+      background:${esActivo?'#e8e0cc':'#1a3018'};
+      color:${esActivo?'#1a2a0a':'#7ec87e'};
+      cursor:pointer;position:relative;display:flex;flex-direction:row;
+      align-items:center;justify-content:center;gap:7px;min-height:56px">
+      ${esHoy ? '<span style="position:absolute;top:-6px;right:-4px;background:#f0a030;color:#000;border-radius:50%;width:18px;height:18px;font-size:11px;line-height:18px;text-align:center;font-weight:900">★</span>' : ''}
+      <span style="font-size:26px;line-height:1">${dia.emo}</span>
+      <span style="font-size:16px;font-weight:700;letter-spacing:.3px">D${dia.n}</span>
     </button>`;
   });
   html += `</div>`;
@@ -1335,10 +1339,13 @@ function renderMC(){
   // ── BOTÓN GOOGLE MAPS (siempre visible arriba) ──
   const mapsUrlInicial = buildGmapsUrl(d, 0);
   html += `<div id="mc-maps-btn">
-    ${mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank" class="mc-btn-mc"
-      style="background:#1a4a1a;border-color:#4a8a4a;color:#c8e87a;width:100%;
-      justify-content:center;font-size:15px;font-weight:700;padding:14px;text-align:center">
-      🗺️ Abrir ruta del día en Google Maps
+    ${mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank"
+      style="display:flex;align-items:center;justify-content:center;gap:12px;
+      background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
+      color:#ffffff;width:100%;box-sizing:border-box;
+      font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
+      min-height:68px;text-decoration:none;letter-spacing:.3px">
+      <span style="font-size:28px">🗺️</span> Abrir ruta en Google Maps
     </a>` : ''}
   </div>`;
 
@@ -1421,10 +1428,13 @@ function mcSelComida(almIdx){
   const btnDiv = document.getElementById('mc-maps-btn');
   if(btnDiv){
     btnDiv.innerHTML = mapsUrl
-      ? `<a href="${mapsUrl}" target="_blank" class="mc-btn-mc"
-          style="background:#1a4a1a;border-color:#4a8a4a;color:#c8e87a;width:100%;
-          justify-content:center;font-size:15px;font-weight:700;padding:14px;text-align:center">
-          🗺️ Abrir ruta del día en Google Maps
+      ? `<a href="${mapsUrl}" target="_blank"
+          style="display:flex;align-items:center;justify-content:center;gap:12px;
+          background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
+          color:#ffffff;width:100%;box-sizing:border-box;
+          font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
+          min-height:68px;text-decoration:none;letter-spacing:.3px">
+          <span style="font-size:28px">🗺️</span> Abrir ruta en Google Maps
         </a>`
       : '';
   }
@@ -1446,7 +1456,7 @@ function isInStandalone(){ return window.navigator.standalone === true; }
 window.addEventListener('load', () => {
   if(isIOS() && !isInStandalone()){
     const banner = document.createElement('div');
-    banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#2e4a12;color:#e8f4c8;padding:12px 16px 20px;font-size:13px;text-align:center;z-index:9999;font-family:Georgia,serif;line-height:1.6;border-top:2px solid #4a7228;';
+    banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#2e4a12;color:#e8f4c8;padding:12px 16px 20px;font-size:13px;text-align:center;z-index:9999;font-family:DM Sans,system-ui,sans-serif;line-height:1.6;border-top:2px solid #4a7228;';
     banner.innerHTML = `<div style="font-size:11px;letter-spacing:1px;color:#b8d888;margin-bottom:4px">INSTALAR APP</div>
       Pulsa <strong style="color:#fff">Compartir</strong> <span style="font-size:16px">⬆️</span> y luego<br>
       <strong style="color:#fff">"Añadir a pantalla de inicio"</strong>
