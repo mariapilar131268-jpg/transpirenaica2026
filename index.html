@@ -186,11 +186,12 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rinf{font-size:12px;color:var(--mu);line-height:1.5}
 
 /* Links */
-.lrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
-.lk{font-size:11px;font-weight:700;text-decoration:none;padding:5px 10px;border-radius:7px}
-.lk.map{background:#e8f1f8;color:var(--blu)}
-.lk.tel{background:#edf7ef;color:var(--grn)}
-.lk.web{background:#fdf6e3;color:var(--ora)}
+.lrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.lk{font-size:14px;font-weight:700;text-decoration:none;padding:12px 20px;border-radius:10px;
+  min-height:48px;display:inline-flex;align-items:center;gap:6px;letter-spacing:.3px}
+.lk.map{background:#d0e8f5;color:#1a5c8a;border:1.5px solid #9ac4de}
+.lk.tel{background:#d4f0db;color:#1e6b2e;border:1.5px solid #90c89c}
+.lk.web{background:#fdefc8;color:#8a5c00;border:1.5px solid #d9c070}
 
 /* Alertas */
 .al{border-radius:var(--r);padding:12px 14px;margin-bottom:8px;border-left:3px solid;font-size:13px;line-height:1.5}
@@ -248,9 +249,52 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .bpen{background:#fcecea;color:var(--red);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px}
 .rrow{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--s2);font-size:12px;line-height:1.5}
 .rrow:last-child{border-bottom:none}
+
+/* ── MODO CONDUCCIÓN ─────────────────────────────────── */
+#modoConduccion{display:none;position:fixed;inset:0;z-index:9000;
+  background:#0d1f0d;flex-direction:column;overflow-y:auto;
+  padding-top:calc(env(safe-area-inset-top,0px) + 0px)}
+#modoConduccion.activo{display:flex}
+.mc-hdr{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px 12px;border-bottom:2px solid #1e3a1e;
+  padding-top:calc(env(safe-area-inset-top,0px) + 14px)}
+.mc-titulo{color:#7ec87e;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
+.mc-cerrar{background:#1a3a1a;color:#7ec87e;border:2px solid #3a6a3a;
+  border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;min-height:48px}
+.mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.mc-dia-info{text-align:center;padding:10px 0 4px}
+.mc-dia-txt{color:#5a9a5a;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+.mc-dia-num{color:#ffffff;font-size:22px;font-weight:700;margin-top:2px}
+.mc-bloque{background:#132613;border-radius:14px;padding:18px 20px;border:1.5px solid #1e4a1e}
+.mc-bloque.naranja{border-color:#6a4400;background:#1f1500}
+.mc-bloque.rojo{border-color:#6a1a00;background:#1f0800}
+.mc-ico{font-size:28px;margin-bottom:6px}
+.mc-label{color:#5a9a5a;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.mc-valor{color:#ffffff;font-size:30px;font-weight:700;line-height:1.2}
+.mc-valor.naranja{color:#f0a030}
+.mc-valor.rojo{color:#f07050}
+.mc-sub{color:#7ec87e;font-size:14px;margin-top:6px;line-height:1.5}
+.mc-sub.naranja{color:#c08030}
+.mc-sub.rojo{color:#c07060}
+.mc-btn-mc{display:flex;align-items:center;gap:8px;background:#1a3a1a;color:#7ec87e;
+  border:2px solid #3a6a3a;border-radius:12px;padding:14px 18px;font-size:14px;
+  font-weight:700;cursor:pointer;width:100%;text-align:left;min-height:52px;margin-top:2px}
+.mc-btn-mc:active{background:#0f2a0f}
 </style>
 </head>
 <body>
+
+<!-- ── MODO CONDUCCIÓN ── -->
+<div id="modoConduccion">
+  <div class="mc-hdr">
+    <div class="mc-titulo">🏍️ Modo Conducción</div>
+    <button class="mc-cerrar" onclick="cerrarMC()">✕ Salir</button>
+  </div>
+  <div class="mc-body" id="mc-body">
+    <!-- contenido generado por JS -->
+  </div>
+</div>
+
 
 <div id="sel">
   <div class="ltit">🏍️ Transpirenaica 2026</div>
@@ -276,6 +320,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <button class="bbk" onclick="goBack()">←</button>
     <div class="hinf"><div class="hnam" id="hnam"></div><div class="hmot" id="hmot"></div></div>
     <div class="hbdg" id="hbdg"></div>
+    <button onclick="abrirMC()" style="background:#2e4a12;color:#c8e87a;border:none;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.5px;flex-shrink:0;min-height:48px;line-height:1.3;text-align:center">🏍️<br>RUTA</button>
   </div>
   <div class="ntabs">
     <button class="ntab active" onclick="showTab('dia',this)">📅 MI DÍA</button>
@@ -396,7 +441,7 @@ const D=[
  hotel:{ok:false,nm:'⏳ PENDIENTE CONFIRMAR — Aínsa',dir:'Aínsa, Huesca',tel:null,web:null,map:'https://maps.google.com/?q=Ainsa+Huesca',
    inf:'📧 Opción A: Hostal Pirineos Aínsa · Tel: 974 500 008 · Parking motos gratuito · Cocina aragonesa\n📧 Opción B: Hotel & SPA Monasterio de Boltaña · Tel: 974 508 000 · Antiguo monasterio s.XVII · SPA · 6 km de Aínsa',
    res:null,cod:null,can:null,pag:null},
- alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Urtau',loc:'Arties, Val d’Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Bar+Urtau+Arties+Val+Aran',pr:'~15-20€/p',inf:'⭐ El MÁS RECOMENDADO en foros moteros del Val d’Arán. Pinchos y barra. Arties, 4 km antes de Vielha. Bajando la Bonaigua, desvío izq. Cerrado lunes.'},
+ alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Bar+Urtau+Arties+Val+Aran',pr:'~15-20€/p',inf:'⭐ El MÁS RECOMENDADO en foros moteros del Val d\'Arán. Pinchos y barra. Arties, 4 km antes de Vielha. Bajando la Bonaigua, desvío izq. Cerrado lunes.'},
      {mo:'COMIDA — Opción B 🌟',nm:'Era Coquèla',loc:'Vielha, Arán',tel:'+34973641757',map:'https://maps.google.com/?q=Era+Coquela+Vielha+Lleida',pr:'~20-25€/p',inf:'Referente gastronómico del Valle de Arán. Olla aranesa, carnes, pescados. Centro de Vielha.'},
      {mo:'COMIDA — Opción C',nm:'Restaurant Rufus',loc:'Gessa (5 km de Vielha)',tel:'+34973648057',map:'https://maps.google.com/?q=Restaurant+Rufus+Gessa+Val+Aran',pr:'~18-30€/p',inf:'⭐ Recomendado en foros. Colmenillas, ciervo a la brasa, olla aranesa. Cierra 15:30h.'}],
  cen:[{mo:'CENA — Opción A 🏆 (si Hostal Pirineos)',nm:'Restaurante Callizo',loc:'Aínsa, Plaza Mayor',tel:null,map:'https://maps.google.com/?q=Restaurante+Callizo+Ainsa+Plaza+Mayor',pr:'~35-45€/p',inf:'⚠️ RESERVAR IMPRESCINDIBLE. Cocina aragonesa moderna: carnes de caza, setas, ternera de Broto.'},
@@ -577,9 +622,20 @@ function showTab(id,btn){
 
 // ━━━ DÍA HOY ━━━
 function diaHoy(){
+ // Usamos año/mes/día en hora LOCAL para evitar el bug UTC de new Date('YYYY-MM-DD')
  const h=new Date();
- const fs=['2026-06-18','2026-06-19','2026-06-20','2026-06-21','2026-06-22','2026-06-23'].map(s=>new Date(s));
- for(let i=0;i<fs.length;i++){if(h.toDateString()===fs[i].toDateString())return i;}
+ const y=h.getFullYear(), m=h.getMonth()+1, dia=h.getDate();
+ const dias=[
+  {y:2026,m:6,d:18}, // Día 0
+  {y:2026,m:6,d:19}, // Día 1
+  {y:2026,m:6,d:20}, // Día 2
+  {y:2026,m:6,d:21}, // Día 3
+  {y:2026,m:6,d:22}, // Día 4
+  {y:2026,m:6,d:23}, // Día 5 (vuelta)
+ ];
+ for(let i=0;i<dias.length;i++){
+  if(y===dias[i].y && m===dias[i].m && dia===dias[i].d) return i;
+ }
  return -1;
 }
 
@@ -892,17 +948,18 @@ function renderRuta(){
   {dia:'DÍA 1 · 19 Jun',tit:'Cap de Creus → Sort',km:'318 km · ~5-6h con paradas',tipo:'Cap de Creus + Pirineo catalán',
    stars:[{t:'',l:'🏔️ Pirineos'},{t:'red',l:'📏 Etapa larga'},{t:'ora',l:'⛽ Vigilar depósito'}],
    tips:[
-    {ico:'📸',tx:'<strong>Cap de Creus — salida 8:00h.</strong> El faro se llena rápido. Las pistas de acceso son estrechas: ojo con motos grandes y maletas. 20 min a pie hasta el faro.'},
-    {ico:'🏔️',tx:'<strong>Collada de Toses (1.800m):</strong> joya del día. Muy frecuentada por ciclistas al mediodía — pasar antes de las 11h para disfrutarlo. Asfalto bueno.'},
-    {ico:'⛽',tx:'<strong>Alberto 🐛 y Oriol 🐣 — CRÍTICO:</strong> depósitos de 14-14,5L. Repostar en Ripoll (km ~100). No llegar a Sort con menos de ¼.'},
-    {ico:'☔',tx:'<strong>Niebla matinal</strong> habitual en el Pirineo catalán. Traje de agua a mano, no enterrado en maletas.'},
-    {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Lo Pigal / Casa Kiko, referencia en foros moteros.'},
+    {ico:'📸',tx:'<strong>Cap de Creus — salida 8:00h.</strong> El faro se llena rápido. Las pistas de acceso son estrechas: ojo con motos grandes y maletas. 20 min a pie hasta el faro. Foto de grupo con el Mediterráneo antes de arrancar — tradición motera irrenunciable.'},
+    {ico:'🏔️',tx:'<strong>Collada de Toses (1.800m):</strong> joya del día. Veteranos de la ruta la destacan como uno de los mejores tramos. Pasar antes de las 11h para disfrutarlo sin ciclistas ni caravanas. Asfalto bueno. Alternativa recomendada por foros: carretera de Castellar de n\'Hug y La Molina (menos tráfico y muy bonita, aunque más lenta).'},
+    {ico:'⛽',tx:'<strong>Alberto 🐛 y Oriol 🐣 — CRÍTICO:</strong> depósitos de 14L. Repostar obligatorio en Ripoll (km ~100). La bonÀrea de Sort tiene gasolinera justo antes de llegar desde el Coll del Canto — usarla siempre. No llegar a Sort con menos de ¼ de depósito.'},
+    {ico:'☔',tx:'<strong>Niebla matinal</strong> habitual en el Pirineo catalán, sobre todo en fondos de valle. Traje de agua a mano. Cambios de tiempo rápidos y a menudo inesperados — el Pirineo tiene su propio microclima. Foros avisan: puede salirse de Sort con sol y encontrar tromba a los 20 km.'},
+    {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Gasolinera bonÀrea antes del pueblo. Lo Pigal / Casa Kiko es referencia en todos los foros — cocina de montaña, raciones generosas, terraza con vistas al Noguera. Ideal punto de reagrupamiento.'},
    ],
    pois:[
     {ico:'🏔️',nm:'Faro del Cap de Creus',det:'<span class="tt">🔑 Punto de salida oficial</span><span class="tm">⏱ 8:00h · 20 min a pie</span> El extremo más oriental de la Península. Foto obligatoria con las motos y el Mediterráneo.',mapq:'Faro Cap de Creus Girona'},
     {ico:'⛽',nm:'Gasolinera Ripoll',det:'<span class="tt">⛽ Repostaje km ~100</span><span class="tm">⏱ Parada técnica</span> Último repostaje seguro antes del Pirineo para depósitos pequeños.',mapq:'gasolinera Ripoll Catalunya'},
     {ico:'🏔️',nm:'Collada de Toses — 1.800m',det:'<span class="tm">⏱ ~11:00h</span> Punto de foto y reagrupamiento. Vistas espectaculares al Pirineo. Cuidado con ciclistas en la bajada.',mapq:'Collada de Toses La Molina'},
     {ico:'🍴',nm:'Lo Pigal / Casa Kiko — Sort',det:'<span class="tt">🍽️ Comida</span><span class="tm">⏱ 13:30-14:00h</span> Referencia gastronómica motera en Sort. Cocina de montaña, terraza.',mapq:'Lo Pigal Sort Lleida'},
+    {ico:'🍀',nm:'Administración de Lotería de Sort',det:'<span class="tt">⭐ Tradición motera</span><span class="tm">⏱ 5 min · en el pueblo</span> Sort significa "suerte" en catalán. Comprar un décimo es tradición entre moteros que hacen la Transpirenaica. Citado en todos los foros. ¡Obligatorio!',mapq:'administracion loteria Sort Lleida'},
    ],
    meteo:{alt:'1.800m',tmin:'8°C',tmax:'24°C',lluvia:'☁️ Posible',viento:'💨 Moderado'}},
   {dia:'DÍA 2 · 20 Jun',tit:'Sort → Bonaigua → Vielha → Aínsa',km:'300 km · ~5h con paradas',tipo:'Puerto Bonaigua + Val d\u2019Arán',
@@ -927,12 +984,15 @@ function renderRuta(){
     {ico:'⏰',tx:'<strong>SALIDA 7:30-8:00h — obligatorio.</strong> Los puertos del Tour de Francia. En junio hay menos tráfico, pero cuanto antes subas el Tourmalet, más lo disfrutas sin caravanas.'},
     {ico:'🏔️',tx:'<strong>Col du Tourmalet (2.115m):</strong> 19 km al 7,4% de media. La bajada hacia Luz-Saint-Sauveur tiene curvas muy cerradas y fuerte pendiente. <em>Sin excesos.</em>'},
     {ico:'🏔️',tx:'<strong>Col d\u2019Aubisque (1.709m):</strong> para muchos el más bonito del viaje. El tramo Soulor-Aubisque (7 km) es espectacular — vacas, caballos y ovejas en la calzada. <strong>Reducir velocidad.</strong>'},
-    {ico:'⛽',tx:'<strong>Repostar en Argèles-Gazost</strong> ANTES del Aubisque — no hay gasolineras en los puertos. Alberto 🐛: <em>200 km de autonomía, es el momento crítico del viaje.</em>'},
+    {ico:'⛽',tx:'<strong>Repostar en Argèles-Gazost</strong> ANTES del Aubisque — es la gasolinera con personal más estratégica de la zona según moteros en Wikiloc y bmwmotos. Hay una más en Bedos (pasado Escot) pero solo tarjeta. Alberto 🐛: <em>200 km de autonomía — momento más crítico del viaje.</em> Todos repostan aquí sin excepción.'},
     {ico:'🌡️',tx:'Tourmalet en la cima: <strong>5-8°C con viento.</strong> Guantes de invierno en la maleta. Pedro y Xavi van cubiertos; el resto que prepare capas.'},
     {ico:'🦌',tx:'<strong>Bajada Aubisque a Laruns:</strong> fauna en libertad. Se han visto ovejas, caballos y algún oso en la zona. Ojos bien abiertos y velocidad moderada.'},
+    {ico:'💳',tx:'<strong>Gasolineras en Francia:</strong> muchas son automáticas 24h solo con tarjeta bancaria chip+pin. Las tarjetas españolas a veces fallan en máquinas sin personal. Llevar siempre algo de efectivo en euros — en los pueblos pequeños se puede pagar en bares o tiendas cercanas.'},
    ],
    pois:[
     {ico:'🏔️',nm:'Col du Portalet — 1.794m (frontera)',det:'<span class="tm">⏱ ~9:00h</span> Paso fronterizo España-Francia. Punto de reagrupamiento antes de entrar en territorio francés.',mapq:'Col du Portalet frontera Formigal Francia'},
+    {ico:'🏔️',nm:'Col d\'Aspin — 1.489m',det:'<span class="tm">⏱ ~10:00h · entre Tourmalet y Soulor</span> Puerto menos conocido que el Tourmalet pero igual de espectacular. Vistas al Pic du Midi. Bajada técnica con curvas cerradas — uno de los favoritos de los foros moteros.',mapq:'Col Aspin Arreau France'},
+    {ico:'🏘️',nm:'Bagnères-de-Luchon — Pueblo termal',det:'<span class="tm">⏱ parada café ~15 min</span> Pueblo francés con encanto en el valle. Punto de paso entre Portillon y Aspin. Termas y arquitectura belle époque. Ideal para estirar las piernas.',mapq:'Bagneres de Luchon France'},
     {ico:'🏔️',nm:'Col du Tourmalet — 2.115m',det:'<span class="tt">⭐ Imprescindible</span><span class="tm">⏱ ~10:30h</span> El puerto más alto de los Pirineos franceses y el más subido del Tour. Escultura del ciclista en la cima. Café obligatorio.',mapq:'Col du Tourmalet cima Francia'},
     {ico:'📍',nm:'Col de Soulor — 1.474m (parada grupo)',det:'<span class="tm">⏱ ~12:30h · Parada comida</span> Restaurante con terraza y vistas impresionantes. Punto ideal de reagrupamiento antes del Aubisque.',mapq:'Col de Soulor Argeles Gazost Francia'},
     {ico:'🏔️',nm:'Col d\u2019Aubisque — 1.709m',det:'<span class="tt">⭐ El más bonito</span><span class="tm">⏱ ~13:30h</span> Carretera excavada en la roca. Escultura de 3 bicicletas gigantes. Fauna libre en la calzada.',mapq:'Col Aubisque cima Francia'},
@@ -951,6 +1011,7 @@ function renderRuta(){
    pois:[
     {ico:'🌲',nm:'Embalse de Irabia — Selva de Irati',det:'<span class="tm">⏱ ~9:30h · 20 min andando desde parking</span> El corazón de la Selva de Irati. Hayedos y abetos centenarios. Parking de pago ~5€.',mapq:'Embalse Irabia Selva Irati Navarra'},
     {ico:'⛽',nm:'Petronor Urzainqui — ÚNICA gasolinera',det:'<span class="tt">⛽ OBLIGATORIO</span> NA-137 km 28,7, Urzainqui, Navarra. No hay otra en 100 km de montaña navarra.',mapq:'Petronor Urzainqui Navarra'},
+    {ico:'✝️',nm:'Roncesvalles — Puerto histórico',det:'<span class="tt">⭐ Imprescindible</span><span class="tm">⏱ Desvío 20 min desde Ochagavía</span> Colegiata románica del siglo XII, punto del Camino de Santiago. Citado en todos los foros como parada obligatoria. Ambiente único.',mapq:'Roncesvalles Colegiata Navarra'},
     {ico:'🏡',nm:'Elizondo — Valle del Baztán',det:'<span class="tm">⏱ ~12:30h · 30 min parada</span> Capital del Baztán. Chocolate Txokola, morcilla txuri ta beltz, queso Idiazabal. Caserío medieval.',mapq:'Elizondo Valle Baztan Navarra'},
     {ico:'🏁',nm:'Faro de Higuer — META FINAL 🏁',det:'<span class="tt">🏁 ¡LLEGADA!</span><span class="tm">⏱ ~16:00-17:00h</span> El extremo noroeste del Pirineo. Dejar motos en el aparcamiento y subir 10 min a pie. Foto de grupo obligatoria.',mapq:'Faro Cabo Higuer Hondarribia'},
    ],
@@ -959,14 +1020,16 @@ function renderRuta(){
 
  // ── CONSEJOS GENERALES ──────────────────────────────────────────────────
  const cgs=[
-  {ico:'🌤️',tx:'<strong>Junio = la fecha perfecta.</strong> Puertos recién abiertos, días largos, menos tráfico que julio-agosto. El Pirineo siempre sorprende — traje de agua siempre a mano.'},
-  {ico:'⏰',tx:'<strong>Madrugar = disfrutar.</strong> Salida antes de las 8h en etapas largas. Los puertos por la mañana son magia pura. Por la tarde las tormentas de verano pueden cerrarlos.'},
-  {ico:'⛽',tx:'<strong>Regla de oro:</strong> nunca bajar de ½ depósito en montaña. En cada parada, todos repostan aunque les quede. Menos sorpresas = más kilómetros disfrutados.'},
-  {ico:'🚴',tx:'<strong>Ciclistas:</strong> en junio hay grupos en todos los puertos famosos. Paciencia y respeto — adelantar con mucho espacio y nunca en curva.'},
-  {ico:'🐄',tx:'<strong>Fauna en calzada:</strong> Aubisque e Irati especialmente. Vacas, caballos y ovejas con cencerros. Velocidad moderada siempre en estas zonas.'},
-  {ico:'📱',tx:'<strong>GPS:</strong> zonas sin cobertura en Val d\u2019Arán y Pirineo navarro. Descargar mapas offline (Google Maps o Maps.me) antes de salir. Revisar ruta cada mañana.'},
-  {ico:'🏍️',tx:'<strong>Grupo de 7 motos:</strong> dividir en 2 subgrupos para adelantar con seguridad. El último piloto señaliza los desvíos. Acordar puntos de reagrupamiento en cada etapa.'},
-  {ico:'🎽',tx:'<strong>Equipaje:</strong> en montaña menos es más. Chubasquero SIEMPRE encima, no en maletas. Capa térmica para puertos +2.000m aunque haga sol abajo.'},
+  {ico:'🌤️',tx:'<strong>Junio = la fecha perfecta.</strong> Puertos recién abiertos, días largos, menos tráfico que julio-agosto. Según foros moteros, junio ya no llueve tanto y los puertos están abiertos con luz hasta las 21h. El Pirineo siempre sorprende — traje de agua a mano, no en el fondo de las maletas.'},
+  {ico:'⏰',tx:'<strong>Madrugar = disfrutar.</strong> Salida antes de las 8h en etapas largas. Los puertos por la mañana son magia pura. Las tormentas de verano llegan habitualmente a partir de las 14-15h. Quienes los suben tarde se encuentran con niebla cerrada o cierres preventivos.'},
+  {ico:'⛽',tx:'<strong>Regla de oro del repostaje en montaña:</strong> en cada parada con gasolinera, <em>todos</em> repostan aunque les quede. Las gasolineras en Francia son escasas y muchas solo admiten tarjeta bancaria sin personal (no todas admiten tarjetas españolas). Aprovecha siempre Argèles-Gazost antes del Aubisque.'},
+  {ico:'🔧',tx:'<strong>Revisión antes de salir:</strong> neumáticos (clavar la uña — si no cede, cristalizados), pastillas de freno, aceite, cadena y líquido de frenos. En puertos largos cargados los frenos trabajan de verdad. Llevar kit antipinchazos + mini compresor — según veteranos de la ruta, ya les ha salvado el viaje más de una vez.'},
+  {ico:'🚴',tx:'<strong>Ciclistas:</strong> en junio hay grupos en todos los puertos famosos, especialmente Tourmalet y Aubisque. Paciencia y respeto total — adelantar con mucho espacio y nunca en curva. Recordad que el Tour de Francia pasa por la zona a primeros de julio: cuanto antes mejor.'},
+  {ico:'🐄',tx:'<strong>Fauna en calzada:</strong> Aubisque e Irati especialmente. Vacas, caballos, ovejas con cencerros y en el entorno del Aubisque hay osos. Velocidad moderada siempre en estas zonas — los animales no avisan.'},
+  {ico:'📱',tx:'<strong>GPS y cobertura:</strong> zonas sin señal en Val d\u2019Arán, Pirineo aragonés y navarro. Descargar mapas offline (Google Maps, Maps.me o Calimoto) antes de salir cada mañana. Revisar la ruta del día en el hotel, así no hay sorpresas si el móvil se queda sin datos.'},
+  {ico:'🏍️',tx:'<strong>Grupo de 7 motos:</strong> dividir en 2 subgrupos para adelantar con seguridad. El último piloto señaliza los desvíos. Acordar puntos de reagrupamiento al inicio de cada etapa — en puertos y zonas sin cobertura es fácil disgregarse.'},
+  {ico:'🎽',tx:'<strong>Ropa y equipaje:</strong> chubasquero SIEMPRE encima, nunca enterrado en maletas. Capa térmica fina para puertos +2.000m aunque abajo haya 25°C. En el Tourmalet en la cima puede hacer 5-8°C con viento fuerte. Guantes de invierno o dobles son muy recomendables para los puertos.'},
+  {ico:'🗺️',tx:'<strong>Esta ruta no es para correr.</strong> El Pirineo recompensa al que para, mira y respira. Cada mañana revisar el mapa, saber cuánto falta al siguiente punto y tener siempre un plan B por valle alternativo si el tiempo cierra un puerto.'},
  ];
 
  let html='';
@@ -1012,6 +1075,97 @@ function renderRuta(){
 }
 </script>
 <script>
+
+// ── MODO CONDUCCIÓN ──────────────────────────────────────────────────────
+function abrirMC(){
+  renderMC();
+  document.getElementById('modoConduccion').classList.add('activo');
+  window.scrollTo(0,0);
+}
+function cerrarMC(){
+  document.getElementById('modoConduccion').classList.remove('activo');
+}
+
+function renderMC(){
+  const hoy = diaHoy();
+  const idx = hoy >= 0 ? hoy : 0;
+  // Seguridad: nunca acceder fuera del array
+  const idxSeguro = Math.min(idx, D.length - 1);
+  const d = D[idxSeguro];
+  const body = document.getElementById('mc-body');
+  if(!body) return;
+
+  // Gasolinera crítica del día (la marcada como key, o la primera si no hay)
+  const gasCrit = (d.gas && d.gas.length > 0)
+    ? (d.gas.find(g => g.key) || d.gas[0])
+    : null;
+
+  // Hotel del día — extracción segura del nombre
+  const h = d.hotel || null;
+  const hotelNm = h && h.nm
+    ? h.nm.split('·')[0].replace(/⭐+/g,'').replace('⏳','').trim()
+    : '—';
+  const hotelTel = h && h.tel ? h.tel : null;
+  const hotelPend = h && !h.ok;
+
+  // Alerta personal del piloto (primera del array si existe)
+  const alertaPiloto = (curP && curP.al && curP.al.length > 0)
+    ? curP.al[0]
+    : null;
+
+  let html = '';
+
+  // ── Info del día ──
+  html += `<div class="mc-dia-info">
+    <div class="mc-dia-txt">${d.f}</div>
+    <div class="mc-dia-num">DÍA ${d.n} · ${d.ti}</div>
+  </div>`;
+
+  // ── Etapa: km totales ──
+  html += `<div class="mc-bloque">
+    <div class="mc-label">📏 Etapa de hoy</div>
+    <div class="mc-valor">${d.km} km</div>
+    <div class="mc-sub">Destino: ${d.dest}</div>
+  </div>`;
+
+  // ── Gasolinera crítica ──
+  if(gasCrit){
+    html += `<div class="mc-bloque ${gasCrit.key ? 'rojo' : ''}">
+      <div class="mc-label">⛽ ${gasCrit.key ? '⚠️ GASOLINERA CRÍTICA' : 'Gasolinera del día'}</div>
+      <div class="mc-valor ${gasCrit.key ? 'rojo' : ''}" style="font-size:20px">${gasCrit.nm}</div>
+      <div class="mc-sub ${gasCrit.key ? 'rojo' : ''}">${gasCrit.dir}<br>${gasCrit.not}</div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="${gasCrit.map}" target="_blank" class="mc-btn-mc">🗺️ Ver en mapa</a>
+        ${gasCrit.tel ? `<a href="tel:${gasCrit.tel}" class="mc-btn-mc">📞 ${gasCrit.tel}</a>` : ''}
+      </div>
+    </div>`;
+  }
+
+  // ── Hotel esta noche ──
+  if(h){
+    html += `<div class="mc-bloque ${hotelPend ? 'naranja' : ''}">
+      <div class="mc-label">🛏️ Esta noche</div>
+      <div class="mc-valor ${hotelPend ? 'naranja' : ''}" style="font-size:20px">${hotelNm}</div>
+      ${h.dir ? `<div class="mc-sub ${hotelPend ? 'naranja' : ''}">${h.dir}</div>` : ''}
+      ${hotelPend ? `<div class="mc-sub naranja" style="margin-top:4px">⏳ Pendiente confirmar</div>` : ''}
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        ${h.map ? `<a href="${h.map}" target="_blank" class="mc-btn-mc">🗺️ Cómo llegar</a>` : ''}
+        ${hotelTel ? `<a href="tel:${hotelTel}" class="mc-btn-mc">📞 Llamar</a>` : ''}
+      </div>
+    </div>`;
+  }
+
+  // ── Alerta personal del piloto ──
+  if(alertaPiloto){
+    html += `<div class="mc-bloque naranja">
+      <div class="mc-label">⚠️ Tu alerta del día</div>
+      <div class="mc-sub naranja" style="font-size:16px;color:#f0c060">${alertaPiloto.b}</div>
+    </div>`;
+  }
+
+  body.innerHTML = html;
+}
+
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
