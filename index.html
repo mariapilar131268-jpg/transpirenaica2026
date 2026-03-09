@@ -304,6 +304,100 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="slbl">¿Quién eres?</div>
   <div class="pgrid" id="pgrid"></div>
   <button class="rtabtn" onclick="showRuta()">🗺️ Análisis de Ruta · Ojos de Motero</button>
+
+  <!-- Botón instalar -->
+  <button onclick="document.getElementById('modalInstall').style.display='flex'"
+    style="margin-top:12px;width:100%;max-width:560px;padding:13px 16px;
+    background:transparent;border:1px solid rgba(200,217,138,0.3);border-radius:var(--r);
+    color:#8faa6a;font-family:Georgia,'Times New Roman',serif;font-size:13px;
+    cursor:pointer;letter-spacing:.5px">
+    📲 Cómo instalar la app en tu móvil
+  </button>
+</div>
+
+<!-- ── MODAL INSTALACIÓN ── -->
+<div id="modalInstall" style="display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;-webkit-overflow-scrolling:touch">
+  <div style="background:#1a2a12;border:1px solid #4a7a2a;border-radius:20px;
+    padding:28px 24px;max-width:420px;width:100%;margin:auto">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="color:#c8e8a8;font-size:18px;font-weight:700">📲 Instalar la app</div>
+      <button onclick="document.getElementById('modalInstall').style.display='none'"
+        style="background:none;border:none;color:#8faa6a;font-size:22px;cursor:pointer;padding:4px 8px">✕</button>
+    </div>
+
+    <!-- iPhone -->
+    <div style="margin-bottom:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:26px"></span>
+        <span style="color:#ffffff;font-size:16px;font-weight:700">iPhone / iPad</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">1</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Abre esta página en <strong style="color:#fff">Safari</strong> (no Chrome ni otro navegador)</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">2</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa el botón <strong style="color:#fff">Compartir</strong> <span style="font-size:17px">⎙</span> (abajo en la barra de Safari)</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">3</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Selecciona <strong style="color:#fff">"Añadir a pantalla de inicio"</strong> <span style="font-size:15px">＋</span></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">4</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa <strong style="color:#fff">"Añadir"</strong> arriba a la derecha. ¡Listo! 🏍️</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid #2a4a1a;margin-bottom:22px"></div>
+
+    <!-- Android -->
+    <div style="margin-bottom:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:26px">🤖</span>
+        <span style="color:#ffffff;font-size:16px;font-weight:700">Android</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">1</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Abre esta página en <strong style="color:#fff">Chrome</strong></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">2</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa el menú <strong style="color:#fff">⋮</strong> (tres puntos, arriba a la derecha)</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">3</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Selecciona <strong style="color:#fff">"Añadir a pantalla de inicio"</strong></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">4</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa <strong style="color:#fff">"Añadir"</strong>. ¡Listo! 🏍️</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#0f2a08;border:1px solid #2a5a1a;border-radius:12px;padding:14px;text-align:center">
+      <div style="color:#8faa6a;font-size:12px;letter-spacing:1px;margin-bottom:6px">URL DE LA APP</div>
+      <div style="color:#c8e8a8;font-size:13px;font-weight:700;word-break:break-all">
+        mariapilar131268-jpg.github.io/transpirenaica2026
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div id="rutaview" style="display:none;flex-direction:column;min-height:100vh">
@@ -467,7 +561,7 @@ const D=[
  gas:[{nm:'TotalEnergies — Argèles-Gazost (FRANCIA)',hr:'DOMINGO 7:00-20:30h ✅ Con personal',dir:'27 Av. des Pyrénées, Argèles-Gazost, Francia',tel:'+33562970871',map:'https://maps.google.com/?q=TotalEnergies+Argeles+Gazost+France',key:true,not:'⚠️ GASOLINERA CRÍTICA. La ÚNICA con personal antes del Aubisque. Llenar AL 100% sin excusas. Las automáticas cobran ~100€ provisional (se devuelve) y requieren tarjeta con PIN físico.'}],
  hotel:{ok:true,nm:'Silken Puerta de Irati ⭐⭐⭐ · Ochagavía',dir:'C/ Zatalarrañas 2, 31680 Ochagavía',tel:'+34848640089',web:'https://www.hoteles-silken.com/es/hotel-puerta-irati/',map:'https://maps.google.com/?q=Silken+Puerta+de+Irati+Ochagavia+Navarra',
    inf:'Check-in 15:00-21:00 · Check-out 07:00-12:00 · Parking público gratuito en inmediaciones · ⚠️ Motos NO entran habitaciones (taquillas de pago)',res:'Nº 6079.733.380 · PIN: 8934',cod:null,
-   can:'Cancelación gratuita hasta 18/06/2026',pag:'💳 Pedro paga el 17/06 con Santander · 5 hab × €125 = €625'},
+   can:'Cancelación gratuita hasta 14/06/2026 ⚠️ Política grupos Booking (5 hab)',pag:'💳 Pedro paga el 17/06 con Santander · 5 hab × €125 = €625'},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Hôtel Le Taillon',loc:'Gavarnie, Francia',tel:'+33562928148',map:'https://maps.google.com/?q=Bar+Hotel+Le+Taillon+Gavarnie',pr:'~20-30€/p',inf:'⭐ Google 4.9 · Terraza con vistas al Circo. Cocina de montaña. Personal muy amable. ~13:30h.'},
       {mo:'COMIDA — Opción B 🍕',nm:'Restaurant le Mourgat Oxygène',loc:'Gavarnie, Francia',tel:'+33562928144',map:'https://maps.google.com/?q=Restaurant+Mourgat+Oxygene+Gavarnie',pr:'~15-20€/p',inf:'⭐ Tripadvisor 4.4 · Pizzas, cocina francesa. Mejor relación calidad-precio.'}],
  cen:[{mo:'CENA 🦅',nm:'Bares del pueblo — Ochagavía',loc:'Ochagavía, Navarra',tel:null,map:'https://maps.google.com/?q=Ochagavia+Navarra+restaurante',pr:'~15-20€/p',inf:'Las reseñas moteras recomiendan los bares del pueblo. Cocina navarra: chistorra, queso Roncal, cordero. Pueblo precioso para pasear después de la etapa.'}],
@@ -856,7 +950,7 @@ function renderPagos(){
    {ico:'✅',tx:'Hotel Les Brases PAGADO el 08/03/2026 con Santander (€340)',bg:'#edf7ef',date:null},
    {ico:'🚫',tx:'Cancelación Les Brases — hasta 17/06/2026 antes 12:00h',bg:false,date:'20260617',desc:'Limite cancelacion Les Brases'},
    {ico:'💳',tx:'Pagar Silken Puerta de Irati — 17/06/2026 con Santander (€625)',bg:false,date:'20260617',desc:'Pagar Silken Ochagavia'},
-   {ico:'🚫',tx:'Cancelación Silken — hasta 18/06/2026',bg:false,date:'20260618',desc:'Limite cancelacion Silken'},
+   {ico:'🚫',tx:'Cancelación Silken — hasta 14/06/2026 ⚠️',bg:false,date:'20260614',desc:'Limite cancelacion Silken'},
    {ico:'✅',tx:'Hotel Jauregui CONFIRMADO (SYN2774-60096) · Pago directo en el hotel · €660,25',bg:'#edf7ef',date:null},
    {ico:'🚫',tx:'Cancelación Jauregui — hasta 19/06/2026',bg:false,date:'20260619',desc:'Limite cancelacion Hotel Jauregui Hondarribia'}
   ];
@@ -896,7 +990,7 @@ function renderPagos(){
   <div class="rrow"><span>✅</span><div><strong>Noche 0 · 18/06 · Llançà</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Beri · Nº 6331.570.462 · PIN 9967 · Cancelación hasta 11/06</span></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 1 · 19/06 · Sort</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Les Brases · Loc 20528 · Código acceso: <strong>1234V</strong> · Cancelación hasta 17/06</span></div></div>
   <div class="rrow" style="background:#fdf6e3"><span>⏳</span><div><strong>Noche 2 · 20/06 · Aínsa</strong><br><span style="font-size:11px;color:var(--mu)">Pendiente confirmar (Hostal Pirineos u Opción B)</span></div></div>
-  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Ochagavía</strong><br><span style="font-size:11px;color:var(--mu)">Silken Puerta de Irati · Nº 6079.733.380 · PIN 8934 · Cancelación hasta 18/06</span></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Ochagavía</strong><br><span style="font-size:11px;color:var(--mu)">Silken Puerta de Irati · Nº 6079.733.380 · PIN 8934 · Cancelación hasta 14/06 ⚠️</span></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 4 · 22/06 · Hondarribia</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Jauregui ⭐⭐⭐ · Loc SYN2774-60096 · PIN UZGUQHXZ4X · Cancelación hasta 19/06 · Pago en hotel €660,25 · Desayuno incluido</span></div></div>
  </div>`;
 
