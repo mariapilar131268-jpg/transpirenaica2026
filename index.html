@@ -1104,18 +1104,26 @@ function qDeMapa(url){
 }
 
 // Construye URL Google Maps multi-parada:
-// gas crítica → comida (alm si hay, si no cen) → hotel
+// hotel anterior (origen) → gas crítica → comida → hotel destino
 function buildGmapsUrl(d, almIdx){
   const partes = [];
 
-  // 1. Gasolinera crítica
+  // 1. ORIGEN: hotel del día anterior (donde han dormido)
+  //    El array D está ordenado: D[d.n - 1] es el día anterior
+  const diaIdx = d.n; // n coincide con el índice en D[]
+  if(diaIdx > 0 && D[diaIdx - 1] && D[diaIdx - 1].hotel && D[diaIdx - 1].hotel.map){
+    const q = qDeMapa(D[diaIdx - 1].hotel.map);
+    if(q) partes.push(q);
+  }
+
+  // 2. Gasolinera crítica
   if(d.gas && d.gas.length > 0){
     const gasCrit = d.gas.find(g => g.key) || d.gas[0];
     const q = qDeMapa(gasCrit.map);
     if(q) partes.push(q);
   }
 
-  // 2. Comida: alm[] si tiene entradas, si no usar cen[] (p.ej. Día 0 solo tiene cena)
+  // 3. Comida: alm[] si tiene, si no cen[] (Día 0 solo tiene cena)
   const listaComida = (d.alm && d.alm.length > 0) ? d.alm
                     : (d.cen && d.cen.length > 0)  ? d.cen : [];
   if(listaComida.length > 0){
@@ -1124,7 +1132,7 @@ function buildGmapsUrl(d, almIdx){
     if(q) partes.push(q);
   }
 
-  // 3. Hotel destino
+  // 4. Hotel destino (donde duermen esta noche)
   if(d.hotel && d.hotel.map){
     const q = qDeMapa(d.hotel.map);
     if(q) partes.push(q);
