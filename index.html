@@ -31,7 +31,7 @@
   --r:10px;--sh:0 2px 12px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;font-size:15px;min-height:100vh}
+body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;font-size:15px;min-height:100vh;padding-top:env(safe-area-inset-top,0px)}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* SELECTOR */
@@ -51,7 +51,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rtabtn{margin-top:20px;width:100%;max-width:560px;padding:13px 16px;background:#3a5c1e;border:1px solid #4a7228;border-radius:var(--r);color:#e8f4c8;font-family:Georgia,'Times New Roman',serif;font-size:14px;cursor:pointer;letter-spacing:.5px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .rtabtn:active{background:#4a7228}
 #rutaview{background:#f0ede6}
-.rutahdr{background:#2e4a12;padding:56px 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #4a7228;position:sticky;top:0;z-index:99}
+.rutahdr{background:#2e4a12;padding:14px 16px;padding-top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;align-items:center;gap:10px;border-bottom:3px solid #4a7228;position:sticky;top:0;z-index:99}
 .rutahdr .bbk{color:#e8f4c8;font-size:20px;padding:4px 8px;background:rgba(255,255,255,.1);border-radius:6px}
 .rutahdr-tit{font-family:Georgia,serif;font-size:17px;font-weight:bold;color:#e8f4c8}
 .rutahdr-sub{font-size:12px;color:#b8d888;margin-left:auto}
@@ -97,7 +97,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* APP */
 #app{display:none;min-height:100vh;flex-direction:column}
 .ahdr{position:sticky;top:0;z-index:100;background:var(--sf);border-bottom:2px solid var(--bd);
-  padding:56px 16px 12px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh)}
+  padding:12px 16px;padding-top:calc(env(safe-area-inset-top,0px) + 12px);display:flex;align-items:center;gap:12px;box-shadow:var(--sh)}
 .bbk{width:36px;height:36px;border-radius:50%;background:var(--s2);color:var(--tx);font-size:18px;
   display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hinf{flex:1}.hnam{font-size:16px;font-weight:700}.hmot{font-size:11px;color:var(--mu);letter-spacing:.5px}
