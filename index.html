@@ -38,17 +38,17 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 #sel{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;padding-top:max(24px,calc(env(safe-area-inset-top) + 12px));
   background:linear-gradient(160deg,#1c2b1a 0%,#2d3b1f 40%,#1a1f14 100%)}
 .ltit{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8faa6a;margin-bottom:20px}
-.mtit{font-size:clamp(32px,8vw,58px);font-weight:400;color:#f0ead8;line-height:1.05;text-align:center}
-.mtit span{color:#c8d98a}
+.mtit{font-size:clamp(32px,8vw,58px);font-weight:400;color:#ffffff;line-height:1.05;text-align:center}
+.mtit span{color:#ffffff}
 .msub{font-size:13px;color:#8faa6a;letter-spacing:2px;margin-top:12px;margin-bottom:36px;text-align:center}
-.slbl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8faa6a;margin-bottom:16px}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;width:100%;max-width:560px}
+.slbl{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#8faa6a;margin-bottom:20px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;width:100%;max-width:560px}
 .pbtn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);
-  padding:14px 10px;display:flex;flex-direction:column;gap:5px;align-items:center;transition:all .2s;color:#f0ead8}
+  padding:18px 12px;display:flex;flex-direction:column;gap:7px;align-items:center;transition:all .2s;color:#f0ead8;min-height:110px;justify-content:center}
 .pbtn:hover,.pbtn:active{background:rgba(200,217,138,.15);border-color:#c8d98a;transform:translateY(-2px)}
-.pbtn .pico{font-size:24px}.pbtn .pnm{font-size:13px;font-weight:700;text-align:center}
-.pbtn .pmot{font-size:10px;color:#8faa6a;text-align:center;line-height:1.3}
-.rtabtn{margin-top:20px;width:100%;max-width:560px;padding:13px 16px;background:#3a5c1e;border:1px solid #4a7228;border-radius:var(--r);color:#e8f4c8;font-family:Georgia,'Times New Roman',serif;font-size:14px;cursor:pointer;letter-spacing:.5px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.pbtn .pico{font-size:32px}.pbtn .pnm{font-size:16px;font-weight:700;text-align:center;line-height:1.2}
+.pbtn .pmot{font-size:12px;color:#8faa6a;text-align:center;line-height:1.3}
+.rtabtn{margin-top:20px;width:100%;max-width:560px;padding:16px 20px;background:#3a5c1e;border:1px solid #4a7228;border-radius:var(--r);color:#e8f4c8;font-family:Georgia,'Times New Roman',serif;font-size:16px;cursor:pointer;letter-spacing:.5px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .rtabtn:active{background:#4a7228}
 #rutaview{background:#f0ede6}
 .rutahdr{background:#2e4a12;padding:14px 16px;padding-top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;align-items:center;gap:10px;border-bottom:3px solid #4a7228;position:sticky;top:0;z-index:99}
@@ -92,7 +92,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rgeneral-tit{font-family:Georgia,serif;font-size:14px;font-weight:bold;color:#6a4a00;margin-bottom:10px}
 .rgeneral .rtip{border-bottom-color:#f0e8c0}
 .rgeneral .rtip-tx strong{color:#6a4a00}
-.a2tag{font-size:9px;background:rgba(200,217,138,.25);color:#c8d98a;padding:1px 5px;border-radius:10px;vertical-align:middle;margin-left:4px}
+.a2tag{font-size:11px;background:rgba(200,217,138,.25);color:#c8d98a;padding:2px 6px;border-radius:10px;vertical-align:middle;margin-left:4px}
 
 /* APP */
 #app{display:none;min-height:100vh;flex-direction:column}
@@ -299,7 +299,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 <div id="sel">
   <div class="ltit">🏍️ Transpirenaica 2026</div>
   <div class="mtit">CAP DE <span>CREUS</span></div>
-  <div class="mtit" style="color:#c8d98a">→ FARO HIGUER</div>
+  <div class="mtit" style="color:#6ab4e8">→ FARO HIGUER</div>
   <div class="msub">18 – 23 junio 2026 · ~1.585 km</div>
   <div class="slbl">¿Quién eres?</div>
   <div class="pgrid" id="pgrid"></div>
@@ -1103,43 +1103,82 @@ function qDeMapa(url){
   return m ? m[1] : null; // ya viene URL-encoded, no decodificar
 }
 
-// Construye URL Google Maps multi-parada:
-// hotel anterior (origen) → gas crítica → comida → hotel destino
+// Construye URL Google Maps multi-parada con orden geográfico correcto por día.
+// Las rutas de moto pasan por puertos que Google Maps evita → forzamos puntos clave.
 function buildGmapsUrl(d, almIdx){
-  const partes = [];
 
-  // 1. ORIGEN: hotel del día anterior (donde han dormido)
-  //    El array D está ordenado: D[d.n - 1] es el día anterior
-  const diaIdx = d.n; // n coincide con el índice en D[]
-  if(diaIdx > 0 && D[diaIdx - 1] && D[diaIdx - 1].hotel && D[diaIdx - 1].hotel.map){
-    const q = qDeMapa(D[diaIdx - 1].hotel.map);
-    if(q) partes.push(q);
-  }
-
-  // 2. Gasolinera crítica
-  if(d.gas && d.gas.length > 0){
-    const gasCrit = d.gas.find(g => g.key) || d.gas[0];
-    const q = qDeMapa(gasCrit.map);
-    if(q) partes.push(q);
-  }
-
-  // 3. Comida: alm[] si tiene, si no cen[] (Día 0 solo tiene cena)
+  // Lista de comida unificada (alm si tiene, si no cen)
   const listaComida = (d.alm && d.alm.length > 0) ? d.alm
                     : (d.cen && d.cen.length > 0)  ? d.cen : [];
-  if(listaComida.length > 0){
-    const item = listaComida[almIdx] || listaComida[0];
-    const q = qDeMapa(item.map);
-    if(q) partes.push(q);
-  }
+  const qComida = listaComida.length > 0
+    ? qDeMapa((listaComida[almIdx] || listaComida[0]).map) : null;
 
-  // 4. Hotel destino (donde duermen esta noche)
-  if(d.hotel && d.hotel.map){
-    const q = qDeMapa(d.hotel.map);
-    if(q) partes.push(q);
-  }
+  // Rutas definidas manualmente por día para respetar el orden real de puertos
+  // Formato: array de parámetros ?q= ya codificados, en orden geográfico correcto
+  const RUTAS = {
+    // ── DÍA 0 ── Tarde: Montcada → Figueres → Roses → Cadaqués → Llançà
+    // La Pausa ES el punto de encuentro de todos → correcto como origen
+    0: [
+      'Area+Servicio+Montcada+La+Pausa+C33',    // origen: punto encuentro todos
+      'Avanza+Oil+Figueres',                     // gas económica de camino
+      qComida,                                   // cena en Llançà
+      'Hotel+Beri+Llanca'                        // destino
+    ],
+    // ── DÍA 1 ── Hotel Beri → Roses(gas) → Cap de Creus(foto) → La Seu(comida) → Sort
+    // Cap de Creus está al este: Google fuerza el desvío correctamente
+    1: [
+      'Hotel+Beri+Llanca',                       // origen: salen del hotel
+      'Gasolinera+Repsol+Roses',                 // gas ANTES de montaña (24h)
+      'Cap+de+Creus+Girona',                     // foto ritual, punto más oriental
+      'Besalu+Girona',                           // pueblo medieval (parada 30min)
+      qComida,                                   // comida La Seu d'Urgell
+      'Hotel+Les+Brases+Sort+Lleida'             // destino
+    ],
+    // ── DÍA 2 ── Sort → bonÀrea(gas) → Bonaigua → Arties(comida) → Vielha → Aínsa
+    // ORDEN CORRECTO: Arties está ANTES de Vielha subiendo desde Bonaigua
+    2: [
+      'Hotel+Les+Brases+Sort+Lleida',            // origen: salen del hotel
+      'bonArea+Sort+Lleida',                     // gas crítica (llenar AL 100% antes Bonaigua)
+      'Puerto+de+la+Bonaigua+Lleida',            // puerto 2.072m
+      qComida,                                   // comida Arties (ANTES de Vielha)
+      'Vielha+Lleida',                           // Vielha: girar sur por N-230
+      'Ainsa+Huesca'                             // destino
+    ],
+    // ── DÍA 3 REINA ── Aínsa → Portalet → Gavarnie(comida) → Tourmalet → Argèles(gas) → Aubisque → Ochagavía
+    // ORDEN GEOGRÁFICO REAL verificado:
+    // Portalet → bajada a Gavarnie (circo) → subir Tourmalet desde Luz-St-Sauveur
+    // → bajar a Argèles-Gazost (gas) → Soulor → Aubisque → bajar a Ochagavía
+    3: [
+      'Ainsa+Huesca',                            // origen: salen del hotel
+      'Puerto+de+El+Portalet+Huesca',            // primer puerto (2.214m)
+      qComida,                                   // comida Gavarnie (ANTES del Tourmalet)
+      'Col+du+Tourmalet+France',                 // Tourmalet 2.115m (sube desde Luz-St-Sauveur)
+      'TotalEnergies+Argeles+Gazost+France',     // gas CRÍTICA (después de bajar Tourmalet)
+      'Col+d%27Aubisque+France',                 // Aubisque 1.709m
+      'Silken+Puerta+de+Irati+Ochagavia+Navarra'// destino
+    ],
+    // ── DÍA 4 ── Ochagavía → Irati → Roncesvalles → Urzainqui(gas) → Elizondo(comida) → Hondarribia
+    // Urzainqui está entre Roncesvalles y Elizondo en la ruta real (N-135 sur)
+    4: [
+      'Silken+Puerta+de+Irati+Ochagavia+Navarra',// origen: salen del hotel
+      'Orbaitzeta+Navarra',                      // entrada Bosque de Irati
+      'Roncesvalles+Navarra',                    // colegiata s.XII (20min)
+      'Petronor+Urzainqui+Navarra',              // gas ÚNICA en 100km
+      qComida,                                   // comida Elizondo (Valle Baztán)
+      'Hotel+Jauregui+Hondarribia'               // destino: LLEGADA 🏁
+    ],
+    // ── DÍA 5 ── Hondarribia → autopía → Santa Coloma (620km vuelta)
+    5: [
+      'Hotel+Jauregui+Hondarribia',              // origen
+      qComida,                                   // parada Gallur si la hay
+      'Santa+Coloma+de+Gramenet+Barcelona'       // destino: casa 🏠
+    ]
+  };
 
-  if(partes.length === 0) return null;
-  return 'https://www.google.com/maps/dir/' + partes.join('/');
+  // Obtener paradas del día y filtrar nulos
+  const paradas = (RUTAS[d.n] || []).filter(Boolean);
+  if(paradas.length < 2) return null;
+  return 'https://www.google.com/maps/dir/' + paradas.join('/');
 }
 
 function renderMC(){
@@ -1326,5 +1365,6 @@ window.addEventListener('load', () => {
   }
 });
 </script>
+
 </body>
 </html>
