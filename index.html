@@ -2,98 +2,190 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='14' cy='44' r='10' fill='none' stroke='%23b5341a' stroke-width='4'/%3E%3Ccircle cx='50' cy='44' r='10' fill='none' stroke='%23b5341a' stroke-width='4'/%3E%3Cpath d='M14 44 L24 24 L36 24 L44 36 L50 44' fill='none' stroke='%23b5341a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M36 24 L40 16 L48 16' fill='none' stroke='%23b5341a' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M44 36 L50 34' fill='none' stroke='%23b5341a' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='14' cy='44' r='10' fill='none' stroke='%23b5341a' stroke-width='4'/%3E%3Ccircle cx='50' cy='44' r='10' fill='none' stroke='%23b5341a' stroke-width='4'/%3E%3Cpath d='M14 44 L24 24 L36 24 L44 36 L50 44' fill='none' stroke='%23b5341a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M36 24 L40 16 L48 16' fill='none' stroke='%23b5341a' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M44 36 L50 34' fill='none' stroke='%23b5341a' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transpirenaica 2026</title>
 <style>
 :root{
-  --bg:#f4f1ec;--surface:#ffffff;--surface2:#ede8e0;--surface3:#e4ddd3;
-  --border:#cfc8bc;--text:#1a1714;--muted:#7a7060;
-  --accent:#b5341a;--accent2:#c8830a;--green:#2a7a3b;--blue:#1a5c8a;
-  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,0.08);--shadow2:0 4px 24px rgba(0,0,0,0.13);
+  --bg:#f4f1ec;--sf:#ffffff;--s2:#ede8e0;--s3:#e4ddd3;
+  --bd:#cfc8bc;--tx:#1a1714;--mu:#7a7060;
+  --red:#b5341a;--ora:#c8830a;--grn:#2a7a3b;--blu:#1a5c8a;--pur:#6a3d8a;
+  --r:10px;--sh:0 2px 12px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;font-size:15px;min-height:100vh}
+body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;font-size:15px;min-height:100vh}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* SELECTOR */
 #sel{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;
   background:linear-gradient(160deg,#1c2b1a 0%,#2d3b1f 40%,#1a1f14 100%)}
 .ltit{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8faa6a;margin-bottom:20px}
-.mtit{font-size:clamp(34px,8vw,60px);font-weight:400;color:#f0ead8;line-height:1.05;text-align:center}
+.mtit{font-size:clamp(32px,8vw,58px);font-weight:400;color:#f0ead8;line-height:1.05;text-align:center}
 .mtit span{color:#c8d98a}
-.msub{font-size:13px;color:#8faa6a;letter-spacing:2px;margin-top:14px;margin-bottom:40px}
+.msub{font-size:13px;color:#8faa6a;letter-spacing:2px;margin-top:12px;margin-bottom:36px;text-align:center}
 .slbl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8faa6a;margin-bottom:16px}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;width:100%;max-width:560px}
-.pbtn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius);
+.pbtn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);
   padding:14px 10px;display:flex;flex-direction:column;gap:5px;align-items:center;transition:all .2s;color:#f0ead8}
-.pbtn:hover,.pbtn:active{background:rgba(200,217,138,0.15);border-color:#c8d98a;transform:translateY(-2px)}
-.pbtn .pico{font-size:24px}
-.pbtn .pnm{font-size:13px;font-weight:700}
+.pbtn:hover,.pbtn:active{background:rgba(200,217,138,.15);border-color:#c8d98a;transform:translateY(-2px)}
+.pbtn .pico{font-size:24px}.pbtn .pnm{font-size:13px;font-weight:700;text-align:center}
 .pbtn .pmot{font-size:10px;color:#8faa6a;text-align:center;line-height:1.3}
+.a2tag{font-size:9px;background:rgba(200,217,138,.25);color:#c8d98a;padding:1px 5px;border-radius:10px;vertical-align:middle;margin-left:4px}
+
+/* APP */
 #app{display:none;min-height:100vh;flex-direction:column}
-.ahdr{position:sticky;top:0;z-index:100;background:var(--surface);border-bottom:2px solid var(--border);
-  padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow)}
-.bbk{width:36px;height:36px;border-radius:50%;background:var(--surface2);color:var(--text);font-size:18px;
+.ahdr{position:sticky;top:0;z-index:100;background:var(--sf);border-bottom:2px solid var(--bd);
+  padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh)}
+.bbk{width:36px;height:36px;border-radius:50%;background:var(--s2);color:var(--tx);font-size:18px;
   display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hinf{flex:1}.hnam{font-size:16px;font-weight:700}.hmot{font-size:11px;color:var(--muted);letter-spacing:.5px}
-.hbdg{font-size:20px}
-.ntabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface);overflow-x:auto;-webkit-overflow-scrolling:touch}
-.ntab{flex:1;min-width:70px;padding:11px 6px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.3px;
-  border-bottom:2.5px solid transparent;transition:.15s;white-space:nowrap}
-.ntab.active{color:var(--accent);border-bottom-color:var(--accent)}
-.tcont{display:none;padding:16px;max-width:680px;margin:0 auto;width:100%}
+.hinf{flex:1}.hnam{font-size:16px;font-weight:700}.hmot{font-size:11px;color:var(--mu);letter-spacing:.5px}
+.hbdg{font-size:22px}
+.ntabs{display:flex;border-bottom:2px solid var(--bd);background:var(--sf);position:sticky;top:64px;z-index:99}
+.ntab{flex:1;padding:12px 6px;font-size:12px;font-weight:700;color:var(--mu);letter-spacing:.5px;
+  border-bottom:3px solid transparent;transition:.15s;text-align:center}
+.ntab.active{color:var(--red);border-bottom-color:var(--red)}
+.tcont{display:none;padding:14px 14px 40px;max-width:700px;margin:0 auto;width:100%}
 .tcont.show{display:block}
-.stit{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.alert{border-radius:var(--radius);padding:12px 14px;margin-bottom:10px;border-left:3px solid;font-size:13px;line-height:1.5}
-.alert h4{font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
-.al-success{background:#edf7ef;border-color:var(--green);color:#1a3d22}
-.al-warning{background:#fdf6e3;border-color:var(--accent2);color:#3d2a05}
-.al-info{background:#e8f1f8;border-color:var(--blue);color:#0d2d45}
-.al-danger{background:#fcecea;border-color:var(--accent);color:#3d0f08}
-.ecard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;border:1px solid var(--border)}
-.ehdr{padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
-.ehdr:hover{background:var(--surface2)}
-.eico{font-size:24px;flex-shrink:0}.einf{flex:1}
-.etit{font-size:14px;font-weight:700}.esub{font-size:12px;color:var(--muted);margin-top:2px}
-.ekm{font-size:11px;font-weight:700;color:var(--accent);background:#fcecea;padding:3px 8px;border-radius:20px;white-space:nowrap}
-.ebody{display:none;padding:0 16px 14px;border-top:1px solid var(--surface2)}
-.ebody.open{display:block}
-.edesc{font-size:13px;color:var(--muted);padding:10px 0;line-height:1.6;border-bottom:1px solid var(--surface2);margin-bottom:10px}
-.ruta{display:flex;flex-direction:column}
-.ritem{display:flex;gap:10px;align-items:flex-start}
+
+/* TARJETA DÍA */
+.dcard{background:var(--sf);border-radius:14px;box-shadow:var(--sh);margin-bottom:14px;overflow:hidden;border:1px solid var(--bd)}
+.dcard.today{border:2px solid var(--ora);box-shadow:0 4px 20px rgba(200,131,10,.2)}
+.dbanner{padding:16px 16px 12px;display:flex;gap:14px;align-items:flex-start;cursor:pointer;user-select:none}
+.dbanner:hover{background:var(--s2)}
+.dnum-w{display:flex;flex-direction:column;align-items:center;flex-shrink:0;min-width:44px}
+.dnum{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.dnum-n{font-size:30px;font-weight:700;color:var(--red);line-height:1}
+.dnum-e{font-size:20px;margin-top:2px}
+.dinf{flex:1}
+.dfecha{font-size:11px;color:var(--ora);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.dtit{font-size:14px;font-weight:700;line-height:1.3;margin-bottom:6px}
+.dmeta{display:flex;flex-wrap:wrap;gap:5px}
+.dchip{font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:20px;text-transform:uppercase}
+.ck-km{background:#fcecea;color:var(--red)}
+.ck-dt{background:#e8f1f8;color:var(--blu)}
+.ck-ht{background:#fdf6e3;color:var(--ora)}
+.ck-hoy{background:var(--ora);color:#fff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.darrow{font-size:14px;color:var(--mu);align-self:center;flex-shrink:0;transition:transform .25s}
+.darrow.open{transform:rotate(90deg)}
+
+/* Body día */
+.dbody{display:none;border-top:1px solid var(--s2)}
+.dbody.open{display:block}
+.dsec{padding:13px 16px;border-bottom:1px solid var(--s2)}
+.dsec:last-child{border-bottom:none}
+.dstit{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mu);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px}
+.dstit::after{content:'';flex:1;height:1px;background:var(--bd)}
+
+/* Ruta */
+.rl{display:flex;flex-direction:column}
+.ri{display:flex;gap:10px;align-items:flex-start}
 .rline{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:20px}
-.rdot{width:12px;height:12px;border-radius:50%;border:2.5px solid var(--accent);background:var(--bg);flex-shrink:0;margin-top:3px}
-.rdot.start{background:var(--green);border-color:var(--green)}
-.rdot.end{background:var(--accent);border-color:var(--accent)}
-.rdot.gas{background:var(--accent2);border-color:var(--accent2)}
-.rdot.special{background:var(--blue);border-color:var(--blue)}
-.rvert{width:2px;background:var(--border);flex:1;min-height:14px;margin:2px 0}
+.rdot{width:12px;height:12px;border-radius:50%;border:2.5px solid var(--red);background:var(--bg);flex-shrink:0;margin-top:3px}
+.rdot.start{background:var(--grn);border-color:var(--grn)}
+.rdot.end{background:var(--red);border-color:var(--red)}
+.rdot.gas{background:var(--ora);border-color:var(--ora)}
+.rdot.special{background:var(--blu);border-color:var(--blu)}
+.rdot.food{background:var(--pur);border-color:var(--pur)}
+.rvert{width:2px;background:var(--bd);flex:1;min-height:14px;margin:2px 0}
 .rinfo{padding-bottom:12px;flex:1}
-.rpunto{font-size:13px;font-weight:600}.rnota{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
-.enots{margin-top:10px;display:flex;flex-direction:column;gap:6px}
-.enot{font-size:12px;background:var(--surface2);border-radius:6px;padding:8px 10px;color:var(--text);line-height:1.5;border-left:3px solid var(--border)}
-.enot.cena{border-left-color:var(--accent2);background:#fdf6e3}
-.gcard,.dcard,.rcard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden;border:1px solid var(--border)}
-.day-sep{background:#3a3a2e;color:#f4f1ec;font-family:Georgia,serif;font-size:.85rem;font-weight:bold;letter-spacing:.04em;padding:7px 14px;border-radius:6px;margin:18px 0 8px;opacity:.88}
-.ghdr,.dhdr,.rhdr{padding:12px 14px;display:flex;align-items:center;gap:10px}
-.gcico,.dcico,.rcico{font-size:22px;flex-shrink:0}
-.gtit,.dtit,.rtit{font-size:13px;font-weight:700}.gsub,.dsub,.rsub{font-size:11px;color:var(--muted);margin-top:2px}
-.gbody,.dbody,.rbody{padding:0 14px 12px;border-top:1px solid var(--surface2)}
-.gdet,.ddet,.rdet{font-size:12px;color:var(--muted);padding:6px 0 2px;line-height:1.6}
-.gdet span,.ddet span{color:var(--text);font-weight:600}
-.chip{font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:20px;text-transform:uppercase;flex-shrink:0}
-.chip.cr{background:#fcecea;color:var(--accent)}.chip.ok{background:#edf7ef;color:var(--green)}
-.chip.inf{background:#e8f1f8;color:var(--blue)}.chip.nar{background:#fdf6e3;color:var(--accent2)}
-.alink{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:6px 0;text-decoration:none;font-weight:600}
-.alink:hover{text-decoration:underline}
-.alink.map{color:var(--blue)}.alink.tel{color:var(--green)}.alink.web{color:var(--accent2)}
-.cksec{margin-bottom:20px}
-.ckhdr{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.ckitem{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--surface2);font-size:13px}
-.ckitem input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
-.ckitem label{cursor:pointer;line-height:1.4}
-.ckitem input:checked + label{text-decoration:line-through;color:var(--muted)}
-.prog{background:var(--surface2);border-radius:20px;height:6px;margin-bottom:16px;overflow:hidden}
-.progb{height:100%;background:linear-gradient(90deg,var(--green),var(--accent2));border-radius:20px;transition:.3s;width:0%}
+.rp{font-size:13px;font-weight:600}.rn{font-size:11px;color:var(--mu);margin-top:2px;line-height:1.4}
+
+/* Meteo */
+.mbox{background:linear-gradient(135deg,#e8f4fd,#d6eaf8);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:14px}
+.mico{font-size:32px;flex-shrink:0}
+.mdata{flex:1}
+.mtemp{font-size:18px;font-weight:700;color:var(--blu)}
+.mdesc{font-size:12px;color:#1a5c8a;margin-top:2px}
+.mdet{font-size:11px;color:var(--mu);margin-top:4px}
+.mload{font-size:12px;color:var(--mu);font-style:italic;text-align:center;padding:14px;background:var(--s2);border-radius:10px}
+
+/* Hotel */
+.hbox{background:var(--s2);border-radius:10px;padding:12px 14px;border-left:4px solid var(--grn)}
+.hbox.pend{border-left-color:var(--ora)}
+.hnm{font-size:13px;font-weight:700;margin-bottom:5px}
+.hdet{font-size:12px;color:var(--mu);line-height:1.7}
+.hdet strong{color:var(--tx)}
+.hcode{display:inline-block;background:var(--grn);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;margin-top:5px;letter-spacing:.5px}
+
+/* Gas */
+.gbox{border-radius:10px;padding:11px 14px;margin-bottom:8px}
+.gbox.key{background:#fff8e6;border-left:4px solid var(--ora)}
+.gbox.ok{background:var(--s2);border-left:4px solid var(--bd)}
+.gnm{font-size:13px;font-weight:700}.gnm.key{color:var(--ora)}
+.ginf{font-size:11px;color:var(--mu);line-height:1.5;margin-top:3px}
+
+/* Restaurante */
+.rbox{background:var(--s2);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.rbox.top{border-left:4px solid var(--ora)}
+.rmom{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ora);margin-bottom:3px}
+.rnm{font-size:13px;font-weight:700;margin-bottom:4px}
+.rinf{font-size:12px;color:var(--mu);line-height:1.5}
+
+/* Links */
+.lrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.lk{font-size:11px;font-weight:700;text-decoration:none;padding:5px 10px;border-radius:7px}
+.lk.map{background:#e8f1f8;color:var(--blu)}
+.lk.tel{background:#edf7ef;color:var(--grn)}
+.lk.web{background:#fdf6e3;color:var(--ora)}
+
+/* Alertas */
+.al{border-radius:var(--r);padding:12px 14px;margin-bottom:8px;border-left:3px solid;font-size:13px;line-height:1.5}
+.al h4{font-size:10px;font-weight:700;letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase}
+.al-s{background:#edf7ef;border-color:var(--grn);color:#1a3d22}
+.al-w{background:#fdf6e3;border-color:var(--ora);color:#3d2a05}
+.al-i{background:#e8f1f8;border-color:var(--blu);color:#0d2d45}
+.al-d{background:#fcecea;border-color:var(--red);color:#3d0f08}
+
+/* Nota especial */
+.nspec{background:linear-gradient(135deg,#f0e8ff,#e8f0ff);border:1px solid #c5a8ff;border-radius:10px;padding:12px 14px}
+.nspec h4{font-size:11px;font-weight:700;color:var(--pur);letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase}
+.nspec p{font-size:12px;color:#2a1a4a;line-height:1.6}
+
+/* Foro tip */
+.ftip{background:#f5f0ff;border:1px solid #d4c0ff;border-radius:10px;padding:12px 14px}
+.ftip-l{font-size:10px;font-weight:700;color:var(--pur);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.ftip p{font-size:12px;color:#2a1a4a;line-height:1.6}
+
+/* CHECK */
+.ck-pw{background:var(--sf);border-radius:10px;padding:14px 16px;margin-bottom:14px;box-shadow:var(--sh);border:1px solid var(--bd)}
+.ck-pl{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;color:var(--mu)}
+.ck-pb{background:var(--s2);border-radius:20px;height:8px;overflow:hidden}
+.ck-pf{height:100%;background:linear-gradient(90deg,var(--grn),var(--ora));border-radius:20px;transition:.4s;width:0%}
+.ck-sec{background:var(--sf);border-radius:10px;box-shadow:var(--sh);margin-bottom:12px;overflow:hidden;border:1px solid var(--bd)}
+.ck-sh{padding:12px 16px;background:var(--s2);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mu)}
+.ck-it{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--s2);font-size:13px}
+.ck-it:last-child{border-bottom:none}
+.ck-it input{width:18px;height:18px;accent-color:var(--grn);cursor:pointer;flex-shrink:0}
+.ck-it label{cursor:pointer;line-height:1.4}
+.ck-it input:checked + label{text-decoration:line-through;color:var(--mu)}
+.ck-tip{font-size:11px;color:var(--ora);font-style:italic;padding:8px 16px;background:#fdf6e3;border-top:1px solid #f0e0b0}
+
+/* PAGOS */
+.pp{background:var(--sf);border-radius:14px;box-shadow:var(--sh);margin-bottom:14px;overflow:hidden;border:1px solid var(--bd)}
+.pph{padding:14px 18px;display:flex;align-items:center;gap:12px}
+.pph-r{background:var(--red)}.pph-g{background:var(--grn)}.pph-b{background:var(--blu)}.pph-o{background:var(--ora)}
+.ppt{font-size:14px;font-weight:700;letter-spacing:.5px;color:#fff}
+.pps{font-size:11px;color:rgba(255,255,255,.8);margin-top:2px}
+.ppico{font-size:26px}
+.pr{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--s2);font-size:13px}
+.pr:last-child{border-bottom:none}
+.pr input{width:18px;height:18px;accent-color:var(--grn);cursor:pointer;flex-shrink:0}
+.pr .prn{flex:1}.pr .pra{font-weight:700;white-space:nowrap}
+.ppf{padding:12px 16px;background:var(--s2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.ppfl{font-size:11px;color:var(--mu)}.ppfv{font-size:17px;font-weight:700}
+.calb{font-size:11px;padding:7px 12px;border-radius:7px;cursor:pointer;font-family:Georgia,serif;font-weight:700;color:#fff}
+
+/* Tabla cobros */
+.ctab{width:100%;border-collapse:collapse;font-size:12px}
+.ctab th{padding:8px 10px;background:var(--s2);text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.ctab td{padding:9px 10px;border-bottom:1px solid var(--s2)}
+.ctab tr:last-child td{border-bottom:none}
+.bpag{background:#edf7ef;color:var(--grn);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px}
+.bpen{background:#fcecea;color:var(--red);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px}
+.rrow{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--s2);font-size:12px;line-height:1.5}
+.rrow:last-child{border-bottom:none}
 </style>
 </head>
 <body>
@@ -110,580 +202,560 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 <div id="app">
   <div class="ahdr">
     <button class="bbk" onclick="goBack()">←</button>
-    <div class="hinf">
-      <div class="hnam" id="hnam"></div>
-      <div class="hmot" id="hmot"></div>
-    </div>
+    <div class="hinf"><div class="hnam" id="hnam"></div><div class="hmot" id="hmot"></div></div>
     <div class="hbdg" id="hbdg"></div>
   </div>
   <div class="ntabs">
-    <button class="ntab active" onclick="showTab('ruta',this)">🗺 Ruta</button>
-    <button class="ntab" onclick="showTab('gas',this)">⛽ Gasolina</button>
-    <button class="ntab" onclick="showTab('dorm',this)">🛏 Dormir</button>
-    <button class="ntab" onclick="showTab('com',this)">🍽 Comer</button>
-    <button class="ntab" onclick="showTab('ck',this)">✓ Check</button>
+    <button class="ntab active" onclick="showTab('dia',this)">📅 MI DÍA</button>
+    <button class="ntab" onclick="showTab('ck',this)">✓ CHECK</button>
+    <button class="ntab" onclick="showTab('pagos',this)">💳 PAGOS</button>
   </div>
-  <div class="tcont show" id="tab-ruta"><div id="alertas"></div><div id="etapas"></div></div>
-  <div class="tcont" id="tab-gas"><div class="stit">⛽ Gasolineras clave</div><div id="gasolineras"></div></div>
-  <div class="tcont" id="tab-dorm"><div class="stit">🛏 Alojamientos</div><div id="alojamientos"></div></div>
-  <div class="tcont" id="tab-com"><div class="stit">🍽 Dónde comer y cenar</div><div id="restaurantes"></div></div>
-  <div class="tcont" id="tab-ck"><div class="stit">✓ Checklist pre-viaje</div><div class="prog"><div class="progb" id="progb"></div></div><div id="checklist"></div></div>
+  <div class="tcont show" id="tab-dia"></div>
+  <div class="tcont" id="tab-ck"></div>
+  <div class="tcont" id="tab-pagos"></div>
 </div>
 
 <script>
+// ━━━ PILOTOS ━━━
 const PI=[
-  {id:'alberto',nm:'Alberto',ico:'🐛',mot:'Yamaha R9',dep:14,aut:200,badge:'A2',hab:'doble',comp:'Oriol',
-   pagos:[{hotel:'Hotel Beri (Noche 0 - Llançà)',importe:'44.66',pagado:false},{hotel:'Hotel Les Brases (Noche 1 - Sort)',importe:'37.00',pagado:false},{hotel:'Silken Puerta de Irati (Noche 3 - Ochagavía)',importe:'62.50',pagado:false}],
-   alerts:[
-     {t:'warning',h:'🎓 CARNET A2 — EL JOVEN PROMESA DEL GRUPO 😄',b:'Potencia limitada por ley, pero talento ilimitado. Los demás llevan años con el A... tú ya casi. ¡Paciencia, crack!'},
-     {t:'warning',h:'DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. Repostar obligatorio en bonÀrea Sort (días 1 y 2) y Argèles-Gazost (día 3). Más paradas = más cafés ☕'},
-     {t:'info',h:'HABITACIÓN DOBLE con Oriol · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Oriol · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Oriol · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · Check-in 15:00-21:00 · Check-out 07:00-12:00'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~190€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~765€</strong>'}]},
-  {id:'oriol',nm:'Oriol',ico:'🐣',mot:'KTM 790 Duke',dep:14.5,aut:220,badge:'A2',hab:'doble',comp:'Alberto',
-   pagos:[{hotel:'Hotel Beri (Noche 0 - Llançà)',importe:'44.66',pagado:false},{hotel:'Hotel Les Brases (Noche 1 - Sort)',importe:'37.00',pagado:false},{hotel:'Silken Puerta de Irati (Noche 3 - Ochagavía)',importe:'62.50',pagado:false}],
-   alerts:[
-     {t:'warning',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco más que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
-     {t:'warning',h:'DEPÓSITO 14,5 L',b:'Vigilar especialmente día 3 (Francia). Repostar en Argèles-Gazost antes del Aubisque. Sin protección al viento — llevar capa térmica a mano para Bonaigua y Tourmalet.'},
-     {t:'info',h:'HABITACIÓN DOBLE con Alberto · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Alberto · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Alberto · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · Check-in 15:00-21:00 · Check-out 07:00-12:00'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~172€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~747€</strong>'}]},
-  {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
-   pagos:[{hotel:'Hotel Beri (Noche 0 - Llançà)',importe:'44.66',pagado:false},{hotel:'Hotel Les Brases (Noche 1 - Sort)',importe:'37.00',pagado:false},{hotel:'Silken Puerta de Irati (Noche 3 - Ochagavía)',importe:'62.50',pagado:false}],
-   alerts:[
-     {t:'success',h:'🥷 EL NINJA DEL GRUPO',b:'Parece que no está, pero va siempre pegado a tu estela. Silencioso, constante, inevitable. Cuando te das cuenta... ya está ahí 😏'},
-     {t:'info',h:'HABITACIÓN DOBLE con Mónica · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Mónica · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Mónica · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · Check-in 15:00-21:00 · Check-out 07:00-12:00'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~194€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~769€</strong>'}]},
-  {id:'monica',nm:'Mónica',ico:'🏅',mot:'Honda CB650R (negra)',dep:15.4,aut:300,badge:'A',hab:'doble',comp:'Antonio',
-   pagos:[{hotel:'Hotel Beri (Noche 0 - Llançà)',importe:'44.66',pagado:false},{hotel:'Hotel Les Brases (Noche 1 - Sort)',importe:'37.00',pagado:false},{hotel:'Silken Puerta de Irati (Noche 3 - Ochagavía)',importe:'62.50',pagado:false}],
-   alerts:[
-     {t:'success',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos es un escalpelo 🔪'},
-     {t:'warning',h:'DEPÓSITO 15,4 L',b:'Vigilar día 3 (Francia). Repostar obligatorio en Argèles-Gazost antes del Aubisque.'},
-     {t:'info',h:'HABITACIÓN DOBLE con Antonio · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Antonio · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN DOBLE con Antonio · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · Check-in 15:00-21:00 · Check-out 07:00-12:00'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~732€</strong>'}]},
-  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
-   esPedro:true,
-   cobros:[
-     {piloto:'🐛 Alberto',beri:'€44,66',brases:'€37,00',silken:'€62,50',total:'144.16',pagado:false},
-     {piloto:'🐣 Oriol',beri:'€44,66',brases:'€37,00',silken:'€62,50',total:'144.16',pagado:false},
-     {piloto:'🥷 Antonio',beri:'€44,66',brases:'€37,00',silken:'€62,50',total:'144.16',pagado:false},
-     {piloto:'🏁 Mónica',beri:'€44,66',brases:'€37,00',silken:'€62,50',total:'144.16',pagado:false},
-     {piloto:'📋 Xavi',beri:'€88,66',brases:'€64,00',silken:'€125,00',total:'277.66',pagado:false},
-     {piloto:'🎭 Antonio J.',beri:'€88,66',brases:'€64,00',silken:'€125,00',total:'277.66',pagado:false}
-   ],
-   alerts:[
-     {t:'success',h:'🎯 EL ANTIRADARES OFICIAL DEL GRUPO',b:'No hace falta Waze ni TomTom: con Pedro delante, los radares no existen. Olfato sobrenatural. El grupo te lo agradece... y Tráfico también 😅'},
-     {t:'success',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · PIN 8934 · Check-in 15:00-21:00 · Check-out 07:00-12:00 · Cancelación gratuita hasta 18/06/2026 · 💳 Pagar el 17/06 con tarjeta Santander'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~899€</strong>'}]},
-  {id:'xavi',nm:'Xavi',ico:'🏅',mot:'Ducati Multistrada',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
-   pagos:[{hotel:'Hotel Beri (Noche 0 - Llançà)',importe:'88.66',pagado:false},{hotel:'Hotel Les Brases (Noche 1 - Sort)',importe:'64.00',pagado:false},{hotel:'Silken Puerta de Irati (Noche 3 - Ochagavía)',importe:'125.00',pagado:false}],
-   alerts:[
-     {t:'success',h:'📋 EL DOCUMENTALISTA',b:'Tiene un talento especial para convertir cualquier hobby en un proyecto de documentación avanzada. Va en moto como hobby, sí, pero con mentalidad de piloto, memoria de opositor y ojo de juez.'},
-     {t:'success',h:'DEPÓSITO 20 L',b:'Excelente autonomía. Sin problemas en ninguna etapa.'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · Check-in 15:00-21:00 · Check-out 07:00-12:00'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~899€</strong>'}]},
-  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
-   pagos:[{hotel:'Hotel Beri (Noche 0 - Llançà)',importe:'88.66',pagado:false},{hotel:'Hotel Les Brases (Noche 1 - Sort)',importe:'64.00',pagado:false},{hotel:'Silken Puerta de Irati (Noche 3 - Ochagavía)',importe:'125.00',pagado:false}],
-   alerts:[
-     {t:'success',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
-     {t:'success',h:'DEPÓSITO 25 L — MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Hotel Beri, Llançà',b:'Noche 0 ✅ · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Hotel Les Brases, Sort',b:'Noche 1 ✅ · Loc: 20528 · Código acceso: <strong>1234V</strong> · Desayuno incluido'},
-     {t:'info',h:'HABITACIÓN INDIVIDUAL · Silken Puerta de Irati, Ochagavía',b:'Noche 3 ✅ · Nº 6079.733.380 · Check-in 15:00-21:00 · Check-out 07:00-12:00'},
-     {t:'info',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~213€ · Cenas ~225€ · Almuerzos ~80€<br><strong>TOTAL ~908€</strong>'}]}
+ {id:'alberto',nm:'Alberto',ico:'🐛',mot:'Yamaha R9',dep:14,aut:200,badge:'A2',hab:'doble',comp:'Oriol',
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false}],
+  al:[{t:'w',h:'🎓 CARNET A2 — EL JOVEN PROMESA DEL GRUPO 😄',b:'Potencia limitada por ley, talento ilimitado. Los demás llevan años con el A... tú ya casi. ¡Paciencia, crack!'},
+      {t:'w',h:'⚠️ DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. REPOSTAR en bonÀrea Sort (días 1 y 2) y Argèles-Gazost (día 3). Más paradas = más cafés ☕'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~190€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~765€</strong>'}]},
+ {id:'oriol',nm:'Oriol',ico:'🐣',mot:'KTM 790 Duke',dep:14.5,aut:220,badge:'A2',hab:'doble',comp:'Alberto',
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false}],
+  al:[{t:'w',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
+      {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en Argèles-Gazost ANTES del Aubisque. Capa térmica a mano para Bonaigua y Tourmalet.'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~172€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~747€</strong>'}]},
+ {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false}],
+  al:[{t:'s',h:'🥷 EL NINJA DEL GRUPO',b:'Parece que no está, pero va siempre pegado a tu estela. Silencioso, constante, inevitable. Cuando te das cuenta... ya está ahí 😏'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~194€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~769€</strong>'}]},
+ {id:'monica',nm:'Mónica',ico:'🏅',mot:'Honda CB650R (negra)',dep:15.4,aut:300,badge:'A',hab:'doble',comp:'Antonio',
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false}],
+  al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
+      {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en Argèles-Gazost ANTES del Aubisque.'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~732€</strong>'}]},
+ {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
+  cobros:[
+   {p:'🐛 Alberto',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
+   {p:'🐣 Oriol',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
+   {p:'🥷 Antonio',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
+   {p:'🏁 Mónica',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
+   {p:'📋 Xavi',b:88.66,br:64.00,s:125.00,t:277.66,ok:false},
+   {p:'🎭 Antonio J.',b:88.66,br:64.00,s:125.00,t:277.66,ok:false}],
+  al:[{t:'s',h:'🎯 EL ANTIRADARES OFICIAL DEL GRUPO',b:'No hace falta Waze ni TomTom: con Pedro delante, los radares no existen. Olfato sobrenatural. El grupo te lo agradece... y Tráfico también 😅'},
+      {t:'s',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~899€</strong>'}]},
+ {id:'xavi',nm:'Xavi',ico:'🏅',mot:'Ducati Multistrada',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:125.00,ok:false}],
+  al:[{t:'s',h:'📋 EL DOCUMENTALISTA',b:'Talento especial para convertir cualquier hobby en proyecto de documentación avanzada. Mentalidad de piloto, memoria de opositor y ojo de juez.'},
+      {t:'s',h:'DEPÓSITO 20 L — EXCELENTE AUTONOMÍA',b:'Sin problemas en ninguna etapa del viaje.'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~899€</strong>'}]},
+ {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:125.00,ok:false}],
+  al:[{t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
+      {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~213€ · Cenas ~225€ · Almuerzos ~80€ — <strong>TOTAL ~908€</strong>'}]}
 ];
 
-const ET=[
-  {n:'0',e:'🌅',f:'Jue 18/06',km:165,d:'Llançà',
-   tit:'Traslado previo — Inicio de la aventura',
-   desc:'Punto de salida COMÚN: Área de Servicio Montcada La Pausa (C-33 km 82,5, sentido Norte). Salir tarde 16-18h después del trabajo. Llegar de noche a Llançà · Hotel Beri.',
-   ruta:[{p:'⭐ SALIDA — Área Montcada La Pausa',n:'C-33 km 82,5 sentido Norte · Todos quedan aquí · Gasolinera + cafetería',d:'start'},
-         {p:'Figueres',n:'Repostar Avanza Oil (6-22h) — económica',d:'gas'},
-         {p:'Roses → Cadaqués',n:''},
-         {p:'Llançà — Hotel Beri',n:'Llegar de noche · Cenar y descansar',d:'end'}],
-   not:['Repostar en Figueres (Avanza Oil, barata, de camino)',
-        '🍽️ CENA: Ca la Herminda — Desde 1963. Vivero propio. Arroces de bogavante, gambas rojas, pescado fresco · Carrer del Mar s/n · ⚠️ Reservar con antelación']},
-  {n:'1',e:'🏛️',f:'Vie 19/06',km:318,d:'Sort',
-   tit:'Cap de Creus → Sort',
-   desc:'Primera gran etapa. Foto ritual al amanecer, Costa Brava, prelitoral catalán y entrada al Pallars. ~318 km de carreteras espectaculares.',
-   ruta:[{p:'Cap de Creus',n:'🌅 Foto ritual al amanecer — el inicio oficial de la Transpirenaica',d:'start'},
-         {p:'Roses',n:'⛽ Repostar Repsol (24h) — OBLIGATORIO antes de montaña',d:'gas'},
-         {p:'BESALÚ ★',n:'Parada 30-40 min — pueblo medieval s.XII imprescindible. Aparcar junto al río',d:'special'},
-         {p:'Olot → Ripoll → Sant Joan de les Abadesses',n:''},
-         {p:'Camprodon → Molló → Collada de Toses 1.800m ★',n:'Primer gran puerto · Vistas espectaculares a la Cerdanya',d:'special'},
-         {p:'Puigcerdà → Bellver de Cerdanya → Organyà',n:'N-260 · uno de los tramos más bonitos de Cataluña'},
-         {p:'Sort',n:'Llegada ~18:00h · Pueblo aventurero en el Noguera Pallaresa',d:'end'}],
-   not:['Repostar en Roses ANTES de entrar a montaña — 24h sin persona',
-        '🍽️ CENA: 2 opciones a pie del hotel · Can Punyetes (carnes a la brasa, ~20-30€/p, sin reserva — llegar antes de las 21h) · Restaurant Les Brases (en el propio hotel)']},
-  {n:'2',e:'🏔️',f:'Sáb 20/06',km:300,d:'Aínsa',
-   tit:'Sort → Bonaigua → Vielha → Aínsa',
-   desc:'Puerto Bonaigua 2.072m, Valle de Arán, descenso al Sobrarbe aragonés. ~300 km con todo tipo de paisajes pirenaicos.',
-   ruta:[{p:'Sort',n:'Salida 8:00h',d:'start'},
-         {p:'⛽ bonÀrea Sort — CRÍTICO',n:'LLENAR AL 100% · 24h · Sin gasolineras fiables entre Sort y Vielha',d:'gas'},
-         {p:'Gerri de la Sal → La Pobla de Segur',n:''},
-         {p:'Puerto Bonaigua 2.072m ★★★',n:'"Mejor que el Stelvio" · Parar 20 min · Llevar capa térmica a mano · Posible gravilla',d:'special'},
-         {p:'Salardú → Vielha',n:'Valle de Arán'},
-         {p:'⛽ Repsol Vielha',n:'Llenar para el Pirineo aragonés · 7-23h',d:'gas'},
-         {p:'Túnel de Vielha → N-230 Sur',n:''},
-         {p:'N-260 → Aínsa',n:'Carretera mítica del Pirineo aragonés'},
-         {p:'Aínsa',n:'Llegada ~18:30h · Uno de los pueblos más bonitos de España',d:'end'}],
-   not:['bonÀrea Sort: LLENAR 100% — NO hay gasolineras fiables entre Sort y Vielha',
-        'Bonaigua: posible frío intenso en junio · capa térmica A MANO antes de subir',
-        '🍽️ CENA: Restaurante Callizo — Plaza Mayor Aínsa · Cocina aragonesa de montaña moderna · Carnes de caza, setas, ternera de Broto · ⚠️ Reservar imprescindible']},
-  {n:'3',e:'⭐',f:'Dom 21/06',km:320,d:'Ochagavía',
-   tit:'ETAPA REINA — Aínsa → Gavarnie → Tourmalet → Aubisque → Ochagavía',
-   desc:'La etapa más épica. Portalet, Gavarnie, Tourmalet 2.115m, Aubisque 1.709m. Los puertos más míticos del Tour de Francia. ES DOMINGO — precaución con gasolineras en Francia.',
-   ruta:[{p:'Aínsa',n:'Salida 8:00h — depósito LLENO',d:'start'},
-         {p:'Broto → Valle de Ordesa',n:'Vistas al macizo del Pirineo desde la N-260'},
-         {p:'Puerto del Portalet 1.794m ★★',n:'Frontera España-Francia',d:'special'},
-         {p:'Laruns → Luz-Saint-Sauveur',n:'Descenso por el valle du Gave d\'Ossau'},
-         {p:'🍽️ Gavarnie — ALMUERZO ~13:30h',n:'Desvío 12 km · Circo de Gavarnie · Cascada más alta de Francia · Vistas espectaculares',d:'special'},
-         {p:'Col du Tourmalet 2.115m ★★★',n:'El puerto más famoso del Tour · Parar 20 min · Tienda y bar en la cima',d:'special'},
-         {p:'⛽ ARGÈLES-GAZOST — CRÍTICO',n:'TotalEnergies · CON PERSONAL · DOMINGO 7-20:30h · Llenar AL 100% antes del Aubisque',d:'gas'},
-         {p:"Col d'Aubisque 1.709m ★★★",n:'Carretera excavada en la roca · ESPECTACULAR · El más bonito del día',d:'special'},
-         {p:'Col Pierre Saint-Martin',n:'Frontera Francia/España'},
-         {p:'Ochagavía',n:'Llegada ~19:30-20:00h',d:'end'}],
-   not:['⚠️ DOMINGO EN FRANCIA: gasolineras automáticas requieren tarjeta con PIN físico · Cargo provisional ~100€ (se devuelve)',
-        'Argèles-Gazost TotalEnergies: repostar SÍ o SÍ — última gasolinera antes del Aubisque · +33 562 970 871',
-        '🍽️ ALMUERZO: Gavarnie — restaurantes junto al circo · Platos de montaña · ~13:30-14:30h · Solo 12 km de desvío desde Luz-Saint-Sauveur',
-        '🍽️ CENA: Restaurante o bar del pueblo en Ochagavía — las reseñas recomiendan los bares locales sobre el propio hotel']},
-  {n:'4',e:'🏁',f:'Lun 22/06',km:200,d:'Hondarribia',
-   tit:'Ochagavía → Selva de Irati → Baztán → Faro de Higuer — META',
-   desc:'El remate perfecto. Hayedo de Irati, Roncesvalles, Valle del Baztán, Cantábrico. El final de la Transpirenaica.',
-   ruta:[{p:'Ochagavía',n:'Salida 9:00h · Repostar Petronor Urzainqui (8-21h) — ÚNICA en 100 km',d:'start'},
-         {p:'Selva de Irati ★★',n:'El hayedo más grande de Europa — parada imprescindible',d:'special'},
-         {p:'Roncesvalles ★',n:'Camino de Santiago · Bosques de hayas en junio',d:'special'},
-         {p:'Elizondo / Valle del Baztán',n:'Carreteras perfectas · Verde intenso'},
-         {p:'Zugarramurdi',n:'El pueblo de las brujas — desvío 5 minutos'},
-         {p:'🏁 FARO DE HIGUER',n:'¡TRANSPIRENAICA COMPLETADA! Tocar el Cantábrico 🌊',d:'end'}],
-   not:['Petronor Urzainqui: ÚNICA gasolinera en 100 km — NO saltársela · +34 948 475 013',
-        '🎉 CELEBRACIÓN: pintxos y txakoli en el casco histórico medieval de Hondarribia',
-        '🔥 Salida 8:00h hacia casa · Llegar ~14:30h · Tarde libre para la verbena de Sant Joan']},
-  {n:'5',e:'🏠',f:'Mar 23/06',km:620,d:'Santa Coloma',
-   tit:'Vuelta a Casa — 🔥 Verbena Sant Joan',
-   desc:'Salida 8:00h desde Hondarribia. AP-8 → AP-68 → AP-2. Objetivo: estar en casa sobre las 14:30h.',
-   ruta:[{p:'Hondarribia',n:'Salida 8:00h',d:'start'},
-         {p:'AP-8 → Bilbao → AP-68',n:''},
-         {p:'Área Gallur 232 (opcional)',n:'Menú 13€ con vino · N-232 km 286 · Sin desvío'},
-         {p:'AP-2 → Barcelona',n:''},
-         {p:'Santa Coloma de Gramenet',n:'Llegada ~14:30h 🔥 ¡Tarde libre para Sant Joan!',d:'end'}],
-   not:['Sin prisas pero sin parar demasiado · objetivo: casa sobre las 14:30h',
-        '🔥 ¡SANT JOAN! Verbena, fuegos artificiales, cava. El mejor cierre posible para la Transpirenaica.']}
+// ━━━ DÍAS ━━━
+const D=[
+{n:0,emo:'🌅',f:'Jue 18 junio',ti:'Traslado previo — Inicio de la aventura',km:165,dest:'Llançà',
+ res:'Salida en la tarde desde el Área de Servicio Montcada La Pausa (C-33 km 82,5). Toda la pandilla junta. Llegada de noche a Llançà por la Costa Brava.',
+ mlat:42.362,mlon:3.154,mnm:'Llançà',
+ ruta:[{p:'⭐ SALIDA — Área Montcada La Pausa',n:'C-33 km 82,5 sentido Norte · Todos quedan aquí · 16-18h',d:'start'},
+       {p:'Figueres',n:'⛽ Avanza Oil (6-22h) — económica, de camino',d:'gas'},
+       {p:'Roses → Cadaqués',n:'Costa Brava'},
+       {p:'🏁 Llançà — Hotel Beri',n:'Llegar de noche · Cenar y descansar',d:'end'}],
+ gas:[{nm:'Área Montcada La Pausa',hr:'24h',dir:'C-33 km 82,5, Montcada i Reixac',tel:'+34935640681',map:'https://maps.google.com/?q=Area+Servicio+Montcada+La+Pausa+C33',key:true,not:'Punto de encuentro de TODOS. Repostar aquí.'},
+      {nm:'Avanza Oil — Figueres',hr:'6:00-22:00h',dir:'Avinguda de Roses 5-7, Figueres',tel:'+34972716949',map:'https://maps.google.com/?q=Avanza+Oil+Figueres',key:false,not:'Económica, de camino.'}],
+ hotel:{ok:true,nm:'Hotel Beri ⭐⭐ · Llançà',dir:'Carrer de la Creu, 16, 17490 Llançà',tel:'+34972380198',web:'https://www.hotel-beri.com/es/',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
+   inf:'Check-in desde 14:00 · Check-out hasta 11:00 · Parking gratuito 🏍 · Desayuno incluido',res:'Nº 6331.570.462 · PIN: 9967',cod:null,
+   can:'Cancelación gratuita hasta 11/06/2026',pag:'💳 Pedro paga el 09/06 con Revolut'},
+ alm:[],
+ cen:[{mo:'CENA — Opción A 🏆',nm:'Hostal Restaurant Lara',loc:'Llançà',tel:'+34620797619',map:'https://maps.google.com/?q=Hostal+Restaurant+Lara+Llanca',pr:'~20-30€/p',inf:'⭐4.3 · Cocina mediterránea: pulpo, carnes a la brasa. ⚠️ Reservar mesa para 7.'},
+      {mo:'CENA — Opción B 🌊',nm:'Restaurant Llançà Port',loc:'Llançà',tel:'+34687966646',map:'https://maps.google.com/?q=Restaurant+Llanca+Port+Passeig+Maritim',pr:'~25-35€/p',inf:'⭐4.0 · Terraza junto al mar. Arroces y pescados frescos.'},
+      {mo:'CENA — Opción C 🍕 (si llegan muy tarde)',nm:"Pizzería L'Italiana",loc:'Llançà',tel:null,map:'https://maps.google.com/?q=Pizzeria+L+Italiana+Llanca',pr:'~12-18€/p',inf:'Informal y económica.'}],
+ als:[{t:'i',h:'📍 PUNTO DE ENCUENTRO — TODOS',b:'Área de Servicio Montcada La Pausa, C-33 km 82,5 sentido Norte. Quedar aquí antes de salir juntos.'}],
+ foro:null,nesp:null},
+
+{n:1,emo:'🏛️',f:'Vie 19 junio',ti:'Cap de Creus → Sort',km:318,dest:'Sort',
+ res:'Primera gran etapa. Foto ritual en el cabo más oriental de España. Costa Brava, Besalú medieval, Collada de Toses, entrada al Pallars Sobirà.',
+ mlat:42.419,mlon:1.131,mnm:'Sort',
+ ruta:[{p:'🌅 Cap de Creus — FOTO RITUAL',n:'El inicio oficial de la Transpirenaica · El punto más oriental de la Península',d:'start'},
+       {p:'⛽ Repsol — Roses',n:'Repostar OBLIGATORIO antes de entrar a montaña · 24h',d:'gas'},
+       {p:'BESALÚ ★',n:'Parada 30-40 min · Pueblo medieval s.XII imprescindible · Aparcar junto al río',d:'special'},
+       {p:'Olot → Ripoll → Sant Joan de les Abadesses',n:''},
+       {p:'Collada de Toses 1.800m ★',n:'Primer gran puerto · Vistas espectaculares a la Cerdanya',d:'special'},
+       {p:'🍽️ La Seu d\'Urgell — ALMUERZO ~13:30h',n:'Parador o La Glorieta',d:'food'},
+       {p:'Puigcerdà → Bellver → Organyà → N-260',n:'Uno de los tramos más bonitos de Cataluña'},
+       {p:'⛽ bonÀrea — Sort',n:'LLENAR AL 100% · 24h',d:'gas'},
+       {p:'🏁 Sort',n:'Llegada ~18:00h · Pueblo aventurero en el Noguera Pallaresa',d:'end'}],
+ gas:[{nm:'Repsol — Roses',hr:'24h',dir:'C-260 km 42.5, Roses',tel:'+34972256467',map:'https://maps.google.com/?q=Gasolinera+Repsol+Roses',key:true,not:'⚠️ OBLIGATORIO antes de la montaña. Etapa de 318 km.'},
+      {nm:'bonÀrea — Sort',hr:'24h',dir:'Polígon Els Salancons, Sort',tel:'+34900899089',map:'https://maps.google.com/?q=bonArea+Sort+Lleida',key:true,not:'⚠️ Repostar al llegar. Mañana viene el Bonaigua (2.072m).'}],
+ hotel:{ok:true,nm:'Hotel Les Brases ⭐⭐⭐ · Sort',dir:'Avda. de la Generalitat, 27, 25560 Sort',tel:'+34973621071',web:'https://lesbrases.com',map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',
+   inf:'Check-in desde 15:00 · Check-out hasta 12:00 · Desayuno incluido',res:'Loc: 20528',cod:'1234V',
+   can:'Cancelación gratuita hasta 17/06/2026 antes 12:00h',pag:'✅ PAGADO por Pedro el 08/03/2026 con Santander (€340)'},
+ alm:[{mo:'ALMUERZO — Opción A 🏆',nm:'Restaurante Parador de La Seu d\'Urgell',loc:'La Seu d\'Urgell',tel:'+34973350000',map:'https://maps.google.com/?q=Parador+La+Seu+d+Urgell',pr:'~20-25€/p',inf:'Cocina pirenaica catalana. Embutidos artesanos, ternera del Pirineo. Parking fácil.'},
+      {mo:'ALMUERZO — Opción B 🌿',nm:'Restaurant La Glorieta',loc:'La Seu d\'Urgell',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+La+Glorieta+La+Seu+d+Urgell',pr:'~15-18€/p',inf:'Cocina km0, productos de huerto propio. Menú del día. Informal.'}],
+ cen:[{mo:'CENA — Opción A 🥩',nm:'Can Punyetes',loc:'Sort',tel:'+34973621451',map:'https://maps.google.com/?q=Can+Punyetes+Sort+Lleida',pr:'~20-30€/p',inf:'⭐4.4 · Carnes a la brasa. ⚠️ NO acepta reservas — llegar antes de las 21h.'},
+      {mo:'CENA — Opción B 🏨',nm:'Restaurant Les Brases (en el hotel)',loc:'Sort',tel:'+34973621071',map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',pr:'~25-35€/p',inf:'Sin mover las motos. Abre 20:00-22:00h. Reservar al hacer check-in.'}],
+ als:[{t:'i',h:'📸 FOTO DEL GRUPO — Cap de Creus',b:'El inicio OFICIAL de la ruta. Este es el momento para la foto histórica del grupo.'},
+      {t:'w',h:'⛽ COMBUSTIBLE — ETAPA LARGA (318 km)',b:'Repostar en Roses OBLIGATORIO. Depósitos pequeños (Alberto 14L, Oriol 14,5L) en alerta máxima.'}],
+ foro:'Los foreros de bmwmotos.com coinciden: "La Collada de Toses es espectacular, y la N-260 entre La Seu d\'Urgell y Sort está entre las mejores carreteras de Cataluña. No te saltes Besalú aunque llegues tarde."',
+ nesp:null},
+
+{n:2,emo:'🏔️',f:'Sáb 20 junio',ti:'Sort → Bonaigua → Vielha → Aínsa',km:300,dest:'Aínsa',
+ res:'Puerto Bonaigua a 2.072m, Valle de Arán, descenso al Sobrarbe aragonés. ~300 km con los paisajes más variados del Pirineo.',
+ mlat:42.419,mlon:0.140,mnm:'Aínsa',
+ ruta:[{p:'Sort',n:'Salida 8:00h',d:'start'},
+       {p:'⛽ bonÀrea Sort — CRÍTICO',n:'LLENAR AL 100% · Sin gasolineras fiables hasta Vielha',d:'gas'},
+       {p:'Gerri de la Sal → La Pobla de Segur',n:''},
+       {p:'Puerto Bonaigua 2.072m ★★★',n:'"Mejor que el Stelvio" — Parar 20 min · Capa térmica A MANO · Posible gravilla',d:'special'},
+       {p:'Salardú → Vielha',n:'Valle de Arán — paisaje único en España'},
+       {p:'🍽️ Vielha — ALMUERZO ~13:30h',n:'Era Coquèla (en Vielha) o Restaurant Rufus (Gessa, 5 km)',d:'food'},
+       {p:'⛽ Repsol — Vielha',n:'Llenar para el Pirineo aragonés · 7-23h',d:'gas'},
+       {p:'Túnel de Vielha → N-230 Sur → N-260',n:'Carretera mítica del Pirineo aragonés'},
+       {p:'🏁 Aínsa',n:'Llegada ~18:30h · Uno de los pueblos más bonitos de España',d:'end'}],
+ gas:[{nm:'bonÀrea — Sort',hr:'24h',dir:'Polígon Els Salancons, Sort',tel:'+34900899089',map:'https://maps.google.com/?q=bonArea+Sort+Lleida',key:true,not:'⚠️ CRÍTICO: llenar AL 100%. No hay gasolineras fiables entre Sort y Vielha (~150 km de montaña).'},
+      {nm:'Repsol — Vielha',hr:'7:00-23:00h',dir:'CR N-230 pk 163.70, Vielha',tel:'+34973642277',map:'https://maps.google.com/?q=Repsol+Vielha+N230',key:true,not:'Llenar para el Pirineo aragonés. Mañana es la etapa reina.'}],
+ hotel:{ok:false,nm:'⏳ PENDIENTE CONFIRMAR — Aínsa',dir:'Aínsa, Huesca',tel:null,web:null,map:'https://maps.google.com/?q=Ainsa+Huesca',
+   inf:'📧 Opción A: Hostal Pirineos Aínsa · Tel: 974 500 008 · Parking motos gratuito · Cocina aragonesa\n📧 Opción B: Hotel & SPA Monasterio de Boltaña · Tel: 974 508 000 · Antiguo monasterio s.XVII · SPA · 6 km de Aínsa',
+   res:null,cod:null,can:null,pag:null},
+ alm:[{mo:'ALMUERZO — Opción A 🏆',nm:'Era Coquèla',loc:'Vielha, Arán',tel:'+34973641757',map:'https://maps.google.com/?q=Era+Coquela+Vielha+Lleida',pr:'~20-25€/p',inf:'Referente gastronómico del Valle de Arán. Olla aranesa, carnes, pescados. Centro de Vielha.'},
+      {mo:'ALMUERZO — Opción B 🌟',nm:'Restaurant Rufus',loc:'Gessa (5 km de Vielha)',tel:'+34973648057',map:'https://maps.google.com/?q=Restaurant+Rufus+Gessa+Val+Aran',pr:'~18-30€/p',inf:'⭐ Recomendado en foro bmwmotos.com: "un clásico del Valle, espectacular". Colmenillas, ciervo a la brasa, olla aranesa. Cierra 15:30h.'}],
+ cen:[{mo:'CENA — Opción A 🏆 (si Hostal Pirineos)',nm:'Restaurante Callizo',loc:'Aínsa, Plaza Mayor',tel:null,map:'https://maps.google.com/?q=Restaurante+Callizo+Ainsa+Plaza+Mayor',pr:'~35-45€/p',inf:'⚠️ RESERVAR IMPRESCINDIBLE. Cocina aragonesa moderna: carnes de caza, setas, ternera de Broto.'},
+      {mo:'CENA — Opción B 🍷 (si Monasterio Boltaña)',nm:'Restaurante Marboré',loc:'Boltaña, Monasterio',tel:'+34974508000',map:'https://maps.google.com/?q=Hotel+Monasterio+Boltana+restaurante',pr:'~30-45€/p',inf:'Cenar sin mover las motos. Ambiente histórico s.XVII.'}],
+ als:[{t:'d',h:'⛽ BONAIGUA — DEPÓSITOS PEQUEÑOS EN ALERTA',b:'Alberto (14L) y Oriol (14,5L): LLENAR en bonÀrea Sort al 100%. No hay gasolineras entre Sort y Vielha (~150 km).'},
+      {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío intenso en la cima. Capa térmica y cortavientos A MANO antes de subir, no en el fondo de la maleta.'}],
+ foro:'En bmwmotos.com: "Ese tramo de Sort hasta Vielha y el Bonaigua es espectacular. Donde más disfruté de toda la Transpirenaica." El Restaurant Rufus en Gessa también muy recomendado por varios usuarios del foro.',
+ nesp:null},
+
+{n:3,emo:'⭐',f:'Dom 21 junio',ti:'ETAPA REINA — Aínsa → Gavarnie → Tourmalet → Aubisque → Ochagavía',km:320,dest:'Ochagavía',
+ res:'La etapa más épica. Portalet, Gavarnie (Patrimonio UNESCO), Tourmalet 2.115m, Aubisque 1.709m. Los tres puertos más míticos del Tour de Francia. ES DOMINGO — precaución con gasolineras en Francia.',
+ mlat:42.926,mlon:-1.074,mnm:'Ochagavía',
+ ruta:[{p:'Aínsa',n:'Salida 8:00h — depósito LLENO',d:'start'},
+       {p:'Broto → Valle de Ordesa',n:'Vistas al macizo del Monte Perdido desde la N-260'},
+       {p:'Puerto del Portalet 1.794m ★★',n:'Frontera España-Francia · Primera vez en Francia',d:'special'},
+       {p:'Laruns → Luz-Saint-Sauveur',n:'Descenso por el valle du Gave d\'Ossau'},
+       {p:'🍽️ Gavarnie — ALMUERZO ~13:30h',n:'Desvío 12 km desde Luz-Saint-Sauveur · Circo de Gavarnie · Cascada más alta de Francia',d:'food'},
+       {p:'Col du Tourmalet 2.115m ★★★',n:'EL puerto más famoso del Tour · Parar 20 min · Tienda y bar en la cima',d:'special'},
+       {p:'⛽ ARGÈLES-GAZOST — CRÍTICO',n:'TotalEnergies · CON PERSONAL · DOMINGO 7:00-20:30h ✅',d:'gas'},
+       {p:"Col d'Aubisque 1.709m ★★★",n:'Carretera excavada en la roca · ESPECTACULAR · El más bonito del día',d:'special'},
+       {p:'Col Pierre Saint-Martin → España',n:'Vuelta al Pirineo navarro'},
+       {p:'🏁 Ochagavía',n:'Llegada ~19:30-20:00h',d:'end'}],
+ gas:[{nm:'TotalEnergies — Argèles-Gazost (FRANCIA)',hr:'DOMINGO 7:00-20:30h ✅ Con personal',dir:'27 Av. des Pyrénées, Argèles-Gazost, Francia',tel:'+33562970871',map:'https://maps.google.com/?q=TotalEnergies+Argeles+Gazost+France',key:true,not:'⚠️ GASOLINERA CRÍTICA. La ÚNICA con personal antes del Aubisque. Llenar AL 100% sin excusas. Las automáticas cobran ~100€ provisional (se devuelve) y requieren tarjeta con PIN físico.'}],
+ hotel:{ok:true,nm:'Silken Puerta de Irati ⭐⭐⭐ · Ochagavía',dir:'C/ Zatalarrañas 2, 31680 Ochagavía',tel:'+34848640089',web:'https://www.hoteles-silken.com/es/hotel-puerta-irati/',map:'https://maps.google.com/?q=Silken+Puerta+de+Irati+Ochagavia+Navarra',
+   inf:'Check-in 15:00-21:00 · Check-out 07:00-12:00 · Parking público gratuito en inmediaciones · ⚠️ Motos NO entran habitaciones (taquillas de pago)',res:'Nº 6079.733.380 · PIN: 8934',cod:null,
+   can:'Cancelación gratuita hasta 18/06/2026',pag:'💳 Pedro paga el 17/06 con Santander · 5 hab × €125 = €625'},
+ alm:[{mo:'ALMUERZO — Opción A 🏆',nm:'Bar Hôtel Le Taillon',loc:'Gavarnie, Francia',tel:'+33562928148',map:'https://maps.google.com/?q=Bar+Hotel+Le+Taillon+Gavarnie',pr:'~20-30€/p',inf:'⭐ Google 4.9 · Terraza con vistas al Circo. Cocina de montaña. Personal muy amable. ~13:30h.'},
+      {mo:'ALMUERZO — Opción B 🍕',nm:'Restaurant le Mourgat Oxygène',loc:'Gavarnie, Francia',tel:'+33562928144',map:'https://maps.google.com/?q=Restaurant+Mourgat+Oxygene+Gavarnie',pr:'~15-20€/p',inf:'⭐ Tripadvisor 4.4 · Pizzas, cocina francesa. Mejor relación calidad-precio.'}],
+ cen:[{mo:'CENA 🦅',nm:'Bares del pueblo — Ochagavía',loc:'Ochagavía, Navarra',tel:null,map:'https://maps.google.com/?q=Ochagavia+Navarra+restaurante',pr:'~15-20€/p',inf:'Las reseñas moteras recomiendan los bares del pueblo. Cocina navarra: chistorra, queso Roncal, cordero. Pueblo precioso para pasear después de la etapa.'}],
+ als:[{t:'d',h:'🇫🇷 DOMINGO EN FRANCIA — GASOLINERAS',b:'Las automáticas requieren tarjeta con PIN físico y cobran ~100€ provisional. ÚNICA gasolinera atendida: TotalEnergies Argèles-Gazost (hasta 20:30h). NO saltársela bajo ningún concepto.'},
+      {t:'w',h:'⭐ LA ETAPA MÁS ÉPICA — SALIDA PUNTUAL',b:'320 km · 3 grandes puertos · Francia y España. Salir a las 8:00h en punto es fundamental para no llegar de noche.'}],
+ foro:'En bmwmotos.com: "El Aubisque es el más bonito del día: la carretera excavada en la roca es espectacular. El orden Portalet → Tourmalet → Aubisque es el correcto, de menor a mayor impacto." Y sobre el Tourmalet: "En la cima hay tienda y bar, merece la pena parar 20 minutos."',
+ nesp:{ti:'🦅 CIRCO DE GAVARNIE — Patrimonio UNESCO',tx:'Las motos se dejan aparcadas a la entrada del pueblo. ¡NO se puede acceder en moto al Circo! La cascada más alta de Francia está a ~4,5 km andando. Con solo 30-45 min de paseo ya hay vistas espectaculares. Llevar ropa cómoda en la mochila si queréis caminar. Vale muchísimo la pena.'}},
+
+{n:4,emo:'🏁',f:'Lun 22 junio',ti:'Ochagavía → Selva de Irati → Baztán → Faro de Higuer',km:200,dest:'Hondarribia',
+ res:'El remate perfecto. Hayedo de Irati, Roncesvalles, Valle del Baztán, Cantábrico. La llegada al final de la Transpirenaica.',
+ mlat:43.363,mlon:-1.797,mnm:'Hondarribia',
+ ruta:[{p:'Ochagavía',n:'Salida 9:00h',d:'start'},
+       {p:'⛽ Petronor — Urzainqui',n:'8:00-21:00h · ÚNICA en 100 km — NO saltársela',d:'gas'},
+       {p:'Selva de Irati ★★',n:'El hayedo más grande de Europa — parada imprescindible',d:'special'},
+       {p:'Roncesvalles ★',n:'Camino de Santiago · Bosques de hayas en junio',d:'special'},
+       {p:'Elizondo / Valle del Baztán',n:'Carreteras perfectas · Verde intenso · ALMUERZO ~14:00h'},
+       {p:'Zugarramurdi',n:'El pueblo de las brujas — desvío 5 minutos',d:'special'},
+       {p:'🏁 FARO DE HIGUER',n:'¡TRANSPIRENAICA COMPLETADA! 🌊 Tocar el Cantábrico',d:'end'}],
+ gas:[{nm:'Petronor — Urzainqui',hr:'8:00-21:00h',dir:'CR NA-137 km 28.7, Urzainqui, Navarra',tel:'+34948475013',map:'https://maps.google.com/?q=Petronor+Urzainqui+Navarra',key:true,not:'⚠️ LA ÚNICA EN 100 KM. No hay más gasolineras en la montaña navarra. Repostar siempre aquí.'}],
+ hotel:{ok:false,nm:'⏳ PENDIENTE — Hondarribia (casco histórico)',dir:'Casco histórico medieval, Hondarribia',tel:null,web:'https://www.booking.com/searchresults.es.html?ss=Hondarribia&checkin=2026-06-22&checkout=2026-06-23',map:'https://maps.google.com/?q=Hondarribia+Guipuzcoa',
+   inf:'Buscar alojamiento en el casco histórico medieval. Salida 8:00h del día siguiente.',res:null,cod:null,can:null,pag:null},
+ alm:[{mo:'ALMUERZO — Opción A 🏆',nm:'Restaurante Santxotena',loc:'Elizondo, Baztán',tel:'+34948580197',map:'https://maps.google.com/?q=Restaurante+Santxotena+Elizondo+Navarra',pr:'~23€ menú / hasta 45€ carta',inf:'4ª generación de cocineras. Cocina tradicional del Baztán: menestra de verduras, chuleta de ternera del Baztán, merluza ondarresa, revuelto de hongos. Menú 23€ (primero, segundo, postre, agua y vino). Abierto lunes a mediodía ✅ · C/ Pedro de Axular, 4.'},
+      {mo:'ALMUERZO — Opción B 🍽️',nm:'Restaurante Eskisaroi',loc:'Elizondo, Baztán',tel:null,map:'https://maps.google.com/?q=Restaurante+Eskisaroi+Elizondo+Navarra',pr:'~14€ menú',inf:'Fundado en 1947, junto al río. Especialidad en pescados frescos del Cantábrico y ternera del Baztán. Menú 14€. ⚠️ Suele estar lleno — recomiendan reservar.'}],
+ cen:[{mo:'CENA DE CELEBRACIÓN 🎉',nm:'Pintxos casco histórico',loc:'Hondarribia',tel:null,map:'https://maps.google.com/?q=Calle+Mayor+Hondarribia+pintxos',pr:'~20-25€/p',inf:'¡CELEBRACIÓN FINAL! Txakoli bien frío y pintxos en el casco histórico medieval. 7 moteros, ~1.585 km: merecidísimo 🥂'}],
+ als:[{t:'s',h:'🏆 ¡LA META!',b:'Hoy acabáis la Transpirenaica. Etapa suave (200 km) para disfrutar cada momento. La foto en el Faro de Higuer tocando el Cantábrico es obligatoria.'},
+      {t:'i',h:'🌳 SELVA DE IRATI — NO TE LA SALTES',b:'El hayedo más grande de Europa en junio es una pasada de verde. Parada de 20-30 min mínimo.'}],
+ foro:'En bmwmotos.com: "La zona de Larrau y el norte de Navarra es donde más disfruté de toda la ruta. El Baztán tiene carreteras perfectas y un verde impresionante. Una maravilla para terminar la Transpirenaica."',
+ nesp:null},
+
+{n:5,emo:'🏠',f:'Mar 23 junio',ti:'Vuelta a Casa · 🔥 Verbena Sant Joan',km:620,dest:'Santa Coloma',
+ res:'Salida 8:00h desde Hondarribia. AP-8 → AP-68 → AP-2. Objetivo: estar en casa hacia las 14:30h. ¡Tarde libre para la verbena de Sant Joan!',
+ mlat:41.450,mlon:2.204,mnm:'Santa Coloma de Gramenet',
+ ruta:[{p:'Hondarribia',n:'Salida 8:00h',d:'start'},
+       {p:'AP-8 → Bilbao → AP-68',n:'Sin prisas'},
+       {p:'Área Gallur 232 (opcional)',n:'Menú 13€ con vino · N-232 km 286 · Sin desvío · ~12:30h',d:'food'},
+       {p:'AP-2 → Barcelona',n:''},
+       {p:'🏠 Santa Coloma de Gramenet',n:'Llegada ~14:30h 🔥 ¡Tarde libre para Sant Joan!',d:'end'}],
+ gas:[],
+ hotel:{ok:false,nm:'— En casa 🏠 —',dir:'',tel:null,web:null,map:null,inf:'',res:null,cod:null,can:null,pag:null},
+ alm:[{mo:'ALMUERZO opcional de camino',nm:'Área Gallur 232',loc:'Gallur, Zaragoza',tel:null,map:'https://maps.google.com/?q=Area+Servicio+Gallur+N232',pr:'~13€',inf:'Menú con vino. En ruta directa, sin desvío.'}],
+ cen:[],
+ als:[{t:'s',h:'🔥 SANT JOAN · LA NOCHE MÁS CORTA',b:'Llegada ~14:30h. Tarde libre para la verbena. Fuegos artificiales, cava y el mejor cierre posible para la Transpirenaica.'},
+      {t:'i',h:'620 KM DE AUTOPISTA',b:'Sin prisas pero sin parar demasiado. Objetivo: casa sobre las 14:30h.'}],
+ foro:null,nesp:null}
 ];
 
-const GAS=[
-  {nm:'⭐ SALIDA — Área Montcada La Pausa',dia:'Día 0 — SALIDA GRUPO',key:true,
-   dir:'C-33 km 82,5, sentido Norte, Montcada i Reixac',tel:'+34935640681',hr:'24h',
-   not:'Aquí quedan TODOS. Gasolinera + cafetería. Repostar antes de arrancar.',
-   map:'https://maps.google.com/?q=Area+Servicio+Montcada+La+Pausa+C33'},
-  {nm:'Avanza Oil — Figueres',dia:'Día 0 — De camino',key:false,
-   dir:'Avinguda de Roses 5-7, Figueres',tel:'+34972716949',hr:'6:00-22:00h',
-   not:'Económica. De camino a Llançà.',
-   map:'https://maps.google.com/?q=Avanza+Oil+Figueres'},
-  {nm:'Repsol — Roses',dia:'Día 1 — OBLIGATORIO',key:true,
-   dir:'C-260 km 42.5, Roses',tel:'+34972256467',hr:'24h',
-   not:'Repostar ANTES de entrar a montaña. Día largo hacia Sort.',
-   map:'https://maps.google.com/?q=Gasolinera+Repsol+Roses'},
-  {nm:'bonÀrea — Sort',dia:'Días 1 y 2 — CRÍTICA',key:true,
-   dir:'Polígon Els Salancons, Sort',tel:'+34900899089',hr:'24h',
-   not:'⚠️ LLENAR 100%. Sin gasolineras fiables entre Sort y Vielha (Bonaigua). Los depósitos pequeños en alerta.',
-   map:'https://maps.google.com/?q=bonArea+Sort+Lleida'},
-  {nm:'Repsol — Vielha',dia:'Día 2 — Salir lleno hacia Aínsa',key:true,
-   dir:'CR N-230 pk 163.70, Vielha',tel:'+34973642277',hr:'7:00-23:00h',
-   not:'Llenar para la bajada al Pirineo aragonés y la etapa reina del día siguiente.',
-   map:'https://maps.google.com/?q=Repsol+Vielha+N230'},
-  {nm:'TotalEnergies — Argèles-Gazost (FR)',dia:'Día 3 — CRÍTICA en Francia (DOMINGO)',key:true,
-   dir:'27 Av. des Pyrénées, Argèles-Gazost, Francia',tel:'+33562970871',hr:'Lun-Vie 7-19:30h · DOM 7-20:30h ✅ Con personal',
-   not:'⚠️ Repostar AQUÍ sí o sí antes del Aubisque. Con atención humana. Domingo horario especial.',
-   map:'https://maps.google.com/?q=TotalEnergies+Argeles+Gazost+France'},
-  {nm:'Petronor — Urzainqui',dia:'Día 4 — ÚNICA en 100 km',key:true,
-   dir:'CR NA-137 km 28.7, Urzainqui, Navarra',tel:'+34948475013',hr:'8:00-21:00h',
-   not:'⚠️ NO saltársela nunca. La única gasolinera en 100 km de montaña navarra.',
-   map:'https://maps.google.com/?q=Petronor+Urzainqui+Navarra'}
-];
-
-const ALO=[
-  {nc:'Noche 0',f:'Jue 18/06',l:'Llançà',
-   nm:'Hotel Beri ⭐⭐ 🅿️ 🏍 RESERVADO ✅',
-   dir:'Carrer de la Creu, 16, 17490 Llançà, Girona',tel:'+34972380198',
-   web:'https://www.hotel-beri.com/es/',
-   pr:'€88/hab · Desayuno incluido',
-   not:'✅ RESERVA CONFIRMADA · Nº 6331.570.462 · PIN 9967 · Check-in desde 14:00 · Check-out hasta 11:00 · Parking gratuito para motos · Bikefriendly 🏍 · Cancelación gratuita hasta 11/06/2026 · 💰 Pedro gestiona el pago el 09/06 · Dobles: €44,66/persona · Individuales: €88,66',
-   map:'https://maps.google.com/?q=Hotel+Beri+Carrer+de+la+Creu+16+Llanca+Girona'},
-  {nc:'Noche 1',f:'Vie 19/06',l:'Sort',
-   nm:'Hotel Les Brases ⭐⭐⭐ 🅿️ RESERVADO ✅',
-   dir:'Avenida de la Generalitat, 27, 25560, Sort, Lleida',tel:'+34973621071',
-   web:'https://lesbrases.com',
-   pr:'Dobles €37/p · Individuales €64',
-   not:'✅ RESERVA CONFIRMADA · Loc: 20528 · 🔑 CÓDIGO ACCESO: 1234V · Desayuno incluido · Parking motos solicitado · Cancelación gratuita hasta 17/06/2026 antes 12:00h · Tasa turística 0,66€/p/día · 💳 Pagado por Pedro (08/03/2026)',
-   map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida'},
-  {nc:'Noche 2',f:'Sáb 20/06',l:'Aínsa',
-   nm:'⏳ PENDIENTE CONFIRMAR — 2 opciones en espera',
-   dir:'',tel:null,
-   web:null,
-   pr:'',
-   not:'📧 Opción A: Hostal Pirineos Aínsa · Parking motos gratuito · Cocina aragonesa · <a href="https://hostalpirineosainsa.com" target="_blank" style="color:var(--accent)">hostalpirineosainsa.com</a> · 📧 Opción B: Hotel & SPA Monasterio de Boltaña ⭐⭐⭐⭐⭐ · Antiguo monasterio s.XVII · SPA · 6 km de Aínsa · <a href="https://hotelmonasteriodeboltana.com" target="_blank" style="color:var(--accent)">hotelmonasteriodeboltana.com</a>',
-   map:'https://maps.google.com/?q=Ainsa+Huesca'},
-  {nc:'Noche 3',f:'Dom 21/06',l:'Ochagavía',
-   nm:'Silken Puerta de Irati ⭐⭐⭐ 🅿️ — Opción A ✅ RESERVADO',
-   dir:'C/ Zatalarrañas 2, 31680 Ochagavía, Navarra',tel:'+34848640089',
-   web:'https://www.hoteles-silken.com/es/hotel-puerta-irati/',
-   pr:'€125/hab',
-   not:'✅ RESERVA CONFIRMADA · Nº 6079.733.380 · PIN 8934 · Check-in 15:00-21:00 · Check-out 07:00-12:00 · Parking público gratuito en inmediaciones · ⚠️ Motos NO entrar habitaciones — taquillas de pago · Cancelación gratuita hasta 18/06/2026 · 💳 Pedro paga el 17/06 con tarjeta Santander · 5 hab × €125 = €625 total',
-   map:'https://maps.google.com/?q=Silken+Puerta+de+Irati+Ochagavia+Navarra'},
-  {nc:'Noche 3',f:'Dom 21/06',l:'Isaba',
-   nm:'Hostal Lola ⭐⭐ 🏍 — Opción B ⏳ Pendiente confirmar',
-   dir:'C/ Mendigatxa, 17, 31413 Isaba, Navarra',tel:'+34948893012',
-   web:'https://www.hostal-lola.com',
-   pr:'~50-60€/hab',
-   not:'⏳ Email enviado — esperando respuesta · Hostal familiar muy conocido entre moteros · ⚠️ Si se confirma: cancelar Silken antes del 18/06/2026 · Isaba está a 20 km de Ochagavía, en ruta hacia Hondarribia',
-   map:'https://maps.google.com/?q=Hostal+Lola+Isaba+Navarra'},
-  {nc:'Noche 4',f:'Lun 22/06',l:'Hondarribia',
-   nm:'Pensión / Hotel casco histórico',
-   dir:'Casco histórico, Hondarribia, Guipúzcoa',tel:null,
-   web:'https://www.booking.com/searchresults.es.html?ss=Hondarribia&checkin=2026-06-22&checkout=2026-06-23',
-   pr:'~55-80€/hab',
-   not:'Celebración final. Dormir en el precioso casco histórico medieval. Salida 8:00h del día siguiente.',
-   map:'https://maps.google.com/?q=Hondarribia+Guipuzcoa'}
-];
-
-const REST=[
-  {d:'Noche 0 · Jue 18',m:'Cena 🐟',nm:'Hostal Restaurant Lara — Opción A 🏆',loc:'Llançà',
-   dir:'Carrer Bernat Metge, 2, 17490 Llançà, Girona',tel:'+34620797619',pr:'~20-30€/p',
-   not:'⭐4.3 · Cocina mediterránea — pulpo, carnes a la brasa. A pie del Hotel Beri. ⚠️ Reservar mesa para 7.',
-   map:'https://maps.google.com/?q=Hostal+Restaurant+Lara+Llanca'},
-  {d:'Noche 0 · Jue 18',m:'Cena 🐟',nm:'Restaurant Llançà Port — Opción B 🌊',loc:'Llançà',
-   dir:'Passeig Marítim, 2, 17490 Llançà, Girona',tel:'+34687966646',pr:'~25-35€/p',
-   not:'⭐4.0 · Terraza junto al mar. Arroces y pescados frescos. Ambiente marinero.',
-   map:'https://maps.google.com/?q=Restaurant+Llanca+Port+Passeig+Maritim'},
-  {d:'Noche 0 · Jue 18',m:'Cena 🍕',nm:'Pizzería L\'Italiana — Opción C 🍕',loc:'Llançà',
-   dir:'C. Pau Casals, 25, 17490 Llançà, Girona',tel:null,pr:'~12-18€/p',
-   not:'Opción informal y económica. Ideal si llegan muy tarde y cansados.',
-   map:'https://maps.google.com/?q=Pizzeria+L+Italiana+Llanca'},
-
-  {d:'Día 1 · Vie 19',m:'Almuerzo',nm:'Restaurante Parador — Opción A 🏆',loc:'La Seu d\'Urgell',
-   dir:'C/ Sant Domènec 6, 25700 La Seu d\'Urgell, Lleida',tel:'+34973350000',pr:'~20-25€/p',
-   not:'Cocina pirenaica catalana. Embutidos artesanos, ternera del Pirineo, products de proximidad. Parking fácil para motos. Abre mediodía todos los días.',
-   map:'https://maps.google.com/?q=Parador+La+Seu+d+Urgell'},
-  {d:'Día 1 · Vie 19',m:'Almuerzo',nm:'Restaurant La Glorieta — Opción B 🌿',loc:'La Seu d\'Urgell',
-   dir:'Pg. Joan Brudieu 24, 25700 La Seu d\'Urgell, Lleida',tel:null,pr:'~15-18€/p',
-   not:'Cocina catalana km0, productos de huerto propio. Menú del día con sugerencias. Abre 13:00-15:00h. Ambiente más informal.',
-   map:'https://maps.google.com/?q=Hotel+Restaurant+La+Glorieta+La+Seu+d+Urgell'},
-
-  {d:'Noche 1 · Vie 19',m:'Cena 🏔️',nm:'Can Punyetes — Opción A 🥩',loc:'Sort',
-   dir:'Carrer del Dr. Carles Pol i Aleu, 4, 25560 Sort, Lleida',tel:'+34973621451',pr:'~20-30€/p',
-   not:'Carnes a la brasa, cocina catalana, ambiente informal. ⭐4.4 · Abre viernes 20:00-22:30h · ⚠️ NO acepta reservas — llegar antes de las 21h. A pie del hotel.',
-   map:'https://maps.google.com/?q=Can+Punyetes+Sort+Lleida'},
-  {d:'Noche 1 · Vie 19',m:'Cena 🏔️',nm:'Restaurant Les Brases — Opción B 🏨',loc:'Sort',
-   dir:'Avenida de la Generalitat, 25, 25560 Sort, Lleida',tel:'+34973621071',pr:'~25-35€/p',
-   not:'El restaurante del propio hotel. Sin mover las motos ni dar un paso. Abre viernes 20:00-22:00h. Se recomienda reservar al hacer el check-in.',
-   map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida'},
-  {d:'Día 2 · Sáb 20',m:'Almuerzo',nm:'Restaurante en Vielha',loc:'Vielha, Arán',
-   dir:'Vielha, Valle de Arán, Lleida',tel:null,pr:'~15-20€',
-   not:'Cocina aranesa. Olla aranesa, ternera de Arán, vinos del Arán.',
-   map:'https://maps.google.com/?q=restaurante+Vielha+Aran'},
-  {d:'Noche 2 · Sáb 20',m:'Cena 🏰',nm:'Restaurante Callizo — Opción A 🏆',loc:'Aínsa',
-   dir:'Plaza Mayor s/n, Aínsa, Huesca',tel:null,pr:'~35-45€/p',
-   not:'Si nos alojamos en Hostal Pirineos: 5 min andando. ⚠️ RESERVAR IMPRESCINDIBLE. Plaza Mayor medieval. Cocina aragonesa moderna — carnes de caza, setas, ternera de Broto.',
-   map:'https://maps.google.com/?q=Restaurante+Callizo+Ainsa+Plaza+Mayor'},
-  {d:'Noche 2 · Sáb 20',m:'Cena 🏰',nm:'Restaurante Marboré (Monasterio) — Opción B 🍷',loc:'Boltaña',
-   dir:'C/ Latorrecilla 2, 22340 Boltaña, Huesca',tel:'+34974508000',pr:'~30-45€/p',
-   not:'Si nos alojamos en el Monasterio de Boltaña: cenar sin mover las motos. Cocina de montaña a la carta. Ambiente histórico en monasterio del s.XVII.',
-   map:'https://maps.google.com/?q=Hotel+Monasterio+Boltana+restaurante'},
-  {d:'Día 3 · Dom 21',m:'Almuerzo',nm:'Restaurantes Gavarnie (FR)',loc:'Gavarnie, Francia',
-   dir:'Gavarnie, Hautes-Pyrénées, Francia',tel:null,pr:'~15€',
-   not:'Junto a la cascada más alta de Francia (422m). Antes o después del Tourmalet.',
-   map:'https://maps.google.com/?q=Gavarnie+France+restaurant'},
-  {d:'Noche 3 · Dom 21',m:'Cena 🦅',nm:'Bares del pueblo — Ochagavía 🍷',loc:'Ochagavía, Navarra',
-   dir:'Casco urbano, Ochagavía, Navarra',tel:null,pr:'~15-20€/p',
-   not:'Las reseñas recomiendan cenar en los bares del pueblo: mejor calidad-precio que el restaurante del hotel. Cocina navarra: chistorra, queso Roncal, cordero. Pueblo precioso para pasear después de la etapa.',
-   map:'https://maps.google.com/?q=Ochagavia+Navarra+restaurante'},
-  {d:'Noche 4 · Lun 22',m:'Cena 🎉',nm:'Pintxos casco histórico',loc:'Hondarribia',
-   dir:'Calle Mayor, Hondarribia, Guipúzcoa',tel:null,pr:'~20-25€/p',
-   not:'¡CELEBRACIÓN FINAL! Txakoli bien frío y pintxos en el casco histórico medieval. 7 moteros, 1.585 km: merecidísimo 🥂',
-   map:'https://maps.google.com/?q=Calle+Mayor+Hondarribia+pintxos'},
-  {d:'Día 5 · Mar 23',m:'Vuelta a casa',nm:'Área Gallur 232',loc:'Gallur, Zaragoza',
-   dir:'N-232 km 286, Gallur, Zaragoza',tel:null,pr:'~13€',
-   not:'Menú 13€ con vino. Sin desvío. En ruta directa a Santa Coloma.',
-   map:'https://maps.google.com/?q=Area+Servicio+Gallur+N232'}
-];
-
+// ━━━ CHECKLIST ━━━
 const CK=[
-  {cat:'🔧 MOTO'},
-  {item:'Neumáticos: dibujo mínimo 3 mm'},
-  {item:'Frenos: pastillas, discos y líquido'},
-  {item:'Aceite motor revisado'},
-  {item:'Cadena: tensión y lubricación'},
-  {item:'Niveles: refrigerante e hidráulico'},
-  {item:'Luces delanteras y traseras OK'},
-  {item:'ITV en vigor (junio 2026)'},
-  {item:'Seguro vigente con asistencia en carretera'},
-  {cat:'🧥 EQUIPACIÓN'},
-  {item:'Casco: homologado, visera limpia'},
-  {item:'Chaqueta: armaduras hombros, codos y espalda'},
-  {item:'Guantes verano + guantes para el frío'},
-  {item:'Pantalón con protecciones'},
-  {item:'Botas de moto'},
-  {item:'Capa de lluvia (siempre en el baúl)'},
-  {item:'Capa térmica (Bonaigua 2.072m y Tourmalet 2.115m)'},
-  {cat:'📄 DOCUMENTACIÓN'},
-  {item:'Carnet de conducir (A o A2) vigente'},
-  {item:'Permiso de circulación de la moto'},
-  {item:'Tarjeta de seguro / carta verde'},
-  {item:'DNI o pasaporte'},
-  {item:'Tarjeta sanitaria europea (para Francia)'},
-  {item:'Tarjeta de crédito con PIN físico (gasolineras Francia)'},
-  {cat:'🎒 EQUIPAJE'},
-  {item:'Cargador móvil + cable'},
-  {item:'Power bank'},
-  {item:'Soporte móvil en moto'},
-  {item:'Botiquín básico'},
-  {item:'Protector solar'},
-  {item:'Ropa interior técnica (5 días)'},
-  {item:'App Transpirenaica descargada en modo offline'}
+ {cat:'🔧 MOTO',tip:'Los foros lo repiten siempre: neumáticos y frenos primero. La Transpirenaica tiene tramos de alta montaña con curvas muy exigentes.'},
+ {it:'Neumáticos: dibujo mínimo 3 mm'},{it:'Frenos: pastillas, discos y líquido revisados'},
+ {it:'Aceite motor revisado'},{it:'Cadena: tensión y lubricación (si aplica)'},
+ {it:'Niveles: refrigerante e hidráulico'},{it:'Luces delanteras y traseras OK'},
+ {it:'ITV en vigor (junio 2026)'},{it:'Seguro vigente con asistencia en carretera'},
+ {it:'Kit antipinchazos — los foros lo recomiendan encarecidamente'},
+ {cat:'🧥 EQUIPACIÓN',tip:'Prepárate para todo: calor mediterráneo abajo, frío intenso en los puertos de 2.000m. La clave es llevar capas accesibles, no en el fondo del baúl.'},
+ {it:'Casco: homologado, visera limpia'},{it:'Chaqueta con armaduras: hombros, codos y espalda'},
+ {it:'Guantes verano + guantes para el frío'},{it:'Pantalón con protecciones'},
+ {it:'Botas de moto'},{it:'Capa de lluvia (siempre en el baúl, siempre)'},
+ {it:'Capa térmica — imprescindible para Bonaigua (2.072m) y Tourmalet (2.115m)'},
+ {it:'Fundas impermeables para las botas'},
+ {cat:'📄 DOCUMENTACIÓN',tip:''},
+ {it:'Carnet de conducir (A o A2) vigente'},{it:'Permiso de circulación de la moto'},
+ {it:'Tarjeta de seguro / carta verde'},{it:'DNI o pasaporte'},
+ {it:'Tarjeta sanitaria europea (obligatoria para Francia)'},
+ {it:'Tarjeta de crédito con PIN físico (gasolineras automáticas en Francia)'},
+ {cat:'🎒 EQUIPAJE',tip:'Llevar el peso bajo y centrado mejora mucho el manejo en curvas de montaña.'},
+ {it:'Cargador móvil + cable'},{it:'Power bank cargado'},
+ {it:'Soporte móvil en la moto para navegar'},{it:'Botiquín básico'},
+ {it:'Protector solar'},{it:'Ropa interior técnica (5 días)'},
+ {it:'App Transpirenaica 2026 descargada en el móvil'}
 ];
 
+// ━━━ ESTADO ━━━
 let curP=null;
 
+// ━━━ WMO METEO ━━━
+const WI={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'⛈️',71:'🌨️',73:'❄️',75:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+const WD={0:'Despejado',1:'Principalmente despejado',2:'Parcialmente nublado',3:'Nublado',45:'Niebla',48:'Niebla',51:'Llovizna leve',53:'Llovizna',55:'Llovizna densa',61:'Lluvia leve',63:'Lluvia moderada',65:'Lluvia fuerte',71:'Nevada leve',73:'Nevada',75:'Nevada fuerte',80:'Chubascos débiles',81:'Chubascos',82:'Chubascos fuertes',95:'Tormenta',96:'Tormenta+granizo',99:'Tormenta fuerte'};
+
+async function loadMeteo(lat,lon,nm,eid){
+ const el=document.getElementById(eid);
+ if(!el)return;
+ el.innerHTML='<div class="mload">🌤️ Cargando tiempo en '+nm+'...</div>';
+ try{
+  const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&daily=temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum,wind_speed_10m_max&timezone=Europe%2FMadrid&forecast_days=16');
+  const js=await r.json();
+  const fv=['2026-06-18','2026-06-19','2026-06-20','2026-06-21','2026-06-22','2026-06-23'];
+  const di=parseInt(eid.split('-')[1]);
+  let idx=js.daily.time.indexOf(fv[di]);
+  const nota=idx===-1?'(previsión no disponible aún para junio 2026)':null;
+  if(idx===-1)idx=0;
+  const wc=js.daily.weathercode[idx];
+  const mx=Math.round(js.daily.temperature_2m_max[idx]);
+  const mn=Math.round(js.daily.temperature_2m_min[idx]);
+  const pr=js.daily.precipitation_sum[idx];
+  const wi=Math.round(js.daily.wind_speed_10m_max[idx]);
+  el.innerHTML='<div class="mbox"><div class="mico">'+(WI[wc]||'🌤️')+'</div><div class="mdata"><div class="mtemp">'+mx+'° <span style="font-size:13px;font-weight:400">/ '+mn+'°</span></div><div class="mdesc">'+(WD[wc]||'Variable')+' · <strong>'+nm+'</strong></div><div class="mdet">🌧 '+pr+' mm · 💨 '+wi+' km/h'+(nota?' — <em>'+nota+'</em>':'')+'</div></div></div>';
+ }catch(e){
+  el.innerHTML='<div class="mload" style="font-size:11px">⚠️ Meteo no disponible. Consulta <a href="https://www.tiempo.es" target="_blank" style="color:var(--blu)">tiempo.es</a></div>';
+ }
+}
+
+// ━━━ SELECTOR ━━━
 function renderSel(){
-  document.getElementById('pgrid').innerHTML=PI.map(p=>`
-    <button class="pbtn" onclick="selectP('${p.id}')">
-      <span class="pico">${p.ico}</span>
-      <span class="pnm">${p.nm}${p.badge==='A2'?' <span style="font-size:9px;background:rgba(200,217,138,0.25);color:#c8d98a;padding:1px 5px;border-radius:10px;vertical-align:middle">A2</span>':''}</span>
-      <span class="pmot">${p.mot}</span>
-    </button>`).join('');
+ document.getElementById('pgrid').innerHTML=PI.map(p=>`
+  <button class="pbtn" onclick="selectP('${p.id}')">
+   <span class="pico">${p.ico}</span>
+   <span class="pnm">${p.nm}${p.badge==='A2'?'<span class="a2tag">A2</span>':''}</span>
+   <span class="pmot">${p.mot}</span>
+  </button>`).join('');
 }
 
 function selectP(id){
-  curP=PI.find(p=>p.id===id);
-  document.getElementById('hnam').textContent=curP.nm;
-  document.getElementById('hmot').textContent=curP.mot+' · '+curP.dep+'L · ~'+curP.aut+' km/dep';
-  document.getElementById('hbdg').textContent=curP.ico;
-  renderAlertas();renderEtapas();renderGas();renderAlo();renderRest();renderCK();
-  document.getElementById('sel').style.display='none';
-  document.getElementById('app').style.display='flex';
-  window.scrollTo(0,0);
-  showTab('ruta',document.querySelector('.ntab'));
+ curP=PI.find(p=>p.id===id);
+ document.getElementById('hnam').textContent=curP.nm;
+ document.getElementById('hmot').textContent=curP.mot+' · '+curP.dep+'L · ~'+curP.aut+' km/dep';
+ document.getElementById('hbdg').textContent=curP.ico;
+ document.getElementById('sel').style.display='none';
+ document.getElementById('app').style.display='flex';
+ window.scrollTo(0,0);
+ renderDias();renderCK();renderPagos();
+ showTab('dia',document.querySelector('.ntab'));
 }
 
 function goBack(){
-  document.getElementById('sel').style.display='flex';
-  document.getElementById('app').style.display='none';
+ document.getElementById('sel').style.display='flex';
+ document.getElementById('app').style.display='none';
 }
 
 function showTab(id,btn){
-  document.querySelectorAll('.tcont').forEach(t=>t.classList.remove('show'));
-  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('show');
-  if(btn)btn.classList.add('active');
+ document.querySelectorAll('.tcont').forEach(t=>t.classList.remove('show'));
+ document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
+ document.getElementById('tab-'+id).classList.add('show');
+ if(btn)btn.classList.add('active');
 }
 
-function addToCalendar(title, date, desc, fname) {
-  var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n'
-    + 'DTSTART:' + date + 'T090000\r\n'
-    + 'DTEND:' + date + 'T093000\r\n'
-    + 'SUMMARY:' + title + '\r\n'
-    + 'DESCRIPTION:' + desc + '\r\n'
-    + 'BEGIN:VALARM\r\nTRIGGER:-P3D\r\nACTION:DISPLAY\r\nDESCRIPTION:Recordatorio\r\nEND:VALARM\r\n'
-    + 'END:VEVENT\r\nEND:VCALENDAR';
-  var blob = new Blob([ics], {type:'text/calendar'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url; a.download = (fname||'transpirenaica') + '.ics'; a.click();
-  URL.revokeObjectURL(url);
+// ━━━ DÍA HOY ━━━
+function diaHoy(){
+ const h=new Date();
+ const fs=['2026-06-18','2026-06-19','2026-06-20','2026-06-21','2026-06-22','2026-06-23'].map(s=>new Date(s));
+ for(let i=0;i<fs.length;i++){if(h.toDateString()===fs[i].toDateString())return i;}
+ return -1;
 }
 
-function togglePago(idx){
-  if(curP.esPedro) curP.cobros[idx].pagado = !curP.cobros[idx].pagado;
-  else curP.pagos[idx].pagado = !curP.pagos[idx].pagado;
-  renderAlertas();
+function toggleDay(i){
+ const b=document.getElementById('db'+i),a=document.getElementById('da'+i);
+ const op=b.classList.contains('open');
+ b.classList.toggle('open',!op);
+ a.classList.toggle('open',!op);
+ if(!op)loadMeteo(D[i].mlat,D[i].mlon,D[i].mnm,'m-'+i);
 }
 
-function btnCal(label, date, desc, fname, bg, col, border) {
-  var bc = border ? 'border:1px solid ' + col + ';' : 'border:none;';
-  return '<button onclick="addToCalendar(\'' + label + '\',\'' + date + '\',\'' + desc + '\',\'' + fname + '\')" '
-    + 'style="background:' + bg + ';color:' + col + ';' + bc + 'border-radius:6px;padding:6px 10px;font-size:11px;cursor:pointer;font-family:Georgia,serif">'
-    + label + '</button>';
-}
+// ━━━ RENDER DÍAS ━━━
+function renderDias(){
+ const hoy=diaHoy();
+ let html='';
+ // Alertas personales
+ if(curP.al&&curP.al.length){
+  html+='<div style="margin-bottom:14px">';
+  curP.al.forEach(a=>{html+=`<div class="al al-${a.t}"><h4>${a.h}</h4>${a.b}</div>`;});
+  html+='</div>';
+ }
+ D.forEach((d,i)=>{
+  const esH=hoy===i;
+  const open=esH||(hoy===-1&&i===0);
+  let chips=`<span class="dchip ck-km">${d.km} km</span><span class="dchip ck-dt">→ ${d.dest}</span>`;
+  if(d.hotel&&d.hotel.ok)chips+=`<span class="dchip ck-ht">${d.hotel.nm.split('·')[0].split('⭐')[0].trim()}</span>`;
+  if(esH)chips+='<span class="dchip ck-hoy">🌟 HOY</span>';
 
-function renderPanelPagos(){
-  var html = '';
-  if(curP.esPedro){
-    var totalAdelantado = 1409.62;
-    var cobrado = 0;
-    curP.cobros.forEach(function(c){ if(c.pagado) cobrado += parseFloat(c.total); });
-    var pendiente = (totalAdelantado - 277.66 - cobrado).toFixed(2);
-    var filas = '';
-    curP.cobros.forEach(function(c,i){
-      var col = c.pagado ? 'var(--green)' : 'var(--accent)';
-      var ico = c.pagado ? '✅' : '⏳';
-      filas += '<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--surface2);font-size:13px">'
-        + '<input type="checkbox"' + (c.pagado?' checked':'') + ' onchange="togglePago(' + i + ')" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">'
-        + '<div style="flex:1"><div style="font-weight:700">' + c.piloto + '</div>'
-        + '<div style="font-size:11px;color:var(--muted)">Beri: ' + c.beri + ' &middot; Brases: ' + c.brases + ' &middot; Silken: ' + c.silken + '</div></div>'
-        + '<div style="font-weight:700;color:' + col + '">' + ico + ' €' + parseFloat(c.total).toFixed(2).replace('.',',') + '</div></div>';
-    });
-    var pendCol = parseFloat(pendiente) > 0 ? 'var(--accent)' : 'var(--green)';
-    var pendTxt = parseFloat(pendiente) > 0 ? '⏳ €' + pendiente.replace('.',',') : '✅ ¡Todo cobrado!';
-    html = '<div style="background:var(--surface);border-radius:var(--radius);border:2px solid var(--accent2);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden">'
-      + '<div style="background:var(--accent2);color:#fff;padding:12px 16px">'
-      + '<div style="font-size:13px;font-weight:700;letter-spacing:.5px">💰 TESORERÍA — LO QUE TE DEBEN</div>'
-      + '<div style="font-size:11px;opacity:.85;margin-top:2px">Límite cobro: 31/03/2026</div></div>'
-      + '<div style="padding:0 16px">' + filas + '</div>'
-      + '<div style="padding:12px 16px;background:var(--surface2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">'
-      + '<div><div style="font-size:11px;color:var(--muted)">Total adelantado</div><div style="font-size:16px;font-weight:700">€1.409,62</div></div>'
-      + '<div><div style="font-size:11px;color:var(--muted)">Tu parte</div><div style="font-size:16px;font-weight:700">€277,66</div></div>'
-      + '<div><div style="font-size:11px;color:var(--muted)">Pendiente de cobrar</div>'
-      + '<div style="font-size:16px;font-weight:700;color:' + pendCol + '">' + pendTxt + '</div></div></div>'
-      + '<div style="padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap">'
-      + btnCal('📅 Pagar Beri — 09/06 (Revolut)', '20260609', 'Pagar Hotel Beri el 09/06/2026 con tarjeta Revolut', 'pago_beri', '#fcecea', 'var(--accent)', true)
-      + btnCal('📅 Cancelación Beri (11/06)', '20260611', 'Cancelacion gratuita Hotel Beri hasta 11/06/2026 12:00h', 'cancelacion_beri', '#fcecea', 'var(--accent)', true)
-      + '<div style="background:#e8f5e9;border:1px solid var(--green);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--green);font-weight:700;width:100%">✅ Les Brases — PAGADO el 08/03/2026 con tarjeta Santander (€340)</div>'
-      + btnCal('📅 Cancelación Les Brases (17/06)', '20260617', 'Cancelacion gratuita Hotel Les Brases hasta 17/06/2026 12:00h', 'cancelacion_brases', '#fcecea', 'var(--accent)', true)
-      + btnCal('📅 Pagar Silken — 17/06 (Santander)', '20260617', 'Pagar Silken Puerta de Irati el 17/06/2026 con tarjeta Santander — €625 total', 'pago_silken', '#fcecea', 'var(--accent)', true)
-      + btnCal('📅 Cancelación Silken (18/06)', '20260618', 'Cancelacion gratuita Silken Puerta de Irati hasta 18/06/2026', 'cancelacion_silken', '#fcecea', 'var(--accent)', true)
-      + '</div></div>';
-  } else {
-    var debe = 0;
-    curP.pagos.forEach(function(p){ debe += parseFloat(p.importe); });
-    var pagado = 0;
-    curP.pagos.forEach(function(p){ if(p.pagado) pagado += parseFloat(p.importe); });
-    var pendiente = (debe - pagado).toFixed(2);
-    var filas = '';
-    curP.pagos.forEach(function(p,i){
-      var col = p.pagado ? 'var(--green)' : 'var(--accent)';
-      var tach = p.pagado ? 'text-decoration:line-through;color:var(--muted);' : '';
-      var ico = p.pagado ? '✅' : '⏳';
-      filas += '<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--surface2);font-size:13px">'
-        + '<input type="checkbox"' + (p.pagado?' checked':'') + ' onchange="togglePago(' + i + ')" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">'
-        + '<div style="flex:1;' + tach + '">' + p.hotel + '</div>'
-        + '<div style="font-weight:700;color:' + col + ';white-space:nowrap">' + ico + ' €' + parseFloat(p.importe).toFixed(2).replace('.',',') + '</div></div>';
-    });
-    var pendCol = parseFloat(pendiente) > 0 ? 'var(--accent)' : 'var(--green)';
-    var pendTxt = parseFloat(pendiente) > 0 ? '⏳ Te faltan €' + pendiente.replace('.',',') : '✅ ¡Todo pagado!';
-    html = '<div style="background:var(--surface);border-radius:var(--radius);border:2px solid var(--accent);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden">'
-      + '<div style="background:var(--accent);color:#fff;padding:12px 16px">'
-      + '<div style="font-size:13px;font-weight:700;letter-spacing:.5px">💳 PAGOS A PEDRO</div>'
-      + '<div style="font-size:11px;opacity:.85;margin-top:2px">⚠️ Límite: 31/03/2026</div></div>'
-      + '<div style="padding:0 16px">' + filas + '</div>'
-      + '<div style="padding:10px 16px;background:var(--surface2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">'
-      + '<div><div style="font-size:11px;color:var(--muted)">Pendiente</div>'
-      + '<div style="font-size:16px;font-weight:700;color:' + pendCol + '">' + pendTxt + '</div></div>'
-      + btnCal('📅 Recordatorio pago (31/03)', '20260331', 'Pagar a Pedro antes del 31/03/2026', 'pago_pedro', 'var(--accent2)', '#fff', false)
-      + '</div>'
-      + '</div></div>';
+  html+=`<div class="dcard${esH?' today':''}">
+   <div class="dbanner" onclick="toggleDay(${i})">
+    <div class="dnum-w">
+     <div class="dnum">DÍA</div>
+     <div class="dnum-n">${d.n}</div>
+     <div class="dnum-e">${d.emo}</div>
+    </div>
+    <div class="dinf">
+     <div class="dfecha">${d.f}</div>
+     <div class="dtit">${d.ti}</div>
+     <div class="dmeta">${chips}</div>
+    </div>
+    <div class="darrow${open?' open':''}" id="da${i}">▶</div>
+   </div>
+   <div class="dbody${open?' open':''}" id="db${i}">`;
+
+  // Resumen
+  html+=`<div class="dsec"><div class="dstit">📋 resumen</div><p style="font-size:13px;color:var(--mu);line-height:1.7">${d.res}</p></div>`;
+
+  // Alertas del día
+  if(d.als&&d.als.length){
+   html+='<div class="dsec"><div class="dstit">⚠️ alertas del día</div>';
+   d.als.forEach(a=>{html+=`<div class="al al-${a.t}" style="margin-bottom:8px"><h4>${a.h}</h4>${a.b}</div>`;});
+   html+='</div>';
   }
-  return html;
-}
 
-function renderAlertas(){
-  document.getElementById('alertas').innerHTML = renderPanelPagos()
-    + curP.alerts.map(function(a){ return '<div class="alert al-' + a.t + '"><h4>' + a.h + '</h4>' + a.b + '</div>'; }).join('');
-}
+  // Meteo
+  html+=`<div class="dsec"><div class="dstit">🌤️ meteorología</div><div id="m-${i}"><div class="mload">Abre el día para cargar el tiempo en ${d.mnm}</div></div></div>`;
 
-function toggleEtapa(n){
-  document.getElementById('eb-'+n).classList.toggle('open');
-}
+  // Ruta
+  if(d.ruta&&d.ruta.length){
+   html+='<div class="dsec"><div class="dstit">🗺️ ruta del día</div><div class="rl">';
+   d.ruta.forEach((r,j)=>{
+    const last=j===d.ruta.length-1;
+    html+=`<div class="ri"><div class="rline"><div class="rdot ${r.d||'mid'}"></div>${!last?'<div class="rvert"></div>':''}</div><div class="rinfo"><div class="rp">${r.p}</div>${r.n?`<div class="rn">${r.n}</div>`:''}</div></div>`;
+   });
+   html+='</div></div>';
+  }
 
-function renderEtapas(){
-  document.getElementById('etapas').innerHTML=ET.map(e=>{
-    const ruta=e.ruta.map((r,i)=>{
-      const last=i===e.ruta.length-1;
-      return `<div class="ritem">
-        <div class="rline">
-          <div class="rdot ${r.d||'mid'}"></div>
-          ${!last?'<div class="rvert"></div>':''}
-        </div>
-        <div class="rinfo">
-          <div class="rpunto">${r.p}</div>
-          ${r.n?`<div class="rnota">${r.n}</div>`:''}
-        </div>
-      </div>`;
-    }).join('');
-    const nots=e.not.map(n=>{
-      const c=n.includes('CENA')||n.includes('Cena')||n.includes('🍽')||n.includes('🎉')||n.includes('🔥');
-      return `<div class="enot${c?' cena':''}">${n}</div>`;
-    }).join('');
-    return `<div class="ecard">
-      <div class="ehdr" onclick="toggleEtapa('${e.n}')">
-        <span class="eico">${e.e}</span>
-        <div class="einf">
-          <div class="etit">${e.tit}</div>
-          <div class="esub">${e.f}</div>
-        </div>
-        <div class="ekm">${e.km} km · ${e.d}</div>
-      </div>
-      <div class="ebody" id="eb-${e.n}">
-        <div class="edesc">${e.desc}</div>
-        <div class="ruta">${ruta}</div>
-        <div class="enots">${nots}</div>
-      </div>
+  // Gasolineras
+  if(d.gas&&d.gas.length){
+   html+='<div class="dsec"><div class="dstit">⛽ gasolineras</div>';
+   d.gas.forEach(g=>{
+    html+=`<div class="gbox ${g.key?'key':'ok'}">
+     <div class="gnm${g.key?' key':''}">${g.key?'⚠️ ':''} ${g.nm}</div>
+     <div class="ginf">${g.hr} · ${g.dir}</div>
+     <div class="ginf">${g.not}</div>
+     <div class="lrow"><a class="lk map" href="${g.map}" target="_blank">🗺 Mapa</a>${g.tel?`<a class="lk tel" href="tel:${g.tel}">📞 ${g.tel}</a>`:''}</div>
     </div>`;
-  }).join('');
+   });
+   html+='</div>';
+  }
+
+  // Almuerzos
+  if(d.alm&&d.alm.length){
+   html+='<div class="dsec"><div class="dstit">🍽️ almuerzo</div>';
+   d.alm.forEach((r,j)=>{
+    html+=`<div class="rbox${j===0?' top':''}">
+     <div class="rmom">${r.mo}</div><div class="rnm">${r.nm}</div>
+     <div class="rinf">${r.loc} · ${r.pr}<br>${r.inf}</div>
+     <div class="lrow"><a class="lk map" href="${r.map}" target="_blank">🗺 Mapa</a>${r.tel?`<a class="lk tel" href="tel:${r.tel}">📞 ${r.tel}</a>`:''}</div>
+    </div>`;
+   });
+   html+='</div>';
+  }
+
+  // Hotel
+  if(d.hotel&&d.hotel.nm!=='— En casa 🏠 —'){
+   html+='<div class="dsec"><div class="dstit">🛏️ dónde dormir</div>';
+   if(d.hotel.ok){
+    html+=`<div class="hbox">
+     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:6px">
+      <div class="hnm" style="margin-bottom:0">${d.hotel.nm}</div>
+      <span style="background:var(--grn);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap">✅ Pagado por Pedro</span>
+     </div>
+     <div class="hdet">📍 ${d.hotel.dir}<br>${d.hotel.inf?d.hotel.inf+'<br>':''}${d.hotel.res?'<strong>Reserva:</strong> '+d.hotel.res+'<br>':''}${d.hotel.cod?'<strong>Código de acceso: </strong>':''}${d.hotel.cod?'<span class="hcode">'+d.hotel.cod+'</span><br>':''}${d.hotel.can?'<strong>'+d.hotel.can+'</strong><br>':''}</div>
+     <div class="lrow">${d.hotel.map?`<a class="lk map" href="${d.hotel.map}" target="_blank">🗺 Mapa</a>`:''}${d.hotel.tel?`<a class="lk tel" href="tel:${d.hotel.tel}">📞 ${d.hotel.tel}</a>`:''}${d.hotel.web?`<a class="lk web" href="${d.hotel.web}" target="_blank">🌐 Web</a>`:''}</div>
+    </div>`;
+   }else{
+    html+=`<div class="hbox pend"><div class="hnm">${d.hotel.nm}</div><div class="hdet" style="font-size:12px">${d.hotel.inf.replace(/\n/g,'<br>')}</div>
+     <div class="lrow">${d.hotel.map?`<a class="lk map" href="${d.hotel.map}" target="_blank">🗺 Mapa</a>`:''}${d.hotel.web?`<a class="lk web" href="${d.hotel.web}" target="_blank">🌐 Buscar</a>`:''}</div>
+    </div>`;
+   }
+   html+='</div>';
+  }
+
+  // Cenas
+  if(d.cen&&d.cen.length){
+   html+='<div class="dsec"><div class="dstit">🍷 dónde cenar</div>';
+   d.cen.forEach((r,j)=>{
+    html+=`<div class="rbox${j===0?' top':''}">
+     <div class="rmom">${r.mo}</div><div class="rnm">${r.nm}</div>
+     <div class="rinf">${r.loc} · ${r.pr}<br>${r.inf}</div>
+     <div class="lrow"><a class="lk map" href="${r.map}" target="_blank">🗺 Mapa</a>${r.tel?`<a class="lk tel" href="tel:${r.tel}">📞 ${r.tel}</a>`:''}</div>
+    </div>`;
+   });
+   html+='</div>';
+  }
+
+  // Nota especial
+  if(d.nesp){
+   html+=`<div class="dsec"><div class="nspec"><h4>${d.nesp.ti}</h4><p>${d.nesp.tx}</p></div></div>`;
+  }
+
+  // Consejo del foro
+  if(d.foro){
+   html+=`<div class="dsec"><div class="ftip"><div class="ftip-l">💬 Lo dicen los foros moteros</div><p>${d.foro}</p></div></div>`;
+  }
+
+  html+='</div></div>'; // dbody + dcard
+
+  // Cargar meteo si el día está abierto por defecto
+  if(open){
+   setTimeout(()=>loadMeteo(d.mlat,d.mlon,d.mnm,'m-'+i),150+i*80);
+  }
+ });
+ document.getElementById('tab-dia').innerHTML=html;
 }
 
-function renderGas(){
-  let html='',lastDia='';
-  GAS.forEach(g=>{
-    if(g.dia!==lastDia){html+=`<div class="day-sep">⛽ ${g.dia}</div>`;lastDia=g.dia;}
-    html+=`<div class="gcard"><div class="ghdr"><span class="gcico">⛽</span><div style="flex:1"><div class="gtit">${g.nm}</div><div class="gsub">${g.hr}</div></div><span class="chip ${g.key?'cr':'ok'}">${g.key?'CLAVE':'OK'}</span></div><div class="gbody"><div class="gdet"><span>📍</span> ${g.dir}</div><div class="gdet">${g.not}</div><a class="alink map" href="${g.map}" target="_blank">🗺 Ver en mapa</a>${g.tel?`<a class="alink tel" href="tel:${g.tel}" style="margin-left:12px">📞 ${g.tel}</a>`:''}</div></div>`;
-  });
-  document.getElementById('gasolineras').innerHTML=html;
-}
-
-function renderAlo(){
-  const hab=curP.hab==='doble'?`Habitación doble compartida con ${curP.comp}`:'Habitación individual';
-  let html=`<div class="alert al-info" style="margin-bottom:14px"><h4>Tu alojamiento</h4>${hab}</div>`;
-  let lastNc='';
-  ALO.forEach(a=>{
-    if(a.nc!==lastNc){html+=`<div class="day-sep">🛏 ${a.nc} · ${a.f} · ${a.l}</div>`;lastNc=a.nc;}
-    html+=`<div class="dcard"><div class="dhdr"><span class="dcico">🛏</span><div style="flex:1"><div class="dtit">${a.nm}</div><div class="dsub">${a.dir}</div></div><span class="chip inf">${a.pr}</span></div><div class="dbody"><div class="ddet">${a.not}</div><a class="alink map" href="${a.map}" target="_blank">🗺 Ver en mapa</a>${a.tel?`<a class="alink tel" href="tel:${a.tel}" style="margin-left:12px">📞 ${a.tel}</a>`:''}${a.web?`<a class="alink web" href="${a.web}" target="_blank" style="margin-left:12px">🌐 Web</a>`:''}</div></div>`;
-  });
-  document.getElementById('alojamientos').innerHTML=html;
-}
-
-function renderRest(){
-  let html='',lastD='';
-  REST.forEach(r=>{
-    const isCena=r.m.includes('Cena')||r.m.includes('🎉');
-    if(r.d!==lastD){html+=`<div class="day-sep">🍽 ${r.d}</div>`;lastD=r.d;}
-    html+=`<div class="rcard"><div class="rhdr"><span class="rcico">${isCena?'🍷':'🍽'}</span><div style="flex:1"><div class="rtit">${r.nm}</div><div class="rsub">${r.m} · ${r.loc}</div></div><span class="chip ${isCena?'nar':'ok'}">${r.pr}</span></div><div class="dbody"><div class="ddet"><span>📍</span> ${r.dir}</div><div class="ddet">${r.not}</div><a class="alink map" href="${r.map}" target="_blank">🗺 Ver en mapa</a>${r.tel?`<a class="alink tel" href="tel:${r.tel}" style="margin-left:12px">📞 ${r.tel}</a>`:''}</div></div>`;
-  });
-  document.getElementById('restaurantes').innerHTML=html;
-}
-
+// ━━━ RENDER CHECK ━━━
 function renderCK(){
-  let html='',sec='',items=[];
-  CK.forEach((x,i)=>{
-    if(x.cat){
-      if(items.length)html+=`<div class="cksec"><div class="ckhdr">${sec}</div>${items.join('')}</div>`;
-      sec=x.cat;items=[];
-    } else {
-      items.push(`<div class="ckitem"><input type="checkbox" id="ck${i}" onchange="updProg()"><label for="ck${i}">${x.item}</label></div>`);
-    }
+ let html='<div class="ck-pw"><div class="ck-pl"><span>Preparación pre-viaje</span><span id="ckp">0%</span></div><div class="ck-pb"><div class="ck-pf" id="ckf"></div></div></div>';
+ let sec='',its=[],tip='';
+ CK.forEach((x,i)=>{
+  if(x.cat){
+   if(its.length)html+=`<div class="ck-sec"><div class="ck-sh">${sec}</div>${its.join('')}${tip?`<div class="ck-tip">💬 ${tip}</div>`:''}</div>`;
+   sec=x.cat;its=[];tip=x.tip||'';
+  }else if(x.it){
+   its.push(`<div class="ck-it"><input type="checkbox" id="ci${i}" onchange="updCK()"><label for="ci${i}">${x.it}</label></div>`);
+  }
+ });
+ if(its.length)html+=`<div class="ck-sec"><div class="ck-sh">${sec}</div>${its.join('')}${tip?`<div class="ck-tip">💬 ${tip}</div>`:''}</div>`;
+ document.getElementById('tab-ck').innerHTML=html;
+ updCK();
+}
+
+function updCK(){
+ const all=document.querySelectorAll('#tab-ck input[type=checkbox]');
+ const done=[...all].filter(x=>x.checked).length;
+ const pct=all.length?Math.round(done/all.length*100):0;
+ const f=document.getElementById('ckf'),l=document.getElementById('ckp');
+ if(f)f.style.width=pct+'%';
+ if(l)l.textContent=pct+'% · '+done+'/'+all.length;
+}
+
+// ━━━ PAGOS ━━━
+function addCal(title,date,desc,fn){
+ var ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n'
+  +'DTSTART:'+date+'T090000\r\nDTEND:'+date+'T093000\r\nSUMMARY:'+title+'\r\nDESCRIPTION:'+desc+'\r\n'
+  +'BEGIN:VALARM\r\nTRIGGER:-P3D\r\nACTION:DISPLAY\r\nDESCRIPTION:Recordatorio\r\nEND:VALARM\r\n'
+  +'END:VEVENT\r\nEND:VCALENDAR';
+ var b=new Blob([ics],{type:'text/calendar'});
+ var u=URL.createObjectURL(b);
+ var a=document.createElement('a');a.href=u;a.download=(fn||'trip')+'.ics';a.click();URL.revokeObjectURL(u);
+}
+
+function togglePago(i){
+ if(curP.esPedro)curP.cobros[i].ok=!curP.cobros[i].ok;
+ else curP.pagos[i].ok=!curP.pagos[i].ok;
+ renderPagos();
+}
+
+function renderPagos(){
+ let html='';
+ if(curP.esPedro){
+  const tot=1409.62,suParte=277.66;
+  let cobrado=0;curP.cobros.forEach(c=>{if(c.ok)cobrado+=c.t;});
+  const pend=(tot-suParte-cobrado).toFixed(2);
+  const pendCol=parseFloat(pend)>0?'var(--red)':'var(--grn)';
+  const pendTx=parseFloat(pend)>0?'⏳ Te deben €'+pend.replace('.',','):'✅ ¡Todo cobrado!';
+
+  html+=`<div class="pp"><div class="pph pph-g"><div class="ppico">🏦</div>
+   <div><div class="ppt">PANEL TESORERO — PEDRO</div><div class="pps">Total adelantado: €1.409,62 · Tu parte: €277,66</div></div></div>
+   <div style="overflow-x:auto"><table class="ctab">
+    <tr><th>Piloto</th><th>Beri</th><th>Brases</th><th>Silken</th><th>Total</th><th>✓</th></tr>`;
+  curP.cobros.forEach((c,i)=>{
+   const tx=c.ok?'text-decoration:line-through;color:var(--mu)':'';
+   html+=`<tr style="${tx}"><td>${c.p}</td><td>€${c.b.toFixed(2).replace('.',',')}</td><td>€${c.br.toFixed(2).replace('.',',')}</td><td>€${c.s.toFixed(2).replace('.',',')}</td><td><strong>€${c.t.toFixed(2).replace('.',',')}</strong></td><td><input type="checkbox" style="width:16px;height:16px;accent-color:var(--grn);cursor:pointer" ${c.ok?'checked':''} onchange="togglePago(${i})"></td></tr>`;
   });
-  if(items.length)html+=`<div class="cksec"><div class="ckhdr">${sec}</div>${items.join('')}</div>`;
-  document.getElementById('checklist').innerHTML=html;
-  updProg();
+  html+=`</table></div>
+   <div class="ppf"><div><div class="ppfl">Pendiente de cobrar</div><div class="ppfv" style="color:${pendCol}">${pendTx}</div></div></div>
+  </div>`;
+
+  // Recordatorios
+  html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">📅</div>
+   <div><div class="ppt">RECORDATORIOS — PEDRO</div><div class="pps">Fechas clave de pago y cancelación</div></div></div>`;
+  const rs=[
+   {ico:'💳',tx:'Pagar Hotel Beri — 09/06/2026 con Revolut',bg:false,date:'20260609',desc:'Pagar Hotel Beri Llança con Revolut'},
+   {ico:'🚫',tx:'Cancelación Hotel Beri — hasta 11/06/2026',bg:false,date:'20260611',desc:'Limite cancelacion Hotel Beri'},
+   {ico:'✅',tx:'Hotel Les Brases PAGADO el 08/03/2026 con Santander (€340)',bg:'#edf7ef',date:null},
+   {ico:'🚫',tx:'Cancelación Les Brases — hasta 17/06/2026 antes 12:00h',bg:false,date:'20260617',desc:'Limite cancelacion Les Brases'},
+   {ico:'💳',tx:'Pagar Silken Puerta de Irati — 17/06/2026 con Santander (€625)',bg:false,date:'20260617',desc:'Pagar Silken Ochagavia'},
+   {ico:'🚫',tx:'Cancelación Silken — hasta 18/06/2026',bg:false,date:'20260618',desc:'Limite cancelacion Silken'}
+  ];
+  rs.forEach(r=>{
+   html+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span>
+    ${r.date?`<button class="calb" style="background:var(--red)" onclick="addCal('${r.tx}','${r.date}','${r.desc||r.tx}','rec')">📅 Añadir</button>`:''}
+   </div>`;
+  });
+  html+='</div>';
+
+ }else{
+  let debe=0,pagado=0;
+  curP.pagos.forEach(p=>{debe+=p.v;if(p.ok)pagado+=p.v;});
+  const pend=(debe-pagado).toFixed(2);
+  const pendCol=parseFloat(pend)>0?'var(--red)':'var(--grn)';
+  const pendTx=parseFloat(pend)>0?'⏳ Te faltan €'+pend.replace('.',','):'✅ ¡Todo pagado!';
+
+  html+=`<div class="pp"><div class="pph pph-r"><div class="ppico">💳</div>
+   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">⚠️ Límite: 31 de marzo de 2026</div></div></div>`;
+  curP.pagos.forEach((p,i)=>{
+   const col=p.ok?'var(--grn)':'var(--red)';
+   const tx=p.ok?'text-decoration:line-through;color:var(--mu)':'';
+   html+=`<div class="pr"><input type="checkbox" ${p.ok?'checked':''} onchange="togglePago(${i})" style="width:18px;height:18px;accent-color:var(--grn);cursor:pointer;flex-shrink:0">
+    <div class="prn" style="${tx}">${p.h}</div>
+    <div class="pra" style="color:${col}">${p.ok?'✅':'⏳'} €${p.v.toFixed(2).replace('.',',')}</div>
+   </div>`;
+  });
+  html+=`<div class="ppf"><div><div class="ppfl">Pendiente de pagar a Pedro</div><div class="ppfv" style="color:${pendCol}">${pendTx}</div></div>
+   <button class="calb" style="background:var(--ora)" onclick="addCal('Pagar a Pedro (Transpirenaica)','20260331','Pagar alojamientos a Pedro antes del 31/03/2026','pago')">📅 Recordatorio 31/03</button>
+  </div></div>`;
+ }
+
+ // Estado reservas
+ html+=`<div class="pp"><div class="pph pph-o"><div class="ppico">🛏️</div>
+  <div><div class="ppt">RESERVAS — ESTADO ACTUAL</div><div class="pps">Resumen de todos los alojamientos</div></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 0 · 18/06 · Llançà</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Beri · Nº 6331.570.462 · PIN 9967 · Cancelación hasta 11/06</span></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 1 · 19/06 · Sort</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Les Brases · Loc 20528 · Código acceso: <strong>1234V</strong> · Cancelación hasta 17/06</span></div></div>
+  <div class="rrow" style="background:#fdf6e3"><span>⏳</span><div><strong>Noche 2 · 20/06 · Aínsa</strong><br><span style="font-size:11px;color:var(--mu)">Pendiente confirmar (Hostal Pirineos u Opción B)</span></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Ochagavía</strong><br><span style="font-size:11px;color:var(--mu)">Silken Puerta de Irati · Nº 6079.733.380 · PIN 8934 · Cancelación hasta 18/06</span></div></div>
+  <div class="rrow" style="background:#fdf6e3"><span>⏳</span><div><strong>Noche 4 · 22/06 · Hondarribia</strong><br><span style="font-size:11px;color:var(--mu)">Pendiente confirmar (casco histórico)</span></div></div>
+ </div>`;
+
+ document.getElementById('tab-pagos').innerHTML=html;
 }
 
-function updProg(){
-  const all=document.querySelectorAll('#checklist input');
-  const done=[...all].filter(x=>x.checked).length;
-  document.getElementById('progb').style.width=(done/all.length*100)+'%';
-}
-
+// ━━━ ARRANQUE ━━━
 renderSel();
 </script>
 </body>
