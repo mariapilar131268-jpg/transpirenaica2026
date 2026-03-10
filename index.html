@@ -305,6 +305,100 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="pgrid" id="pgrid"></div>
   <button class="rtabtn" onclick="showRuta()">🗺️ Análisis de Ruta · Ojos de Motero</button>
 
+  <!-- Botón instalar -->
+  <button onclick="document.getElementById('modalInstall').style.display='flex'"
+    style="margin-top:12px;width:100%;max-width:560px;padding:13px 16px;
+    background:transparent;border:1px solid rgba(200,217,138,0.3);border-radius:var(--r);
+    color:#8faa6a;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;
+    cursor:pointer;letter-spacing:.5px">
+    📲 Cómo instalar la app en tu móvil
+  </button>
+</div>
+
+<!-- ── MODAL INSTALACIÓN ── -->
+<div id="modalInstall" style="display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;-webkit-overflow-scrolling:touch">
+  <div style="background:#1a2a12;border:1px solid #4a7a2a;border-radius:20px;
+    padding:28px 24px;max-width:420px;width:100%;margin:auto">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="color:#c8e8a8;font-size:18px;font-weight:700">📲 Instalar la app</div>
+      <button onclick="document.getElementById('modalInstall').style.display='none'"
+        style="background:none;border:none;color:#8faa6a;font-size:22px;cursor:pointer;padding:4px 8px">✕</button>
+    </div>
+
+    <!-- iPhone -->
+    <div style="margin-bottom:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:26px"></span>
+        <span style="color:#ffffff;font-size:16px;font-weight:700">iPhone / iPad</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">1</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Abre esta página en <strong style="color:#fff">Safari</strong> (no Chrome ni otro navegador)</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">2</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa el botón <strong style="color:#fff">Compartir</strong> <span style="font-size:17px">⎙</span> (abajo en la barra de Safari)</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">3</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Selecciona <strong style="color:#fff">"Añadir a pantalla de inicio"</strong> <span style="font-size:15px">＋</span></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">4</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa <strong style="color:#fff">"Añadir"</strong> arriba a la derecha. ¡Listo! 🏍️</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid #2a4a1a;margin-bottom:22px"></div>
+
+    <!-- Android -->
+    <div style="margin-bottom:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:26px">🤖</span>
+        <span style="color:#ffffff;font-size:16px;font-weight:700">Android</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">1</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Abre esta página en <strong style="color:#fff">Chrome</strong></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">2</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa el menú <strong style="color:#fff">⋮</strong> (tres puntos, arriba a la derecha)</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">3</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Selecciona <strong style="color:#fff">"Añadir a pantalla de inicio"</strong></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span style="background:#2a5a1a;color:#c8e8a8;border-radius:50%;width:26px;height:26px;
+            display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0">4</span>
+          <span style="color:#c8d8a8;font-size:15px;line-height:1.4">Pulsa <strong style="color:#fff">"Añadir"</strong>. ¡Listo! 🏍️</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#0f2a08;border:1px solid #2a5a1a;border-radius:12px;padding:14px;text-align:center">
+      <div style="color:#8faa6a;font-size:12px;letter-spacing:1px;margin-bottom:6px">URL DE LA APP</div>
+      <div style="color:#c8e8a8;font-size:13px;font-weight:700;word-break:break-all">
+        mariapilar131268-jpg.github.io/transpirenaica2026
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <div id="rutaview" style="display:none;flex-direction:column;min-height:100vh">
   <div class="rutahdr">
@@ -325,41 +419,14 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="ntabs">
     <button class="ntab active" onclick="showTab('dia',this)">📅 MI DÍA</button>
     <button class="ntab" onclick="showTab('ck',this)">✓ CHECK</button>
-    <button class="ntab" onclick="showTab('ruta',this)">🗺️ RUTA</button>
     <button class="ntab" onclick="showTab('pagos',this)">💳 PAGOS</button>
   </div>
   <div class="tcont show" id="tab-dia"></div>
   <div class="tcont" id="tab-ck"></div>
-  <div class="tcont" id="tab-ruta"></div>
   <div class="tcont" id="tab-pagos"></div>
 </div>
 
 <script>
-// ━━━ PAGOS COMPARTIDOS — se clonan por piloto al cargar ━━━
-const PAG_DOBLE=[
- {h:'Hotel Beri · Llançà',v:44.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},
- {h:'Hotel Les Brases · Sort',v:37.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},
- {h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},
- {h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},
- {h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},
- {h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}
-];
-const PAG_INDIV=[
- {h:'Hotel Beri · Llançà',v:88.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},
- {h:'Hotel Les Brases · Sort',v:64.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},
- {h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a Pedro · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},
- {h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},
- {h:'Casa Lola · Isaba',v:106.00,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},
- {h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}
-];
-const PAG_PEDRO=[
- {h:'Hotel Beri · Llançà',v:88.66,ok:true,skipPedro:true},
- {h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false,skipPedro:true},
- {h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,skipPedro:true,date:'20260331',desc:'Apartar señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a ti mismo · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},
- {h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada'},
- {h:'Casa Lola · Isaba',v:106.00,ok:false,directo:true,nota:'Pago directo en el hostal el 21/06'},
- {h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}
-];
 // ━━━ PILOTOS ━━━
 const NOCHES=[
  {n:0,f:'18/06',lu:'Llançà',nm:'Hotel Beri',ok:true,
@@ -386,31 +453,26 @@ const NOCHES=[
 
 const PI=[
  {id:'alberto',nm:'Alberto',ico:'🐛',mot:'Yamaha R9',dep:14,aut:200,badge:'A2',hab:'doble',comp:'Oriol',
-  pres:{aloj:270,gas:190,cenas:225,comidas:80,total:765},
-  pagos:PAG_DOBLE,
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},{h:'Hotel Les Brases · Sort',v:37.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'w',h:'🎓 CARNET A2 — EL JOVEN PROMESA DEL GRUPO 😄',b:'Potencia limitada por ley, talento ilimitado. Los demás llevan años con el A... tú ya casi. ¡Paciencia, crack!'},
       {t:'w',h:'⚠️ DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. REPOSTAR en bonÀrea Sort (días 1 y 2) y Argèles-Gazost (día 3). Más paradas = más cafés ☕'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~190€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~765€</strong>'}]},
  {id:'oriol',nm:'Oriol',ico:'🐣',mot:'KTM 790 Duke',dep:14.5,aut:220,badge:'A2',hab:'doble',comp:'Alberto',
-  pres:{aloj:270,gas:172,cenas:225,comidas:80,total:747},
-  pagos:PAG_DOBLE,
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},{h:'Hotel Les Brases · Sort',v:37.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'w',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
       {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en Argèles-Gazost ANTES del Aubisque. Capa térmica a mano para Bonaigua y Tourmalet.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~172€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~747€</strong>'}]},
  {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
-  pres:{aloj:270,gas:194,cenas:225,comidas:80,total:769},
-  pagos:PAG_DOBLE,
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},{h:'Hotel Les Brases · Sort',v:37.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'s',h:'🥷 EL NINJA DEL GRUPO',b:'Parece que no está, pero va siempre pegado a tu estela. Silencioso, constante, inevitable. Cuando te das cuenta... ya está ahí 😏'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~194€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~769€</strong>'}]},
  {id:'monica',nm:'Mónica',ico:'🏅',mot:'Honda CB650R (negra)',dep:15.4,aut:300,badge:'A',hab:'doble',comp:'Antonio',
-  pres:{aloj:270,gas:157,cenas:225,comidas:80,total:732},
-  pagos:PAG_DOBLE,
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},{h:'Hotel Les Brases · Sort',v:37.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
       {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en Argèles-Gazost ANTES del Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~732€</strong>'}]},
  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
-  pres:{aloj:390,gas:204,cenas:225,comidas:80,total:899},
-  pagos:PAG_PEDRO,
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:true,skipPedro:true},{h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false,skipPedro:true},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,skipPedro:true,date:'20260331',desc:'Apartar señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a ti mismo · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada'},{h:'Casa Lola · Isaba',v:106.00,ok:false,directo:true,nota:'Pago directo en el hostal el 21/06'},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   cobros:[
    {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
    {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
@@ -422,26 +484,17 @@ const PI=[
       {t:'s',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~899€</strong>'}]},
  {id:'xavi',nm:'Xavi',ico:'🏅',mot:'Ducati Multistrada',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
-  pres:{aloj:390,gas:204,cenas:225,comidas:80,total:899},
-  pagos:PAG_INDIV,
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},{h:'Hotel Les Brases · Sort',v:64.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a Pedro · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},{h:'Casa Lola · Isaba',v:106.00,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   al:[{t:'s',h:'📋 EL DOCUMENTALISTA',b:'Talento especial para convertir cualquier hobby en proyecto de documentación avanzada. Mentalidad de piloto, memoria de opositor y ojo de juez.'},
       {t:'s',h:'DEPÓSITO 20 L — EXCELENTE AUTONOMÍA',b:'Sin problemas en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~899€</strong>'}]},
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
-  pres:{aloj:390,gas:213,cenas:225,comidas:80,total:908},
-  pagos:PAG_INDIV,
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},{h:'Hotel Les Brases · Sort',v:64.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a Pedro · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},{h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},{h:'Casa Lola · Isaba',v:106.00,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   al:[{t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~213€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~908€</strong>'},
       {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€40 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €35 · <strong>Total: €75</strong> (desayuno incluido)'}]}
 ];
-
-// Clonar pagos para que cada piloto tenga su propio estado independiente
-PI.forEach(p=>{
-  if(p.pagos===PAG_DOBLE) p.pagos=PAG_DOBLE.map(x=>({...x}));
-  else if(p.pagos===PAG_INDIV) p.pagos=PAG_INDIV.map(x=>({...x}));
-  else if(p.pagos===PAG_PEDRO) p.pagos=PAG_PEDRO.map(x=>({...x}));
-});
 
 // ━━━ DÍAS ━━━
 const D=[
@@ -686,113 +739,6 @@ function showTab(id,btn){
  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
  document.getElementById('tab-'+id).classList.add('show');
  if(btn)btn.classList.add('active');
- if(id==='ruta') renderResumenRuta();
-}
-
-// ━━━ RESUMEN RUTA ━━━
-function renderResumenRuta(){
- const etapas=[
-  {emo:'🌅',f:'Jue 18/06',de:'Montcada',a:'Llançà',km:165,tipo:'Traslado',color:'#4a7a3a',
-   puertos:[],gas:[],nota:'Costa Brava · Salida tarde · Llegada de noche'},
-  {emo:'🏛️',f:'Vie 19/06',de:'Llançà',a:'Sort',km:318,tipo:'Pirineos orientales',color:'#2e6a5a',
-   puertos:['Cap de Creus (inicio oficial)'],
-   gas:['⭐ bonÀrea Sort — llenar al 100%'],
-   nota:'Inicio oficial en Cap de Creus · Foto de grupo obligatoria'},
-  {emo:'🏔️',f:'Sáb 20/06',de:'Sort',a:'Aínsa',km:300,tipo:'Alta montaña',color:'#1a5a7a',
-   puertos:['Port de la Bonaigua 2.072m ★★★'],
-   gas:['bonÀrea Sort (CRÍTICA antes Bonaigua)','Repsol Vielha'],
-   nota:'Bonaigua es el techo del viaje · Llenar en Sort sin excusas'},
-  {emo:'⭐',f:'Dom 21/06',de:'Aínsa',a:'Isaba',km:320,tipo:'ETAPA REINA',color:'#7a3a00',
-   puertos:['Portalet 1.794m ★★','Tourmalet 2.115m ★★★','Aubisque 1.709m ★★★'],
-   gas:['⚠️ TotalEnergies Argèles-Gazost (ÚNICA · Dom 7-20:30h)'],
-   nota:'3 puertos míticos del Tour · Domingo · Gasolineras muy limitadas en Francia'},
-  {emo:'🏁',f:'Lun 22/06',de:'Isaba',a:'Hondarribia',km:200,tipo:'Pirineo navarro',color:'#3a1a7a',
-   puertos:['Selva de Irati','Valle del Baztán'],
-   gas:['Petronor Urzainqui (única en 100 km · 8-21h)'],
-   nota:'Etapa tranquila · Irati imprescindible · Llegada a la costa'},
-  {emo:'🏠',f:'Mar 23/06',de:'Hondarribia',a:'Santa Coloma',km:620,tipo:'Vuelta a casa',color:'#5a5a5a',
-   puertos:[],gas:['Autopista — sin problema'],nota:'Noche de Sant Joan · Salir temprano'},
- ];
- const puertosGlobales=[
-  {nm:'Port de la Bonaigua',alt:'2.072',dia:'Día 2',stars:'★★★',color:'#1a5a7a'},
-  {nm:'Col du Tourmalet',alt:'2.115',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
-  {nm:"Col d'Aubisque",alt:'1.709',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
-  {nm:'Puerto del Portalet',alt:'1.794',dia:'Día 3',stars:'★★',color:'#7a3a00'},
- ];
- const kmTotal=etapas.reduce((s,e)=>s+e.km,0);
- let html='<div style="padding:12px 14px 80px">';
- html+=`<div style="background:linear-gradient(135deg,#1c2b1a,#2a3d28);border-radius:14px;padding:18px 16px;margin-bottom:12px;color:#e8e0cc">
-  <div style="font-size:11px;color:#8a9e80;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Transpirenaica 2026 · ${curP.nm}</div>
-  <div style="font-size:20px;font-weight:800;margin-bottom:12px">Cap de Creus → Faro de Higuer</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-   <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
-    <div style="font-size:24px;font-weight:800">${kmTotal}</div>
-    <div style="font-size:10px;color:#8a9e80;margin-top:2px">KM TOTALES</div>
-   </div>
-   <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
-    <div style="font-size:24px;font-weight:800">6</div>
-    <div style="font-size:10px;color:#8a9e80;margin-top:2px">ETAPAS</div>
-   </div>
-   <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
-    <div style="font-size:24px;font-weight:800">4</div>
-    <div style="font-size:10px;color:#8a9e80;margin-top:2px">PUERTOS</div>
-   </div>
-  </div>
- </div>`;
- html+='<div style="background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:12px;border:1px solid #e0d8c8"><div style="font-size:11px;font-weight:800;color:#5a4a30;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">⛰️ Puertos de montaña</div>';
- puertosGlobales.forEach(p=>{
-  html+=`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0ebe0">
-   <div style="background:${p.color};color:#fff;border-radius:8px;padding:6px 10px;text-align:center;min-width:52px;flex-shrink:0">
-    <div style="font-size:14px;font-weight:800">${p.alt}</div>
-    <div style="font-size:8px;opacity:.8">m</div>
-   </div>
-   <div style="flex:1">
-    <div style="font-size:13px;font-weight:700;color:#1a2a0a">${p.nm}</div>
-    <div style="font-size:11px;color:#7a6a50;margin-top:1px">${p.dia} · ${p.stars}</div>
-   </div>
-  </div>`;
- });
- html+='</div>';
- html+='<div style="font-size:11px;font-weight:800;color:#5a4a30;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">📅 Las 6 etapas</div>';
- etapas.forEach(e=>{
-  html+=`<div style="background:#fff;border-radius:12px;margin-bottom:8px;overflow:hidden;border:1px solid #e0d8c8">
-   <div style="background:${e.color};padding:10px 14px;display:flex;align-items:center;gap:10px">
-    <span style="font-size:22px">${e.emo}</span>
-    <div style="flex:1">
-     <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">${e.f} · ${e.tipo}</div>
-     <div style="font-size:14px;font-weight:800;color:#fff">${e.de} → ${e.a}</div>
-    </div>
-    <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;text-align:center;flex-shrink:0">
-     <div style="font-size:18px;font-weight:800;color:#fff">${e.km}</div>
-     <div style="font-size:9px;color:rgba(255,255,255,.7)">km</div>
-    </div>
-   </div>
-   <div style="padding:10px 14px">`;
-  if(e.puertos.length){
-   html+='<div style="margin-bottom:6px">';
-   e.puertos.forEach(p=>{ html+=`<span style="display:inline-block;background:#f0f8ff;color:#1a52a8;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;margin:2px 3px 2px 0">⛰️ ${p}</span>`; });
-   html+='</div>';
-  }
-  if(e.gas.length){
-   html+='<div style="margin-bottom:6px">';
-   e.gas.forEach(g=>{ const warn=g.startsWith('⚠️')||g.startsWith('⭐'); html+=`<span style="display:inline-block;background:${warn?'#fff8e1':'#f5f5f5'};color:${warn?'#b07800':'#5a5a5a'};font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;margin:2px 3px 2px 0">⛽ ${g}</span>`; });
-   html+='</div>';
-  }
-  html+=`<div style="font-size:11px;color:#7a6a50;font-style:italic">${e.nota}</div>`;
-  html+='</div></div>';
- });
- html+=`<div style="background:#fffbf0;border:1px solid #e8cc80;border-radius:12px;padding:14px 16px;margin-top:4px">
-  <div style="font-size:11px;font-weight:800;color:#7a5a00;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">⛽ Tu autonomía · ${curP.mot}</div>
-  <div style="display:flex;align-items:center;gap:12px">
-   <div style="text-align:center">
-    <div style="font-size:28px;font-weight:800;color:#b07800">${curP.aut}</div>
-    <div style="font-size:10px;color:#9a7a30">km depósito</div>
-   </div>
-   <div style="flex:1;font-size:12px;color:#7a5a20;line-height:1.5">${curP.aut<250?'⚠️ <strong>Depósito pequeño</strong> — seguir las gasolineras críticas sin saltarse ninguna. En montaña la autonomía baja un 15-20%.':'✅ <strong>Buena autonomía</strong> — sin problemas en ninguna etapa. Aun así repostar en los puntos marcados.'}</div>
-  </div>
- </div>`;
- html+='</div>';
- document.getElementById('tab-ruta').innerHTML=html;
 }
 
 // ━━━ DÍA HOY ━━━
@@ -1000,14 +946,6 @@ function addCal(title,date,desc,fn){
  var a=document.createElement('a');a.href=u;a.download=(fn||'trip')+'.ics';a.click();URL.revokeObjectURL(u);
 }
 
-function marcarTodoAPedro(){
- if(!curP||curP.esPedro) return;
- const aPedro = curP.pagos.filter(p=>!p.directo&&!p.skipPedro);
- const todoPagado = aPedro.every(p=>p.ok);
- // Si ya están todos marcados, desmarcar; si no, marcar todos
- aPedro.forEach(p=>p.ok=!todoPagado);
- renderPagos();
-}
 function togglePagoPedro(i){
   if(curP&&curP.pagos)curP.pagos[i].ok=!curP.pagos[i].ok;
   renderPagos();
@@ -1020,99 +958,6 @@ function togglePago(i){
 
 function renderPagos(){
  let html='';
-
- // ── TARJETA PRESUPUESTO TOTAL DEL VIAJE ──
- if(curP.pres){
-  const pr=curP.pres;
-  const cats=[
-   {ico:'🏨',lb:'Alojamiento',v:pr.aloj},
-   {ico:'⛽',lb:'Gasolina',v:pr.gas},
-   {ico:'🍽️',lb:'Cenas',v:pr.cenas},
-   {ico:'🥗',lb:'Comidas',v:pr.comidas},
-  ];
-  html+=`<div style="background:linear-gradient(135deg,#1c2b1a 0%,#2a3d28 100%);border-radius:14px;padding:18px 16px;margin-bottom:14px;color:#e8e0cc">
-   <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-    <span style="font-size:24px">💰</span>
-    <div>
-     <div style="font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#c8d8b0">Presupuesto estimado · Viaje completo</div>
-     <div style="font-size:11px;color:#8a9e80;margin-top:1px">${curP.mot} · hab. ${curP.hab}${curP.comp?' · con '+curP.comp:''}</div>
-    </div>
-   </div>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-    ${cats.map(c=>`<div style="background:rgba(255,255,255,.08);border-radius:8px;padding:10px 12px">
-     <div style="font-size:10px;color:#8a9e80;text-transform:uppercase;letter-spacing:1px">${c.ico} ${c.lb}</div>
-     <div style="font-size:20px;font-weight:700;color:#e8e0cc;margin-top:3px">~${c.v}€</div>
-    </div>`).join('')}
-   </div>
-   <div style="background:#e8e0cc;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between">
-    <div style="font-size:12px;font-weight:700;color:#1c2b1a;text-transform:uppercase;letter-spacing:.5px">TOTAL estimado</div>
-    <div style="font-size:32px;font-weight:800;color:#1c2b1a;line-height:1">~${pr.total}€</div>
-   </div>
-   <div style="font-size:10px;color:#6a8060;margin-top:8px;text-align:center">* Estimación orientativa · Gasolina según autonomía de tu moto · Sin extras personales</div>
-  </div>`;
- }
-
- // ── BANNER CUENTA ATRÁS (solo pilotos no-Pedro con pagos pendientes) ──
- if(!curP.esPedro){
-  const hoy = new Date();
-  const limite = new Date(2026,2,31); // 31 marzo
-  const diffMs = limite - hoy;
-  const dias = Math.max(0, Math.ceil(diffMs/(1000*60*60*24)));
-  const vencido = diffMs < 0;
-  const aPedroCalc = curP.pagos.filter(p=>!p.directo&&!p.skipPedro);
-  let totalAP=0; aPedroCalc.forEach(p=>totalAP+=p.v);
-  const todoPagado = aPedroCalc.every(p=>p.ok);
-
-  if(!todoPagado){
-   const uc = vencido?'#8b0000':dias<=7?'#b5341a':dias<=14?'#9a6200':'#1a5c2a';
-   const ub = vencido?'#fff0f0':dias<=7?'#fff4f0':dias<=14?'#fffbf0':'#f0fff4';
-   const ubr= vencido?'#e08080':dias<=7?'#e0a090':dias<=14?'#e8cc80':'#80c080';
-   const ue = vencido?'🚨':dias<=7?'🔴':dias<=14?'🟠':'🟡';
-   const importeTxt = totalAP.toFixed(2).replace('.',',');
-   html+=`<div style="background:${ub};border:2px solid ${ubr};border-radius:14px;padding:18px 16px;margin-bottom:14px">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-     <span style="font-size:28px">${ue}</span>
-     <div>
-      <div style="font-size:13px;font-weight:800;color:${uc};letter-spacing:.5px;text-transform:uppercase">Pago a Pedro — plazo límite</div>
-      <div style="font-size:11px;color:${uc};opacity:.75;margin-top:1px">Hotel Beri · Les Brases · Señal Aínsa</div>
-     </div>
-    </div>
-    <div style="background:#fff;border-radius:10px;padding:16px;margin-bottom:12px;border:1px solid ${ubr};text-align:center">
-     <div style="font-size:11px;color:#7a7060;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Tu importe total</div>
-     <div style="font-size:48px;font-weight:800;color:${uc};line-height:1">${importeTxt} €</div>
-     <div style="font-size:11px;color:#7a7060;margin-top:8px">Bizum · Efectivo · Transferencia → a Pedro</div>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;background:${uc};border-radius:8px;padding:12px 14px;margin-bottom:10px">
-     <div>
-      <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">Fecha límite</div>
-      <div style="font-size:15px;font-weight:800;color:#fff">31 de marzo de 2026</div>
-     </div>
-     <div style="text-align:right">
-      <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">${vencido?'Hace':'Faltan'}</div>
-      <div style="font-size:30px;font-weight:800;color:#fff;line-height:1">${vencido?'⚠️':dias}<span style="font-size:12px;font-weight:400;margin-left:2px">${vencido?'':'días'}</span></div>
-     </div>
-    </div>
-    <label onclick="marcarTodoAPedro()" style="display:flex;align-items:center;gap:14px;background:#fff;border:2px solid ${ubr};border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer">
-     <input type="checkbox" id="ckBanner" ${aPedroCalc.every(p=>p.ok)?'checked':''} style="width:26px;height:26px;accent-color:${uc};cursor:pointer;flex-shrink:0">
-     <div>
-      <div style="font-size:15px;font-weight:800;color:${uc}">✔ Ya he pagado a Pedro</div>
-      <div style="font-size:11px;color:#7a7060;margin-top:2px">Marca esto cuando hagas la transferencia</div>
-     </div>
-    </label>
-    <button onclick="addCal('💳 Pagar a Pedro — Transpi 2026','20260331','Transferir ${importeTxt}€ a Pedro antes del 31/03/2026','pago')"
-     style="width:100%;padding:12px;background:${uc};color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">
-     📅 Añadir recordatorio al calendario
-    </button>
-   </div>`;
-  } else {
-   html+=`<div style="background:#f0fff4;border:2px solid #80c080;border-radius:14px;padding:16px;margin-bottom:14px;text-align:center">
-    <div style="font-size:36px">✅</div>
-    <div style="font-size:16px;font-weight:800;color:#1a5c2a;margin-top:6px">¡Todo pagado a Pedro!</div>
-    <div style="font-size:12px;color:#3a7a4a;margin-top:4px">Alojamientos cubiertos. ¡A disfrutar la ruta! 🏍️</div>
-   </div>`;
-  }
- }
-
  if(curP.esPedro){
   const tot=791.96,suParte=192.66;
   let cobrado=0;curP.cobros.forEach(c=>{if(c.ok)cobrado+=c.t;});
@@ -1423,9 +1268,8 @@ function renderRuta(){
  });
  cont.innerHTML=html;
 }
-
-
-
+</script>
+<script>
 
 // ── MODO CONDUCCIÓN ──────────────────────────────────────────────────────
 let mcDiaActual = 0; // día seleccionado en el modo conducción
