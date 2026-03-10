@@ -1,6 +1,6 @@
-// ━━━ TRANSPIRENAICA 2026 · SERVICE WORKER ━━━
+// ━━━ TRANSPIRENAICA 2026 · SERVICE WORKER v5 ━━━
 // Estrategia: RED PRIMERO → caché solo como emergencia offline
-const CACHE = 'transpi2026-v4';
+const CACHE = 'transpi2026-v5';
 
 // Instalación: guardar recursos básicos en caché
 self.addEventListener('install', e => {
