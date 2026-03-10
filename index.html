@@ -430,45 +430,52 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 // ━━━ PILOTOS ━━━
 const PI=[
  {id:'alberto',nm:'Alberto',ico:'🐛',mot:'Yamaha R9',dep:14,aut:200,badge:'A2',hab:'doble',comp:'Oriol',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'w',h:'🎓 CARNET A2 — EL JOVEN PROMESA DEL GRUPO 😄',b:'Potencia limitada por ley, talento ilimitado. Los demás llevan años con el A... tú ya casi. ¡Paciencia, crack!'},
       {t:'w',h:'⚠️ DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. REPOSTAR en bonÀrea Sort (días 1 y 2) y Argèles-Gazost (día 3). Más paradas = más cafés ☕'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~190€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~765€</strong>'}]},
  {id:'oriol',nm:'Oriol',ico:'🐣',mot:'KTM 790 Duke',dep:14.5,aut:220,badge:'A2',hab:'doble',comp:'Alberto',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'w',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
       {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en Argèles-Gazost ANTES del Aubisque. Capa térmica a mano para Bonaigua y Tourmalet.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~172€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~747€</strong>'}]},
  {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'s',h:'🥷 EL NINJA DEL GRUPO',b:'Parece que no está, pero va siempre pegado a tu estela. Silencioso, constante, inevitable. Cuando te das cuenta... ya está ahí 😏'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~194€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~769€</strong>'}]},
  {id:'monica',nm:'Mónica',ico:'🏅',mot:'Honda CB650R (negra)',dep:15.4,aut:300,badge:'A',hab:'doble',comp:'Antonio',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:62.50,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
       {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en Argèles-Gazost ANTES del Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~732€</strong>'}]},
  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   cobros:[
-   {p:'🐛 Alberto',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
-   {p:'🐣 Oriol',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
-   {p:'🥷 Antonio',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
-   {p:'🏁 Mónica',b:44.66,br:37.00,s:62.50,t:144.16,ok:false},
-   {p:'📋 Xavi',b:88.66,br:64.00,s:125.00,t:277.66,ok:false},
-   {p:'🎭 Antonio J.',b:88.66,br:64.00,s:125.00,t:277.66,ok:false}],
+   {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
+   {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
+   {p:'🥷 Antonio',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
+   {p:'🏁 Mónica',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
+   {p:'📋 Xavi',b:88.66,br:64.00,a:40.00,s:106.00,t:298.66,ok:false},
+   {p:'🎭 Antonio J.',b:88.66,br:64.00,a:40.00,s:106.00,t:298.66,ok:false}],
   al:[{t:'s',h:'🎯 EL ANTIRADARES OFICIAL DEL GRUPO',b:'No hace falta Waze ni TomTom: con Pedro delante, los radares no existen. Olfato sobrenatural. El grupo te lo agradece... y Tráfico también 😅'},
       {t:'s',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~899€</strong>'}]},
  {id:'xavi',nm:'Xavi',ico:'🏅',mot:'Ducati Multistrada',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
-  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:125.00,ok:false},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:106.00,ok:false},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   al:[{t:'s',h:'📋 EL DOCUMENTALISTA',b:'Talento especial para convertir cualquier hobby en proyecto de documentación avanzada. Mentalidad de piloto, memoria de opositor y ojo de juez.'},
       {t:'s',h:'DEPÓSITO 20 L — EXCELENTE AUTONOMÍA',b:'Sin problemas en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~899€</strong>'}]},
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
-  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Silken Puerta de Irati · Ochagavía',v:125.00,ok:false},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:106.00,ok:false},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   al:[{t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
-      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~213€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~908€</strong>'}]}
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~213€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~908€</strong>'},
+      {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€20 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €17,50 hab + €10 desayuno = €27,50'},
+      {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€20 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €17,50 hab + €10 desayuno = €27,50'},
+      {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€20 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €17,50 hab + €10 desayuno = €27,50'},
+      {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€20 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €17,50 hab + €10 desayuno = €27,50'},
+      {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€40 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €35 hab + €10 desayuno = €45'},
+      {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€40 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €35 hab + €10 desayuno = €45'}]}
 ];
 
 // ━━━ DÍAS ━━━
@@ -532,22 +539,22 @@ const D=[
        {p:'🏁 Aínsa',n:'Llegada ~18:30h · Uno de los pueblos más bonitos de España',d:'end'}],
  gas:[{nm:'bonÀrea — Sort',hr:'24h',dir:'Polígon Els Salancons, Sort',tel:'+34900899089',map:'https://maps.google.com/?q=bonArea+Sort+Lleida',key:true,not:'⚠️ CRÍTICO: llenar AL 100%. No hay gasolineras fiables entre Sort y Vielha (~150 km de montaña).'},
       {nm:'Repsol — Vielha',hr:'7:00-23:00h',dir:'CR N-230 pk 163.70, Vielha',tel:'+34973642277',map:'https://maps.google.com/?q=Repsol+Vielha+N230',key:true,not:'Llenar para el Pirineo aragonés. Mañana es la etapa reina.'}],
- hotel:{ok:false,nm:'⏳ PENDIENTE CONFIRMAR — Aínsa',dir:'Aínsa, Huesca',tel:null,web:null,map:'https://maps.google.com/?q=Ainsa+Huesca',
-   inf:'📧 Opción A: Hostal Pirineos Aínsa · Tel: 974 500 008 · Parking motos gratuito · Cocina aragonesa\n📧 Opción B: Hotel & SPA Monasterio de Boltaña · Tel: 974 508 000 · Antiguo monasterio s.XVII · SPA · 6 km de Aínsa',
-   res:null,cod:null,can:null,pag:null},
+ hotel:{ok:true,nm:'Hostal Pirineos · Aínsa',dir:'Avda. Sobrarbe 7, 22330 Aínsa',tel:'+34 974 500 008',web:'hostalpirineosainsa.com',map:'https://maps.google.com/?q=Hostal+Pirineos+Ainsa+Sobrarbe+7',
+   inf:'5 hab dobles · Desayuno buffet €10/p · 🏍 Garaje motos GRATUITO (avisar) · Pago en establecimiento · Señal €200 en mayo',
+   res:'Confirmado por email',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Bar+Urtau+Arties+Val+Aran',pr:'~15-20€/p',inf:'⭐ El MÁS RECOMENDADO en foros moteros del Val d\'Arán. Pinchos y barra. Arties, 4 km antes de Vielha. Bajando la Bonaigua, desvío izq. Cerrado lunes.'},
      {mo:'COMIDA — Opción B 🌟',nm:'Era Coquèla',loc:'Vielha, Arán',tel:'+34973641757',map:'https://maps.google.com/?q=Era+Coquela+Vielha+Lleida',pr:'~20-25€/p',inf:'Referente gastronómico del Valle de Arán. Olla aranesa, carnes, pescados. Centro de Vielha.'},
      {mo:'COMIDA — Opción C',nm:'Restaurant Rufus',loc:'Gessa (5 km de Vielha)',tel:'+34973648057',map:'https://maps.google.com/?q=Restaurant+Rufus+Gessa+Val+Aran',pr:'~18-30€/p',inf:'⭐ Recomendado en foros. Colmenillas, ciervo a la brasa, olla aranesa. Cierra 15:30h.'}],
  cen:[{mo:'CENA — Opción A 🏆 (si Hostal Pirineos)',nm:'Restaurante Callizo',loc:'Aínsa, Plaza Mayor',tel:null,map:'https://maps.google.com/?q=Restaurante+Callizo+Ainsa+Plaza+Mayor',pr:'~35-45€/p',inf:'⚠️ RESERVAR IMPRESCINDIBLE. Cocina aragonesa moderna: carnes de caza, setas, ternera de Broto.'},
-      {mo:'CENA — Opción B 🍷 (si Monasterio Boltaña)',nm:'Restaurante Marboré',loc:'Boltaña, Monasterio',tel:'+34974508000',map:'https://maps.google.com/?q=Hotel+Monasterio+Boltana+restaurante',pr:'~30-45€/p',inf:'Cenar sin mover las motos. Ambiente histórico s.XVII.'}],
+      ],
  als:[{t:'d',h:'⛽ BONAIGUA — DEPÓSITOS PEQUEÑOS EN ALERTA',b:'Alberto (14L) y Oriol (14,5L): LLENAR en bonÀrea Sort al 100%. No hay gasolineras entre Sort y Vielha (~150 km).'},
       {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío intenso en la cima. Capa térmica y cortavientos A MANO antes de subir, no en el fondo de la maleta.'}],
  foro:'En bmwmotos.com: "Ese tramo de Sort hasta Vielha y el Bonaigua es espectacular. Donde más disfruté de toda la Transpirenaica." El Restaurant Rufus en Gessa también muy recomendado por varios usuarios del foro.',
  nesp:null},
 
-{n:3,emo:'⭐',f:'Dom 21 junio',ti:'ETAPA REINA — Aínsa → Gavarnie → Tourmalet → Aubisque → Ochagavía',km:320,dest:'Ochagavía',
+{n:3,emo:'⭐',f:'Dom 21 junio',ti:'ETAPA REINA — Aínsa → Gavarnie → Tourmalet → Aubisque → Isaba',km:320,dest:'Isaba',
  res:'La etapa más épica. Portalet, Gavarnie (Patrimonio UNESCO), Tourmalet 2.115m, Aubisque 1.709m. Los tres puertos más míticos del Tour de Francia. ES DOMINGO — precaución con gasolineras en Francia.',
- mlat:42.926,mlon:-1.074,mnm:'Ochagavía',
+ mlat:42.861,mlon:-0.915,mnm:'Isaba',
  ruta:[{p:'Aínsa',n:'Salida 8:00h — depósito LLENO',d:'start'},
        {p:'Broto → Valle de Ordesa',n:'Vistas al macizo del Monte Perdido desde la N-260'},
        {p:'Puerto del Portalet 1.794m ★★',n:'Frontera España-Francia · Primera vez en Francia',d:'special'},
@@ -557,23 +564,23 @@ const D=[
        {p:'⛽ ARGÈLES-GAZOST — CRÍTICO',n:'TotalEnergies · CON PERSONAL · DOMINGO 7:00-20:30h ✅',d:'gas'},
        {p:"Col d'Aubisque 1.709m ★★★",n:'Carretera excavada en la roca · ESPECTACULAR · El más bonito del día',d:'special'},
        {p:'Col Pierre Saint-Martin → España',n:'Vuelta al Pirineo navarro'},
-       {p:'🏁 Ochagavía',n:'Llegada ~19:30-20:00h',d:'end'}],
+       {p:'🏁 Isaba',n:'Llegada ~19:30-20:00h',d:'end'}],
  gas:[{nm:'TotalEnergies — Argèles-Gazost (FRANCIA)',hr:'DOMINGO 7:00-20:30h ✅ Con personal',dir:'27 Av. des Pyrénées, Argèles-Gazost, Francia',tel:'+33562970871',map:'https://maps.google.com/?q=TotalEnergies+Argeles+Gazost+France',key:true,not:'⚠️ GASOLINERA CRÍTICA. La ÚNICA con personal antes del Aubisque. Llenar AL 100% sin excusas. Las automáticas cobran ~100€ provisional (se devuelve) y requieren tarjeta con PIN físico.'}],
- hotel:{ok:true,nm:'Silken Puerta de Irati ⭐⭐⭐ · Ochagavía',dir:'C/ Zatalarrañas 2, 31680 Ochagavía',tel:'+34848640089',web:'https://www.hoteles-silken.com/es/hotel-puerta-irati/',map:'https://maps.google.com/?q=Silken+Puerta+de+Irati+Ochagavia+Navarra',
-   inf:'Check-in 15:00-21:00 · Check-out 07:00-12:00 · Parking público gratuito en inmediaciones · ⚠️ Motos NO entran habitaciones (taquillas de pago)',res:'Nº 6079.733.380 · PIN: 8934',cod:null,
-   can:'Cancelación gratuita hasta 14/06/2026 ⚠️ Política grupos Booking (5 hab)',pag:'💳 Pedro paga el 17/06 con Santander · 5 hab × €125 = €625'},
+ hotel:{ok:true,nm:'Casa Lola ⭐⭐ · Isaba',dir:'Mendigatxa 17, 31417 Isaba (Navarra)',tel:'+34948893012',web:'hostal-lola.com',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa',
+   inf:'2 hab dobles €82,80 · 3 hab individuales €90 · Desayuno buffet €16/p · Pago con tarjeta al reservar',res:'Contacto: Llarina Fuente · hostallola@gmail.com',cod:null,
+   can:'Cancelación gratuita hasta 01/06/2026',pag:'💳 Datos tarjeta al confirmar · Total €547,60 (hab+desayuno)'},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Hôtel Le Taillon',loc:'Gavarnie, Francia',tel:'+33562928148',map:'https://maps.google.com/?q=Bar+Hotel+Le+Taillon+Gavarnie',pr:'~20-30€/p',inf:'⭐ Google 4.9 · Terraza con vistas al Circo. Cocina de montaña. Personal muy amable. ~13:30h.'},
       {mo:'COMIDA — Opción B 🍕',nm:'Restaurant le Mourgat Oxygène',loc:'Gavarnie, Francia',tel:'+33562928144',map:'https://maps.google.com/?q=Restaurant+Mourgat+Oxygene+Gavarnie',pr:'~15-20€/p',inf:'⭐ Tripadvisor 4.4 · Pizzas, cocina francesa. Mejor relación calidad-precio.'}],
- cen:[{mo:'CENA 🦅',nm:'Bares del pueblo — Ochagavía',loc:'Ochagavía, Navarra',tel:null,map:'https://maps.google.com/?q=Ochagavia+Navarra+restaurante',pr:'~15-20€/p',inf:'Las reseñas moteras recomiendan los bares del pueblo. Cocina navarra: chistorra, queso Roncal, cordero. Pueblo precioso para pasear después de la etapa.'}],
+ cen:[{mo:'CENA 🏡',nm:'Restaurante Casa Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa',pr:'~20-25€/p',inf:'El restaurante del propio hostal. Tripadvisor 4.5★ · Cocina navarra de mercado: crepe de espinacas con queso Roncal, pochas a la navarra, solomillo de ternera, cordero. Trato excelente. Pedir mesa al reservar la habitación.'}],
  als:[{t:'d',h:'🇫🇷 DOMINGO EN FRANCIA — GASOLINERAS',b:'Las automáticas requieren tarjeta con PIN físico y cobran ~100€ provisional. ÚNICA gasolinera atendida: TotalEnergies Argèles-Gazost (hasta 20:30h). NO saltársela bajo ningún concepto.'},
       {t:'w',h:'⭐ LA ETAPA MÁS ÉPICA — SALIDA PUNTUAL',b:'320 km · 3 grandes puertos · Francia y España. Salir a las 8:00h en punto es fundamental para no llegar de noche.'}],
  foro:'En bmwmotos.com: "El Aubisque es el más bonito del día: la carretera excavada en la roca es espectacular. El orden Portalet → Tourmalet → Aubisque es el correcto, de menor a mayor impacto." Y sobre el Tourmalet: "En la cima hay tienda y bar, merece la pena parar 20 minutos."',
  nesp:{ti:'🦅 CIRCO DE GAVARNIE — Patrimonio UNESCO',tx:'Las motos se dejan aparcadas a la entrada del pueblo. ¡NO se puede acceder en moto al Circo! La cascada más alta de Francia está a ~4,5 km andando. Con solo 30-45 min de paseo ya hay vistas espectaculares. Llevar ropa cómoda en la mochila si queréis caminar. Vale muchísimo la pena.'}},
 
-{n:4,emo:'🏁',f:'Lun 22 junio',ti:'Ochagavía → Selva de Irati → Baztán → Faro de Higuer',km:200,dest:'Hondarribia',
+{n:4,emo:'🏁',f:'Lun 22 junio',ti:'Isaba → Selva de Irati → Baztán → Faro de Higuer',km:200,dest:'Hondarribia',
  res:'El remate perfecto. Hayedo de Irati, Roncesvalles, Valle del Baztán, Cantábrico. La llegada al final de la Transpirenaica.',
  mlat:43.363,mlon:-1.797,mnm:'Hondarribia',
- ruta:[{p:'Ochagavía',n:'Salida 9:00h',d:'start'},
+ ruta:[{p:'Isaba',n:'Salida 9:00h',d:'start'},
        {p:'⛽ Petronor — Urzainqui',n:'8:00-21:00h · ÚNICA en 100 km — NO saltársela',d:'gas'},
        {p:'Selva de Irati ★★',n:'El hayedo más grande de Europa — parada imprescindible',d:'special'},
        {p:'Roncesvalles ★',n:'Camino de Santiago · Bosques de hayas en junio',d:'special'},
@@ -916,6 +923,10 @@ function addCal(title,date,desc,fn){
  var a=document.createElement('a');a.href=u;a.download=(fn||'trip')+'.ics';a.click();URL.revokeObjectURL(u);
 }
 
+function togglePagoPedro(i){
+  if(curP&&curP.pagos)curP.pagos[i].ok=!curP.pagos[i].ok;
+  renderPagos();
+}
 function togglePago(i){
  if(curP.esPedro)curP.cobros[i].ok=!curP.cobros[i].ok;
  else curP.pagos[i].ok=!curP.pagos[i].ok;
@@ -925,23 +936,39 @@ function togglePago(i){
 function renderPagos(){
  let html='';
  if(curP.esPedro){
-  const tot=1409.62,suParte=277.66;
+  const tot=1233.56,suParte=298.66;
   let cobrado=0;curP.cobros.forEach(c=>{if(c.ok)cobrado+=c.t;});
   const pend=(tot-suParte-cobrado).toFixed(2);
   const pendCol=parseFloat(pend)>0?'var(--red)':'var(--grn)';
   const pendTx=parseFloat(pend)>0?'⏳ Te deben €'+pend.replace('.',','):'✅ ¡Todo cobrado!';
 
   html+=`<div class="pp"><div class="pph pph-g"><div class="ppico">🏦</div>
-   <div><div class="ppt">PANEL TESORERO — PEDRO</div><div class="pps">Total adelantado: €1.409,62 · Tu parte: €277,66</div></div></div>
+   <div><div class="ppt">PANEL TESORERO — PEDRO</div><div class="pps">Total adelantado: €1.409,62 · Tu parte: €298.66</div></div></div>
    <div style="overflow-x:auto"><table class="ctab">
-    <tr><th>Piloto</th><th>Beri</th><th>Brases</th><th>Silken</th><th>Total</th><th>✓</th></tr>`;
+    <tr><th>Piloto</th><th>Beri</th><th>Brases</th><th>Aínsa señal</th><th>Casa Lola</th><th>Total</th><th>✓</th></tr>`;
   curP.cobros.forEach((c,i)=>{
    const tx=c.ok?'text-decoration:line-through;color:var(--mu)':'';
-   html+=`<tr style="${tx}"><td>${c.p}</td><td>€${c.b.toFixed(2).replace('.',',')}</td><td>€${c.br.toFixed(2).replace('.',',')}</td><td>€${c.s.toFixed(2).replace('.',',')}</td><td><strong>€${c.t.toFixed(2).replace('.',',')}</strong></td><td><input type="checkbox" style="width:16px;height:16px;accent-color:var(--grn);cursor:pointer" ${c.ok?'checked':''} onchange="togglePago(${i})"></td></tr>`;
+   html+=`<tr style="${tx}"><td>${c.p}</td><td>€${c.b.toFixed(2).replace('.',',')}</td><td>€${c.br.toFixed(2).replace('.',',')}</td><td>€${(c.a||0).toFixed(2).replace('.',',')}</td><td>€${c.s.toFixed(2).replace('.',',')}</td><td><strong>€${c.t.toFixed(2).replace('.',',')}</strong></td><td><input type="checkbox" style="width:16px;height:16px;accent-color:var(--grn);cursor:pointer" ${c.ok?'checked':''} onchange="togglePago(${i})"></td></tr>`;
   });
   html+=`</table></div>
    <div class="ppf"><div><div class="ppfl">Pendiente de cobrar</div><div class="ppfv" style="color:${pendCol}">${pendTx}</div></div></div>
   </div>`;
+
+  // Pagos propios de Pedro
+  html+=`<div class="pp"><div class="pph pph-g"><div class="ppico">💳</div>
+   <div><div class="ppt">MIS PAGOS — PEDRO</div><div class="pps">Lo que tú pagas de tu bolsillo</div></div></div>`;
+  curP.pagos.forEach((p,i)=>{
+   const ok=p.ok;
+   const estilo=ok?'text-decoration:line-through;color:var(--mu)':'';
+   const etiqueta=p.directo?'<span style="font-size:11px;color:#8faa6a;margin-left:6px">pago directo</span>':'';
+   html+=`<div class="rrow" style="${ok?'background:#edf7ef':''}">
+    <span style="font-size:18px">${ok?'✅':'💳'}</span>
+    <span style="flex:1;${estilo}">${p.h} — <strong>€${p.v.toFixed(2).replace('.',',')}</strong>${etiqueta}</span>
+    <input type="checkbox" style="width:20px;height:20px;accent-color:var(--grn);cursor:pointer" ${ok?'checked':''}
+     onchange="togglePagoPedro(${i})">
+   </div>`;
+  });
+  html+=`</div>`;
 
   // Recordatorios
   html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">📅</div>
@@ -951,8 +978,10 @@ function renderPagos(){
    {ico:'🚫',tx:'Cancelación Hotel Beri — hasta 11/06/2026',bg:false,date:'20260611',desc:'Limite cancelacion Hotel Beri'},
    {ico:'✅',tx:'Hotel Les Brases PAGADO el 08/03/2026 con Santander (€340)',bg:'#edf7ef',date:null},
    {ico:'🚫',tx:'Cancelación Les Brases — hasta 17/06/2026 antes 12:00h',bg:false,date:'20260617',desc:'Limite cancelacion Les Brases'},
-   {ico:'💳',tx:'Pagar Silken Puerta de Irati — 17/06/2026 con Santander (€625)',bg:false,date:'20260617',desc:'Pagar Silken Ochagavia'},
-   {ico:'🚫',tx:'Cancelación Silken — hasta 14/06/2026 ⚠️',bg:false,date:'20260614',desc:'Limite cancelacion Silken'},
+   {ico:'💳',tx:'Cobrar señal Aínsa — €20 dobles / €40 individuales (antes 31/03) · Total €200 para pagar al Hostal Pirineos en mayo',bg:false,date:'20260331',desc:'Cobrar señal Ainsa de los pilotos antes 31/03'},
+   {ico:'🚫',tx:'Cancelación Hostal Pirineos Aínsa — hasta 10/06/2026',bg:false,date:'20260610',desc:'Limite cancelacion Ainsa'},
+   {ico:'💳',tx:'Confirmar Casa Lola Isaba — dar datos tarjeta · Total hab+desayuno €547,60',bg:false,date:'20260601',desc:'Confirmar Casa Lola Isaba datos tarjeta'},
+   {ico:'🚫',tx:'Cancelación Casa Lola — hasta 01/06/2026',bg:false,date:'20260601',desc:'Limite cancelacion Casa Lola Isaba'},
    {ico:'✅',tx:'Hotel Jauregui CONFIRMADO (SYN2774-60096) · Pago directo en el hotel · €660,25',bg:'#edf7ef',date:null},
    {ico:'🚫',tx:'Cancelación Jauregui — hasta 19/06/2026',bg:false,date:'20260619',desc:'Limite cancelacion Hotel Jauregui Hondarribia'}
   ];
@@ -992,7 +1021,7 @@ function renderPagos(){
   <div class="rrow"><span>✅</span><div><strong>Noche 0 · 18/06 · Llançà</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Beri · Nº 6331.570.462 · PIN 9967 · Cancelación hasta 11/06</span></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 1 · 19/06 · Sort</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Les Brases · Loc 20528 · Código acceso: <strong>1234V</strong> · Cancelación hasta 17/06</span></div></div>
   <div class="rrow" style="background:#fdf6e3"><span>⏳</span><div><strong>Noche 2 · 20/06 · Aínsa</strong><br><span style="font-size:11px;color:var(--mu)">Pendiente confirmar (Hostal Pirineos u Opción B)</span></div></div>
-  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Ochagavía</strong><br><span style="font-size:11px;color:var(--mu)">Silken Puerta de Irati · Nº 6079.733.380 · PIN 8934 · Cancelación hasta 14/06 ⚠️</span></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Isaba</strong><br><span style="font-size:11px;color:var(--mu)">Casa Lola · Isaba · Cancelación hasta 01/06/2026 · Pendiente confirmar con tarjeta</span></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 4 · 22/06 · Hondarribia</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Jauregui ⭐⭐⭐ · Loc SYN2774-60096 · PIN UZGUQHXZ4X · Cancelación hasta 19/06 · Pago en hotel €660,25 · Desayuno incluido</span></div></div>
  </div>`;
 
@@ -1074,7 +1103,7 @@ function renderRuta(){
     {ico:'🏰',nm:'Casco medieval de Aínsa',det:'<span class="tt">🏨 Noche Día 2</span><span class="tm">⏱ Llegada ~18h</span> Plaza mayor del siglo XI rodeada de arcadas. Pasear antes de cenar. Impresionante al atardecer.',mapq:'Plaza Mayor Ainsa Huesca'},
    ],
    meteo:{alt:'2.072m',tmin:'7°C',tmax:'25°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
-  {dia:'DÍA 3 · 21 Jun',tit:'Aínsa → Portalet → Tourmalet → Aubisque → Ochagavía',km:'320 km · ~6-7h con paradas',tipo:'🏆 LA ETAPA REINA',
+  {dia:'DÍA 3 · 21 Jun',tit:'Aínsa → Portalet → Tourmalet → Aubisque → Isaba',km:'320 km · ~6-7h con paradas',tipo:'🏆 LA ETAPA REINA',
    stars:[{t:'red',l:'🏆 Día épico'},{t:'',l:'🇫🇷 Francia'},{t:'ora',l:'🚴 Ciclistas · Salida 7:30h'}],
    tips:[
     {ico:'⏰',tx:'<strong>SALIDA 7:30-8:00h — obligatorio.</strong> Los puertos del Tour de Francia. En junio hay menos tráfico, pero cuanto antes subas el Tourmalet, más lo disfrutas sin caravanas.'},
@@ -1095,10 +1124,10 @@ function renderRuta(){
     {ico:'⛽',nm:'Gasolinera Argèles-Gazost',det:'<span class="tt">⛽ REPOSTAR TODOS</span><span class="tm">⏱ Antes del Aubisque</span> Última gasolinera antes de 100 km de montaña. Obligatorio para Alberto 🐛.',mapq:'gasolinera Argeles-Gazost France'},
    ],
    meteo:{alt:'2.115m',tmin:'5°C',tmax:'22°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
-  {dia:'DÍA 4 · 22 Jun',tit:'Ochagavía → Irati → Baztán → Hondarribia',km:'200 km · ~4-5h con paradas',tipo:'Navarra profunda + Meta final 🏁',
+  {dia:'DÍA 4 · 22 Jun',tit:'Isaba → Irati → Baztán → Hondarribia',km:'200 km · ~4-5h con paradas',tipo:'Navarra profunda + Meta final 🏁',
    stars:[{t:'',l:'🌲 Selva de Irati'},{t:'',l:'🏁 Meta final'},{t:'',l:'🎉 Noche de San Joan'}],
    tips:[
-    {ico:'🌲',tx:'<strong>Selva de Irati:</strong> el 2º hayedo-abetal más extenso de Europa. NA-2011 desde Ochagavía: curvas suaves entre hayas. Aparcar en Orbaitzeta y caminar 20 min al embalse de Irabia.'},
+    {ico:'🌲',tx:'<strong>Selva de Irati:</strong> el 2º hayedo-abetal más extenso de Europa. NA-2011 desde Isaba: curvas suaves entre hayas. Aparcar en Orbaitzeta y caminar 20 min al embalse de Irabia.'},
     {ico:'⛽',tx:'<strong>ÚNICA gasolinera en 100 km:</strong> Petronor Urzainqui (NA-137 km 28,7). Repostar aquí antes de entrar en montaña navarra.'},
     {ico:'🏡',tx:'<strong>Valle del Baztán:</strong> Elizondo es la capital. Casas blasonadas, chocolate artesano, <em>txuri ta beltz</em> (morcilla navarra). 30 min de parada bien invertidos.'},
     {ico:'🏁',tx:'<strong>Faro de Higuer:</strong> la meta oficial. Dejar motos abajo y subir andando 10 min. Ritual: foto con el Cantábrico y agua del mar en la bota.'},
@@ -1107,7 +1136,7 @@ function renderRuta(){
    pois:[
     {ico:'🌲',nm:'Embalse de Irabia — Selva de Irati',det:'<span class="tm">⏱ ~9:30h · 20 min andando desde parking</span> El corazón de la Selva de Irati. Hayedos y abetos centenarios. Parking de pago ~5€.',mapq:'Embalse Irabia Selva Irati Navarra'},
     {ico:'⛽',nm:'Petronor Urzainqui — ÚNICA gasolinera',det:'<span class="tt">⛽ OBLIGATORIO</span> NA-137 km 28,7, Urzainqui, Navarra. No hay otra en 100 km de montaña navarra.',mapq:'Petronor Urzainqui Navarra'},
-    {ico:'✝️',nm:'Roncesvalles — Puerto histórico',det:'<span class="tt">⭐ Imprescindible</span><span class="tm">⏱ Desvío 20 min desde Ochagavía</span> Colegiata románica del siglo XII, punto del Camino de Santiago. Citado en todos los foros como parada obligatoria. Ambiente único.',mapq:'Roncesvalles Colegiata Navarra'},
+    {ico:'✝️',nm:'Roncesvalles — Puerto histórico',det:'<span class="tt">⭐ Imprescindible</span><span class="tm">⏱ Desvío 20 min desde Isaba</span> Colegiata románica del siglo XII, punto del Camino de Santiago. Citado en todos los foros como parada obligatoria. Ambiente único.',mapq:'Roncesvalles Colegiata Navarra'},
     {ico:'🏡',nm:'Elizondo — Valle del Baztán',det:'<span class="tm">⏱ ~12:30h · 30 min parada</span> Capital del Baztán. Chocolate Txokola, morcilla txuri ta beltz, queso Idiazabal. Caserío medieval.',mapq:'Elizondo Valle Baztan Navarra'},
     {ico:'🏁',nm:'Faro de Higuer — META FINAL 🏁',det:'<span class="tt">🏁 ¡LLEGADA!</span><span class="tm">⏱ ~16:00-17:00h</span> El extremo noroeste del Pirineo. Dejar motos en el aparcamiento y subir 10 min a pie. Foto de grupo obligatoria.',mapq:'Faro Cabo Higuer Hondarribia'},
    ],
@@ -1238,25 +1267,25 @@ function buildGmapsUrl(d, almIdx){
       'Puerto+de+la+Bonaigua+Lleida',            // puerto 2.072m
       qComida,                                   // comida Arties (ANTES de Vielha)
       'Vielha+Lleida',                           // Vielha: girar sur por N-230
-      'Ainsa+Huesca'                             // destino
+      'Hostal+Pirineos+Ainsa+Sobrarbe+7'         // destino
     ],
-    // ── DÍA 3 REINA ── Aínsa → Portalet → Gavarnie(comida) → Tourmalet → Argèles(gas) → Aubisque → Ochagavía
+    // ── DÍA 3 REINA ── Aínsa → Portalet → Gavarnie(comida) → Tourmalet → Argèles(gas) → Aubisque → Isaba
     // ORDEN GEOGRÁFICO REAL verificado:
     // Portalet → bajada a Gavarnie (circo) → subir Tourmalet desde Luz-St-Sauveur
-    // → bajar a Argèles-Gazost (gas) → Soulor → Aubisque → bajar a Ochagavía
+    // → bajar a Argèles-Gazost (gas) → Soulor → Aubisque → Isaba
     3: [
-      'Ainsa+Huesca',                            // origen: salen del hotel
+      'Hostal+Pirineos+Ainsa+Sobrarbe+7',        // origen: salen del hotel
       'Puerto+de+El+Portalet+Huesca',            // primer puerto (2.214m)
       qComida,                                   // comida Gavarnie (ANTES del Tourmalet)
       'Col+du+Tourmalet+France',                 // Tourmalet 2.115m (sube desde Luz-St-Sauveur)
       'TotalEnergies+Argeles+Gazost+France',     // gas CRÍTICA (después de bajar Tourmalet)
       'Col+d%27Aubisque+France',                 // Aubisque 1.709m
-      'Silken+Puerta+de+Irati+Ochagavia+Navarra'// destino
+      'Casa+Lola+Isaba+Navarra+Mendigatxa+17'   // destino
     ],
-    // ── DÍA 4 ── Ochagavía → Irati → Roncesvalles → Urzainqui(gas) → Elizondo(comida) → Hondarribia
+    // ── DÍA 4 ── Isaba → Irati → Roncesvalles → Urzainqui(gas) → Elizondo(comida) → Hondarribia
     // Urzainqui está entre Roncesvalles y Elizondo en la ruta real (N-135 sur)
     4: [
-      'Silken+Puerta+de+Irati+Ochagavia+Navarra',// origen: salen del hotel
+      'Casa+Lola+Isaba+Navarra+Mendigatxa+17',   // origen: salen del hotel
       'Orbaitzeta+Navarra',                      // entrada Bosque de Irati
       'Roncesvalles+Navarra',                    // colegiata s.XII (20min)
       'Petronor+Urzainqui+Navarra',              // gas ÚNICA en 100km
