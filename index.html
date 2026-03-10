@@ -446,145 +446,153 @@ PI.forEach(p=>{
 // ━━━ DÍAS ━━━
 const D=[
 {n:0,emo:'🌅',f:'Jue 18 junio',ti:'Traslado previo — Inicio de la aventura',km:165,dest:'Llançà',
- res:'Salida en la tarde desde el Área de Servicio Montcada La Pausa (C-33 km 82,5). Toda la pandilla junta. Llegada de noche a Llançà por la Costa Brava.',
+ res:'Salida en la tarde desde el Área de Servicio Montcada La Pausa. Figueres, Cap de Creus, Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
  mlat:42.362,mlon:3.154,mnm:'Llançà',
  ruta:[{p:'⭐ SALIDA — Área Montcada La Pausa',n:'C-33 km 82,5 sentido Norte · Todos quedan aquí · 16-18h',d:'start'},
-       {p:'Figueres',n:'⛽ Avanza Oil (6-22h) — económica, de camino',d:'gas'},
-       {p:'Roses → Cadaqués',n:'Costa Brava'},
+       {p:'Figueres',n:'Parada breve si conviene'},
+       {p:'Cap de Creus',n:'📸 Foto de grupo — el punto más oriental de España',d:'special'},
+       {p:'Cadaqués',n:'Costa Brava icónica'},
+       {p:'El Port de la Selva',n:'Pueblo pesquero'},
+       {p:'Monestir de Sant Pere de Rodes',n:'Vistas espectaculares — parada opcional',d:'special'},
        {p:'🏁 Llançà — Hotel Beri',n:'Llegar de noche · Cenar y descansar',d:'end'}],
- gas:[{nm:'Área Montcada La Pausa',hr:'24h',dir:'C-33 km 82,5, Montcada i Reixac',tel:'+34935640681',map:'https://maps.google.com/?q=Area+Servicio+Montcada+La+Pausa+C33',key:true,not:'Punto de encuentro de TODOS. Repostar aquí.'},
-      {nm:'Avanza Oil — Figueres',hr:'6:00-22:00h',dir:'Avinguda de Roses 5-7, Figueres',tel:'+34972716949',map:'https://maps.google.com/?q=Avanza+Oil+Figueres',key:false,not:'Económica, de camino.'}],
- hotel:{ok:true,nm:'Hotel Beri ⭐⭐ · Llançà',desayuno:true,dir:'Carrer de la Creu, 16, 17490 Llançà',tel:'+34972380198',web:'https://www.hotel-beri.com/es/',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
-   inf:'Check-in desde 14:00 · Check-out hasta 11:00 · Parking gratuito 🏍 · Desayuno incluido',res:'Nº 6331.570.462 · PIN: 9967',cod:null,
-   can:'Cancelación gratuita hasta 11/06/2026',pag:'💳 Pedro paga el 09/06 con Revolut'},
+ gas:[{nm:'Área Montcada La Pausa',hr:'24h',dir:'C-33 km 82,5, Montcada i Reixac',tel:'+34935640681',map:'https://maps.google.com/?q=Area+Servicio+Montcada+La+Pausa+C33',key:true,not:'Punto de salida de todos. Llenar antes de salir.'}],
+ hotel:{ok:true,nm:'Hotel Beri · Llançà',desayuno:true,dir:'Carrer Castelló, 4, 17490 Llançà',tel:'+34972380108',web:'hotelberi.com',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
+   inf:'Llegada de noche · Parking motos disponible',
+   res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:'Cancelación gratuita hasta 11/06/2026',pag:null},
  alm:[],
- cen:[{mo:'CENA — Opción A 🏆',nm:'Hostal Restaurant Lara',loc:'Llançà',tel:'+34620797619',map:'https://maps.google.com/?q=Hostal+Restaurant+Lara+Llanca',pr:'~20-30€/p',inf:'⭐4.3 · Cocina mediterránea: pulpo, carnes a la brasa. ⚠️ Reservar mesa para 7.'},
-      {mo:'CENA — Opción B 🌊',nm:'Restaurant Llançà Port',loc:'Llançà',tel:'+34687966646',map:'https://maps.google.com/?q=Restaurant+Llanca+Port+Passeig+Maritim',pr:'~25-35€/p',inf:'⭐4.0 · Terraza junto al mar. Arroces y pescados frescos.'},
-      {mo:'CENA — Opción C 🍕 (si llegan muy tarde)',nm:"Pizzería L'Italiana",loc:'Llançà',tel:null,map:'https://maps.google.com/?q=Pizzeria+L+Italiana+Llanca',pr:'~12-18€/p',inf:'Informal y económica.'}],
- als:[{t:'i',h:'📍 PUNTO DE ENCUENTRO — TODOS',b:'Área de Servicio Montcada La Pausa, C-33 km 82,5 sentido Norte. Quedar aquí antes de salir juntos.'}],
- foro:null,nesp:null},
-
-{n:1,emo:'🏛️',f:'Vie 19 junio',ti:'Cap de Creus → Sort',km:318,dest:'Sort',
- res:'Primera gran etapa. Foto ritual en el cabo más oriental de España. Costa Brava, Besalú medieval, Collada de Toses, entrada al Pallars Sobirà.',
- mlat:42.419,mlon:1.131,mnm:'Sort',
- ruta:[{p:'🌅 Cap de Creus — FOTO RITUAL',n:'El inicio oficial de la Transpirenaica · El punto más oriental de la Península',d:'start'},
-       {p:'⛽ Repsol — Roses',n:'Repostar OBLIGATORIO antes de entrar a montaña · 24h',d:'gas'},
-       {p:'BESALÚ ★',n:'Parada 30-40 min · Pueblo medieval s.XII imprescindible · Aparcar junto al río',d:'special'},
-       {p:'Olot → Ripoll → Sant Joan de les Abadesses',n:''},
-       {p:'Collada de Toses 1.800m ★',n:'Primer gran puerto · Vistas espectaculares a la Cerdanya',d:'special'},
-       {p:'🍽️ La Seu d\'Urgell — COMIDA ~13:30h',n:'Parador o La Glorieta',d:'food'},
-       {p:'Puigcerdà → Bellver → Organyà → N-260',n:'Uno de los tramos más bonitos de Cataluña'},
-       {p:'⛽ bonÀrea — Sort',n:'LLENAR AL 100% · 24h',d:'gas'},
-       {p:'🏁 Sort',n:'Llegada ~18:00h · Pueblo aventurero en el Noguera Pallaresa',d:'end'}],
- gas:[{nm:'Repsol — Roses',hr:'24h',dir:'C-260 km 42.5, Roses',tel:'+34972256467',map:'https://maps.google.com/?q=Gasolinera+Repsol+Roses',key:true,not:'⚠️ OBLIGATORIO antes de la montaña. Etapa de 318 km.'},
-      {nm:'bonÀrea — Sort',hr:'24h',dir:'Polígon Els Salancons, Sort',tel:'+34900899089',map:'https://maps.google.com/?q=bonArea+Sort+Lleida',key:true,not:'⚠️ Repostar al llegar. Mañana viene el Bonaigua (2.072m).'}],
- hotel:{ok:true,nm:'Hotel Les Brases ⭐⭐⭐ · Sort',desayuno:true,dir:'Avda. de la Generalitat, 27, 25560 Sort',tel:'+34973621071',web:'https://lesbrases.com',map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',
-   inf:'Check-in desde 15:00 · Check-out hasta 12:00 · Desayuno incluido',res:'Loc: 20528',cod:'1234V',
-   can:'Cancelación gratuita hasta 17/06/2026 antes 12:00h',pag:'✅ PAGADO por Pedro el 08/03/2026 con Santander (€340)'},
- alm:[{mo:'COMIDA — Opción A 🏆',nm:'Restaurante Parador de La Seu d\'Urgell',loc:'La Seu d\'Urgell',tel:'+34973350000',map:'https://maps.google.com/?q=Parador+La+Seu+d+Urgell',pr:'~20-25€/p',inf:'Cocina pirenaica catalana. Embutidos artesanos, ternera del Pirineo. Parking fácil.'},
-      {mo:'COMIDA — Opción B 🌿',nm:'Restaurant La Glorieta',loc:'La Seu d\'Urgell',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+La+Glorieta+La+Seu+d+Urgell',pr:'~15-18€/p',inf:'Cocina km0, productos de huerto propio. Menú del día. Informal.'}],
- cen:[{mo:'CENA — Opción A 🥩',nm:'Can Punyetes',loc:'Sort',tel:'+34973621451',map:'https://maps.google.com/?q=Can+Punyetes+Sort+Lleida',pr:'~20-30€/p',inf:'⭐4.4 · Carnes a la brasa. ⚠️ NO acepta reservas — llegar antes de las 21h.'},
-      {mo:'CENA — Opción B 🏨',nm:'Restaurant Les Brases (en el hotel)',loc:'Sort',tel:'+34973621071',map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',pr:'~25-35€/p',inf:'Sin mover las motos. Abre 20:00-22:00h. Reservar al hacer check-in.'}],
- als:[{t:'i',h:'📸 FOTO DEL GRUPO — Cap de Creus',b:'El inicio OFICIAL de la ruta. Este es el momento para la foto histórica del grupo.'},
-      {t:'w',h:'⛽ COMBUSTIBLE — ETAPA LARGA (318 km)',b:'Repostar en Roses OBLIGATORIO. Depósitos pequeños (Alberto 14L, Oriol 14,5L) en alerta máxima.'}],
- foro:'Los foreros de bmwmotos.com coinciden: "La Collada de Toses es espectacular, y la N-260 entre La Seu d\'Urgell y Sort está entre las mejores carreteras de Cataluña. No te saltes Besalú aunque llegues tarde."',
+ cen:[{mo:'CENA',nm:'Ca la Herminda',loc:'Port de la Selva',tel:'+34972387975',map:'https://maps.google.com/?q=Ca+la+Herminda+Port+de+la+Selva',pr:'~25-35€/p',inf:'Arroces y mariscos. Referente de la Costa Brava.'}],
+ als:[],
+ foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
 
-{n:2,emo:'🏔️',f:'Sáb 20 junio',ti:'Sort → Bonaigua → Vielha → Aínsa',km:300,dest:'Aínsa',
- res:'Puerto Bonaigua a 2.072m, Valle de Arán, descenso al Sobrarbe aragonés. ~300 km con los paisajes más variados del Pirineo.',
+{n:1,emo:'🏛️',f:'Vie 19 junio',ti:'Llançà → Besalú → Collada de Toses → Sort',km:380,dest:'Sort',
+ res:'Primera gran etapa pirenaica. Besalú medieval, Camprodon, Collada de Toses, Puigcerdà, La Seu d\'Urgell y el Port del Cantó hasta Sort.',
+ mlat:42.403,mlon:1.133,mnm:'Sort',
+ ruta:[{p:'Hotel Beri — Llançà',n:'Salida 8:00h',d:'start'},
+       {p:'Vilajuïga → Besalú',n:'Pueblo medieval imprescindible — parada 30 min',d:'special'},
+       {p:'Olot → Camprodon',n:'Garrotxa y Ripollès'},
+       {p:'Ribes de Freser → Collada de Toses',n:'Puerto de Toses — primer puerto del viaje'},
+       {p:'⛽ Repsol — Puigcerdà',n:'CR N-152 pk 171 · Llenar para La Seu y Sort',d:'gas'},
+       {p:'Ruta 260 — Prullans',n:'Carretera espectacular hacia La Seu'},
+       {p:'🍽️ La Seu d\'Urgell — COMIDA ~13:30h',n:'Parada para comer antes del Cantó',d:'food'},
+       {p:'⛽ Repsol — La Seu d\'Urgell',n:'Avinguda Valira 25 · Llenar antes del Cantó',d:'gas'},
+       {p:'Port del Cantó',n:'Puerto de montaña con vistas al Pallars',d:'special'},
+       {p:'🏁 Sort — Hotel Les Brases',n:'Llegada ~18:30h',d:'end'}],
+ gas:[{nm:'Repsol — Puigcerdà',hr:'24h',dir:'CR N-152 km 171, Puigcerdà',tel:null,map:'https://maps.google.com/?q=Area+Servei+Puigcerda+Gasolinera+Repsol+N152',key:true,not:'Llenar bien antes de entrar en la Cerdanya y el Pallars.'},
+      {nm:'Repsol — La Seu d\'Urgell',hr:'7:00-22:00h',dir:'Avinguda Valira 25, La Seu d\'Urgell',tel:null,map:'https://maps.google.com/?q=Repsol+La+Seu+d+Urgell+Avinguda+Valira',key:true,not:'Llenar obligatorio antes del Port del Cantó. Sin gasolinera entre La Seu y Sort.'}],
+ hotel:{ok:true,nm:'Hotel Les Brases · Sort',desayuno:true,dir:'Sort, Lleida',tel:'+34973620089',web:null,map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',
+   inf:'Loc: 20528 · Código: 1234V · Cancelación hasta 17/06/2026 · PAGADO €340',
+   res:'Confirmado',cod:'20528',can:'Cancelación gratuita hasta 17/06/2026',pag:'Pagado €340'},
+ alm:[{mo:'COMIDA — La Seu d\'Urgell 🍽️',nm:'Restaurante en La Seu d\'Urgell',loc:'La Seu d\'Urgell, Alt Urgell',tel:null,map:'https://maps.google.com/?q=restaurantes+La+Seu+d+Urgell',pr:'~15-20€/p',inf:'Parada para comer antes del Port del Cantó. La Seu tiene buenas opciones en el centro.'}],
+ cen:[{mo:'CENA — Sort',nm:'Lo Pigal Casa Kiko',loc:'Sort, Lleida',tel:null,map:'https://maps.google.com/?q=Lo+Pigal+Casa+Kiko+Sort+Lleida',pr:'~20-25€/p',inf:'Referente gastronómico de Sort. Cocina tradicional del Pallars.'}],
+ als:[],
+ foro:'La Collada de Toses y el Port del Cantó son dos joyas poco conocidas. Besalú merece la parada.',
+ nesp:null},
+
+{n:2,emo:'🏔️',f:'Sáb 20 junio',ti:'Sort → Bonaigua → Vielha → Peyresourde → Aínsa',km:350,dest:'Aínsa',
+ res:'Puerto Bonaigua a 2.072m, Valle de Arán, Col de Peyresourde en Francia, túnel Bielsa-Aragnouet. Una etapa con frontera incluida.',
  mlat:42.419,mlon:0.140,mnm:'Aínsa',
  ruta:[{p:'Sort',n:'Salida 8:00h',d:'start'},
-       {p:'⛽ bonÀrea Sort — CRÍTICO',n:'LLENAR AL 100% · Sin gasolineras fiables hasta Vielha',d:'gas'},
-       {p:'Gerri de la Sal → La Pobla de Segur',n:''},
-       {p:'Puerto Bonaigua 2.072m ★★★',n:'"Mejor que el Stelvio" — Parar 20 min · Capa térmica A MANO · Posible gravilla',d:'special'},
-       {p:'Salardú → Vielha',n:'Valle de Arán — paisaje único en España'},
-       {p:'🍽️ Arties — COMIDA ~13:30h',n:'Bar Urtau · El favorito de los moteros del Arán. 4 km antes de Vielha.',d:'food'},
-       {p:'⛽ Repsol — Vielha',n:'Llenar para el Pirineo aragonés · 7-23h',d:'gas'},
-       {p:'Túnel de Vielha → N-230 Sur → N-260',n:'Carretera mítica del Pirineo aragonés'},
-       {p:'🏁 Aínsa',n:'Llegada ~18:30h · Uno de los pueblos más bonitos de España',d:'end'}],
+       {p:'⛽ bonÀrea Sort — CRÍTICO',n:'LLENAR AL 100% · Sin gasolineras fiables hasta Vielha (~150 km)',d:'gas'},
+       {p:'Puerto Bonaigua 2.072m ★★★',n:'Capa térmica A MANO · Posible gravilla en cima',d:'special'},
+       {p:'Salardú → Arties',n:'Valle de Arán'},
+       {p:'🍽️ COMIDA ~13:00h',n:'Opción A: Tauèrna Urtau (Arties) · Opción B: Crêperie Peyresourde (col)',d:'food'},
+       {p:'⛽ Repsol CRED — Vielha',n:'CR N-230 pk 163.7 · Llenar para Francia',d:'gas'},
+       {p:'Bossòst → Bagnères-de-Luchon',n:'Entrada a Francia'},
+       {p:'Col de Peyresourde',n:'Puerto francés con vistas espectaculares',d:'special'},
+       {p:'Saint-Lary-Soulan → Túnel Bielsa-Aragnouet',n:'Vuelta a España por el túnel'},
+       {p:'Bielsa',n:'Pueblo aragonés de montaña'},
+       {p:'🏁 Aínsa — Hostal Pirineos',n:'Llegada ~19:00h',d:'end'}],
  gas:[{nm:'bonÀrea — Sort',hr:'24h',dir:'Polígon Els Salancons, Sort',tel:'+34900899089',map:'https://maps.google.com/?q=bonArea+Sort+Lleida',key:true,not:'⚠️ CRÍTICO: llenar AL 100%. No hay gasolineras fiables entre Sort y Vielha (~150 km de montaña).'},
-      {nm:'Repsol — Vielha',hr:'7:00-23:00h',dir:'CR N-230 pk 163.70, Vielha',tel:'+34973642277',map:'https://maps.google.com/?q=Repsol+Vielha+N230',key:true,not:'Llenar para el Pirineo aragonés. Mañana es la etapa reina.'}],
+      {nm:'Repsol CRED — Vielha',hr:'7:00-23:00h',dir:'CR N-230 pk 163.7, Vielha',tel:'+34973642277',map:'https://maps.google.com/?q=Repsol+CRED+Vielha+N230',key:true,not:'Llenar antes de entrar a Francia. Siguiente gasolinera: Arreau o Saint-Lary.'}],
  hotel:{ok:true,nm:'Hostal Pirineos · Aínsa',desayuno:true,nobadge:true,dir:'Avda. Sobrarbe 7, 22330 Aínsa',tel:'+34 974 500 008',web:'hostalpirineosainsa.com',map:'https://maps.google.com/?q=Hostal+Pirineos+Ainsa+Sobrarbe+7',
-   inf:'5 hab dobles · ☕ Desayuno incluido · 🏍 Garaje motos GRATUITO (avisar) · Pago en establecimiento · Señal €200 en mayo',
-   res:'Confirmado por email',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
- alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Bar+Urtau+Arties+Val+Aran',pr:'~15-20€/p',inf:'⭐ El MÁS RECOMENDADO en foros moteros del Val d\'Arán. Pinchos y barra. Arties, 4 km antes de Vielha. Bajando la Bonaigua, desvío izq. Cerrado lunes.'},
-     {mo:'COMIDA — Opción B 🌟',nm:'Era Coquèla',loc:'Vielha, Arán',tel:'+34973641757',map:'https://maps.google.com/?q=Era+Coquela+Vielha+Lleida',pr:'~20-25€/p',inf:'Referente gastronómico del Valle de Arán. Olla aranesa, carnes, pescados. Centro de Vielha.'},
-     {mo:'COMIDA — Opción C',nm:'Restaurant Rufus',loc:'Gessa (5 km de Vielha)',tel:'+34973648057',map:'https://maps.google.com/?q=Restaurant+Rufus+Gessa+Val+Aran',pr:'~18-30€/p',inf:'⭐ Recomendado en foros. Colmenillas, ciervo a la brasa, olla aranesa. Cierra 15:30h.'}],
- cen:[{mo:'CENA — Opción A 🏆 (si Hostal Pirineos)',nm:'Restaurante Callizo',loc:'Aínsa, Plaza Mayor',tel:null,map:'https://maps.google.com/?q=Restaurante+Callizo+Ainsa+Plaza+Mayor',pr:'~35-45€/p',inf:'⚠️ RESERVAR IMPRESCINDIBLE. Cocina aragonesa moderna: carnes de caza, setas, ternera de Broto.'},
-      ],
+   inf:'5 hab dobles · ☕ Desayuno incluido · 🏍 Garaje motos GRATUITO (avisar) · Señal €200 pendiente',
+   res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
+ alm:[{mo:'COMIDA — Opción A 🏆',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
+       inf:'⭐ Recomendado en foros moteros. En Arties, antes de Vielha. Cocina aranesa. Cerrado lunes.',
+       mapsRuta:'https://www.google.com/maps/dir/Hotel+Les+Brases+Sort/Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Bossost/Bagneres-de-Luchon/Col+de+Peyresourde/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
+      {mo:'COMIDA — Opción B 🥞',nm:'Crêperie du Col de Peyresourde',loc:'Loudervielle, Francia',tel:null,map:'https://maps.google.com/?q=Creperie+du+Col+de+Peyresourde+6088+Route+du+Col+de+Peyresourde+65240+Loudervielle',pr:'~12-18€/p',
+       inf:'En el propio col de Peyresourde. Crepes y platos montañeses. Abierto en verano.',
+       mapsRuta:'https://www.google.com/maps/dir/Hotel+Les+Brases+Sort/Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/Creperie+du+Col+de+Peyresourde,+6088+Route+du+Col+de+Peyresourde,+65240+Loudervielle,+Francia/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Intermarche+Ancizan,+Route+de+Saint-Lary,+65440+Ancizan,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
+ cen:[{mo:'CENA — Aínsa 🏆',nm:'Restaurante Callizo',loc:'Aínsa, Plaza Mayor',tel:null,map:'https://maps.google.com/?q=Restaurante+Callizo+Ainsa+Plaza+Mayor',pr:'~35-45€/p',inf:'⚠️ RESERVAR IMPRESCINDIBLE. Cocina aragonesa moderna. Plaza Mayor de Aínsa.'}],
  als:[{t:'d',h:'⛽ BONAIGUA — DEPÓSITOS PEQUEÑOS EN ALERTA',b:'Alberto (14L) y Oriol (14,5L): LLENAR en bonÀrea Sort al 100%. No hay gasolineras entre Sort y Vielha (~150 km).'},
-      {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío intenso en la cima. Capa térmica y cortavientos A MANO antes de subir, no en el fondo de la maleta.'}],
- foro:'En bmwmotos.com: "Ese tramo de Sort hasta Vielha y el Bonaigua es espectacular. Donde más disfruté de toda la Transpirenaica." El Restaurant Rufus en Gessa también muy recomendado por varios usuarios del foro.',
+      {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío en la cima. Capa térmica A MANO antes de subir.'}],
+ foro:'Peyresourde es un col del Tour de France. La ruta por Francia y el túnel Bielsa-Aragnouet es espectacular y poco transitada.',
  nesp:null},
 
-{n:3,emo:'⭐',f:'Dom 21 junio',ti:'ETAPA REINA — Aínsa → Gavarnie → Tourmalet → Aubisque → Isaba',km:320,dest:'Isaba',
- res:'La etapa más épica. Portalet, Gavarnie (Patrimonio UNESCO), Tourmalet 2.115m, Aubisque 1.709m. Los tres puertos más míticos del Tour de Francia. ES DOMINGO — precaución con gasolineras en Francia.',
- mlat:42.861,mlon:-0.915,mnm:'Isaba',
- ruta:[{p:'Aínsa',n:'Salida 8:00h — depósito LLENO',d:'start'},
-       {p:'Broto → Valle de Ordesa',n:'Vistas al macizo del Monte Perdido desde la N-260'},
-       {p:'Puerto del Portalet 1.794m ★★',n:'Frontera España-Francia · Primera vez en Francia',d:'special'},
-       {p:'Laruns → Luz-Saint-Sauveur',n:'Descenso por el valle du Gave d\'Ossau'},
-       {p:'🍽️ Gavarnie — COMIDA ~13:30h',n:'Desvío 12 km desde Luz-Saint-Sauveur · Circo de Gavarnie · Cascada más alta de Francia',d:'food'},
-       {p:'Col du Tourmalet 2.115m ★★★',n:'EL puerto más famoso del Tour · Parar 20 min · Tienda y bar en la cima',d:'special'},
-       {p:'⛽ ARGÈLES-GAZOST — CRÍTICO',n:'TotalEnergies · CON PERSONAL · DOMINGO 7:00-20:30h ✅',d:'gas'},
-       {p:"Col d'Aubisque 1.709m ★★★",n:'Carretera excavada en la roca · ESPECTACULAR · El más bonito del día',d:'special'},
-       {p:'Col Pierre Saint-Martin → España',n:'Vuelta al Pirineo navarro'},
-       {p:'🏁 Isaba',n:'Llegada ~19:30-20:00h',d:'end'}],
- gas:[{nm:'TotalEnergies — Argèles-Gazost (FRANCIA)',hr:'DOMINGO 7:00-20:30h ✅ Con personal',dir:'27 Av. des Pyrénées, Argèles-Gazost, Francia',tel:'+33562970871',map:'https://maps.google.com/?q=TotalEnergies+Argeles+Gazost+France',key:true,not:'⚠️ GASOLINERA CRÍTICA. La ÚNICA con personal antes del Aubisque. Llenar AL 100% sin excusas. Las automáticas cobran ~100€ provisional (se devuelve) y requieren tarjeta con PIN físico.'}],
- hotel:{ok:true,pagdirecto:true,desayuno:true,nm:'Casa Lola ⭐⭐ · Isaba',dir:'Mendigatxa 17, 31417 Isaba (Navarra)',tel:'+34948893012',web:'hostal-lola.com',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa',
-   inf:'2 hab dobles €82,80 · 3 hab individuales €90 · ☕️ Desayuno incl. · 💶 Pago en el hostal al llegar',infPedro:'💳 Reserva garantizada con tarjeta',res:'Contacto: Llarina Fuente · hostallola@gmail.com',cod:null,
-   can:'Cancelación gratuita hasta 01/06/2026',pag:'💳 Tarjeta al reservar (garantía) · Pago directo en el hostal al llegar · Total €547,60 (hab+desayuno)'},
- alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Hôtel Le Taillon',loc:'Gavarnie, Francia',tel:'+33562928148',map:'https://maps.google.com/?q=Bar+Hotel+Le+Taillon+Gavarnie',pr:'~20-30€/p',inf:'⭐ Google 4.9 · Terraza con vistas al Circo. Cocina de montaña. Personal muy amable. ~13:30h.'},
-      {mo:'COMIDA — Opción B 🍕',nm:'Restaurant le Mourgat Oxygène',loc:'Gavarnie, Francia',tel:'+33562928144',map:'https://maps.google.com/?q=Restaurant+Mourgat+Oxygene+Gavarnie',pr:'~15-20€/p',inf:'⭐ Tripadvisor 4.4 · Pizzas, cocina francesa. Mejor relación calidad-precio.'}],
- cen:[{mo:'CENA 🏡',nm:'Restaurante Casa Lola',loc:'Isaba, Navarra',reservado:true,tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa',pr:'~20-25€/p',inf:'El restaurante del propio hostal. Tripadvisor 4.5★ · Cocina navarra de mercado: crepe de espinacas con queso Roncal, pochas a la navarra, solomillo de ternera, cordero. Trato excelente. Pedir mesa al reservar la habitación.'}],
- als:[{t:'d',h:'🇫🇷 DOMINGO EN FRANCIA — GASOLINERAS',b:'Las automáticas requieren tarjeta con PIN físico y cobran ~100€ provisional. ÚNICA gasolinera atendida: TotalEnergies Argèles-Gazost (hasta 20:30h). NO saltársela bajo ningún concepto.'},
-      {t:'w',h:'⭐ LA ETAPA MÁS ÉPICA — SALIDA PUNTUAL',b:'320 km · 3 grandes puertos · Francia y España. Salir a las 8:00h en punto es fundamental para no llegar de noche.'}],
- foro:'En bmwmotos.com: "El Aubisque es el más bonito del día: la carretera excavada en la roca es espectacular. El orden Portalet → Tourmalet → Aubisque es el correcto, de menor a mayor impacto." Y sobre el Tourmalet: "En la cima hay tienda y bar, merece la pena parar 20 minutos."',
- nesp:{ti:'🦅 CIRCO DE GAVARNIE — Patrimonio UNESCO',tx:'Las motos se dejan aparcadas a la entrada del pueblo. ¡NO se puede acceder en moto al Circo! La cascada más alta de Francia está a ~4,5 km andando. Con solo 30-45 min de paseo ya hay vistas espectaculares. Llevar ropa cómoda en la mochila si queréis caminar. Vale muchísimo la pena.'}},
+{n:3,emo:'⭐',f:'Dom 21 junio',ti:'ETAPA REINA — Aínsa → Portalet → Ossau → Aubisque → Isaba',km:320,dest:'Isaba',
+ res:'La etapa más épica. Portalet, Valle de Ossau, Col d\'Aubisque (Tour de France), llegada a Isaba por la montaña navarra.',
+ mlat:42.863,mlon:-0.897,mnm:'Isaba',
+ ruta:[{p:'Aínsa',n:'Salida 8:00h',d:'start'},
+       {p:'Broto → Biescas',n:'Valle de Broto — paisaje de piedra'},
+       {p:'⛽ Repsol — Biescas',n:'CR C-136 pk 72 · Llenar antes del Portalet',d:'gas'},
+       {p:'Formigal → Col du Portalet',n:'Puerto Portalet 1.794m — frontera con Francia',d:'special'},
+       {p:'Laruns — Valle d\'Ossau',n:'🍽️ COMIDA ~13:00h · Hôtel-Restaurant d\'Ossau',d:'food'},
+       {p:'Oloron-Sainte-Marie',n:'Ciudad vasca francesa'},
+       {p:'⛽ TotalEnergies — Oloron',n:'28 Rue Charles et Henri Moureu · Llenar antes del Aubisque',d:'gas'},
+       {p:'Arette → La Pierre Saint-Martin',n:'Puerto fronterizo espectacular',d:'special'},
+       {p:'🏁 Casa Lola — Isaba',n:'Llegada ~19:00h',d:'end'}],
+ gas:[{nm:'Repsol — Biescas',hr:'8:00-21:00h',dir:'CR C-136 km 72, Biescas',tel:null,map:'https://maps.google.com/?q=Repsol+ES+Gasolinera+de+Biescas+C136',key:true,not:'Llenar AQUÍ antes del Portalet. En Francia las gasolineras son escasas en montaña.'},
+      {nm:'TotalEnergies — Oloron-Sainte-Marie',hr:'Lun-Sáb 7:00-20:00h',dir:'28 Rue Charles et Henri Moureu, Oloron-Sainte-Marie',tel:null,map:'https://maps.google.com/?q=TotalEnergies+28+Rue+Charles+et+Henri+Moureu+64400+Oloron-Sainte-Marie',key:true,not:'⚠️ ES DOMINGO. Confirmar horario. Llenar antes del Aubisque y La Pierre Saint-Martin.'}],
+ hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:'hostal-lola.com',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
+   inf:'€547,60 total · Pago pendiente con tarjeta',
+   res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 01/06/2026',pag:'€547,60 — confirmar con tarjeta'},
+ alm:[{mo:'COMIDA — Laruns 🍽️',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Menú del día.'}],
+ cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento.'}],
+ als:[{t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron antes del Aubisque. No improvisar.'}],
+ foro:'El Col d\'Aubisque es uno de los puertos míticos del Tour. La Pierre Saint-Martin es frontera con España por pista. Etapa épica.',
+ nesp:null},
 
-{n:4,emo:'🏁',f:'Lun 22 junio',ti:'Isaba → Selva de Irati → Baztán → Faro de Higuer',km:200,dest:'Hondarribia',
- res:'El remate perfecto. Hayedo de Irati, Roncesvalles, Valle del Baztán, Cantábrico. La llegada al final de la Transpirenaica.',
+{n:4,emo:'🏁',f:'Lun 22 junio',ti:'Isaba → Roncal → Roncesvalles → Baztán → Hondarribia',km:200,dest:'Hondarribia',
+ res:'El remate perfecto. Valle del Roncal, Roncesvalles, Valle del Baztán, Cantábrico. La llegada al final de la Transpirenaica.',
  mlat:43.363,mlon:-1.797,mnm:'Hondarribia',
  ruta:[{p:'Isaba',n:'Salida 9:00h',d:'start'},
-       {p:'⛽ Petronor — Urzainqui',n:'8:00-21:00h · ÚNICA en 100 km — NO saltársela',d:'gas'},
-       {p:'Selva de Irati ★★',n:'El hayedo más grande de Europa — parada imprescindible',d:'special'},
-       {p:'Roncesvalles ★',n:'Camino de Santiago · Bosques de hayas en junio',d:'special'},
-       {p:'Elizondo / Valle del Baztán',n:'Carreteras perfectas · Verde intenso · COMIDA ~14:00h'},
-       {p:'Zugarramurdi',n:'El pueblo de las brujas — desvío 5 minutos',d:'special'},
-       {p:'🏁 FARO DE HIGUER',n:'¡TRANSPIRENAICA COMPLETADA! 🌊 Tocar el Cantábrico',d:'end'}],
- gas:[{nm:'Petronor — Urzainqui',hr:'8:00-21:00h',dir:'CR NA-137 km 28.7, Urzainqui, Navarra',tel:'+34948475013',map:'https://maps.google.com/?q=Petronor+Urzainqui+Navarra',key:true,not:'⚠️ LA ÚNICA EN 100 KM. No hay más gasolineras en la montaña navarra. Repostar siempre aquí.'}],
- hotel:{ok:true,pagdirecto:true,nm:'Hotel Jauregui ⭐⭐⭐ · Hondarribia',desayuno:true,dir:'Calle Zuloaga, 5, 20280 Hondarribia',tel:'+34943641400',web:'https://www.hoteljauregui.com/',map:'https://maps.google.com/?q=Hotel+Jauregui+Hondarribia',
+       {p:'Urzainqui',n:''},
+       {p:'⛽ Repsol Valle de Roncal — Urzainqui',n:'CR NA-137 km 28.7 · 8:00-21:00h · ÚNICA en 100 km',d:'gas'},
+       {p:'Ochagavía',n:'Pueblo navarro de montaña — parada breve'},
+       {p:'Roncesvalles ★',n:'🍽️ COMIDA ~13:00h · Camino de Santiago · Hayas centenarias',d:'food'},
+       {p:'Eugi → Bera',n:'Carreteras perfectas del norte de Navarra'},
+       {p:'🏁 FARO DE HIGUER',n:'¡TRANSPIRENAICA COMPLETADA! 🌊 Tocar el Cantábrico',d:'end'},
+       {p:'Hotel Jauregui — Hondarribia',n:'Celebración 🎉',d:'end'}],
+ gas:[{nm:'Repsol — Valle de Roncal · Urzainqui',hr:'8:00-21:00h',dir:'CR NA-137 km 28.7, Urzainqui, Navarra',tel:'+34948475013',map:'https://maps.google.com/?q=Repsol+E.S.+Valle+de+Roncal+NA-137+Urzainqui',key:true,not:'⚠️ LA ÚNICA EN 100 KM. No hay más gasolineras en la montaña navarra. Repostar siempre aquí.'}],
+ hotel:{ok:true,pagdirecto:true,nm:'Hotel Jauregui ⭐⭐⭐ · Hondarribia',desayuno:true,dir:'Calle Zuloaga 5, 20280 Hondarribia',tel:'+34943641400',web:'https://www.hoteljauregui.com/',map:'https://maps.google.com/?q=Hotel+Jauregui+Hondarribia',
    res:'SYN2774-60096',pin:'UZGUQHXZ4X',
-   can:'Cancelación gratuita hasta 19/06/2026',pag:'💳 Pago directo en el hotel · 2 hab. doble/twin + 1 individual + 2 hab. doble uso · Desayuno incluido · Total €660,25',
-   inf:'Buscar alojamiento en el casco histórico medieval. Salida 8:00h del día siguiente.',res:null,cod:null,can:null,pag:null},
- alm:[{mo:'COMIDA — Opción A 🏆',nm:'Restaurante Santxotena',loc:'Elizondo, Baztán',tel:'+34948580197',map:'https://maps.google.com/?q=Restaurante+Santxotena+Elizondo+Navarra',pr:'~23€ menú / hasta 45€ carta',inf:'4ª generación de cocineras. Cocina tradicional del Baztán: menestra de verduras, chuleta de ternera del Baztán, merluza ondarresa, revuelto de hongos. Menú 23€ (primero, segundo, postre, agua y vino). Abierto lunes a mediodía ✅ · C/ Pedro de Axular, 4.'},
-      {mo:'COMIDA — Opción B 🍽️',nm:'Restaurante Eskisaroi',loc:'Elizondo, Baztán',tel:null,map:'https://maps.google.com/?q=Restaurante+Eskisaroi+Elizondo+Navarra',pr:'~14€ menú',inf:'Fundado en 1947, junto al río. Especialidad en pescados frescos del Cantábrico y ternera del Baztán. Menú 14€. ⚠️ Suele estar lleno — recomiendan reservar.'}],
+   can:'Cancelación gratuita hasta 19/06/2026',pag:'💳 Pago directo en el hotel · Total €660,25 · Desayuno incluido',
+   inf:'Casco histórico medieval · 2 dobles + 1 individual + 2 doble uso'},
+ alm:[{mo:'COMIDA — Opción A 🏆',nm:'Restaurante La Posada · Roncesvalles',loc:'Roncesvalles, Navarra',tel:null,map:'https://maps.google.com/?q=Restaurante+La+Posada+Roncesvalles+Navarra',pr:'~20-28€/p',
+       inf:'En Roncesvalles, junto a la colegiata. Cocina navarra. Ambiente peregrino.',
+       mapsRuta:'https://www.google.com/maps/dir/Casa+Lola+Isaba/Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Restaurante+La+Posada,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'},
+      {mo:'COMIDA — Opción B 🍽️',nm:'Casa Sabina · Roncesvalles',loc:'Roncesvalles, Navarra',tel:null,map:'https://maps.google.com/?q=Casa+Sabina+Roncesvalles+Navarra',pr:'~18-25€/p',
+       inf:'Alternativa en Roncesvalles. Ambiente acogedor, cocina de montaña navarra.',
+       mapsRuta:'https://www.google.com/maps/dir/Casa+Lola+Isaba/Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Casa+Sabina,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'}],
  cen:[
-  {mo:'CENA DE CELEBRACIÓN 🎉 — 1ª parada',nm:'Bar Gran Sol',loc:'Calle San Pedro, 63 · Barrio La Marina',tel:'+34943644701',map:'https://maps.google.com/?q=Bar+Gran+Sol+Hondarribia+Calle+San+Pedro+63',pr:'~8-12€/p',inf:'El más premiado de Hondarribia: 3x campeón nacional, 4x campeón de Gipuzkoa, 4x campeón de Euskadi. A 5 min andando del hotel. Llegar a las 19:00h para pillar barra sin caos y pintxos recién montados. No olvidar el Jaizkibel (champiñón relleno de mousse de queso con jamón ibérico) y pedir también de la carta de calientes.'},
-  {mo:'CENA DE CELEBRACIÓN 🎉 — 2ª parada',nm:'Gastroteka Danontzat',loc:'Denda Kalea, 6 · Casco Histórico',tel:'+34943640097',map:'https://maps.google.com/?q=Gastroteka+Danontzat+Hondarribia',pr:'~10-15€/p',inf:'Campeón de Euskadi de pintxos más innovador 2016. Subir al casco histórico después del Gran Sol. Imprescindible: vermut casero en los barriles de la terraza, lengua curada sobre patata confitada al pimentón con trufa negra, y la ensaladilla de la casa.'},
-  {mo:'CENA DE CELEBRACIÓN 🎉 — 3ª parada (brindis final)',nm:'Bar Mika',loc:'Arma Plaza, 2 · Plaza de Armas, Casco Histórico',tel:'+34943644215',map:'https://maps.google.com/?q=Bar+Mika+Arma+Plaza+Hondarribia',pr:'~10-15€/p',inf:'¡BRINDIS FINAL! Terraza en la Plaza de Armas junto al Castillo de Carlos V. La ex jefa de cocina del Gran Sol con pintxos ganadores de Gipuzkoa 2023. Txakoli bien frío, ~1.923 km completados: merecidísimo 🥂🏍️'}],
- als:[{t:'s',h:'🏆 ¡LA META!',b:'Hoy acabáis la Transpirenaica. Etapa suave (200 km) para disfrutar cada momento. La foto en el Faro de Higuer tocando el Cantábrico es obligatoria.'},
-      {t:'i',h:'🌳 SELVA DE IRATI — NO TE LA SALTES',b:'El hayedo más grande de Europa en junio es una pasada de verde. Parada de 20-30 min mínimo.'}],
- foro:'En bmwmotos.com: "La zona de Larrau y el norte de Navarra es donde más disfruté de toda la ruta. El Baztán tiene carreteras perfectas y un verde impresionante. Una maravilla para terminar la Transpirenaica."',
+  {mo:'CENA DE CELEBRACIÓN 🎉 — 1ª parada',nm:'Bar Gran Sol',loc:'Calle San Pedro 63 · Barrio La Marina',tel:'+34943644701',map:'https://maps.google.com/?q=Bar+Gran+Sol+Hondarribia+Calle+San+Pedro+63',pr:'~8-12€/p',inf:'3x campeón nacional de pintxos. Llegar a las 19:00h. Imprescindible: Jaizkibel (champiñón relleno de mousse de queso con jamón ibérico).'},
+  {mo:'CENA DE CELEBRACIÓN 🎉 — 2ª parada',nm:'Gastroteka Danontzat',loc:'Denda Kalea 6 · Casco Histórico',tel:'+34943640097',map:'https://maps.google.com/?q=Gastroteka+Danontzat+Hondarribia',pr:'~10-15€/p',inf:'Campeón de Euskadi pintxos más innovador 2016. Vermut en barriles de terraza.'},
+  {mo:'CENA DE CELEBRACIÓN 🎉 — 3ª parada (brindis final)',nm:'Bar Mika',loc:'Arma Plaza 2 · Casco Histórico',tel:'+34943644215',map:'https://maps.google.com/?q=Bar+Mika+Arma+Plaza+Hondarribia',pr:'~10-15€/p',inf:'Terraza Plaza de Armas junto al Castillo de Carlos V. Txakoli bien frío. ~1.923 km completados 🥂🏍️'}],
+ als:[{t:'s',h:'🏆 ¡LA META!',b:'Hoy acabáis la Transpirenaica. Etapa suave (200 km) para disfrutar. La foto en el Faro de Higuer tocando el Cantábrico es obligatoria.'},
+      {t:'i',h:'🗺️ RONCESVALLES — PARADA IMPRESCINDIBLE',b:'La colegiata del Camino de Santiago en junio es una pasada. Parada de 20-30 min mínimo antes de comer.'}],
+ foro:'En bmwmotos.com: \"La zona del Roncal y el norte de Navarra es donde más disfruté. El Baztán tiene carreteras perfectas y un verde impresionante.\"',
  nesp:null},
 
 {n:5,emo:'🏠',f:'Mar 23 junio',ti:'Vuelta a Casa · 🔥 Verbena Sant Joan',km:620,dest:'Santa Coloma',
- res:'Salida 8:00h desde Hondarribia. AP-8 → AP-68 → AP-2. Objetivo: estar en casa hacia las 14:30h. ¡Tarde libre para la verbena de Sant Joan!',
- mlat:41.450,mlon:2.204,mnm:'Santa Coloma de Gramenet',
- ruta:[{p:'Hondarribia',n:'Salida 8:00h',d:'start'},
-       {p:'AP-8 → Bilbao → AP-68',n:'Sin prisas'},
-       {p:'Área Gallur 232 (opcional)',n:'Menú 13€ con vino · N-232 km 286 · Sin desvío · ~12:30h',d:'food'},
-       {p:'AP-2 → Barcelona',n:''},
-       {p:'🏠 Santa Coloma de Gramenet',n:'Llegada ~14:30h 🔥 ¡Tarde libre para Sant Joan!',d:'end'}],
- gas:[],
- hotel:{ok:false,nm:'— En casa 🏠 —',dir:'',tel:null,web:null,map:null,inf:'',res:null,cod:null,can:null,pag:null},
- alm:[{mo:'COMIDA opcional de camino',nm:'Área Gallur 232',loc:'Gallur, Zaragoza',tel:null,map:'https://maps.google.com/?q=Area+Servicio+Gallur+N232',pr:'~13€',inf:'Menú con vino. En ruta directa, sin desvío.'}],
+ res:'Salida 8:00h desde Hondarribia. AP-8 → AP-68 → AP-2 → Barcelona. Objetivo: estar en casa hacia las 14:30h para la Noche de Sant Joan.',
+ mlat:41.451,mlon:2.208,mnm:'Santa Coloma de Gramenet',
+ ruta:[{p:'Hotel Jauregui — Hondarribia',n:'Salida 8:00h PUNTUAL',d:'start'},
+       {p:'Pamplona',n:'AP-15 · Parada gasolinera si hace falta'},
+       {p:'Zaragoza',n:'AP-68 · Parada gasolinera'},
+       {p:'⛽ Repsol CRED — Zaragoza',n:'Avenida de la Hispanidad 15 · Repostar',d:'gas'},
+       {p:'Lleida',n:'AP-2'},
+       {p:'⛽ Repsol RP Centre — Lleida',n:'Carrer Academia 30 · Última parada antes de BCN',d:'gas'},
+       {p:'🏠 Barcelona / Santa Coloma',n:'~14:30h · ¡Verbena de Sant Joan esta noche! 🔥',d:'end'}],
+ gas:[{nm:'Repsol CRED — Zaragoza',hr:'24h',dir:'Avda. de la Hispanidad 15, Zaragoza',tel:null,map:'https://maps.google.com/?q=Repsol+CRED+Zaragoza+Avenida+Hispanidad+15',key:false,not:'Parada de combustible y estirar piernas en Zaragoza.'},
+      {nm:'Repsol RP Centre — Lleida',hr:'24h',dir:'Carrer Academia 30, Lleida',tel:null,map:'https://maps.google.com/?q=Repsol+RP+Centre+Lleida+Carrer+Academia+30',key:false,not:'Última parada antes de Barcelona.'}],
+ hotel:{ok:false,nm:null,desayuno:false,dir:null,tel:null,web:null,map:null,inf:null,res:null,cod:null,can:null,pag:null},
+ alm:[],
  cen:[],
- als:[{t:'s',h:'🔥 SANT JOAN · LA NOCHE MÁS CORTA',b:'Llegada ~14:30h. Tarde libre para la verbena. Fuegos artificiales, cava y el mejor cierre posible para la Transpirenaica.'},
-      {t:'i',h:'620 KM DE AUTOPISTA',b:'Sin prisas pero sin parar demasiado. Objetivo: casa sobre las 14:30h.'}],
- foro:null,nesp:null}
+ als:[{t:'i',h:'🔥 NOCHE DE SANT JOAN',b:'Llegáis a casa a mediodía. Esta noche es la Verbena de Sant Joan. ¡El mejor broche final para la Transpirenaica!'}],
+ foro:'620 km de autopista. Salir a las 8:00h sharp para llegar cómodos y descansar antes de la verbena.',
+ nesp:null},
 ];
-
 // ━━━ CHECKLIST ━━━
 const CK=[
  {cat:'🔧 MOTO',tip:'Los foros lo repiten siempre: neumáticos y frenos primero. La Transpirenaica tiene tramos de alta montaña con curvas muy exigentes.'},
@@ -924,7 +932,7 @@ function renderDias(){
      <div class="lrow">${d.hotel.map?`<a class="lk map" href="${d.hotel.map}" target="_blank">🗺 Mapa</a>`:''}${d.hotel.tel?`<a class="lk tel" href="tel:${d.hotel.tel}">📞 ${d.hotel.tel}</a>`:''}${d.hotel.web?`<a class="lk web" href="${d.hotel.web}" target="_blank">🌐 Web</a>`:''}</div>
     </div>`;
    }else{
-    html+=`<div class="hbox pend"><div class="hnm">${d.hotel.nm}</div><div class="hdet" style="font-size:12px">${d.hotel.inf.replace(/\n/g,'<br>')}</div>
+    html+=`<div class="hbox pend"><div class="hnm">${d.hotel.nm}</div><div class="hdet" style="font-size:12px">${(d.hotel.inf||'').replace(/\n/g,'<br>')}</div>
      <div class="lrow">${d.hotel.map?`<a class="lk map" href="${d.hotel.map}" target="_blank">🗺 Mapa</a>`:''}${d.hotel.web?`<a class="lk web" href="${d.hotel.web}" target="_blank">🌐 Buscar</a>`:''}</div>
     </div>`;
    }
@@ -1460,11 +1468,13 @@ function qDeMapa(url){
 // Las rutas de moto pasan por puertos que Google Maps evita → forzamos puntos clave.
 function buildGmapsUrl(d, almIdx){
 
-  // Lista de comida unificada (alm si tiene, si no cen)
+  // Si el restaurante elegido tiene su propia URL de ruta completa, usarla directamente
   const listaComida = (d.alm && d.alm.length > 0) ? d.alm
                     : (d.cen && d.cen.length > 0)  ? d.cen : [];
-  const qComida = listaComida.length > 0
-    ? qDeMapa((listaComida[almIdx] || listaComida[0]).map) : null;
+  const restaurante = listaComida.length > 0 ? (listaComida[almIdx] || listaComida[0]) : null;
+  if(restaurante && restaurante.mapsRuta) return restaurante.mapsRuta;
+
+  const qComida = restaurante ? qDeMapa(restaurante.map) : null;
 
   // Rutas definidas manualmente por día para respetar el orden real de puertos
   // Formato: array de parámetros ?q= ya codificados, en orden geográfico correcto
@@ -1472,20 +1482,30 @@ function buildGmapsUrl(d, almIdx){
     // ── DÍA 0 ── Tarde: Montcada → Figueres → Roses → Cadaqués → Llançà
     // La Pausa ES el punto de encuentro de todos → correcto como origen
     0: [
-      'Area+Servicio+Montcada+La+Pausa+C33',    // origen: punto encuentro todos
-      'Avanza+Oil+Figueres',                     // gas económica de camino
-      qComida,                                   // cena en Llançà
-      'Hotel+Beri+Llanca'                        // destino
+      'Area+de+servicio+La+Pausa+Montcada+i+Reixac',
+      'Figueres',
+      'Cap+de+Creus',
+      'Cadaques',
+      'El+Port+de+la+Selva',
+      'Monestir+de+Sant+Pere+de+Rodes',
+      'Hotel+Beri+Llanca'
     ],
     // ── DÍA 1 ── Hotel Beri → Roses(gas) → Cap de Creus(foto) → La Seu(comida) → Sort
     // Cap de Creus está al este: Google fuerza el desvío correctamente
     1: [
-      'Hotel+Beri+Llanca',                       // origen: salen del hotel
-      'Gasolinera+Repsol+Roses',                 // gas ANTES de montaña (24h)
-      'Cap+de+Creus+Girona',                     // foto ritual, punto más oriental
-      'Besalu+Girona',                           // pueblo medieval (parada 30min)
-      qComida,                                   // comida La Seu d'Urgell
-      'Hotel+Les+Brases+Sort+Lleida'             // destino
+      'Hotel+Beri+Llanca',
+      'Vilajuiga',
+      'Besalu',
+      'Olot',
+      'Camprodon',
+      'Ribes+de+Freser',
+      'Collada+de+Toses',
+      'Puigcerda',
+      'Ruta+260,+Ctra+Nacional+260,+Km+200,+Prullans',
+      'Area+Servei+Puigcerda+-+Gasolinera+Repsol,+CR+N-152,+171,+Puigcerda',
+      'Repsol+ES+La+Seu+d%27Urgell,+Avinguda+Valira,+25,+La+Seu+d%27Urgell',
+      'Port+del+Canto',
+      'Hotel+Les+Brases+Sort'
     ],
     // ── DÍA 2 ── Sort → bonÀrea(gas) → Bonaigua → Arties(comida) → Vielha → Aínsa
     // ORDEN CORRECTO: Arties está ANTES de Vielha subiendo desde Bonaigua
@@ -1502,13 +1522,19 @@ function buildGmapsUrl(d, almIdx){
     // Portalet → bajada a Gavarnie (circo) → subir Tourmalet desde Luz-St-Sauveur
     // → bajar a Argèles-Gazost (gas) → Soulor → Aubisque → Isaba
     3: [
-      'Hostal+Pirineos+Ainsa+Sobrarbe+7',        // origen: salen del hotel
-      'Puerto+de+El+Portalet+Huesca',            // primer puerto (2.214m)
-      qComida,                                   // comida Gavarnie (ANTES del Tourmalet)
-      'Col+du+Tourmalet+France',                 // Tourmalet 2.115m (sube desde Luz-St-Sauveur)
-      'TotalEnergies+Argeles+Gazost+France',     // gas CRÍTICA (después de bajar Tourmalet)
-      'Col+d%27Aubisque+France',                 // Aubisque 1.709m
-      'Casa+Lola+Isaba+Navarra+Mendigatxa+17'   // destino
+      'Hostal+Pirineos+Ainsa',
+      'Broto',
+      'Biescas',
+      'Repsol+ES+15103+Gasolinera+de+Biescas,+CR+C-136,+72,+Biescas',
+      'Formigal',
+      'Col+du+Portalet',
+      'Laruns',
+      'Hotel+Restaurant+d%27Ossau,+Place+de+la+Mairie,+Laruns,+Francia',
+      'Oloron-Sainte-Marie',
+      'TotalEnergies+d%27Oloron,+28+Rue+Charles+et+Henri+Moureu,+64400+Oloron-Sainte-Marie,+Francia',
+      'Arette',
+      'La+Pierre+Saint-Martin',
+      'Casa+Lola+Isaba'
     ],
     // ── DÍA 4 ── Isaba → Irati → Roncesvalles → Urzainqui(gas) → Elizondo(comida) → Hondarribia
     // Urzainqui está entre Roncesvalles y Elizondo en la ruta real (N-135 sur)
@@ -1522,9 +1548,13 @@ function buildGmapsUrl(d, almIdx){
     ],
     // ── DÍA 5 ── Hondarribia → autopía → Santa Coloma (620km vuelta)
     5: [
-      'Hotel+Jauregui+Hondarribia',              // origen
-      qComida,                                   // parada Gallur si la hay
-      'Santa+Coloma+de+Gramenet+Barcelona'       // destino: casa 🏠
+      'Hotel+Jauregui+Hondarribia',
+      'Pamplona',
+      'Zaragoza',
+      'Repsol+CRED+Zaragoza,+Avenida+de+la+Hispanidad,+15,+Zaragoza',
+      'Lleida',
+      'Repsol+RP+Centre+Lleida,+Carrer+Academia,+30,+Lleida',
+      'Barcelona'
     ]
   };
 
@@ -1584,13 +1614,26 @@ function renderMC(){
   // ── Info del día ──
   html += `<div class="mc-dia-info">
     <div class="mc-dia-txt">${d.f}${hoy === mcDiaActual ? ' <span style="color:#f0a030">★ HOY</span>' : ''}</div>
-    <div class="mc-dia-num" style="font-size:16px">${d.ti}</div>
   </div>`;
 
-  // ── Km etapa ──
+  // ── Km etapa + puntos de ruta ──
+  const puntosRuta = d.ruta ? d.ruta.map(r => {
+    if(!r || !r.p) return null;
+    return r.p
+      .replace(/^[⭐🏁⛽🍽️]+\s*/u, '')
+      .replace(/\s*—.*$/, '')
+      .split('·')[0].split('→')[0].trim();
+  }).filter(Boolean) : [];
+  const puntosHtml = puntosRuta.length > 0
+    ? `<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center">${
+        puntosRuta.map((p,i) =>
+          `<span style="color:#a8d888;font-size:13px;font-weight:600">${p}</span>${i < puntosRuta.length-1 ? '<span style="color:#5a8a4a;font-size:12px">›</span>' : ''}`
+        ).join('')
+      }</div>` : '';
   html += `<div class="mc-bloque">
     <div class="mc-label">📏 Etapa</div>
     <div class="mc-valor">${d.km} km → ${d.dest}</div>
+    ${puntosHtml}
   </div>`;
 
   // ── BOTÓN GOOGLE MAPS (siempre visible arriba) ──
