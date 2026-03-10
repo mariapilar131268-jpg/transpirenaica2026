@@ -701,42 +701,24 @@ function showTab(id,btn){
 
 // ━━━ RESUMEN RUTA ━━━
 function renderResumenRuta(){
- const etapas=[
-  {emo:'🌅',f:'Jue 18/06',de:'Montcada',a:'Llançà',km:165,tipo:'Traslado',color:'#4a7a3a',
-   puertos:[],gas:[],nota:'Costa Brava · Salida tarde · Llegada de noche'},
-  {emo:'🏛️',f:'Vie 19/06',de:'Llançà',a:'Sort',km:318,tipo:'Pirineos orientales',color:'#2e6a5a',
-   puertos:['Cap de Creus (inicio oficial)'],
-   gas:['⭐ bonÀrea Sort — llenar al 100%'],
-   nota:'Inicio oficial en Cap de Creus · Foto de grupo obligatoria'},
-  {emo:'🏔️',f:'Sáb 20/06',de:'Sort',a:'Aínsa',km:300,tipo:'Alta montaña',color:'#1a5a7a',
-   puertos:['Port de la Bonaigua 2.072m ★★★'],
-   gas:['bonÀrea Sort (CRÍTICA antes Bonaigua)','Repsol Vielha'],
-   nota:'Bonaigua es el techo del viaje · Llenar en Sort sin excusas'},
-  {emo:'⭐',f:'Dom 21/06',de:'Aínsa',a:'Isaba',km:320,tipo:'ETAPA REINA',color:'#7a3a00',
-   puertos:['Portalet 1.794m ★★','Tourmalet 2.115m ★★★','Aubisque 1.709m ★★★'],
-   gas:['⚠️ TotalEnergies Argèles-Gazost (ÚNICA · Dom 7-20:30h)'],
-   nota:'3 puertos míticos del Tour · Domingo · Gasolineras muy limitadas en Francia'},
-  {emo:'🏁',f:'Lun 22/06',de:'Isaba',a:'Hondarribia',km:200,tipo:'Pirineo navarro',color:'#3a1a7a',
-   puertos:['Selva de Irati','Valle del Baztán'],
-   gas:['Petronor Urzainqui (única en 100 km · 8-21h)'],
-   nota:'Etapa tranquila · Irati imprescindible · Llegada a la costa'},
-  {emo:'🏠',f:'Mar 23/06',de:'Hondarribia',a:'Santa Coloma',km:620,tipo:'Vuelta a casa',color:'#5a5a5a',
-   puertos:[],gas:['Autopista — sin problema'],nota:'Noche de Sant Joan · Salir temprano'},
- ];
  const puertosGlobales=[
   {nm:'Port de la Bonaigua',alt:'2.072',dia:'Día 2',stars:'★★★',color:'#1a5a7a'},
-  {nm:'Col du Tourmalet',alt:'2.115',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
+  {nm:"Col du Tourmalet",alt:'2.115',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
   {nm:"Col d'Aubisque",alt:'1.709',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
   {nm:'Puerto del Portalet',alt:'1.794',dia:'Día 3',stars:'★★',color:'#7a3a00'},
  ];
- const kmTotal=etapas.reduce((s,e)=>s+e.km,0);
+ const colores=['#4a7a3a','#2e6a5a','#1a5a7a','#7a3a00','#3a1a7a','#5a5a5a'];
+ const kmTotal = D.reduce((s,d)=>{ const k=typeof d.km==='string'?parseInt(d.km):d.km; return s+(isNaN(k)?0:k); },0);
+
  let html='<div style="padding:12px 14px 80px">';
+
+ // ── Cabecera resumen ──
  html+=`<div style="background:linear-gradient(135deg,#1c2b1a,#2a3d28);border-radius:14px;padding:18px 16px;margin-bottom:12px;color:#e8e0cc">
   <div style="font-size:11px;color:#8a9e80;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Transpirenaica 2026 · ${curP.nm}</div>
   <div style="font-size:20px;font-weight:800;margin-bottom:12px">Cap de Creus → Faro de Higuer</div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
    <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
-    <div style="font-size:24px;font-weight:800">${kmTotal}</div>
+    <div style="font-size:24px;font-weight:800">~${kmTotal}</div>
     <div style="font-size:10px;color:#8a9e80;margin-top:2px">KM TOTALES</div>
    </div>
    <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:10px;text-align:center">
@@ -749,6 +731,8 @@ function renderResumenRuta(){
    </div>
   </div>
  </div>`;
+
+ // ── Puertos ──
  html+='<div style="background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:12px;border:1px solid #e0d8c8"><div style="font-size:11px;font-weight:800;color:#5a4a30;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">⛰️ Puertos de montaña</div>';
  puertosGlobales.forEach(p=>{
   html+=`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0ebe0">
@@ -763,34 +747,68 @@ function renderResumenRuta(){
   </div>`;
  });
  html+='</div>';
+
+ // ── Etapas desplegables ──
  html+='<div style="font-size:11px;font-weight:800;color:#5a4a30;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">📅 Las 6 etapas</div>';
- etapas.forEach(e=>{
+
+ D.forEach((d,i)=>{
+  const color = colores[i] || '#4a7a3a';
+  const idBody = 'rr-body-'+i;
+  const idArrow = 'rr-arrow-'+i;
+
   html+=`<div style="background:#fff;border-radius:12px;margin-bottom:8px;overflow:hidden;border:1px solid #e0d8c8">
-   <div style="background:${e.color};padding:10px 14px;display:flex;align-items:center;gap:10px">
-    <span style="font-size:22px">${e.emo}</span>
+   <div onclick="toggleRutaEtapa(${i})" style="background:${color};padding:10px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none">
+    <span style="font-size:22px">${d.emo}</span>
     <div style="flex:1">
-     <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">${e.f} · ${e.tipo}</div>
-     <div style="font-size:14px;font-weight:800;color:#fff">${e.de} → ${e.a}</div>
+     <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">${d.f}</div>
+     <div style="font-size:14px;font-weight:800;color:#fff">${d.ti}</div>
     </div>
-    <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;text-align:center;flex-shrink:0">
-     <div style="font-size:18px;font-weight:800;color:#fff">${e.km}</div>
-     <div style="font-size:9px;color:rgba(255,255,255,.7)">km</div>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+     <div style="background:rgba(255,255,255,.15);border-radius:8px;padding:6px 10px;text-align:center">
+      <div style="font-size:16px;font-weight:800;color:#fff">${d.km}</div>
+     </div>
+     <div id="${idArrow}" style="color:rgba(255,255,255,.8);font-size:18px;transition:transform .25s">▶</div>
     </div>
    </div>
-   <div style="padding:10px 14px">`;
-  if(e.puertos.length){
-   html+='<div style="margin-bottom:6px">';
-   e.puertos.forEach(p=>{ html+=`<span style="display:inline-block;background:#f0f8ff;color:#1a52a8;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;margin:2px 3px 2px 0">⛰️ ${p}</span>`; });
+   <div id="${idBody}" style="display:none;padding:10px 14px 14px">`;
+
+  // Puntos de ruta con botón Cómo llegar
+  if(d.ruta && d.ruta.length){
+   html+='<div style="margin-bottom:10px">';
+   d.ruta.forEach((r,j)=>{
+    const isLast = j===d.ruta.length-1;
+    const dotColor = r.d==='start'?'#2e7d32':r.d==='end'?'#b71c1c':r.d==='gas'?'#e65100':r.d==='food'?'#f57f17':r.d==='special'?'#1a52a8':'#7a8a70';
+    const dotEmoji = r.d==='start'?'🟢':r.d==='end'?'🏁':r.d==='gas'?'⛽':r.d==='food'?'🍽️':r.d==='special'?'⭐':'•';
+
+    // URL Cómo llegar — usar el nombre del punto para Google Maps
+    const nombreLimpio = r.p.replace(/^[⭐🏁⛽🍽️\s]+/u,'').replace(/\s*—\s*(COMIDA|CRÍTICO|CENA|SALIDA)\S*/gi,'').split('·')[0].trim();
+    const mapsUrl = 'https://maps.google.com/?q='+encodeURIComponent(nombreLimpio);
+    const mostrarBtn = r.d !== 'start'; // no mostrar en el punto de salida
+
+    html+=`<div style="display:flex;gap:10px;margin-bottom:${isLast?'0':'6px'}">
+     <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:20px">
+      <div style="width:14px;height:14px;border-radius:50%;background:${dotColor};display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;flex-shrink:0;margin-top:2px">${r.d?'':''}</div>
+      ${!isLast?'<div style="width:2px;flex:1;background:#e0d8c8;margin-top:2px"></div>':''}
+     </div>
+     <div style="flex:1;padding-bottom:${isLast?'0':'6px'}">
+      <div style="font-size:13px;font-weight:600;color:#1a2a0a">${dotEmoji} ${r.p}</div>
+      ${r.n?`<div style="font-size:11px;color:#7a6a50;margin-top:1px">${r.n}</div>`:''}
+      ${mostrarBtn?`<a href="${mapsUrl}" target="_blank"
+        style="display:inline-flex;align-items:center;gap:4px;margin-top:5px;
+        background:#e8f0fe;color:#1a52a8;font-size:11px;font-weight:700;
+        padding:4px 10px;border-radius:20px;text-decoration:none;border:1px solid #c5d5f8">
+        🧭 Cómo llegar
+       </a>`:''}
+     </div>
+    </div>`;
+   });
    html+='</div>';
   }
-  if(e.gas.length){
-   html+='<div style="margin-bottom:6px">';
-   e.gas.forEach(g=>{ const warn=g.startsWith('⚠️')||g.startsWith('⭐'); html+=`<span style="display:inline-block;background:${warn?'#fff8e1':'#f5f5f5'};color:${warn?'#b07800':'#5a5a5a'};font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;margin:2px 3px 2px 0">⛽ ${g}</span>`; });
-   html+='</div>';
-  }
-  html+=`<div style="font-size:11px;color:#7a6a50;font-style:italic">${e.nota}</div>`;
+
   html+='</div></div>';
  });
+
+ // ── Autonomía ──
  html+=`<div style="background:#fffbf0;border:1px solid #e8cc80;border-radius:12px;padding:14px 16px;margin-top:4px">
   <div style="font-size:11px;font-weight:800;color:#7a5a00;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">⛽ Tu autonomía · ${curP.mot}</div>
   <div style="display:flex;align-items:center;gap:12px">
@@ -801,11 +819,21 @@ function renderResumenRuta(){
    <div style="flex:1;font-size:12px;color:#7a5a20;line-height:1.5">${curP.aut<250?'⚠️ <strong>Depósito pequeño</strong> — seguir las gasolineras críticas sin saltarse ninguna. En montaña la autonomía baja un 15-20%.':'✅ <strong>Buena autonomía</strong> — sin problemas en ninguna etapa. Aun así repostar en los puntos marcados.'}</div>
   </div>
  </div>`;
+
  html+='</div>';
  document.getElementById('tab-ruta').innerHTML=html;
 }
 
-// ━━━ DÍA HOY ━━━
+function toggleRutaEtapa(i){
+ const body = document.getElementById('rr-body-'+i);
+ const arrow = document.getElementById('rr-arrow-'+i);
+ if(!body) return;
+ const open = body.style.display==='none';
+ body.style.display = open ? 'block' : 'none';
+ if(arrow) arrow.style.transform = open ? 'rotate(90deg)' : '';
+}
+
+
 function diaHoy(){
  // Usamos año/mes/día en hora LOCAL para evitar el bug UTC de new Date('YYYY-MM-DD')
  const h=new Date();
