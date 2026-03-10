@@ -430,43 +430,43 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 // ━━━ PILOTOS ━━━
 const PI=[
  {id:'alberto',nm:'Alberto',ico:'🐛',mot:'Yamaha R9',dep:14,aut:200,badge:'A2',hab:'doble',comp:'Oriol',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'w',h:'🎓 CARNET A2 — EL JOVEN PROMESA DEL GRUPO 😄',b:'Potencia limitada por ley, talento ilimitado. Los demás llevan años con el A... tú ya casi. ¡Paciencia, crack!'},
       {t:'w',h:'⚠️ DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. REPOSTAR en bonÀrea Sort (días 1 y 2) y Argèles-Gazost (día 3). Más paradas = más cafés ☕'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~190€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~765€</strong>'}]},
  {id:'oriol',nm:'Oriol',ico:'🐣',mot:'KTM 790 Duke',dep:14.5,aut:220,badge:'A2',hab:'doble',comp:'Alberto',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'w',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
       {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en Argèles-Gazost ANTES del Aubisque. Capa térmica a mano para Bonaigua y Tourmalet.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~172€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~747€</strong>'}]},
  {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'s',h:'🥷 EL NINJA DEL GRUPO',b:'Parece que no está, pero va siempre pegado a tu estela. Silencioso, constante, inevitable. Cuando te das cuenta... ya está ahí 😏'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~194€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~769€</strong>'}]},
  {id:'monica',nm:'Mónica',ico:'🏅',mot:'Honda CB650R (negra)',dep:15.4,aut:300,badge:'A',hab:'doble',comp:'Antonio',
-  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:44.66,ok:false},{h:'Hotel Les Brases · Sort',v:37.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Resto €27,50 en hostal (€17,50 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}],
   al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
       {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en Argèles-Gazost ANTES del Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~732€</strong>'}]},
  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
   pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   cobros:[
-   {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
-   {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
-   {p:'🥷 Antonio',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
-   {p:'🏁 Mónica',b:44.66,br:37.00,a:20.00,s:57.40,t:159.06,ok:false},
-   {p:'📋 Xavi',b:88.66,br:64.00,a:40.00,s:106.00,t:298.66,ok:false},
-   {p:'🎭 Antonio J.',b:88.66,br:64.00,a:40.00,s:106.00,t:298.66,ok:false}],
+   {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'🥷 Antonio',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'🏁 Mónica',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'📋 Xavi',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false},
+   {p:'🎭 Antonio J.',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false}],
   al:[{t:'s',h:'🎯 EL ANTIRADARES OFICIAL DEL GRUPO',b:'No hace falta Waze ni TomTom: con Pedro delante, los radares no existen. Olfato sobrenatural. El grupo te lo agradece... y Tráfico también 😅'},
       {t:'s',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~899€</strong>'}]},
  {id:'xavi',nm:'Xavi',ico:'🏅',mot:'Ducati Multistrada',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
-  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:106.00,ok:false},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:106.00,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   al:[{t:'s',h:'📋 EL DOCUMENTALISTA',b:'Talento especial para convertir cualquier hobby en proyecto de documentación avanzada. Mentalidad de piloto, memoria de opositor y ojo de juez.'},
       {t:'s',h:'DEPÓSITO 20 L — EXCELENTE AUTONOMÍA',b:'Sin problemas en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~204€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~899€</strong>'}]},
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
-  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:106.00,ok:false},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Casa Lola · Isaba',v:106.00,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   al:[{t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~390€ · Gasolina ~213€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~908€</strong>'},
@@ -567,8 +567,8 @@ const D=[
        {p:'🏁 Isaba',n:'Llegada ~19:30-20:00h',d:'end'}],
  gas:[{nm:'TotalEnergies — Argèles-Gazost (FRANCIA)',hr:'DOMINGO 7:00-20:30h ✅ Con personal',dir:'27 Av. des Pyrénées, Argèles-Gazost, Francia',tel:'+33562970871',map:'https://maps.google.com/?q=TotalEnergies+Argeles+Gazost+France',key:true,not:'⚠️ GASOLINERA CRÍTICA. La ÚNICA con personal antes del Aubisque. Llenar AL 100% sin excusas. Las automáticas cobran ~100€ provisional (se devuelve) y requieren tarjeta con PIN físico.'}],
  hotel:{ok:true,nm:'Casa Lola ⭐⭐ · Isaba',dir:'Mendigatxa 17, 31417 Isaba (Navarra)',tel:'+34948893012',web:'hostal-lola.com',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa',
-   inf:'2 hab dobles €82,80 · 3 hab individuales €90 · Desayuno buffet €16/p · Pago con tarjeta al reservar',res:'Contacto: Llarina Fuente · hostallola@gmail.com',cod:null,
-   can:'Cancelación gratuita hasta 01/06/2026',pag:'💳 Datos tarjeta al confirmar · Total €547,60 (hab+desayuno)'},
+   inf:'2 hab dobles €82,80 · 3 hab individuales €90 · Desayuno buffet €16/p · 💶 Pago directo en el hostal al llegar',res:'Contacto: Llarina Fuente · hostallola@gmail.com',cod:null,
+   can:'Cancelación gratuita hasta 01/06/2026',pag:'💳 Tarjeta al reservar (garantía) · Pago directo en el hostal al llegar · Total €547,60 (hab+desayuno)'},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Bar Hôtel Le Taillon',loc:'Gavarnie, Francia',tel:'+33562928148',map:'https://maps.google.com/?q=Bar+Hotel+Le+Taillon+Gavarnie',pr:'~20-30€/p',inf:'⭐ Google 4.9 · Terraza con vistas al Circo. Cocina de montaña. Personal muy amable. ~13:30h.'},
       {mo:'COMIDA — Opción B 🍕',nm:'Restaurant le Mourgat Oxygène',loc:'Gavarnie, Francia',tel:'+33562928144',map:'https://maps.google.com/?q=Restaurant+Mourgat+Oxygene+Gavarnie',pr:'~15-20€/p',inf:'⭐ Tripadvisor 4.4 · Pizzas, cocina francesa. Mejor relación calidad-precio.'}],
  cen:[{mo:'CENA 🏡',nm:'Restaurante Casa Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa',pr:'~20-25€/p',inf:'El restaurante del propio hostal. Tripadvisor 4.5★ · Cocina navarra de mercado: crepe de espinacas con queso Roncal, pochas a la navarra, solomillo de ternera, cordero. Trato excelente. Pedir mesa al reservar la habitación.'}],
@@ -936,7 +936,7 @@ function togglePago(i){
 function renderPagos(){
  let html='';
  if(curP.esPedro){
-  const tot=1233.56,suParte=298.66;
+  const tot=791.96,suParte=192.66;
   let cobrado=0;curP.cobros.forEach(c=>{if(c.ok)cobrado+=c.t;});
   const pend=(tot-suParte-cobrado).toFixed(2);
   const pendCol=parseFloat(pend)>0?'var(--red)':'var(--grn)';
@@ -945,7 +945,7 @@ function renderPagos(){
   html+=`<div class="pp"><div class="pph pph-g"><div class="ppico">🏦</div>
    <div><div class="ppt">PANEL TESORERO — PEDRO</div><div class="pps">Total adelantado: €1.409,62 · Tu parte: €298.66</div></div></div>
    <div style="overflow-x:auto"><table class="ctab">
-    <tr><th>Piloto</th><th>Beri</th><th>Brases</th><th>Aínsa señal</th><th>Casa Lola</th><th>Total</th><th>✓</th></tr>`;
+    <tr><th>Piloto</th><th>Beri</th><th>Brases</th><th>Aínsa señal</th><th>Casa Lola<br><small style="font-weight:normal;font-size:10px">directo</small></th><th>Total</th><th>✓</th></tr>`;
   curP.cobros.forEach((c,i)=>{
    const tx=c.ok?'text-decoration:line-through;color:var(--mu)':'';
    html+=`<tr style="${tx}"><td>${c.p}</td><td>€${c.b.toFixed(2).replace('.',',')}</td><td>€${c.br.toFixed(2).replace('.',',')}</td><td>€${(c.a||0).toFixed(2).replace('.',',')}</td><td>€${c.s.toFixed(2).replace('.',',')}</td><td><strong>€${c.t.toFixed(2).replace('.',',')}</strong></td><td><input type="checkbox" style="width:16px;height:16px;accent-color:var(--grn);cursor:pointer" ${c.ok?'checked':''} onchange="togglePago(${i})"></td></tr>`;
