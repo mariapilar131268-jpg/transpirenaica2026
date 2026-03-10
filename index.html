@@ -658,8 +658,10 @@ function selectP(id){
  document.getElementById('hnam').textContent=curP.nm;
  document.getElementById('hmot').textContent=curP.mot+' · '+curP.dep+'L · ~'+curP.aut+' km/dep';
  document.getElementById('hbdg').textContent=curP.ico;
- document.getElementById('sel').style.display='none';
- document.getElementById('app').style.display='flex';
+ const selEl=document.getElementById('sel');
+ const appEl=document.getElementById('app');
+ selEl.style.display='none';
+ appEl.style.cssText='display:flex;flex-direction:column;min-height:100vh;';
  window.scrollTo(0,0);
  renderDias();renderCK();renderPagos();
  showTab('dia',document.querySelector('.ntab'));
