@@ -992,27 +992,59 @@ function renderPagos(){
   });
   html+='</div>';
 
- }else{
-  let debe=0,pagado=0;
-  curP.pagos.forEach(p=>{if(!p.directo){debe+=p.v;if(p.ok)pagado+=p.v;}});
-  const pend=(debe-pagado).toFixed(2);
-  const pendCol=parseFloat(pend)>0?'var(--red)':'var(--grn)';
-  const pendTx=parseFloat(pend)>0?'⏳ Te faltan €'+pend.replace('.',','):'✅ ¡Todo pagado!';
 
-  html+=`<div class="pp"><div class="pph pph-r"><div class="ppico">💳</div>
-   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">⚠️ Límite: 31 de marzo de 2026</div></div></div>`;
-  curP.pagos.forEach((p,i)=>{
-   const col=p.ok?'var(--grn)':'var(--red)';
-   const tx=p.ok?'text-decoration:line-through;color:var(--mu)':'';
-   const nota=p.directo?` <span style="font-size:10px;background:#e8f4fd;color:#2980b9;padding:1px 5px;border-radius:8px;margin-left:4px">💳 Pago directo en hotel</span>`:'';
-   html+=`<div class="pr"><input type="checkbox" ${p.ok?'checked':''} onchange="togglePago(${i})" style="width:18px;height:18px;accent-color:var(--grn);cursor:pointer;flex-shrink:0">
-    <div class="prn" style="${tx}">${p.h}${nota}</div>
-    <div class="pra" style="color:${col}">${p.ok?'✅':'⏳'} €${p.v.toFixed(2).replace('.',',')}</div>
-   </div>`;
+   // ── BLOQUE 1: PAGOS A PEDRO ──
+  const aPedro = curP.pagos.filter(p => !p.directo);
+  let totalPedro=0, pagadoPedro=0;
+  aPedro.forEach(p=>{ totalPedro+=p.v; if(p.ok) pagadoPedro+=p.v; });
+  const pendPedro = (totalPedro - pagadoPedro).toFixed(2);
+  const pendColP = parseFloat(pendPedro)>0 ? 'var(--red)' : 'var(--grn)';
+  const pendTxP  = parseFloat(pendPedro)>0 ? '\u23f3 Te faltan \u20ac'+pendPedro.replace('.',',') : '\u2705 \u00a1Todo pagado!';
+
+  html+=`<div class="pp"><div class="pph pph-r"><div class="ppico">\ud83d\udcb3</div>
+   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">\u26a0\ufe0f Antes del 31 de marzo de 2026</div></div></div>`;
+
+  aPedro.forEach((p,i)=>{
+    const idx = curP.pagos.indexOf(p);
+    const col = p.ok ? 'var(--grn)' : 'var(--red)';
+    const tx  = p.ok ? 'text-decoration:line-through;color:var(--mu)' : '';
+    const notaHtml = p.nota ? `<div style="font-size:11px;color:#8faa6a;margin-top:2px">\u2139\ufe0f ${p.nota}</div>` : '';
+    html+=`<div class="pr">
+      <input type="checkbox" ${p.ok?'checked':''} onchange="togglePago(${idx})" style="width:18px;height:18px;accent-color:var(--grn);cursor:pointer;flex-shrink:0">
+      <div class="prn" style="${tx}"><div>${p.h}</div>${notaHtml}</div>
+      <div class="pra" style="color:${col}">${p.ok?'\u2705':'\u23f3'} \u20ac${p.v.toFixed(2).replace('.',',')}</div>
+    </div>`;
   });
-  html+=`<div class="ppf"><div><div class="ppfl">Pendiente de pagar a Pedro</div><div class="ppfv" style="color:${pendCol}">${pendTx}</div></div>
-   <button class="calb" style="background:var(--ora)" onclick="addCal('Pagar a Pedro (Transpirenaica)','20260331','Pagar alojamientos a Pedro antes del 31/03/2026','pago')">📅 Recordatorio 31/03</button>
+
+  html+=`<div class="ppf"><div><div class="ppfl">Pendiente a Pedro</div>
+    <div class="ppfv" style="color:${pendCol}">${pendTx}</div></div>
+    <button class="calb" style="background:var(--ora)" onclick="addCal('Pagar a Pedro (Transpirenaica)','20260331','Pagar alojamientos a Pedro antes del 31/03/2026','pago')">\ud83d\udcc5 31/03</button>
   </div></div>`;
+
+  // ── BLOQUE 2: PAGO DIRECTO EN HOTEL ──
+  const directos = [];
+  const ainsa = aPedro.find(p => p.h && p.h.includes('\u00c1\u00ednsa'));
+  if(ainsa && ainsa.nota){
+    directos.push({nm:'Hostal Pirineos \u00b7 A\u00ednsa', sub: ainsa.nota, v: ainsa.nota.match(/Resto ([\u20ac\d,\.]+)/)?ainsa.nota.match(/Resto ([\u20ac\d,\.]+)/)[1]:'ver nota'});
+  }
+  curP.pagos.filter(p=>p.directo).forEach(p=>{
+    const fecha = p.h.includes('Casa Lola')?'21/06 en el hostal':p.h.includes('Jauregui')?'22/06 en el hotel':'en el hotel';
+    directos.push({nm:p.h, sub:'Pago '+fecha, v:'\u20ac'+p.v.toFixed(2).replace('.',',')});
+  });
+
+  if(directos.length>0){
+    html+=`<div class="pp"><div class="pph" style="background:linear-gradient(135deg,#2c5f8a,#1a4a70)"><div class="ppico">\ud83c\udfe8</div>
+     <div><div class="ppt">PAGO DIRECTO EN HOTEL</div><div class="pps">Llevar efectivo o tarjeta \u2014 no pasa por Pedro</div></div></div>`;
+    directos.forEach(d=>{
+      html+=`<div class="pr">
+        <span style="font-size:20px;flex-shrink:0">\ud83d\udcb6</span>
+        <div class="prn"><div>${d.nm}</div><div style="font-size:11px;color:var(--mu);margin-top:2px">${d.sub}</div></div>
+        <div class="pra" style="color:#4a9eca;font-weight:700">${d.v}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+  }
+
  }
 
  // Estado reservas
@@ -1020,8 +1052,8 @@ function renderPagos(){
   <div><div class="ppt">RESERVAS — ESTADO ACTUAL</div><div class="pps">Resumen de todos los alojamientos</div></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 0 · 18/06 · Llançà</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Beri · Nº 6331.570.462 · PIN 9967 · Cancelación hasta 11/06</span></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 1 · 19/06 · Sort</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Les Brases · Loc 20528 · Código acceso: <strong>1234V</strong> · Cancelación hasta 17/06</span></div></div>
-  <div class="rrow" style="background:#fdf6e3"><span>⏳</span><div><strong>Noche 2 · 20/06 · Aínsa</strong><br><span style="font-size:11px;color:var(--mu)">Pendiente confirmar (Hostal Pirineos u Opción B)</span></div></div>
-  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Isaba</strong><br><span style="font-size:11px;color:var(--mu)">Casa Lola · Isaba · Cancelación hasta 01/06/2026 · Pendiente confirmar con tarjeta</span></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 2 · 20/06 · Aínsa</strong><br><span style="font-size:11px;color:var(--mu)">Hostal Pirineos · Avda. Sobrarbe 7 · Señal €200 en mayo · Cancelación hasta 10/06</span></div></div>
+  <div class="rrow"><span>✅</span><div><strong>Noche 3 · 21/06 · Isaba</strong><br><span style="font-size:11px;color:var(--mu)">Casa Lola · Isaba · Cancelación hasta 01/06/2026 · Pendiente datos tarjeta</span></div></div>
   <div class="rrow"><span>✅</span><div><strong>Noche 4 · 22/06 · Hondarribia</strong><br><span style="font-size:11px;color:var(--mu)">Hotel Jauregui ⭐⭐⭐ · Loc SYN2774-60096 · PIN UZGUQHXZ4X · Cancelación hasta 19/06 · Pago en hotel €660,25 · Desayuno incluido</span></div></div>
  </div>`;
 
