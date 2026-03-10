@@ -456,7 +456,7 @@ const D=[
        {p:'Monestir de Sant Pere de Rodes',n:'Vistas espectaculares — parada opcional',d:'special'},
        {p:'🏁 Llançà — Hotel Beri',n:'Llegar de noche · Cenar y descansar',d:'end'}],
  gas:[{nm:'Área Montcada La Pausa',hr:'24h',dir:'C-33 km 82,5, Montcada i Reixac',tel:'+34935640681',map:'https://maps.google.com/?q=Area+Servicio+Montcada+La+Pausa+C33',key:true,not:'Punto de salida de todos. Llenar antes de salir.'}],
- hotel:{ok:true,nm:'Hotel Beri · Llançà',desayuno:true,dir:'Carrer Castelló, 4, 17490 Llançà',tel:'+34972380108',web:'hotelberi.com',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
+ hotel:{ok:true,nm:'Hotel Beri · Llançà',desayuno:true,dir:'Carrer Castelló, 4, 17490 Llançà',tel:'+34972380108',web:'https://hotelberi.com',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:'Cancelación gratuita hasta 11/06/2026',pag:null},
  alm:[],
@@ -505,7 +505,7 @@ const D=[
        {p:'🏁 Aínsa — Hostal Pirineos',n:'Llegada ~19:00h',d:'end'}],
  gas:[{nm:'bonÀrea — Sort',hr:'24h',dir:'Polígon Els Salancons, Sort',tel:'+34900899089',map:'https://maps.google.com/?q=bonArea+Sort+Lleida',key:true,not:'⚠️ CRÍTICO: llenar AL 100%. No hay gasolineras fiables entre Sort y Vielha (~150 km de montaña).'},
       {nm:'Repsol CRED — Vielha',hr:'7:00-23:00h',dir:'CR N-230 pk 163.7, Vielha',tel:'+34973642277',map:'https://maps.google.com/?q=Repsol+CRED+Vielha+N230',key:true,not:'Llenar antes de entrar a Francia. Siguiente gasolinera: Arreau o Saint-Lary.'}],
- hotel:{ok:true,nm:'Hostal Pirineos · Aínsa',desayuno:true,nobadge:true,dir:'Avda. Sobrarbe 7, 22330 Aínsa',tel:'+34 974 500 008',web:'hostalpirineosainsa.com',map:'https://maps.google.com/?q=Hostal+Pirineos+Ainsa+Sobrarbe+7',
+ hotel:{ok:true,nm:'Hostal Pirineos · Aínsa',desayuno:true,nobadge:true,dir:'Avda. Sobrarbe 7, 22330 Aínsa',tel:'+34 974 500 008',web:null,map:'https://maps.google.com/?q=Hostal+Pirineos+Ainsa+Sobrarbe+7',
    inf:'5 hab dobles · ☕ Desayuno incluido · 🏍 Garaje motos GRATUITO (avisar) · Señal €200 pendiente',
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
@@ -534,7 +534,7 @@ const D=[
        {p:'🏁 Casa Lola — Isaba',n:'Llegada ~19:00h',d:'end'}],
  gas:[{nm:'Repsol — Biescas',hr:'8:00-21:00h',dir:'CR C-136 km 72, Biescas',tel:null,map:'https://maps.google.com/?q=Repsol+ES+Gasolinera+de+Biescas+C136',key:true,not:'Llenar AQUÍ antes del Portalet. En Francia las gasolineras son escasas en montaña.'},
       {nm:'TotalEnergies — Oloron-Sainte-Marie',hr:'Lun-Sáb 7:00-20:00h',dir:'28 Rue Charles et Henri Moureu, Oloron-Sainte-Marie',tel:null,map:'https://maps.google.com/?q=TotalEnergies+28+Rue+Charles+et+Henri+Moureu+64400+Oloron-Sainte-Marie',key:true,not:'⚠️ ES DOMINGO. Confirmar horario. Llenar antes del Aubisque y La Pierre Saint-Martin.'}],
- hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:'hostal-lola.com',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
+ hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:null,map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
    inf:'€547,60 total · Pago pendiente con tarjeta',
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 01/06/2026',pag:'€547,60 — confirmar con tarjeta'},
  alm:[{mo:'COMIDA — Laruns 🍽️',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Menú del día.'}],
@@ -845,7 +845,7 @@ function renderDias(){
  D.forEach((d,i)=>{
   const esH=hoy===i;
   const open=esH||(hoy===-1&&i===0);
-  let chips=`<span class="dchip ck-km">${d.km} km</span><span class="dchip ck-dt">→ ${d.dest}</span>`;
+  let chips=`<span class="dchip ck-km">${d.km}</span><span class="dchip ck-dt">→ ${d.dest}</span>`;
   if(d.hotel&&d.hotel.ok)chips+=`<span class="dchip ck-ht">${d.hotel.nm.split('·')[0].split('⭐')[0].trim()}</span>`;
   if(esH)chips+='<span class="dchip ck-hoy">🌟 HOY</span>';
 
@@ -1632,7 +1632,7 @@ function renderMC(){
       }</div>` : '';
   html += `<div class="mc-bloque">
     <div class="mc-label">📏 Etapa</div>
-    <div class="mc-valor">${d.km} km → ${d.dest}</div>
+    <div class="mc-valor">${d.km} → ${d.dest}</div>
     ${puntosHtml}
   </div>`;
 
