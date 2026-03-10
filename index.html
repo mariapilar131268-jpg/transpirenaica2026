@@ -449,7 +449,7 @@ const PI=[
       {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en Argèles-Gazost ANTES del Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~732€</strong>'}]},
  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
-  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:false},{h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Resto €45 en hostal (€35 hab + €10 desayuno)'},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
+  pagos:[{h:'Hotel Beri · Llançà',v:88.66,ok:true},{h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false},{h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Tu parte proporcional de la señal total (€200). Resto €45 en hostal el 20/06 (€35 hab + €10 desayuno)'},{h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}],
   cobros:[
    {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
    {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
@@ -857,8 +857,9 @@ function renderDias(){
   if(d.cen&&d.cen.length){
    html+='<div class="dsec"><div class="dstit">🍷 dónde cenar</div>';
    d.cen.forEach((r,j)=>{
+    const resBadge=r.reservado?`<span style="background:var(--grn);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;margin-left:6px">🔒 RESERVADO</span>`:'';
     html+=`<div class="rbox${j===0?' top':''}">
-     <div class="rmom">${r.mo}</div><div class="rnm">${r.nm}</div>
+     <div class="rmom">${r.mo}${resBadge}</div><div class="rnm">${r.nm}</div>
      <div class="rinf">${r.loc} · ${r.pr}<br>${r.inf}</div>
      <div class="lrow"><a class="lk map" href="${r.map}" target="_blank">🗺 Mapa</a>${r.tel?`<a class="lk tel" href="tel:${r.tel}">📞 ${r.tel}</a>`:''}</div>
     </div>`;
