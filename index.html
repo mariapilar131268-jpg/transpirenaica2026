@@ -252,7 +252,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ── MODO CONDUCCIÓN ─────────────────────────────────── */
 #modoConduccion{display:none;position:fixed;inset:0;z-index:9000;
-  background:#0d1f0d;flex-direction:column;overflow-y:auto;
+  background:#0d1f0d;flex-direction:column;overflow:hidden;
   padding-top:calc(env(safe-area-inset-top,0px) + 0px)}
 #modoConduccion.activo{display:flex}
 .mc-hdr{display:flex;align-items:center;justify-content:space-between;
@@ -261,7 +261,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .mc-titulo{color:#d4f0a8;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
 .mc-cerrar{background:#c8e8a8;color:#0a1a0a;border:2px solid #8ab870;
   border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;min-height:48px}
-.mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1;overflow-y:auto;}
 .mc-dia-info{text-align:center;padding:10px 0 4px}
 .mc-dia-txt{color:#c8e8a8;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
 .mc-dia-num{color:#ffffff;font-size:24px;font-weight:700;margin-top:2px}
@@ -289,6 +289,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="mc-hdr">
     <div class="mc-titulo">🏍️ Modo Conducción</div>
     <button class="mc-cerrar" onclick="cerrarMC()">✕ Salir</button>
+  </div>
+  <!-- Botones de días: fijos, no hacen scroll -->
+  <div id="mc-dias-nav" style="padding:10px 20px 6px;background:#0d1f0d;border-bottom:1px solid #1e3a1e;flex-shrink:0;">
+    <!-- generado por JS -->
   </div>
   <div class="mc-body" id="mc-body">
     <!-- contenido generado por JS -->
@@ -1601,6 +1605,7 @@ function buildGmapsUrl(d, almIdx){
 function renderMC(){
   const d = D[mcDiaActual];
   const body = document.getElementById('mc-body');
+  const diasNav = document.getElementById('mc-dias-nav');
   if(!body || !d) return;
 
   const hoy = diaHoy();
@@ -1624,14 +1629,12 @@ function renderMC(){
                     : (d.cen && d.cen.length > 0)  ? d.cen : [];
   const labelComida = (d.alm && d.alm.length > 0) ? '🍽️ Elige dónde comer' : '🌙 Elige dónde cenar';
 
-  let html = '';
-
-  // ── SELECTOR DE DÍA ──
-  html += `<div style="display:flex;gap:5px;flex-wrap:wrap;padding:4px 0 10px">`;
+  // ── SELECTOR DE DÍA (fijo, en su propio contenedor) ──
+  let htmlDias = `<div style="display:flex;gap:5px;flex-wrap:wrap;">`;
   D.forEach((dia, i) => {
     const esActivo = i === mcDiaActual;
     const esHoy = i === hoy;
-    html += `<button onclick="mcCambiarDia(${i})"
+    htmlDias += `<button onclick="mcCambiarDia(${i})"
       style="flex:1;min-width:44px;padding:10px 8px;border-radius:12px;
       border:2px solid ${esActivo?'#8ab850':'#3a5a20'};
       background:${esActivo?'#e8e0cc':'#1a3018'};
@@ -1643,7 +1646,10 @@ function renderMC(){
       <span style="font-size:16px;font-weight:700;letter-spacing:.3px">D${dia.n}</span>
     </button>`;
   });
-  html += `</div>`;
+  htmlDias += `</div>`;
+  diasNav.innerHTML = htmlDias;
+
+  let html = '';
 
   // ── Info del día ──
   html += `<div class="mc-dia-info">
