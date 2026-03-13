@@ -320,7 +320,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <button class="bbk" onclick="goBack()">←</button>
     <div class="hinf"><div class="hnam" id="hnam"></div><div class="hmot" id="hmot"></div></div>
     <div class="hbdg" id="hbdg"></div>
-    <button onclick="abrirMC()" style="background:#2e4a12;color:#c8e87a;border:none;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.5px;flex-shrink:0;min-height:48px;line-height:1.3;text-align:center">🏍️<br>RUTA</button>
+    <button onclick="abrirMC()" style="background:#2e4a12;color:#c8e87a;border:none;border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.5px;flex-shrink:0;min-height:48px;line-height:1.3;text-align:center">🏍️<br>NAVEGAR</button>
   </div>
   <div class="ntabs">
     <button class="ntab active" onclick="showTab('dia',this)">📅 MI DÍA</button>
@@ -389,13 +389,13 @@ const PI=[
   pres:{aloj:270,gas:190,cenas:225,comidas:80,total:765},
   pagos:PAG_DOBLE,
   al:[{t:'w',h:'🎓 CARNET A2 — EL JOVEN PROMESA DEL GRUPO 😄',b:'Potencia limitada por ley, talento ilimitado. Los demás llevan años con el A... tú ya casi. ¡Paciencia, crack!'},
-      {t:'w',h:'⚠️ DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. REPOSTAR en bonÀrea Sort (días 1 y 2) y Argèles-Gazost (día 3). Más paradas = más cafés ☕'},
+      {t:'w',h:'⚠️ DEPÓSITO 14 L — EL MÁS PEQUEÑO DEL GRUPO',b:'Autonomía ~200 km en montaña. REPOSTAR en bonÀrea Sort (días 1 y 2) y TotalEnergies Oloron (día 3). Más paradas = más cafés ☕'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~190€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~765€</strong>'}]},
  {id:'oriol',nm:'Oriol',ico:'🐣',mot:'KTM 790 Duke',dep:14.5,aut:220,badge:'A2',hab:'doble',comp:'Alberto',
   pres:{aloj:270,gas:172,cenas:225,comidas:80,total:747},
   pagos:PAG_DOBLE,
   al:[{t:'w',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
-      {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en Argèles-Gazost ANTES del Aubisque. Capa térmica a mano para Bonaigua y Tourmalet.'},
+      {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en TotalEnergies Oloron ANTES del Aubisque. Capa térmica a mano para Bonaigua y Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~172€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~747€</strong>'}]},
  {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
   pres:{aloj:270,gas:194,cenas:225,comidas:80,total:769},
@@ -406,7 +406,7 @@ const PI=[
   pres:{aloj:270,gas:157,cenas:225,comidas:80,total:732},
   pagos:PAG_DOBLE,
   al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
-      {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en Argèles-Gazost ANTES del Aubisque.'},
+      {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en TotalEnergies Oloron ANTES del Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~270€ · Gasolina ~157€ · Cenas ~225€ · Comidas ~80€ — <strong>TOTAL ~732€</strong>'}]},
  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
   pres:{aloj:390,gas:204,cenas:225,comidas:80,total:899},
@@ -605,7 +605,7 @@ const CK=[
  {it:'Casco: homologado, visera limpia'},{it:'Chaqueta con armaduras: hombros, codos y espalda'},
  {it:'Guantes verano + guantes para el frío'},{it:'Pantalón con protecciones'},
  {it:'Botas de moto'},{it:'Capa de lluvia (siempre en el baúl, siempre)'},
- {it:'Capa térmica — imprescindible para Bonaigua (2.072m) y Tourmalet (2.115m)'},
+ {it:'Capa térmica — imprescindible para Bonaigua (2.072m) y Aubisque (1.709m)'},
  {it:'Fundas impermeables para las botas'},
  {cat:'📄 DOCUMENTACIÓN',tip:''},
  {it:'Carnet de conducir (A o A2) vigente'},{it:'Permiso de circulación de la moto'},
@@ -673,6 +673,12 @@ function selectP(id){
  window.scrollTo(0,0);
  renderDias();renderCK();renderPagos();
  showTab('dia',document.querySelector('.ntab'));
+ // Ajustar top de pestañas según altura real del header
+ setTimeout(()=>{
+   const hdr=document.querySelector('.ahdr');
+   const tabs=document.querySelector('.ntabs');
+   if(hdr&&tabs) tabs.style.top=hdr.offsetHeight+'px';
+ },100);
 }
 
 function goBack(){
@@ -703,9 +709,9 @@ function showTab(id,btn){
 function renderResumenRuta(){
  const puertosGlobales=[
   {nm:'Port de la Bonaigua',alt:'2.072',dia:'Día 2',stars:'★★★',color:'#1a5a7a'},
-  {nm:"Col du Tourmalet",alt:'2.115',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
   {nm:"Col d'Aubisque",alt:'1.709',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
   {nm:'Puerto del Portalet',alt:'1.794',dia:'Día 3',stars:'★★',color:'#7a3a00'},
+  {nm:'La Pierre Saint-Martin',alt:'1.760',dia:'Día 3',stars:'★★',color:'#7a3a00'},
  ];
  const colores=['#4a7a3a','#2e6a5a','#1a5a7a','#7a3a00','#3a1a7a','#5a5a5a'];
  const kmTotal = D.reduce((s,d)=>{ const k=typeof d.km==='string'?parseInt(d.km):d.km; return s+(isNaN(k)?0:k); },0);
@@ -1356,7 +1362,7 @@ function renderRuta(){
     {ico:'🏔️',tx:'<strong>Port de la Bonaigua (2.072m):</strong> el más alto de Cataluña. Asfalto variable — baches entre Baqueira y la cima después del invierno. <em>Motos grandes con maletas: ir suave.</em>'},
     {ico:'🌡️',tx:'En el puerto puede hacer <strong>8-12°C</strong> aunque abajo haya 25°C. Capa térmica a mano, especialmente Oriol 🐣 (naked sin carenado).'},
     {ico:'☔',tx:'<strong>Regla de oro:</strong> puedes salir de Sort con sol y encontrarte tormenta en la Bonaigua. Hacer el puerto antes de las 13h.'},
-    {ico:'🛣️',tx:'<strong>Vielha → Aínsa:</strong> por el túnel de Bielsa o Benasque. Carreteras del Pirineo aragonés espectaculares y con menos tráfico que el catalán.'},
+    {ico:'🛣️',tx:'<strong>Vielha → Peyresourde → Aínsa:</strong> salida de España por Bossòst, Col de Peyresourde en Francia y vuelta por el túnel de Bielsa. Carreteras del Pirineo aragonés espectaculares y poco transitadas.'},
     {ico:'🏘️',tx:'<strong>Aínsa:</strong> casco medieval del siglo XI. Llegar con luz — la plaza mayor es impresionante. '},
    ],
    pois:[
@@ -1366,27 +1372,25 @@ function renderRuta(){
     {ico:'🏰',nm:'Casco medieval de Aínsa',det:'<span class="tt">🏨 Noche Día 2</span><span class="tm">⏱ Llegada ~18h</span> Plaza mayor del siglo XI rodeada de arcadas. Pasear antes de cenar. Impresionante al atardecer.',mapq:'Plaza Mayor Ainsa Huesca'},
    ],
    meteo:{alt:'2.072m',tmin:'7°C',tmax:'25°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
-  {dia:'DÍA 3 · 21 Jun',tit:'Aínsa → Portalet → Tourmalet → Aubisque → Isaba',km:'320 km · ~6-7h con paradas',tipo:'🏆 LA ETAPA REINA',
+  {dia:'DÍA 3 · 21 Jun',tit:'Aínsa → Portalet → Ossau → Aubisque → Isaba',km:'320 km · ~6-7h con paradas',tipo:'🏆 LA ETAPA REINA',
    stars:[{t:'red',l:'🏆 Día épico'},{t:'',l:'🇫🇷 Francia'},{t:'ora',l:'🚴 Ciclistas · Salida 7:30h'}],
    tips:[
-    {ico:'⏰',tx:'<strong>SALIDA 7:30-8:00h — obligatorio.</strong> Los puertos del Tour de Francia. En junio hay menos tráfico, pero cuanto antes subas el Tourmalet, más lo disfrutas sin caravanas.'},
-    {ico:'🏔️',tx:'<strong>Col du Tourmalet (2.115m):</strong> 19 km al 7,4% de media. La bajada hacia Luz-Saint-Sauveur tiene curvas muy cerradas y fuerte pendiente. <em>Sin excesos.</em>'},
+    {ico:'⏰',tx:'<strong>SALIDA 7:30-8:00h — obligatorio.</strong> La etapa reina. En junio hay menos tráfico, pero cuanto antes subas el Aubisque, más lo disfrutas sin caravanas y con mejor tiempo.'},
+    {ico:'🏔️',tx:'<strong>Col du Portalet (1.794m):</strong> frontera España-Francia. Bajada espectacular al Valle de Ossau. Punto de reagrupamiento antes de entrar en Francia.'},
     {ico:'🏔️',tx:'<strong>Col d\u2019Aubisque (1.709m):</strong> para muchos el más bonito del viaje. El tramo Soulor-Aubisque (7 km) es espectacular — vacas, caballos y ovejas en la calzada. <strong>Reducir velocidad.</strong>'},
-    {ico:'⛽',tx:'<strong>Repostar en Argèles-Gazost</strong> ANTES del Aubisque — es la gasolinera con personal más estratégica de la zona según moteros en Wikiloc y bmwmotos. Hay una más en Bedos (pasado Escot) pero solo tarjeta. Alberto 🐛: <em>200 km de autonomía — momento más crítico del viaje.</em> Todos repostan aquí sin excepción.'},
-    {ico:'🌡️',tx:'Tourmalet en la cima: <strong>5-8°C con viento.</strong> Guantes de invierno en la maleta. Pedro y Xavi van cubiertos; el resto que prepare capas.'},
+    {ico:'⛽',tx:'<strong>Repostar en TotalEnergies Oloron</strong> ANTES del Aubisque — es la gasolinera con personal más estratégica de la zona. Alberto 🐛: <em>200 km de autonomía — momento más crítico del viaje.</em> ⚠️ Es domingo: confirmar horario antes de salir. Todos repostan aquí sin excepción.'},
+    {ico:'🌡️',tx:'Aubisque en la cima: <strong>10-12°C con viento.</strong> Capa térmica en la mochila. El tramo Soulor-Aubisque (7 km) es espectacular — carretera excavada en la roca. Pedro y Xavi van cubiertos; el resto que prepare capas.'},
     {ico:'🦌',tx:'<strong>Bajada Aubisque a Laruns:</strong> fauna en libertad. Se han visto ovejas, caballos y algún oso en la zona. Ojos bien abiertos y velocidad moderada.'},
     {ico:'💳',tx:'<strong>Gasolineras en Francia:</strong> muchas son automáticas 24h solo con tarjeta bancaria chip+pin. Las tarjetas españolas a veces fallan en máquinas sin personal. Llevar siempre algo de efectivo en euros — en los pueblos pequeños se puede pagar en bares o tiendas cercanas.'},
    ],
    pois:[
     {ico:'🏔️',nm:'Col du Portalet — 1.794m (frontera)',det:'<span class="tm">⏱ ~9:00h</span> Paso fronterizo España-Francia. Punto de reagrupamiento antes de entrar en territorio francés.',mapq:'Col du Portalet frontera Formigal Francia'},
-    {ico:'🏔️',nm:'Col d\'Aspin — 1.489m',det:'<span class="tm">⏱ ~10:00h · entre Tourmalet y Soulor</span> Puerto menos conocido que el Tourmalet pero igual de espectacular. Vistas al Pic du Midi. Bajada técnica con curvas cerradas — uno de los favoritos de los foros moteros.',mapq:'Col Aspin Arreau France'},
-    {ico:'🏘️',nm:'Bagnères-de-Luchon — Pueblo termal',det:'<span class="tm">⏱ parada café ~15 min</span> Pueblo francés con encanto en el valle. Punto de paso entre Portillon y Aspin. Termas y arquitectura belle époque. Ideal para estirar las piernas.',mapq:'Bagneres de Luchon France'},
-    {ico:'🏔️',nm:'Col du Tourmalet — 2.115m',det:'<span class="tt">⭐ Imprescindible</span><span class="tm">⏱ ~10:30h</span> El puerto más alto de los Pirineos franceses y el más subido del Tour. Escultura del ciclista en la cima. Café obligatorio.',mapq:'Col du Tourmalet cima Francia'},
-    {ico:'📍',nm:'Col de Soulor — 1.474m (parada grupo)',det:'<span class="tm">⏱ ~12:30h · Parada comida</span> Restaurante con terraza y vistas impresionantes. Punto ideal de reagrupamiento antes del Aubisque.',mapq:'Col de Soulor Argeles Gazost Francia'},
-    {ico:'🏔️',nm:'Col d\u2019Aubisque — 1.709m',det:'<span class="tt">⭐ El más bonito</span><span class="tm">⏱ ~13:30h</span> Carretera excavada en la roca. Escultura de 3 bicicletas gigantes. Fauna libre en la calzada.',mapq:'Col Aubisque cima Francia'},
-    {ico:'⛽',nm:'Gasolinera Argèles-Gazost',det:'<span class="tt">⛽ REPOSTAR TODOS</span><span class="tm">⏱ Antes del Aubisque</span> Última gasolinera antes de 100 km de montaña. Obligatorio para Alberto 🐛.',mapq:'gasolinera Argeles-Gazost France'},
+    {ico:'🏞️',nm:'Valle de Ossau — Laruns',det:'<span class="tm">⏱ ~10:30h · Parada comida</span> Valle glaciar espectacular. Laruns es el pueblo del valle — comida en el Hôtel-Restaurant d\'Ossau. Paisaje de postal.',mapq:'Laruns Valle Ossau Francia'},
+    {ico:'⛽',nm:'TotalEnergies — Oloron-Sainte-Marie',det:'<span class="tt">⛽ REPOSTAR TODOS</span><span class="tm">⏱ Antes del Aubisque · ⚠️ ES DOMINGO</span> Confirmar horario. Última gasolinera antes del Aubisque y La Pierre Saint-Martin. Obligatorio para Alberto 🐛.',mapq:'TotalEnergies Oloron-Sainte-Marie Francia'},
+    {ico:'🏔️',nm:'Col d\u2019Aubisque — 1.709m',det:'<span class="tt">⭐ El más bonito</span><span class="tm">⏱ ~14:00h</span> Carretera excavada en la roca. Escultura de 3 bicicletas gigantes. Fauna libre en la calzada — vacas, caballos, ovejas.',mapq:'Col Aubisque cima Francia'},
+    {ico:'🏔️',nm:'Arette — La Pierre Saint-Martin',det:'<span class="tm">⏱ ~16:00h</span> Puerto fronterizo espectacular. Bajada a Isaba por carretera navarra de montaña. Tramo final del día.',mapq:'Col Pierre Saint Martin Arette Francia'},
    ],
-   meteo:{alt:'2.115m',tmin:'5°C',tmax:'22°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
+   meteo:{alt:'1.709m',tmin:'8°C',tmax:'22°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
   {dia:'DÍA 4 · 22 Jun',tit:'Isaba → Irati → Baztán → Hondarribia',km:'200 km · ~4-5h con paradas',tipo:'Navarra profunda + Meta final 🏁',
    stars:[{t:'',l:'🌲 Selva de Irati'},{t:'',l:'🏁 Meta final'},{t:'',l:'🎉 Noche de San Joan'}],
    tips:[
@@ -1410,13 +1414,13 @@ function renderRuta(){
  const cgs=[
   {ico:'🌤️',tx:'<strong>Junio = la fecha perfecta.</strong> Puertos recién abiertos, días largos, menos tráfico que julio-agosto. Según foros moteros, junio ya no llueve tanto y los puertos están abiertos con luz hasta las 21h. El Pirineo siempre sorprende — traje de agua a mano, no en el fondo de las maletas.'},
   {ico:'⏰',tx:'<strong>Madrugar = disfrutar.</strong> Salida antes de las 8h en etapas largas. Los puertos por la mañana son magia pura. Las tormentas de verano llegan habitualmente a partir de las 14-15h. Quienes los suben tarde se encuentran con niebla cerrada o cierres preventivos.'},
-  {ico:'⛽',tx:'<strong>Regla de oro del repostaje en montaña:</strong> en cada parada con gasolinera, <em>todos</em> repostan aunque les quede. Las gasolineras en Francia son escasas y muchas solo admiten tarjeta bancaria sin personal (no todas admiten tarjetas españolas). Aprovecha siempre Argèles-Gazost antes del Aubisque.'},
+  {ico:'⛽',tx:'<strong>Regla de oro del repostaje en montaña:</strong> en cada parada con gasolinera, <em>todos</em> repostan aunque les quede. Las gasolineras en Francia son escasas y muchas solo admiten tarjeta bancaria sin personal (no todas admiten tarjetas españolas). Aprovecha siempre TotalEnergies Oloron antes del Aubisque.'},
   {ico:'🔧',tx:'<strong>Revisión antes de salir:</strong> neumáticos (clavar la uña — si no cede, cristalizados), pastillas de freno, aceite, cadena y líquido de frenos. En puertos largos cargados los frenos trabajan de verdad. Llevar kit antipinchazos + mini compresor — según veteranos de la ruta, ya les ha salvado el viaje más de una vez.'},
-  {ico:'🚴',tx:'<strong>Ciclistas:</strong> en junio hay grupos en todos los puertos famosos, especialmente Tourmalet y Aubisque. Paciencia y respeto total — adelantar con mucho espacio y nunca en curva. Recordad que el Tour de Francia pasa por la zona a primeros de julio: cuanto antes mejor.'},
+  {ico:'🚴',tx:'<strong>Ciclistas:</strong> en junio hay grupos en todos los puertos famosos, especialmente en el Aubisque. Paciencia y respeto total — adelantar con mucho espacio y nunca en curva. Recordad que el Tour de Francia pasa por la zona a primeros de julio: cuanto antes mejor.'},
   {ico:'🐄',tx:'<strong>Fauna en calzada:</strong> Aubisque e Irati especialmente. Vacas, caballos, ovejas con cencerros y en el entorno del Aubisque hay osos. Velocidad moderada siempre en estas zonas — los animales no avisan.'},
   {ico:'📱',tx:'<strong>GPS y cobertura:</strong> zonas sin señal en Val d\u2019Arán, Pirineo aragonés y navarro. Descargar mapas offline (Google Maps, Maps.me o Calimoto) antes de salir cada mañana. Revisar la ruta del día en el hotel, así no hay sorpresas si el móvil se queda sin datos.'},
   {ico:'🏍️',tx:'<strong>Grupo de 7 motos:</strong> dividir en 2 subgrupos para adelantar con seguridad. El último piloto señaliza los desvíos. Acordar puntos de reagrupamiento al inicio de cada etapa — en puertos y zonas sin cobertura es fácil disgregarse.'},
-  {ico:'🎽',tx:'<strong>Ropa y equipaje:</strong> chubasquero SIEMPRE encima, nunca enterrado en maletas. Capa térmica fina para puertos +2.000m aunque abajo haya 25°C. En el Tourmalet en la cima puede hacer 5-8°C con viento fuerte. Guantes de invierno o dobles son muy recomendables para los puertos.'},
+  {ico:'🎽',tx:'<strong>Ropa y equipaje:</strong> chubasquero SIEMPRE encima, nunca enterrado en maletas. Capa térmica fina para puertos +1.700m aunque abajo haya 25°C. En el Aubisque en la cima puede hacer 10-12°C con viento. Guantes de invierno o dobles son muy recomendables para los puertos.'},
   {ico:'🗺️',tx:'<strong>Esta ruta no es para correr.</strong> El Pirineo recompensa al que para, mira y respira. Cada mañana revisar el mapa, saber cuánto falta al siguiente punto y tener siempre un plan B por valle alternativo si el tiempo cierra un puerto.'},
  ];
 
