@@ -333,6 +333,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="tcont" id="tab-ruta"></div>
   <div class="tcont" id="tab-pagos"></div>
 </div>
+<div id="app-version" style="text-align:center;padding:18px 0 28px;font-family:DM Sans,system-ui,sans-serif;font-size:11px;color:#4a6a3a;letter-spacing:.5px;user-select:none;">
+  Transpirenaica 2026 · <span style="font-weight:700;color:#6a8a5a;">v1.3</span>
+</div>
 
 <script>
 // ━━━ PAGOS COMPARTIDOS — se clonan por piloto al cargar ━━━
@@ -1771,13 +1774,48 @@ function mcSelComida(almIdx){
   }
 }
 
-// ━━━ PWA: Registro del Service Worker ━━━
+// ━━━ PWA: Registro del Service Worker + detección de actualización ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js?v=5')
-      .then(r => console.log('SW registrado:', r.scope))
+      .then(reg => {
+        console.log('SW registrado:', reg.scope);
+        // Detectar nueva versión disponible
+        reg.addEventListener('updatefound', () => {
+          const newSW = reg.installing;
+          newSW.addEventListener('statechange', () => {
+            if(newSW.state === 'installed' && navigator.serviceWorker.controller){
+              mostrarBannerActualizacion(reg);
+            }
+          });
+        });
+      })
       .catch(e => console.log('SW error:', e));
+    // Si el SW ya tenía una actualización pendiente al abrir
+    navigator.serviceWorker.ready.then(reg => {
+      if(reg.waiting){
+        mostrarBannerActualizacion(reg);
+      }
+    });
   });
+}
+
+function mostrarBannerActualizacion(reg){
+  if(document.getElementById('update-banner')) return; // ya visible
+  const banner = document.createElement('div');
+  banner.id = 'update-banner';
+  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a52a8;color:#fff;padding:14px 16px 22px;font-size:14px;text-align:center;z-index:10000;font-family:DM Sans,system-ui,sans-serif;line-height:1.6;border-top:3px solid #4a8fd8;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;';
+  banner.innerHTML = `
+    <span>🔄 <strong>Nueva versión disponible</strong> — la app ha sido actualizada</span>
+    <button onclick="
+      document.getElementById('update-banner').remove();
+      if(navigator.serviceWorker.controller){
+        navigator.serviceWorker.ready.then(r=>{ if(r.waiting){ r.waiting.postMessage({type:'SKIP_WAITING'}); } });
+        setTimeout(()=>window.location.reload(),400);
+      } else { window.location.reload(); }
+    " style="padding:6px 18px;background:#fff;color:#1a52a8;border:none;border-radius:20px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">✓ Actualizar ahora</button>
+    <button onclick="this.parentElement.remove()" style="padding:6px 14px;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;font-size:12px;cursor:pointer;">Ahora no</button>`;
+  document.body.appendChild(banner);
 }
 
 // ━━━ iOS: mostrar instrucción de instalación ━━━

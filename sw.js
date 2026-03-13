@@ -1,45 +1,36 @@
-// ━━━ TRANSPIRENAICA 2026 · SERVICE WORKER v5 ━━━
-// Estrategia: RED PRIMERO → caché solo como emergencia offline
 const CACHE = 'transpi2026-v5';
+const URLS = ['./', './index.html', './manifest.json'];
 
-// Instalación: guardar recursos básicos en caché
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE)
-      .then(cache => cache.addAll(['./', './index.html', './manifest.json']))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE).then(c => c.addAll(URLS))
   );
 });
 
-// Activación: eliminar solo cachés ANTIGUAS (no la actual)
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(k => k !== CACHE)   // conservar la caché actual
-          .map(k => caches.delete(k)) // borrar solo las antiguas
-      )
-    ).then(() => self.clients.claim())
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    )
   );
 });
 
-// Fetch: RED PRIMERO — si hay conexión, siempre sirve la versión más nueva
-// Solo usa caché si la red falla (modo offline / túneles)
+// Network-first
 self.addEventListener('fetch', e => {
-  if (!e.request.url.startsWith(self.location.origin)) return;
-
   e.respondWith(
     fetch(e.request)
-      .then(resp => {
-        if (resp && resp.status === 200) {
-          const clone = resp.clone();
-          caches.open(CACHE).then(c => c.put(e.request, clone));
-        }
-        return resp;
+      .then(r => {
+        const clone = r.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+        return r;
       })
-      .catch(() =>
-        caches.match(e.request).then(cached => cached || caches.match('./index.html'))
-      )
+      .catch(() => caches.match(e.request))
   );
+});
+
+// Permite activar nueva versión inmediatamente cuando el usuario pulsa "Actualizar ahora"
+self.addEventListener('message', e => {
+  if(e.data && e.data.type === 'SKIP_WAITING'){
+    self.skipWaiting();
+  }
 });
