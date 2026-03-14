@@ -55,6 +55,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rutahdr .bbk{color:#e8f4c8;font-size:20px;padding:4px 8px;background:rgba(255,255,255,.1);border-radius:6px}
 .rutahdr-tit{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:bold;color:#e8f4c8}
 .rutahdr-sub{font-size:12px;color:#b8d888;margin-left:auto}
+.rmapa-wrap{margin:0 0 16px 0;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.18);position:relative}
+.rmapa-iframe{width:100%;height:260px;border:none;display:block}
+.rmapa-hint{text-align:center;font-size:11px;color:#888;padding:4px 0 6px;background:#f5f2eb}
 .rcard{background:#fff;border-radius:12px;border:1px solid #d4cfc6;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07)}
 .rcard-hdr{padding:13px 15px;background:#2e4a12;display:flex;align-items:flex-start;gap:8px}
 .rcard-hdr .rdia{font-size:10px;letter-spacing:2px;color:#b8d888;text-transform:uppercase;margin-bottom:3px}
@@ -252,7 +255,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ── MODO CONDUCCIÓN ─────────────────────────────────── */
 #modoConduccion{display:none;position:fixed;inset:0;z-index:9000;
-  background:#0d1f0d;flex-direction:column;overflow:hidden;
+  background:#0d1f0d;flex-direction:column;overflow-y:auto;
   padding-top:calc(env(safe-area-inset-top,0px) + 0px)}
 #modoConduccion.activo{display:flex}
 .mc-hdr{display:flex;align-items:center;justify-content:space-between;
@@ -261,7 +264,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .mc-titulo{color:#d4f0a8;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
 .mc-cerrar{background:#c8e8a8;color:#0a1a0a;border:2px solid #8ab870;
   border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;min-height:48px}
-.mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1;overflow-y:auto;}
+.mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
 .mc-dia-info{text-align:center;padding:10px 0 4px}
 .mc-dia-txt{color:#c8e8a8;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
 .mc-dia-num{color:#ffffff;font-size:24px;font-weight:700;margin-top:2px}
@@ -289,10 +292,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="mc-hdr">
     <div class="mc-titulo">🏍️ Modo Conducción</div>
     <button class="mc-cerrar" onclick="cerrarMC()">✕ Salir</button>
-  </div>
-  <!-- Botones de días: fijos, no hacen scroll -->
-  <div id="mc-dias-nav" style="padding:10px 20px 6px;background:#0d1f0d;border-bottom:1px solid #1e3a1e;flex-shrink:0;">
-    <!-- generado por JS -->
   </div>
   <div class="mc-body" id="mc-body">
     <!-- contenido generado por JS -->
@@ -336,9 +335,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="tcont" id="tab-ck"></div>
   <div class="tcont" id="tab-ruta"></div>
   <div class="tcont" id="tab-pagos"></div>
-</div>
-<div id="app-version" style="text-align:center;padding:18px 0 28px;font-family:DM Sans,system-ui,sans-serif;font-size:11px;color:#4a6a3a;letter-spacing:.5px;user-select:none;">
-  Transpirenaica 2026 · <span style="font-weight:700;color:#6a8a5a;">v1.3</span>
 </div>
 
 <script>
@@ -517,10 +513,10 @@ const D=[
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
        inf:'⭐ Recomendado en foros moteros. En Arties, antes de Vielha. Cocina aranesa. Cerrado lunes.',
-       mapsRuta:'https://www.google.com/maps/dir/Hotel+Les+Brases+Sort/Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Bossost/Bagneres-de-Luchon/Col+de+Peyresourde/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
+       mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Bossost/Bagneres-de-Luchon/Col+de+Peyresourde/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
       {mo:'COMIDA — Opción B 🥞',nm:'Crêperie du Col de Peyresourde',loc:'Loudervielle, Francia',tel:null,map:'https://maps.google.com/?q=Creperie+du+Col+de+Peyresourde+6088+Route+du+Col+de+Peyresourde+65240+Loudervielle',pr:'~12-18€/p',
        inf:'En el propio col de Peyresourde. Crepes y platos montañeses. Abierto en verano.',
-       mapsRuta:'https://www.google.com/maps/dir/Hotel+Les+Brases+Sort/Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/Creperie+du+Col+de+Peyresourde,+6088+Route+du+Col+de+Peyresourde,+65240+Loudervielle,+Francia/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Intermarche+Ancizan,+Route+de+Saint-Lary,+65440+Ancizan,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
+       mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/Creperie+du+Col+de+Peyresourde,+6088+Route+du+Col+de+Peyresourde,+65240+Loudervielle,+Francia/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Intermarche+Ancizan,+Route+de+Saint-Lary,+65440+Ancizan,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
  cen:[{mo:'CENA — Aínsa 🏆',nm:"L'Alfil",loc:'Aínsa, Calle Travesera de la Iglesia 3',tel:'+34974500299',map:'https://maps.google.com/?q=L+Alfil+Calle+Travesera+de+la+Iglesia+3+22330+Ainsa',pr:'~25-35€/p',inf:'Cocina aragonesa. Casco medieval de Aínsa.'}],
  als:[{t:'d',h:'⛽ BONAIGUA — DEPÓSITOS PEQUEÑOS EN ALERTA',b:'Alberto (14L) y Oriol (14,5L): LLENAR en bonÀrea Sort al 100%. No hay gasolineras entre Sort y Vielha (~150 km).'},
       {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío en la cima. Capa térmica A MANO antes de subir.'}],
@@ -568,10 +564,10 @@ const D=[
    inf:'Casco histórico medieval · 2 dobles + 1 individual + 2 doble uso'},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Restaurante La Posada · Roncesvalles',loc:'Roncesvalles, Navarra',tel:null,map:'https://maps.google.com/?q=Restaurante+La+Posada+Roncesvalles+Navarra',pr:'~20-28€/p',
        inf:'En Roncesvalles, junto a la colegiata. Cocina navarra. Ambiente peregrino.',
-       mapsRuta:'https://www.google.com/maps/dir/Casa+Lola+Isaba/Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Restaurante+La+Posada,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'},
+       mapsRuta:'https://www.google.com/maps/dir//Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Restaurante+La+Posada,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'},
       {mo:'COMIDA — Opción B 🍽️',nm:'Casa Sabina · Roncesvalles',loc:'Roncesvalles, Navarra',tel:null,map:'https://maps.google.com/?q=Casa+Sabina+Roncesvalles+Navarra',pr:'~18-25€/p',
        inf:'Alternativa en Roncesvalles. Ambiente acogedor, cocina de montaña navarra.',
-       mapsRuta:'https://www.google.com/maps/dir/Casa+Lola+Isaba/Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Casa+Sabina,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'}],
+       mapsRuta:'https://www.google.com/maps/dir//Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Casa+Sabina,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'}],
  cen:[
   {mo:'CENA DE CELEBRACIÓN 🎉 — 1ª parada',nm:'Bar Gran Sol',loc:'Calle San Pedro 63 · Barrio La Marina',tel:'+34943644701',map:'https://maps.google.com/?q=Bar+Gran+Sol+Hondarribia+Calle+San+Pedro+63',pr:'~8-12€/p',inf:'3x campeón nacional de pintxos. Llegar a las 19:00h. Imprescindible: Jaizkibel (champiñón relleno de mousse de queso con jamón ibérico).'},
   {mo:'CENA DE CELEBRACIÓN 🎉 — 2ª parada',nm:'Gastroteka Danontzat',loc:'Denda Kalea 6 · Casco Histórico',tel:'+34943640097',map:'https://maps.google.com/?q=Gastroteka+Danontzat+Hondarribia',pr:'~10-15€/p',inf:'Campeón de Euskadi pintxos más innovador 2016. Vermut en barriles de terraza.'},
@@ -1309,6 +1305,21 @@ renderSel();
 
 function renderRuta(){
  const cont=document.getElementById('rutacont');
+
+ // URLs embed Google Maps por día (se muestran como iframe visual en la etapa)
+ const EMBED_MAPAS = [
+  // Día 0: Montcada → Port de la Selva
+  'https://maps.google.com/maps?f=d&hl=es&saddr=Montcada+i+Reixac&daddr=Figueres+to:Cap+de+Creus+to:Cadaques+to:Port+de+la+Selva&output=embed',
+  // Día 1: Port de la Selva → Sort
+  'https://maps.google.com/maps?f=d&hl=es&saddr=Port+de+la+Selva&daddr=Cap+de+Creus+to:Besalu+to:Olot+to:Collada+de+Toses+to:Puigcerda+to:La+Seu+d%27Urgell+to:Sort+Lleida&output=embed',
+  // Día 2: Sort → Aínsa
+  'https://maps.google.com/maps?f=d&hl=es&saddr=Sort+Lleida&daddr=Puerto+de+la+Bonaigua+to:Arties+to:Vielha+to:Ainsa+Huesca&output=embed',
+  // Día 3: Aínsa → Isaba (etapa reina)
+  'https://maps.google.com/maps?f=d&hl=es&saddr=Ainsa+Huesca&daddr=Biescas+to:Formigal+to:Col+du+Portalet+to:Laruns+to:Oloron-Sainte-Marie+to:Col+Aubisque+to:Isaba+Navarra&output=embed',
+  // Día 4: Isaba → Hondarribia
+  'https://maps.google.com/maps?f=d&hl=es&saddr=Isaba+Navarra&daddr=Roncesvalles+to:Urzainqui+to:Elizondo+to:Hondarribia&output=embed',
+ ];
+
  // helper POI row
  function poi(ico,nm,det,mapq){
   return `<div class="rpoi-item">
@@ -1438,7 +1449,7 @@ function renderRuta(){
  html+='</div>';
 
  // Etapas
- etapas.forEach(d=>{
+ etapas.forEach((d,eIdx)=>{
   const starsHtml=d.stars.map(s=>`<span class="star ${s.t}">${s.l}</span>`).join('');
   const tipsHtml=d.tips.map(t=>`<div class="rtip"><div class="rtip-ico">${t.ico}</div><div class="rtip-tx">${t.tx}</div></div>`).join('');
   const poisHtml=d.pois.map(p=>poi(p.ico,p.nm,p.det,p.mapq)).join('');
@@ -1453,6 +1464,16 @@ function renderRuta(){
     <div class="rkm">${d.km.split('·')[0].trim()}</div>
    </div>
    <div class="rcard-body">
+    ${EMBED_MAPAS[eIdx] ? `<div class="rmapa-wrap">
+     <iframe
+      src="${EMBED_MAPAS[eIdx]}"
+      class="rmapa-iframe"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+     </iframe>
+     <div class="rmapa-hint">👆 Toca el mapa para interactuar</div>
+    </div>` : ''}
     <div class="rstarr">${starsHtml}</div>
     ${tipsHtml}
     <div class="rpoi">
@@ -1597,15 +1618,17 @@ function buildGmapsUrl(d, almIdx){
   };
 
   // Obtener paradas del día y filtrar nulos
-  const paradas = (RUTAS[d.n] || []).filter(Boolean);
+  // Quitamos el primer waypoint (origen fijo) → Maps usa la ubicación actual del piloto
+  // Así siempre aparece el botón "Iniciar" en lugar de "Vista previa"
+  const todasParadas = (RUTAS[d.n] || []).filter(Boolean);
+  const paradas = todasParadas.slice(1); // sin origen fijo
   if(paradas.length < 2) return null;
-  return 'https://www.google.com/maps/dir/' + paradas.join('/');
+  return 'https://www.google.com/maps/dir//' + paradas.join('/');
 }
 
 function renderMC(){
   const d = D[mcDiaActual];
   const body = document.getElementById('mc-body');
-  const diasNav = document.getElementById('mc-dias-nav');
   if(!body || !d) return;
 
   const hoy = diaHoy();
@@ -1629,12 +1652,14 @@ function renderMC(){
                     : (d.cen && d.cen.length > 0)  ? d.cen : [];
   const labelComida = (d.alm && d.alm.length > 0) ? '🍽️ Elige dónde comer' : '🌙 Elige dónde cenar';
 
-  // ── SELECTOR DE DÍA (fijo, en su propio contenedor) ──
-  let htmlDias = `<div style="display:flex;gap:5px;flex-wrap:wrap;">`;
+  let html = '';
+
+  // ── SELECTOR DE DÍA ──
+  html += `<div style="display:flex;gap:5px;flex-wrap:wrap;padding:4px 0 10px">`;
   D.forEach((dia, i) => {
     const esActivo = i === mcDiaActual;
     const esHoy = i === hoy;
-    htmlDias += `<button onclick="mcCambiarDia(${i})"
+    html += `<button onclick="mcCambiarDia(${i})"
       style="flex:1;min-width:44px;padding:10px 8px;border-radius:12px;
       border:2px solid ${esActivo?'#8ab850':'#3a5a20'};
       background:${esActivo?'#e8e0cc':'#1a3018'};
@@ -1646,10 +1671,7 @@ function renderMC(){
       <span style="font-size:16px;font-weight:700;letter-spacing:.3px">D${dia.n}</span>
     </button>`;
   });
-  htmlDias += `</div>`;
-  diasNav.innerHTML = htmlDias;
-
-  let html = '';
+  html += `</div>`;
 
   // ── Info del día ──
   html += `<div class="mc-dia-info">
@@ -1780,48 +1802,13 @@ function mcSelComida(almIdx){
   }
 }
 
-// ━━━ PWA: Registro del Service Worker + detección de actualización ━━━
+// ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js?v=5')
-      .then(reg => {
-        console.log('SW registrado:', reg.scope);
-        // Detectar nueva versión disponible
-        reg.addEventListener('updatefound', () => {
-          const newSW = reg.installing;
-          newSW.addEventListener('statechange', () => {
-            if(newSW.state === 'installed' && navigator.serviceWorker.controller){
-              mostrarBannerActualizacion(reg);
-            }
-          });
-        });
-      })
+      .then(r => console.log('SW registrado:', r.scope))
       .catch(e => console.log('SW error:', e));
-    // Si el SW ya tenía una actualización pendiente al abrir
-    navigator.serviceWorker.ready.then(reg => {
-      if(reg.waiting){
-        mostrarBannerActualizacion(reg);
-      }
-    });
   });
-}
-
-function mostrarBannerActualizacion(reg){
-  if(document.getElementById('update-banner')) return; // ya visible
-  const banner = document.createElement('div');
-  banner.id = 'update-banner';
-  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a52a8;color:#fff;padding:14px 16px 22px;font-size:14px;text-align:center;z-index:10000;font-family:DM Sans,system-ui,sans-serif;line-height:1.6;border-top:3px solid #4a8fd8;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;';
-  banner.innerHTML = `
-    <span>🔄 <strong>Nueva versión disponible</strong> — la app ha sido actualizada</span>
-    <button onclick="
-      document.getElementById('update-banner').remove();
-      if(navigator.serviceWorker.controller){
-        navigator.serviceWorker.ready.then(r=>{ if(r.waiting){ r.waiting.postMessage({type:'SKIP_WAITING'}); } });
-        setTimeout(()=>window.location.reload(),400);
-      } else { window.location.reload(); }
-    " style="padding:6px 18px;background:#fff;color:#1a52a8;border:none;border-radius:20px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">✓ Actualizar ahora</button>
-    <button onclick="this.parentElement.remove()" style="padding:6px 14px;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:20px;font-size:12px;cursor:pointer;">Ahora no</button>`;
-  document.body.appendChild(banner);
 }
 
 // ━━━ iOS: mostrar instrucción de instalación ━━━
