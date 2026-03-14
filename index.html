@@ -697,6 +697,10 @@ function showRuta(){
  document.getElementById('rutaview').style.display='flex';
  renderRuta();
  window.scrollTo(0,0);
+ // Forzar recálculo de tamaño de mapas Leaflet tras hacerse visibles
+ setTimeout(() => {
+  if(window._leafletMaps) window._leafletMaps.forEach(m => m.invalidateSize());
+ }, 150);
 }
 function closeRuta(){
  document.getElementById('rutaview').style.display='none';
@@ -1503,6 +1507,8 @@ function renderRuta(){
 
 function initMapasLeaflet(){
  if(typeof L === 'undefined') return; // Leaflet no cargado (sin internet)
+ if(!window._leafletMaps) window._leafletMaps = [];
+ const esMobil = window.innerWidth < 900 || ('ontouchstart' in window);
  const RUTAS_COORDS_REF = [
   [[41.484,2.190],[41.976,2.820],[42.319,3.185],[42.328,3.162],[42.334,3.190]],
   [[42.334,3.190],[42.319,3.185],[42.138,2.694],[42.183,2.490],[42.317,2.254],[42.403,2.004],[42.381,1.926],[42.360,1.851],[42.391,1.816],[42.368,1.456],[42.414,0.987]],
@@ -1517,7 +1523,14 @@ function initMapasLeaflet(){
   const el = document.getElementById('leaflet-dia-' + i);
   if(!el || el._leaflet_id) return; // ya inicializado
   const [lat, lng, zoom] = MAPA_VIEW_REF[i];
-  const map = L.map(el, {zoomControl:true, attributionControl:false, dragging:true, scrollWheelZoom:false});
+  const map = L.map(el, {
+   zoomControl: !esMobil,
+   attributionControl: false,
+   dragging: !esMobil,
+   scrollWheelZoom: false,
+   tap: false,
+   touchZoom: false,
+  });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18}).addTo(map);
   map.setView([lat, lng], zoom);
   // Dibujar la ruta en rojo/naranja
@@ -1527,6 +1540,8 @@ function initMapasLeaflet(){
   const iconFin = L.divIcon({html:'<div style="background:#c62828;width:14px;height:14px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.5)"></div>',iconSize:[14,14],className:''});
   L.marker(coords[0], {icon:iconIni}).addTo(map);
   L.marker(coords[coords.length-1], {icon:iconFin}).addTo(map);
+  // Guardar referencia para invalidateSize
+  window._leafletMaps.push(map);
  });
 }
 
