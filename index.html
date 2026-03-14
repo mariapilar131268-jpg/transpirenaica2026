@@ -450,11 +450,11 @@ PI.forEach(p=>{
 // ━━━ DÍAS ━━━
 const D=[
 {n:0,emo:'🌅',f:'Jue 18 junio',ti:'Traslado previo — Inicio de la aventura',km:'160-175 km',dest:'Port de la Selva',
- res:'Salida en la tarde desde el Área de Servicio Montcada La Pausa. Figueres, Cap de Creus, Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
+ res:'Salida en la tarde desde el Área de Servicio Montcada La Pausa. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
  mlat:42.362,mlon:3.154,mnm:'Llançà',
  ruta:[{p:'Área Montcada La Pausa',n:'C-33 km 82,5 sentido Norte · Todos quedan aquí · 16-18h',d:'start'},
        {p:'Figueres',n:'Parada breve si conviene'},
-       {p:'Cap de Creus',n:'📸 Foto de grupo — el punto más oriental de España',d:'special'},
+       {p:'Cap de Creus',n:'📸 Foto de grupo — el punto más oriental de España · ⚠️ Moto prohibida 9:30-21:30h · Llegar antes de 9:15h o después 21:30h',d:'special'},
        {p:'Cadaqués',n:'Costa Brava icónica'},
        {p:'El Port de la Selva',n:'Pueblo pesquero'},
        {p:'Monestir de Sant Pere de Rodes',n:'Vistas espectaculares — parada opcional',d:'special'},
@@ -465,7 +465,7 @@ const D=[
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:'Cancelación gratuita hasta 11/06/2026',pag:null},
  alm:[],
  cen:[{mo:'CENA',nm:'Ca la Herminda',loc:'Port de la Selva',tel:'+34972387975',map:'https://maps.google.com/?q=Ca+la+Herminda+Port+de+la+Selva',pr:'~25-35€/p',inf:'Arroces y mariscos. Referente de la Costa Brava.'}],
- als:[],
+ als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
 
@@ -1821,7 +1821,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '10';
+const APP_VERSION = '11';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1832,7 +1832,7 @@ const APP_VERSION = '10';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=10').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=11').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
