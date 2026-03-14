@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Manual de la App · Transpirenaica 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #1c2b1a;
+  --bg2:     #253c22;
+  --bg3:     #2d4a2a;
+  --crema:   #e8e0cc;
+  --crema2:  #d4c9a8;
+  --azul:    #1a52a8;
+  --naranja: #e8a020;
+  --naran-l: #fff8e1;
+  --verde:   #2e7d32;
+  --verde-l: #e8f5e9;
+  --rojo:    #cc3333;
+  --rojo-l:  #fff0f0;
+  --gris:    #888;
+  --gris-l:  #f5f5f5;
+  --gris-m:  #e0e0e0;
+  --negro:   #1a1a1a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--negro);
+  min-height: 100vh;
+}
+
+/* ── CABECERA FIJA ── */
+.header {
+  background: var(--bg);
+  padding: 16px 20px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--naranja);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header h1 {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--crema);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.header p {
+  font-size: 11px;
+  color: var(--crema2);
+  margin-top: 2px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
+  padding: 36px 20px 32px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.hero-emoji { font-size: 52px; margin-bottom: 8px; display: block; }
+.hero h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--crema);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.hero h2 span { color: var(--naranja); }
+.hero-sub {
+  font-size: 13px;
+  color: var(--crema2);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--naranja);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-top: 14px;
+  letter-spacing: .5px;
+}
+
+/* ── CONTENIDO PRINCIPAL ── */
+.content {
+  background: #f8f6f2;
+  min-height: 100vh;
+}
+
+/* ── SECCIÓN ── */
+.section {
+  padding: 28px 18px 8px;
+}
+.section-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--bg);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--gris);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* ── PASOS ── */
+.pasos { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.paso {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.07);
+}
+.paso-num {
+  min-width: 36px;
+  height: 36px;
+  background: var(--bg);
+  color: var(--crema);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.paso-num.azul { background: var(--azul); }
+.paso-num.verde { background: var(--verde); }
+.paso-num.naranja { background: var(--naranja); color: var(--bg); }
+.paso-txt h4 { font-size: 13px; font-weight: 700; color: var(--bg); margin-bottom: 3px; }
+.paso-txt p { font-size: 12px; color: #555; line-height: 1.55; }
+
+/* ── TIP ── */
+.tip {
+  background: var(--naran-l);
+  border: 1px solid var(--naranja);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #7a4f00;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.tip-verde {
+  background: var(--verde-l);
+  border-color: var(--verde);
+  color: #1b5e20;
+}
+.tip-rojo {
+  background: var(--rojo-l);
+  border-color: var(--rojo);
+  color: #7a0000;
+}
+
+/* ── DIVISOR ── */
+.divider {
+  height: 8px;
+  background: var(--gris-m);
+}
+
+/* ── MOCKUP MÓVIL ── */
+.mockup-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0;
+}
+.mockup {
+  width: 200px;
+  background: #111;
+  border-radius: 28px;
+  padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  position: relative;
+}
+.mockup::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 10px;
+  background: #222;
+  border-radius: 6px;
+  margin: 0 auto 6px;
+}
+.mockup-screen {
+  background: var(--bg);
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 340px;
+}
+
+/* Pantalla inicio */
+.ms-header {
+  background: var(--bg);
+  padding: 14px 12px 8px;
+  text-align: center;
+}
+.ms-logo { font-size: 9px; letter-spacing: 2px; color: var(--crema2); margin-bottom: 4px; }
+.ms-title { font-size: 16px; font-weight: 800; color: var(--crema); line-height: 1.2; }
+.ms-title span { color: var(--azul); }
+.ms-fecha { font-size: 8px; color: var(--crema2); margin-top: 4px; }
+.ms-quien { font-size: 8px; font-weight: 700; color: var(--crema); margin: 10px 0 6px; letter-spacing: 1px; }
+.ms-pilotos { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 0 8px; }
+.ms-piloto {
+  background: var(--crema);
+  border-radius: 6px;
+  padding: 6px 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.ms-piloto .ico { font-size: 10px; }
+.ms-piloto-info { }
+.ms-piloto-info .nm { font-size: 8px; font-weight: 700; color: #1a2a0a; }
+.ms-piloto-info .moto { font-size: 6px; color: #666; }
+.ms-badge {
+  background: var(--verde);
+  color: #fff;
+  font-size: 5px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 4px;
+  margin-left: 2px;
+}
+.ms-piloto.solo { grid-column: 1; }
+.ms-anal {
+  margin: 8px 8px 8px;
+  background: var(--bg3);
+  border-radius: 6px;
+  padding: 7px;
+  text-align: center;
+  font-size: 7px;
+  color: var(--crema);
+  font-weight: 600;
+}
+
+/* Pantalla MI DÍA */
+.mdia-header {
+  background: var(--bg);
+  padding: 8px 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mdia-back { font-size: 8px; color: var(--crema); font-weight: 700; }
+.mdia-nav-btn {
+  background: var(--verde);
+  color: #fff;
+  font-size: 7px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 5px;
+  letter-spacing: .5px;
+}
+.mdia-tabs {
+  display: flex;
+  background: #d8d0bc;
+  padding: 2px 6px 0;
+  gap: 0;
+}
+.mdia-tab {
+  flex: 1;
+  text-align: center;
+  font-size: 6px;
+  padding: 4px 2px 3px;
+  color: #888;
+  font-weight: 600;
+}
+.mdia-tab.active {
+  color: var(--negro);
+  font-weight: 800;
+  border-bottom: 2px solid var(--naranja);
+}
+.mdia-body { padding: 8px; }
+.mdia-alert {
+  border-radius: 6px;
+  padding: 6px 7px;
+  margin-bottom: 5px;
+  font-size: 7px;
+  line-height: 1.5;
+}
+.mdia-alert.amarillo { background: #fff3cd; color: #7a4f00; }
+.mdia-alert.naranja { background: #fff0d0; color: #8a4500; }
+.mdia-alert.azul { background: #e8f0fd; color: #1a3060; }
+.mdia-alert b { font-weight: 800; }
+.mdia-dia-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  border: 1px solid #e0e0e0;
+}
+.mdia-dia-banner {
+  background: var(--bg);
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mdia-dia-n { font-size: 18px; font-weight: 800; color: var(--crema); line-height: 1; }
+.mdia-dia-info { }
+.mdia-dia-fecha { font-size: 7px; color: var(--naranja); font-weight: 700; }
+.mdia-dia-tit { font-size: 7.5px; color: var(--crema); font-weight: 600; }
+.mdia-chips { display: flex; gap: 3px; padding: 5px 7px; flex-wrap: wrap; }
+.chip {
+  font-size: 6px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 8px;
+}
+.chip-km { background: #c8e6c9; color: #1b5e20; }
+.chip-dest { background: #bbdefb; color: #0d47a1; }
+.chip-hotel { background: #f8bbd0; color: #880e4f; }
+
+/* Pantalla CHECK */
+.check-prog {
+  background: #eee;
+  padding: 6px 8px;
+  margin: 6px 0 4px;
+  border-radius: 6px;
+}
+.check-prog-top { display: flex; justify-content: space-between; font-size: 7px; color: #555; margin-bottom: 3px; }
+.check-prog-bar { height: 4px; background: #ddd; border-radius: 2px; }
+.check-prog-fill { height: 4px; background: var(--verde); border-radius: 2px; width: 0%; }
+.check-sec-title {
+  background: var(--bg);
+  color: var(--crema);
+  font-size: 7px;
+  font-weight: 700;
+  padding: 4px 8px;
+  margin: 4px 0 2px;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  font-size: 7px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+.check-box {
+  width: 10px; height: 10px;
+  border: 1.5px solid #aaa;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Pantalla RUTA */
+.ruta-card {
+  background: var(--bg2);
+  margin: 6px;
+  border-radius: 8px;
+  padding: 8px;
+}
+.ruta-card-sub { font-size: 6px; color: var(--crema2); margin-bottom: 3px; }
+.ruta-card-title { font-size: 11px; font-weight: 800; color: var(--crema); margin-bottom: 6px; }
+.ruta-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+.ruta-stat {
+  background: var(--bg);
+  border-radius: 5px;
+  padding: 5px 3px;
+  text-align: center;
+}
+.ruta-stat-val { font-size: 9px; font-weight: 800; color: var(--crema); }
+.ruta-stat-lbl { font-size: 5px; color: var(--crema2); margin-top: 1px; }
+.puerto-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 7px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.puerto-alt {
+  background: var(--naranja);
+  color: var(--bg);
+  font-size: 7px;
+  font-weight: 800;
+  padding: 2px 4px;
+  border-radius: 4px;
+  min-width: 28px;
+  text-align: center;
+}
+.puerto-nm { font-size: 7.5px; font-weight: 600; color: var(--crema); }
+.puerto-dia { font-size: 6px; color: var(--crema2); }
+
+/* Pantalla PAGOS */
+.pagos-presup {
+  background: var(--bg2);
+  margin: 6px;
+  border-radius: 8px;
+  padding: 8px;
+}
+.pagos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 6px; }
+.pagos-cell {
+  background: var(--bg);
+  border-radius: 5px;
+  padding: 6px;
+  text-align: center;
+}
+.pagos-cell-ico { font-size: 10px; margin-bottom: 2px; }
+.pagos-cell-lbl { font-size: 5.5px; color: var(--crema2); }
+.pagos-cell-val { font-size: 10px; font-weight: 800; color: var(--crema); }
+.pagos-total {
+  margin: 0 6px;
+  background: var(--crema);
+  border-radius: 6px;
+  padding: 7px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pagos-total-lbl { font-size: 7px; font-weight: 700; color: #555; }
+.pagos-total-val { font-size: 15px; font-weight: 800; color: var(--bg); }
+.pagos-pedro {
+  margin: 5px 6px;
+  background: var(--verde-l);
+  border: 1.5px solid var(--verde);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+.pagos-pedro-tit { font-size: 7px; font-weight: 700; color: var(--naranja); margin-bottom: 3px; }
+.pagos-pedro-sub { font-size: 6px; color: #555; margin-bottom: 5px; }
+.pagos-pedro-val { font-size: 20px; font-weight: 800; color: var(--verde); }
+.pagos-pedro-met { font-size: 6px; color: #666; margin-top: 3px; }
+
+/* ── TABLA DE SECCIONES ── */
+.tabla-secciones { border-radius: 12px; overflow: hidden; border: 1px solid var(--gris-m); margin-bottom: 18px; }
+.tabla-fila {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  border-bottom: 1px solid var(--gris-m);
+}
+.tabla-fila:last-child { border-bottom: none; }
+.tabla-ico {
+  min-width: 52px;
+  padding: 13px 10px;
+  background: #edf3eb;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--bg);
+  font-size: 8px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+.tabla-ico .big { font-size: 18px; }
+.tabla-txt { padding: 12px 14px; flex: 1; }
+.tabla-txt h4 { font-size: 12px; font-weight: 700; color: var(--bg); margin-bottom: 3px; }
+.tabla-txt p { font-size: 11px; color: #555; line-height: 1.55; }
+
+/* ── BOTÓN NAVEGAR EXPLICACIÓN ── */
+.navegar-box {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  margin-bottom: 16px;
+}
+.navegar-top {
+  background: var(--verde);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.navegar-btn-preview {
+  background: rgba(255,255,255,.2);
+  border: 2px solid rgba(255,255,255,.5);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+.navegar-top p { font-size: 12px; color: rgba(255,255,255,.9); line-height: 1.5; }
+.navegar-bot { padding: 14px 18px; }
+.navegar-bot p { font-size: 12px; color: #444; line-height: 1.6; }
+
+/* ── COLORES DE RUTA ── */
+.puntos-lista { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.punto-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.punto-dot { font-size: 20px; flex-shrink: 0; }
+.punto-info h4 { font-size: 12px; font-weight: 700; color: var(--bg); margin-bottom: 2px; }
+.punto-info p { font-size: 11px; color: #666; }
+
+/* ── ANÁLISIS DE RUTA ── */
+.anal-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gris-m);
+}
+.anal-item:last-child { border-bottom: none; }
+.anal-ico { font-size: 24px; flex-shrink: 0; }
+.anal-txt h4 { font-size: 13px; font-weight: 700; color: var(--bg); margin-bottom: 4px; }
+.anal-txt p { font-size: 12px; color: #555; line-height: 1.6; }
+
+/* ── FAQs ── */
+.faq-item {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.07);
+}
+.faq-q {
+  background: #edf3eb;
+  padding: 13px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bg);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.faq-q::before { content: 'P'; font-size: 10px; background: var(--bg); color: var(--crema); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+.faq-a {
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #444;
+  line-height: 1.7;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.faq-a::before { content: 'R'; font-size: 10px; background: var(--azul); color: #fff; padding: 2px 6px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── PIE ── */
+.footer {
+  background: var(--bg);
+  padding: 28px 20px 40px;
+  text-align: center;
+}
+.footer p { font-size: 12px; color: var(--crema2); line-height: 1.8; }
+.footer .big { font-size: 20px; margin-bottom: 8px; }
+.footer strong { color: var(--crema); }
+
+/* ── ÍNDICE RÁPIDO ── */
+.indice {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 14px 18px;
+  background: #fff;
+  border-bottom: 1px solid var(--gris-m);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.indice::-webkit-scrollbar { display: none; }
+.indice a {
+  white-space: nowrap;
+  background: var(--bg);
+  color: var(--crema);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.indice a:active { background: var(--bg3); }
+
+/* ── UTILITIES ── */
+b, strong { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- CABECERA -->
+<div class="header">
+  <div class="header-top">
+    <span style="font-size:20px">🏍️</span>
+    <div>
+      <h1>Transpirenaica 2026</h1>
+      <p>Manual de uso de la App · Cap de Creus → Faro de Higuer</p>
+    </div>
+  </div>
+</div>
+
+<!-- ÍNDICE RÁPIDO -->
+<div class="indice">
+  <a href="#inicio">Abrir la app</a>
+  <a href="#midia">MI DÍA</a>
+  <a href="#navegar">NAVEGAR</a>
+  <a href="#check">CHECK</a>
+  <a href="#ruta">RUTA</a>
+  <a href="#pagos">PAGOS</a>
+  <a href="#analisis">Análisis</a>
+  <a href="#faqs">Preguntas</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emoji">🏍️</span>
+  <h2>TRANSPIRENAICA<br><span>2026</span></h2>
+  <p class="hero-sub">
+    Manual de uso de la app<br>
+    18 – 23 junio · 7 pilotos · ~1.585 km
+  </p>
+  <span class="hero-badge">Cap de Creus → Faro de Higuer</span>
+</div>
+
+<div class="content">
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 1: QUÉ ES + CÓMO ABRIR   -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="inicio">
+  <div class="section-title">📱 ¿Qué es esta app?</div>
+  <p class="section-sub">
+    Tu guía de viaje personalizada. Funciona como una app normal instalada en tu móvil
+    y <strong>no necesita internet</strong> para funcionar una vez instalada.
+    Tiene todo lo que necesitas para cada día del viaje.
+  </p>
+
+  <!-- Mockup pantalla inicio -->
+  <div class="mockup-wrap">
+    <div class="mockup">
+      <div class="mockup-screen">
+        <div class="ms-header">
+          <div class="ms-logo">🏍️ TRANSPIRENAICA 2026</div>
+          <div class="ms-title">CAP DE CREUS<br><span>→ FARO HIGUER</span></div>
+          <div class="ms-fecha">18 – 23 junio 2026 · ~1.585 km</div>
+          <div class="ms-quien">¿QUIÉN ERES?</div>
+        </div>
+        <div class="ms-pilotos">
+          <div class="ms-piloto">
+            <span class="ico">🐛</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Alberto <span class="ms-badge">A2</span></div>
+              <div class="moto">Yamaha R9</div>
+            </div>
+          </div>
+          <div class="ms-piloto">
+            <span class="ico">🐣</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Oriol <span class="ms-badge">A2</span></div>
+              <div class="moto">KTM 790 Duke</div>
+            </div>
+          </div>
+          <div class="ms-piloto">
+            <span class="ico">🏅</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Antonio</div>
+              <div class="moto">Kawasaki 1000SX</div>
+            </div>
+          </div>
+          <div class="ms-piloto">
+            <span class="ico">🏅</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Mónica</div>
+              <div class="moto">Honda CB650R</div>
+            </div>
+          </div>
+          <div class="ms-piloto">
+            <span class="ico">🏅</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Pedro</div>
+              <div class="moto">BMW S1000XR</div>
+            </div>
+          </div>
+          <div class="ms-piloto">
+            <span class="ico">🏅</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Xavi</div>
+              <div class="moto">Ducati Multi.</div>
+            </div>
+          </div>
+          <div class="ms-piloto solo">
+            <span class="ico">🏅</span>
+            <div class="ms-piloto-info">
+              <div class="nm">Antonio J.</div>
+              <div class="moto">BMW R1300RT</div>
+            </div>
+          </div>
+        </div>
+        <div class="ms-anal">📖 Análisis de Ruta · Ojos de Motero</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-sub" style="text-align:center; margin-top:0">
+    <em>La primera pantalla: toca tu nombre y la app se adapta a ti</em>
+  </p>
+
+  <div class="section-title" style="margin-top:10px">Cómo abrir la app</div>
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-txt">
+        <h4>Pili te manda el enlace por WhatsApp</h4>
+        <p>Abre el enlace en tu móvil. Verás la app en el navegador.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num azul">2</div>
+      <div class="paso-txt">
+        <h4>Instálala en tu pantalla de inicio</h4>
+        <p>
+          <strong>iPhone:</strong> botón compartir → "Añadir a pantalla de inicio"<br>
+          <strong>Android:</strong> menú ⋮ → "Añadir a pantalla de inicio"
+        </p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num verde">3</div>
+      <div class="paso-txt">
+        <h4>A partir de ahora, abre siempre el icono</h4>
+        <p>No hace falta abrir el navegador. La app está en tu pantalla como cualquier otra.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num naranja">4</div>
+      <div class="paso-txt">
+        <h4>Elige tu nombre</h4>
+        <p>La app se adapta a ti: tu moto, tus alertas personalizadas y tu presupuesto.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    💡 <strong>La app funciona sin internet</strong> una vez instalada. El tiempo meteorológico sí necesita cobertura para actualizarse.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 2: MI DÍA                 -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="midia">
+  <div class="section-title">📅 La pestaña MI DÍA</div>
+  <p class="section-sub">
+    Es la pantalla principal durante el viaje. Se abre sola con el día de hoy.
+    Todo lo que necesitas para la jornada está aquí.
+  </p>
+
+  <!-- Mockup MI DÍA -->
+  <div class="mockup-wrap">
+    <div class="mockup">
+      <div class="mockup-screen">
+        <div class="mdia-header">
+          <span class="mdia-back">← Alberto · Yamaha R9 · 14L</span>
+          <span class="mdia-nav-btn">NAVEGAR</span>
+        </div>
+        <div class="mdia-tabs">
+          <div class="mdia-tab active">MI DÍA</div>
+          <div class="mdia-tab">CHECK</div>
+          <div class="mdia-tab">RUTA</div>
+          <div class="mdia-tab">PAGOS</div>
+        </div>
+        <div class="mdia-body">
+          <div class="mdia-alert amarillo">
+            <b>🎓 CARNET A2 — EL JOVEN PROMESA</b><br>
+            Potencia limitada por ley, talento ilimitado. ¡Paciencia, crack!
+          </div>
+          <div class="mdia-alert naranja">
+            <b>⚠️ DEPÓSITO 14L — EL MÁS PEQUEÑO</b><br>
+            Autonomía ~200 km. REPOSTAR en bonÀrea Sort.
+          </div>
+          <div class="mdia-dia-card">
+            <div class="mdia-dia-banner">
+              <div class="mdia-dia-n">0</div>
+              <div class="mdia-dia-info">
+                <div class="mdia-dia-fecha">JUE 18 JUNIO</div>
+                <div class="mdia-dia-tit">Traslado previo — Inicio</div>
+              </div>
+            </div>
+            <div class="mdia-chips">
+              <span class="chip chip-km">160-175 KM</span>
+              <span class="chip chip-dest">→ PORT DE LA SELVA</span>
+              <span class="chip chip-hotel">HOTEL BERI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabla-secciones">
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">📋</span><span>RESUMEN</span></div>
+      <div class="tabla-txt">
+        <h4>Resumen del día</h4>
+        <p>Un párrafo con lo más importante: km, carreteras y qué ver en ruta.</p>
+      </div>
+    </div>
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">⚠️</span><span>ALERTAS</span></div>
+      <div class="tabla-txt">
+        <h4>Alertas del día</h4>
+        <p>Avisos especiales: restricciones de acceso, gasolineras que no puedes saltarte, tramos complicados.</p>
+      </div>
+    </div>
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">🌤️</span><span>METEO</span></div>
+      <div class="tabla-txt">
+        <h4>Meteorología</h4>
+        <p>Temperatura y lluvia prevista en el destino de esa noche (necesita cobertura).</p>
+      </div>
+    </div>
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">🗺️</span><span>RUTA</span></div>
+      <div class="tabla-txt">
+        <h4>Ruta del día</h4>
+        <p>Todos los puntos del recorrido en orden. Cada uno tiene un botón 🗺 Mapa que lo abre en Google Maps.</p>
+      </div>
+    </div>
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">⛽</span><span>GASOLINA</span></div>
+      <div class="tabla-txt">
+        <h4>Gasolineras críticas</h4>
+        <p>Solo las que no puedes saltarte. Con dirección, horario, mapa y teléfono.</p>
+      </div>
+    </div>
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">🛏️</span><span>HOTEL</span></div>
+      <div class="tabla-txt">
+        <h4>Dónde dormir</h4>
+        <p>Hotel confirmado con nombre, código de reserva, teléfono directo y enlace a Maps.</p>
+      </div>
+    </div>
+    <div class="tabla-fila">
+      <div class="tabla-ico"><span class="big">🍽️</span><span>CENA</span></div>
+      <div class="tabla-txt">
+        <h4>Dónde cenar</h4>
+        <p>Restaurante recomendado con precio orientativo y botón de llamada directa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 3: BOTÓN NAVEGAR          -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="navegar">
+  <div class="section-title">🗺️ El botón NAVEGAR</div>
+  <p class="section-sub">El botón más importante de la app durante el viaje.</p>
+
+  <div class="navegar-box">
+    <div class="navegar-top">
+      <div class="navegar-btn-preview">NAVEGAR</div>
+      <p>Siempre visible arriba a la derecha. Verde. Grande. Fácil de tocar con guante.</p>
+    </div>
+    <div class="navegar-bot">
+      <p>
+        Abre <strong>Google Maps</strong> directamente con la ruta completa del día cargada:
+        salida, todos los puntos intermedios y destino final.<br><br>
+        Solo tienes que pulsar <strong>"Iniciar"</strong> en Maps y seguir las indicaciones.
+        No hace falta buscar nada, escribir nada ni configurar nada.
+      </p>
+    </div>
+  </div>
+
+  <div class="tip tip-verde">
+    💡 <strong>Si te pierdes del grupo:</strong> abre la app → pulsa NAVEGAR → Google Maps te lleva al destino del día desde donde estés. No hay que llamar a nadie.
+  </div>
+
+  <div class="section-title" style="margin-top:24px">Los puntos de la ruta</div>
+  <p class="section-sub">Cada punto del día tiene un color que indica qué tipo de parada es:</p>
+
+  <div class="puntos-lista">
+    <div class="punto-item">
+      <span class="punto-dot">🟢</span>
+      <div class="punto-info">
+        <h4>Verde — Punto de salida</h4>
+        <p>Aquí empieza el día. El punto de reunión del grupo.</p>
+      </div>
+    </div>
+    <div class="punto-item">
+      <span class="punto-dot">🔵</span>
+      <div class="punto-info">
+        <h4>Azul — Punto especial</h4>
+        <p>Foto de grupo, mirador, lugar que no hay que perderse.</p>
+      </div>
+    </div>
+    <div class="punto-item">
+      <span class="punto-dot">⚪</span>
+      <div class="punto-info">
+        <h4>Blanco — Paso o parada corta</h4>
+        <p>Pueblo de paso o parada breve.</p>
+      </div>
+    </div>
+    <div class="punto-item">
+      <span class="punto-dot">🟠</span>
+      <div class="punto-info">
+        <h4>Naranja — Gasolinera crítica</h4>
+        <p>LLENAR aquí. No hay más gasolineras en muchos km.</p>
+      </div>
+    </div>
+    <div class="punto-item">
+      <span class="punto-dot">🍽️</span>
+      <div class="punto-info">
+        <h4>Tenedor — Comida</h4>
+        <p>Parada de comida o restaurante recomendado.</p>
+      </div>
+    </div>
+    <div class="punto-item">
+      <span class="punto-dot">🔴</span>
+      <div class="punto-info">
+        <h4>Rojo — Destino final</h4>
+        <p>El hotel de esa noche. Fin de etapa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 4: CHECK                  -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="check">
+  <div class="section-title">✓ La pestaña CHECK</div>
+  <p class="section-sub">
+    La lista de preparación antes del viaje. Marca cada casilla cuando lo tengas listo.
+    La barra de progreso avanza sola.
+  </p>
+
+  <!-- Mockup CHECK -->
+  <div class="mockup-wrap">
+    <div class="mockup">
+      <div class="mockup-screen">
+        <div class="mdia-header">
+          <span class="mdia-back">← Alberto · Yamaha R9</span>
+          <span class="mdia-nav-btn">NAVEGAR</span>
+        </div>
+        <div class="mdia-tabs">
+          <div class="mdia-tab">MI DÍA</div>
+          <div class="mdia-tab active">CHECK</div>
+          <div class="mdia-tab">RUTA</div>
+          <div class="mdia-tab">PAGOS</div>
+        </div>
+        <div class="mdia-body" style="padding:6px">
+          <div class="check-prog">
+            <div class="check-prog-top">
+              <span>Preparación pre-viaje</span>
+              <span>0% · 0/30</span>
+            </div>
+            <div class="check-prog-bar">
+              <div class="check-prog-fill"></div>
+            </div>
+          </div>
+          <div class="check-sec-title">🔧 MOTO</div>
+          <div class="check-item"><div class="check-box"></div> Neumáticos: dibujo mínimo 3 mm</div>
+          <div class="check-item"><div class="check-box"></div> Frenos: pastillas y líquido</div>
+          <div class="check-item"><div class="check-box"></div> Aceite motor revisado</div>
+          <div class="check-item"><div class="check-box"></div> ITV en vigor (junio 2026)</div>
+          <div class="check-item"><div class="check-box"></div> Seguro con asistencia</div>
+          <div class="check-sec-title">🎒 EQUIPACIÓN</div>
+          <div class="check-item"><div class="check-box"></div> Casco homologado</div>
+          <div class="check-item"><div class="check-box"></div> Impermeable + forro polar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-txt">
+        <h4>Abre la pestaña CHECK</h4>
+        <p>Está en la barra de pestañas, entre MI DÍA y RUTA.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num naranja">2</div>
+      <div class="paso-txt">
+        <h4>Repasa cada sección</h4>
+        <p>MOTO · EQUIPACIÓN · DOCUMENTACIÓN · EXTRAS<br>
+        Empieza por la moto — neumáticos y frenos primero.</p>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num verde">3</div>
+      <div class="paso-txt">
+        <h4>Marca cada casilla al terminar</h4>
+        <p>El porcentaje sube. Objetivo: llegar al 100% antes de salir el 18 de junio.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    💬 <em>Los foros moteros lo repiten siempre: neumáticos y frenos primero. La Transpirenaica tiene tramos de alta montaña con curvas muy exigentes.</em>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 5: RUTA                   -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="ruta">
+  <div class="section-title">🗺️ La pestaña RUTA</div>
+  <p class="section-sub">
+    Resumen visual de toda la Transpirenaica: km totales, etapas y los puertos de montaña que vais a pasar.
+  </p>
+
+  <!-- Mockup RUTA -->
+  <div class="mockup-wrap">
+    <div class="mockup">
+      <div class="mockup-screen">
+        <div class="mdia-header">
+          <span class="mdia-back">← Alberto · Yamaha R9</span>
+          <span class="mdia-nav-btn">NAVEGAR</span>
+        </div>
+        <div class="mdia-tabs">
+          <div class="mdia-tab">MI DÍA</div>
+          <div class="mdia-tab">CHECK</div>
+          <div class="mdia-tab active">RUTA</div>
+          <div class="mdia-tab">PAGOS</div>
+        </div>
+        <div class="mdia-body" style="padding:4px">
+          <div class="ruta-card">
+            <div class="ruta-card-sub">TRANSPIRENAICA 2026 · ALBERTO</div>
+            <div class="ruta-card-title">Cap de Creus → Faro de Higuer</div>
+            <div class="ruta-stats">
+              <div class="ruta-stat"><div class="ruta-stat-val">~1.927</div><div class="ruta-stat-lbl">KM TOTALES</div></div>
+              <div class="ruta-stat"><div class="ruta-stat-val">6</div><div class="ruta-stat-lbl">ETAPAS</div></div>
+              <div class="ruta-stat"><div class="ruta-stat-val">4</div><div class="ruta-stat-lbl">PUERTOS</div></div>
+            </div>
+          </div>
+          <div style="padding:4px 6px 2px; font-size:7px; color:rgba(255,255,255,.6); font-weight:700;">🏔️ PUERTOS DE MONTAÑA</div>
+          <div class="puerto-item"><span class="puerto-alt">2.072</span><div><div class="puerto-nm">Port de la Bonaigua</div><div class="puerto-dia">Día 2 · ★★★</div></div></div>
+          <div class="puerto-item"><span class="puerto-alt">1.709</span><div><div class="puerto-nm">Col d'Aubisque</div><div class="puerto-dia">Día 3 · ★★★</div></div></div>
+          <div class="puerto-item"><span class="puerto-alt">1.794</span><div><div class="puerto-nm">Puerto del Portalet</div><div class="puerto-dia">Día 3 · ★★</div></div></div>
+          <div class="puerto-item"><span class="puerto-alt">1.760</span><div><div class="puerto-nm">La Pierre Saint-Martin</div><div class="puerto-dia">Día 3 · ★★</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip tip-verde">
+    💡 Cada etapa tiene su propio botón de ruta en Google Maps. Si en algún momento el grupo se separa, cualquier piloto puede abrir su app y saber exactamente adónde va el día.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 6: PAGOS                  -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="pagos">
+  <div class="section-title">💳 La pestaña PAGOS</div>
+  <p class="section-sub">
+    Tu presupuesto estimado para el viaje completo y lo que tienes que transferir a Pedro,
+    que ha adelantado los hoteles.
+  </p>
+
+  <!-- Mockup PAGOS -->
+  <div class="mockup-wrap">
+    <div class="mockup">
+      <div class="mockup-screen">
+        <div class="mdia-header">
+          <span class="mdia-back">← Alberto · Yamaha R9</span>
+          <span class="mdia-nav-btn">NAVEGAR</span>
+        </div>
+        <div class="mdia-tabs">
+          <div class="mdia-tab">MI DÍA</div>
+          <div class="mdia-tab">CHECK</div>
+          <div class="mdia-tab">RUTA</div>
+          <div class="mdia-tab active">PAGOS</div>
+        </div>
+        <div class="mdia-body" style="padding:4px">
+          <div class="pagos-presup">
+            <div style="font-size:7px;font-weight:700;color:var(--naranja)">💰 PRESUPUESTO ESTIMADO</div>
+            <div style="font-size:6px;color:var(--crema2);margin-bottom:5px">Yamaha R9 · hab. doble · con Oriol</div>
+            <div class="pagos-grid">
+              <div class="pagos-cell"><div class="pagos-cell-ico">🏨</div><div class="pagos-cell-lbl">ALOJAMIENTO</div><div class="pagos-cell-val">~270€</div></div>
+              <div class="pagos-cell"><div class="pagos-cell-ico">⛽</div><div class="pagos-cell-lbl">GASOLINA</div><div class="pagos-cell-val">~190€</div></div>
+              <div class="pagos-cell"><div class="pagos-cell-ico">🍽️</div><div class="pagos-cell-lbl">CENAS</div><div class="pagos-cell-val">~225€</div></div>
+              <div class="pagos-cell"><div class="pagos-cell-ico">🥗</div><div class="pagos-cell-lbl">COMIDAS</div><div class="pagos-cell-val">~80€</div></div>
+            </div>
+          </div>
+          <div class="pagos-total" style="margin:5px 4px">
+            <span class="pagos-total-lbl">TOTAL ESTIMADO</span>
+            <span class="pagos-total-val">~765€</span>
+          </div>
+          <div class="pagos-pedro" style="margin:4px">
+            <div class="pagos-pedro-tit">🟡 PAGO A PEDRO — PLAZO LÍMITE</div>
+            <div class="pagos-pedro-sub">Hotel Beri · Les Brases · Señal Aínsa</div>
+            <div style="font-size:6px;color:#555;margin-bottom:3px">TU IMPORTE TOTAL</div>
+            <div class="pagos-pedro-val">101,66 €</div>
+            <div class="pagos-pedro-met">Bizum · Efectivo · Transferencia — a Pedro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip tip-rojo">
+    ⚠️ <strong>La fecha límite de pago aparece en la app.</strong> No la dejes para el último momento — Pedro tiene que cuadrar las cuentas antes de salir.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 7: ANÁLISIS DE RUTA       -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="analisis">
+  <div class="section-title">📖 Análisis de Ruta · Ojos de Motero</div>
+  <p class="section-sub">
+    En la pantalla de inicio, en la parte inferior, hay un botón especial.
+    Es un informe completo de la ruta escrito desde el punto de vista motero,
+    basado en experiencias reales de foros y viajes anteriores.
+  </p>
+
+  <div class="anal-item">
+    <span class="anal-ico">🏔️</span>
+    <div class="anal-txt">
+      <h4>Estado de los puertos</h4>
+      <p>Tourmalet, Aubisque, Bonaigua — apertura prevista en junio, condiciones del firme y recomendaciones de otros motoristas.</p>
+    </div>
+  </div>
+  <div class="anal-item">
+    <span class="anal-ico">⛽</span>
+    <div class="anal-txt">
+      <h4>Gasolineras críticas</h4>
+      <p>Las zonas sin gasolinera en Francia y los puntos donde es obligatorio repostar. Velocidad media real en montaña: ~65 km/h.</p>
+    </div>
+  </div>
+  <div class="anal-item">
+    <span class="anal-ico">🌧️</span>
+    <div class="anal-txt">
+      <h4>Clima en junio</h4>
+      <p>Qué esperar en el Pirineo: tormentas vespertinas posibles, frío en altura aunque sea verano. Llevar siempre impermeable y forro polar.</p>
+    </div>
+  </div>
+  <div class="anal-item">
+    <span class="anal-ico">🏍️</span>
+    <div class="anal-txt">
+      <h4>Consejos de foro motero</h4>
+      <p>Lo que dicen los que ya han hecho esta ruta: ritmo recomendado, paradas para no perderse, tramos a disfrutar despacio.</p>
+    </div>
+  </div>
+  <div class="anal-item">
+    <span class="anal-ico">⚠️</span>
+    <div class="anal-txt">
+      <h4>Alertas especiales</h4>
+      <p>Restricciones de acceso como el faro de Cap de Creus (multa 200€ si llegas en horario restringido), zonas de obras y tramos técnicos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════ -->
+<!-- SECCIÓN 8: FAQs                   -->
+<!-- ══════════════════════════════════ -->
+<div class="section" id="faqs">
+  <div class="section-title">❓ Preguntas frecuentes</div>
+  <p class="section-sub" style="margin-bottom:16px">Lo más habitual que se pregunta sobre la app:</p>
+
+  <div class="faq-item">
+    <div class="faq-q">¿La app funciona sin internet?</div>
+    <div class="faq-a">Sí. Una vez abierta, guarda toda la información en el móvil. El tiempo meteorológico sí necesita cobertura para actualizarse.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Puedo cambiar de piloto?</div>
+    <div class="faq-a">Sí. Toca la flecha ← de arriba a la izquierda para volver a la pantalla de selección y elegir otro nombre.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Qué hago si me pierdo del grupo?</div>
+    <div class="faq-a">Abre la app → MI DÍA → botón NAVEGAR verde. Google Maps te lleva al destino del día desde donde estés. No hace falta llamar a nadie.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Se actualiza la app automáticamente?</div>
+    <div class="faq-a">Sí. Cada vez que la abres con internet, comprueba si hay una versión nueva. No tienes que hacer nada.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">El tiempo que aparece, ¿es de hoy?</div>
+    <div class="faq-a">Hasta 16 días antes del viaje no está disponible la previsión real. Pero en junio, cuando estéis en ruta, sí será el tiempo real del día.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Los botones de Mapa y Teléfono funcionan?</div>
+    <div class="faq-a">Sí. El botón 🗺 Mapa abre Google Maps en ese punto exacto. El botón 📞 llama directamente al hotel o restaurante. Solo hay que tocarlos.</div>
+  </div>
+</div>
+
+<!-- PIE -->
+<div class="footer">
+  <p class="big">🏍️</p>
+  <p>
+    <strong>Transpirenaica 2026</strong><br>
+    Cap de Creus → Faro de Higuer<br>
+    18 – 23 junio · 7 pilotos<br><br>
+    <em>Coordinadora: Pili</em>
+  </p>
+</div>
+
+</div><!-- /content -->
+
+</body>
+</html>
