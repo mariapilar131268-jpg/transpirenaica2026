@@ -1856,7 +1856,7 @@ function mcSelComida(almIdx){
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=5').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=6').then(reg => {
       console.log('SW registrado:', reg.scope);
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {

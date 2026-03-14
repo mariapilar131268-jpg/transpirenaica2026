@@ -1,5 +1,5 @@
 // Transpirenaica 2026 — Service Worker v5
-const CACHE = 'transpi2026-v5';
+const CACHE = 'transpi2026-v6';
 const ASSETS = ['./', './index.html'];
 
 self.addEventListener('install', e => {
