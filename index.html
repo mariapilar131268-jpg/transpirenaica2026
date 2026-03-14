@@ -285,8 +285,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .mc-btn-mc:active{background:#b4c890}
 </style>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
 
@@ -1007,6 +1005,22 @@ function renderDias(){
    html+=`<div class="dsec"><div class="ftip"><div class="ftip-l">💬 Lo dicen los foros moteros</div><p>${d.foro}</p></div></div>`;
   }
 
+  // Botón Ver ruta completa en Google Maps
+  const MAPS_DIAS = [
+    'https://www.google.com/maps/dir/Area+Servicio+Montcada+La+Pausa+C33/Figueres/Cap+de+Creus/Cadaques/Port+de+la+Selva/Hotel+Beri+Llanca',
+    'https://www.google.com/maps/dir/Port+de+la+Selva/Llanca/Besal%C3%BA/Ripoll/Puigcerda/La+Seu+d+Urgell/Sort',
+    'https://www.google.com/maps/dir/Sort/Port+de+la+Bonaigua/Vielha/Bagneres-de-Luchon/Col+de+Peyresourde/Saint-Lary-Soulan/Tunel+de+Bielsa/Ainsa',
+    'https://www.google.com/maps/dir/Ainsa/Biescas/Puerto+del+Portalet/Laruns/Col+d+Aubisque/Oloron-Sainte-Marie/La+Pierre+Saint-Martin/Isaba',
+    'https://www.google.com/maps/dir/Isaba/Urzainqui/Ochagavia/Roncesvalles/Elizondo/Bera/Hondarribia',
+  ];
+  if(MAPS_DIAS[i]){
+    html+=`<div class="dsec">
+     <a href="${MAPS_DIAS[i]}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#1a52a8;color:#fff;border-radius:14px;padding:16px 20px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 3px 10px rgba(26,82,168,.35)">
+      🗺️ Ver ruta completa del día
+     </a>
+    </div>`;
+  }
+
   html+='</div></div>'; // dbody + dcard
 
   // Cargar meteo si el día está abierto por defecto
@@ -1314,19 +1328,7 @@ function renderRuta(){
  const cont=document.getElementById('rutacont');
 
  // Coordenadas clave por día para el mapa Leaflet
- const RUTAS_COORDS = [
-  // Día 0: Montcada → Port de la Selva
-  [[41.484,2.190],[41.976,2.820],[42.319,3.185],[42.328,3.162],[42.334,3.190]],
-  // Día 1: Cap de Creus → Sort
-  [[42.334,3.190],[42.319,3.185],[42.138,2.694],[42.183,2.490],[42.317,2.254],[42.403,2.004],[42.381,1.926],[42.360,1.851],[42.391,1.816],[42.368,1.456],[42.414,0.987]],
-  // Día 2: Sort → Aínsa
-  [[42.414,0.987],[42.526,1.005],[42.633,1.084],[42.700,0.845],[42.793,0.792],[42.785,0.656],[42.637,0.519],[42.424,0.274],[42.416,0.092]],
-  // Día 3: Aínsa → Isaba (etapa reina)
-  [[42.416,0.092],[42.620,0.098],[42.634,-0.118],[42.683,-0.439],[42.847,-0.437],[42.924,-0.436],[43.011,-0.438],[43.037,-0.517],[43.178,-0.605],[43.189,-0.602],[43.178,-0.758],[42.927,-0.937],[42.837,-0.900]],
-  // Día 4: Isaba → Hondarribia
-  [[42.837,-0.900],[42.907,-0.887],[43.011,-1.320],[42.809,-1.018],[43.144,-1.514],[43.370,-1.795]],
- ];
- // Centro y zoom por día para encuadrar bien la ruta
+  // Centro y zoom por día para encuadrar bien la ruta
  const MAPA_VIEW = [
   [42.0, 2.7, 9],   // Día 0
   [42.38, 2.0, 8],  // Día 1
@@ -1479,10 +1481,7 @@ function renderRuta(){
     <div class="rkm">${d.km.split('·')[0].trim()}</div>
    </div>
    <div class="rcard-body">
-    ${RUTAS_COORDS[eIdx] ? `<div class="rmapa-wrap">
-     <div id="leaflet-dia-${eIdx}" class="rmapa-iframe"></div>
-     <div class="rmapa-hint">🗺️ Mapa del recorrido · Pellizca para hacer zoom</div>
-    </div>` : ''}
+
     <div class="rstarr">${starsHtml}</div>
     ${tipsHtml}
     <div class="rpoi">
@@ -1502,48 +1501,10 @@ function renderRuta(){
  });
  cont.innerHTML=html;
  // Inicializar mapas Leaflet para cada etapa
- setTimeout(() => initMapasLeaflet(), 100);
 }
 
-function initMapasLeaflet(){
- if(typeof L === 'undefined') return; // Leaflet no cargado (sin internet)
- if(!window._leafletMaps) window._leafletMaps = [];
- const esMobil = window.innerWidth < 900 || ('ontouchstart' in window);
- const RUTAS_COORDS_REF = [
-  [[41.484,2.190],[41.976,2.820],[42.319,3.185],[42.328,3.162],[42.334,3.190]],
-  [[42.334,3.190],[42.319,3.185],[42.138,2.694],[42.183,2.490],[42.317,2.254],[42.403,2.004],[42.381,1.926],[42.360,1.851],[42.391,1.816],[42.368,1.456],[42.414,0.987]],
-  [[42.414,0.987],[42.526,1.005],[42.633,1.084],[42.700,0.845],[42.793,0.792],[42.785,0.656],[42.637,0.519],[42.424,0.274],[42.416,0.092]],
-  [[42.416,0.092],[42.620,0.098],[42.634,-0.118],[42.683,-0.439],[42.847,-0.437],[42.924,-0.436],[43.011,-0.438],[43.037,-0.517],[43.178,-0.605],[43.189,-0.602],[43.178,-0.758],[42.927,-0.937],[42.837,-0.900]],
-  [[42.837,-0.900],[42.907,-0.887],[43.011,-1.320],[42.809,-1.018],[43.144,-1.514],[43.370,-1.795]],
- ];
- const MAPA_VIEW_REF = [
-  [42.0,2.7,9],[42.38,2.0,8],[42.55,0.55,8],[42.9,-0.4,7],[43.1,-1.35,8],
- ];
- RUTAS_COORDS_REF.forEach((coords, i) => {
-  const el = document.getElementById('leaflet-dia-' + i);
-  if(!el || el._leaflet_id) return; // ya inicializado
-  const [lat, lng, zoom] = MAPA_VIEW_REF[i];
-  const map = L.map(el, {
-   zoomControl: !esMobil,
-   attributionControl: false,
-   dragging: !esMobil,
-   scrollWheelZoom: false,
-   tap: false,
-   touchZoom: false,
-  });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18}).addTo(map);
-  map.setView([lat, lng], zoom);
-  // Dibujar la ruta en rojo/naranja
-  L.polyline(coords, {color:'#e05500', weight:4, opacity:0.85}).addTo(map);
-  // Marcador inicio (verde) y fin (rojo)
-  const iconIni = L.divIcon({html:'<div style="background:#2e7d32;width:12px;height:12px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.5)"></div>',iconSize:[12,12],className:''});
-  const iconFin = L.divIcon({html:'<div style="background:#c62828;width:14px;height:14px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.5)"></div>',iconSize:[14,14],className:''});
-  L.marker(coords[0], {icon:iconIni}).addTo(map);
-  L.marker(coords[coords.length-1], {icon:iconFin}).addTo(map);
-  // Guardar referencia para invalidateSize
-  window._leafletMaps.push(map);
- });
-}
+// Leaflet eliminado — se usa botón Google Maps
+
 
 
 
@@ -1856,7 +1817,7 @@ function mcSelComida(almIdx){
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=6').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=7').then(reg => {
       console.log('SW registrado:', reg.scope);
       // Detectar nueva versión instalándose
       reg.addEventListener('updatefound', () => {
