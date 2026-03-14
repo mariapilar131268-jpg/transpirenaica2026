@@ -1858,26 +1858,23 @@ if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js?v=6').then(reg => {
       console.log('SW registrado:', reg.scope);
-      // Detectar nueva versión disponible
+      // Detectar nueva versión instalándose
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
         newSW.addEventListener('statechange', () => {
+          // 'installed': nuevo SW listo. Con skipWaiting en el SW,
+          // tomará control solo y controllerchange recargará.
+          // Si hay controller previo, mostramos aviso brevemente.
           if(newSW.state === 'installed' && navigator.serviceWorker.controller){
-            // Hay versión nueva lista → mostrar banner
-            mostrarBannerActualizacion(newSW);
+            mostrarBannerActualizacion();
           }
         });
       });
     }).catch(e => console.log('SW error:', e));
-
-    // Si hay SW esperando al abrir (venía de antes)
-    navigator.serviceWorker.ready.then(reg => {
-      if(reg.waiting) mostrarBannerActualizacion(reg.waiting);
-    });
   });
 }
 
-function mostrarBannerActualizacion(sw){
+function mostrarBannerActualizacion(){
   if(document.getElementById('update-banner')) return; // ya visible
   const b = document.createElement('div');
   b.id = 'update-banner';
@@ -1885,23 +1882,12 @@ function mostrarBannerActualizacion(sw){
   b.innerHTML = `
     <div style="flex:1;font-size:14px;line-height:1.4">
       <strong>🆕 Nueva versión disponible</strong><br>
-      <span style="font-size:12px;opacity:.85">Pulsa para actualizar la app</span>
-    </div>
-    <button onclick="sw_update()" style="background:#fff;color:#1a52a8;border:none;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap">Actualizar</button>
-    <button onclick="this.parentElement.remove()" style="background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:8px;padding:8px 10px;font-size:16px;cursor:pointer">✕</button>`;
+      <span style="font-size:12px;opacity:.85">Actualizando automáticamente…</span>
+    </div>`;
   document.body.appendChild(b);
-  // Guardar referencia al SW para poder activarlo
-  window._swWaiting = sw;
 }
 
-function sw_update(){
-  if(window._swWaiting){
-    window._swWaiting.postMessage({type:'SKIP_WAITING'});
-  }
-  window.location.reload();
-}
-
-// Recargar cuando el nuevo SW tome el control
+// Recargar cuando el nuevo SW tome el control (ocurre automáticamente con skipWaiting)
 navigator.serviceWorker && navigator.serviceWorker.addEventListener('controllerchange', () => {
   if(window._reloading) return;
   window._reloading = true;

@@ -1,17 +1,22 @@
-// Transpirenaica 2026 — Service Worker v5
+// Transpirenaica 2026 — Service Worker v6
 const CACHE = 'transpi2026-v6';
 const ASSETS = ['./', './index.html'];
 
 self.addEventListener('install', e => {
+  // Activar inmediatamente sin esperar a que se cierren pestañas
+  self.skipWaiting();
   e.waitUntil(
     caches.open(CACHE).then(cache => cache.addAll(ASSETS))
   );
 });
 
 self.addEventListener('activate', e => {
+  // Tomar control de todas las pestañas abiertas inmediatamente
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    clients.claim().then(() =>
+      caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      )
     )
   );
 });
@@ -30,7 +35,7 @@ self.addEventListener('fetch', e => {
   );
 });
 
-// Responder a SKIP_WAITING desde la app para activar nueva versión
+// Responder a SKIP_WAITING desde la app (compatibilidad)
 self.addEventListener('message', e => {
   if(e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
