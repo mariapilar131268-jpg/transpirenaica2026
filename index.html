@@ -257,6 +257,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 #modoConduccion{display:none;position:fixed;inset:0;z-index:9000;
   background:#0d1f0d;flex-direction:column;overflow-y:auto;
   padding-top:calc(env(safe-area-inset-top,0px) + 0px)}
+#mc-maps-fixed{position:fixed;bottom:0;left:0;right:0;z-index:9100;
+  padding:10px 16px calc(env(safe-area-inset-bottom,0px) + 10px);
+  background:linear-gradient(transparent,#0d1f0d 30%);pointer-events:none}
+#mc-maps-fixed a{pointer-events:auto}
 #modoConduccion.activo{display:flex}
 .mc-hdr{display:flex;align-items:center;justify-content:space-between;
   padding:14px 20px 12px;border-bottom:2px solid #1e3a1e;
@@ -264,7 +268,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .mc-titulo{color:#d4f0a8;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
 .mc-cerrar{background:#c8e8a8;color:#0a1a0a;border:2px solid #8ab870;
   border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;min-height:48px}
-.mc-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+.mc-body{padding:16px 20px 100px;display:flex;flex-direction:column;gap:14px;flex:1}
 .mc-dia-info{text-align:center;padding:10px 0 4px}
 .mc-dia-txt{color:#c8e8a8;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
 .mc-dia-num{color:#ffffff;font-size:24px;font-weight:700;margin-top:2px}
@@ -1710,18 +1714,22 @@ function renderMC(){
     ${puntosHtml}
   </div>`;
 
-  // ── BOTÓN GOOGLE MAPS (siempre visible arriba) ──
+  // ── BOTÓN GOOGLE MAPS (fijo abajo, fuera del scroll) ──
   const mapsUrlInicial = buildGmapsUrl(d, 0);
-  html += `<div id="mc-maps-btn">
-    ${mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank"
+  let fixedBtn = document.getElementById('mc-maps-fixed');
+  if(!fixedBtn){
+    fixedBtn = document.createElement('div');
+    fixedBtn.id = 'mc-maps-fixed';
+    document.getElementById('modoConduccion').appendChild(fixedBtn);
+  }
+  fixedBtn.innerHTML = mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank"
       style="display:flex;align-items:center;justify-content:center;gap:12px;
       background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
       color:#ffffff;width:100%;box-sizing:border-box;
       font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
       min-height:68px;text-decoration:none;letter-spacing:.3px">
       <span style="font-size:28px">🗺️</span> Abrir ruta en Google Maps
-    </a>` : ''}
-  </div>`;
+    </a>` : '';
 
   // ── Selector comida / cena ──
   if(listaComida.length > 0){
@@ -1799,7 +1807,7 @@ function mcSelComida(almIdx){
 
   // Actualizar botón Google Maps con la parada de comida elegida
   const mapsUrl = buildGmapsUrl(d, almIdx);
-  const btnDiv = document.getElementById('mc-maps-btn');
+  const btnDiv = document.getElementById('mc-maps-fixed');
   if(btnDiv){
     btnDiv.innerHTML = mapsUrl
       ? `<a href="${mapsUrl}" target="_blank"
