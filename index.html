@@ -56,8 +56,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rutahdr-tit{font-family:'DM Sans',system-ui,sans-serif;font-size:17px;font-weight:bold;color:#e8f4c8}
 .rutahdr-sub{font-size:12px;color:#b8d888;margin-left:auto}
 .rmapa-wrap{margin:0 0 16px 0;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.18);position:relative}
-.rmapa-iframe{width:100%;height:260px;border:none;display:block}
-.rmapa-hint{text-align:center;font-size:11px;color:#888;padding:4px 0 6px;background:#f5f2eb}
 .rcard{background:#fff;border-radius:12px;border:1px solid #d4cfc6;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07)}
 .rcard-hdr{padding:13px 15px;background:#2e4a12;display:flex;align-items:flex-start;gap:8px}
 .rcard-hdr .rdia{font-size:10px;letter-spacing:2px;color:#b8d888;text-transform:uppercase;margin-bottom:3px}
@@ -255,20 +253,17 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ── MODO CONDUCCIÓN ─────────────────────────────────── */
 #modoConduccion{display:none;position:fixed;inset:0;z-index:9000;
-  background:#0d1f0d;flex-direction:column;overflow-y:auto;
+  background:#0d1f0d;flex-direction:column;overflow:hidden;
   padding-top:calc(env(safe-area-inset-top,0px) + 0px)}
-#mc-maps-fixed{position:fixed;bottom:0;left:0;right:0;z-index:9100;
-  padding:10px 16px calc(env(safe-area-inset-bottom,0px) + 10px);
-  background:linear-gradient(transparent,#0d1f0d 30%);pointer-events:none}
-#mc-maps-fixed a{pointer-events:auto}
 #modoConduccion.activo{display:flex}
 .mc-hdr{display:flex;align-items:center;justify-content:space-between;
   padding:14px 20px 12px;border-bottom:2px solid #1e3a1e;
-  padding-top:calc(env(safe-area-inset-top,0px) + 14px)}
+  padding-top:calc(env(safe-area-inset-top,0px) + 14px);flex-shrink:0}
+#mc-dias-fijos{flex-shrink:0;padding:10px 16px 6px;background:#0d1f0d;border-bottom:1px solid #1e3a1e}
 .mc-titulo{color:#d4f0a8;font-size:11px;letter-spacing:2.5px;font-weight:700;text-transform:uppercase}
 .mc-cerrar{background:#c8e8a8;color:#0a1a0a;border:2px solid #8ab870;
   border-radius:24px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;min-height:48px}
-.mc-body{padding:16px 20px 100px;display:flex;flex-direction:column;gap:14px;flex:1}
+.mc-body{padding:16px 20px 90px;display:flex;flex-direction:column;gap:14px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .mc-dia-info{text-align:center;padding:10px 0 4px}
 .mc-dia-txt{color:#c8e8a8;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
 .mc-dia-num{color:#ffffff;font-size:24px;font-weight:700;margin-top:2px}
@@ -298,6 +293,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <div class="mc-titulo">🏍️ Modo Conducción</div>
     <button class="mc-cerrar" onclick="cerrarMC()">✕ Salir</button>
   </div>
+  <div id="mc-dias-fijos"><!-- botones de días generados por JS --></div>
   <div class="mc-body" id="mc-body">
     <!-- contenido generado por JS -->
   </div>
@@ -699,10 +695,6 @@ function showRuta(){
  document.getElementById('rutaview').style.display='flex';
  renderRuta();
  window.scrollTo(0,0);
- // Forzar recálculo de tamaño de mapas Leaflet tras hacerse visibles
- setTimeout(() => {
-  if(window._leafletMaps) window._leafletMaps.forEach(m => m.invalidateSize());
- }, 150);
 }
 function closeRuta(){
  document.getElementById('rutaview').style.display='none';
@@ -1009,17 +1001,21 @@ function renderDias(){
    html+=`<div class="dsec"><div class="ftip"><div class="ftip-l">💬 Lo dicen los foros moteros</div><p>${d.foro}</p></div></div>`;
   }
 
-  // Botón Ver ruta completa en Google Maps
+  // Botón Ver ruta del día en Google Maps
   const MAPS_DIAS = [
     'https://www.google.com/maps/dir/Area+Servicio+Montcada+La+Pausa+C33/Figueres/Cap+de+Creus/Cadaques/Port+de+la+Selva/Hotel+Beri+Llanca',
-    'https://www.google.com/maps/dir/Port+de+la+Selva/Llanca/Besal%C3%BA/Ripoll/Puigcerda/La+Seu+d+Urgell/Sort',
+    'https://www.google.com/maps/dir/Port+de+la+Selva/Llanca/Besalu/Ripoll/Puigcerda/La+Seu+d+Urgell/Sort',
     'https://www.google.com/maps/dir/Sort/Port+de+la+Bonaigua/Vielha/Bagneres-de-Luchon/Col+de+Peyresourde/Saint-Lary-Soulan/Tunel+de+Bielsa/Ainsa',
     'https://www.google.com/maps/dir/Ainsa/Biescas/Puerto+del+Portalet/Laruns/Col+d+Aubisque/Oloron-Sainte-Marie/La+Pierre+Saint-Martin/Isaba',
     'https://www.google.com/maps/dir/Isaba/Urzainqui/Ochagavia/Roncesvalles/Elizondo/Bera/Hondarribia',
   ];
   if(MAPS_DIAS[i]){
     html+=`<div class="dsec">
-     <a href="${MAPS_DIAS[i]}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#1a52a8;color:#fff;border-radius:14px;padding:16px 20px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 3px 10px rgba(26,82,168,.35)">
+     <a href="${MAPS_DIAS[i]}" target="_blank"
+      style="display:flex;align-items:center;justify-content:center;gap:10px;
+      background:#1a52a8;color:#fff;border-radius:14px;padding:16px 20px;
+      font-size:17px;font-weight:700;text-decoration:none;
+      box-shadow:0 3px 10px rgba(26,82,168,.35)">
       🗺️ Ver ruta completa del día
      </a>
     </div>`;
@@ -1331,7 +1327,7 @@ renderSel();
 function renderRuta(){
  const cont=document.getElementById('rutacont');
 
- // Coordenadas clave por día para el mapa Leaflet
+
   // Centro y zoom por día para encuadrar bien la ruta
  const MAPA_VIEW = [
   [42.0, 2.7, 9],   // Día 0
@@ -1485,7 +1481,7 @@ function renderRuta(){
     <div class="rkm">${d.km.split('·')[0].trim()}</div>
    </div>
    <div class="rcard-body">
-
+    
     <div class="rstarr">${starsHtml}</div>
     ${tipsHtml}
     <div class="rpoi">
@@ -1504,10 +1500,8 @@ function renderRuta(){
   </div>`;
  });
  cont.innerHTML=html;
- // Inicializar mapas Leaflet para cada etapa
-}
 
-// Leaflet eliminado — se usa botón Google Maps
+}
 
 
 
@@ -1670,12 +1664,12 @@ function renderMC(){
 
   let html = '';
 
-  // ── SELECTOR DE DÍA ──
-  html += `<div style="display:flex;gap:5px;flex-wrap:wrap;padding:4px 0 10px">`;
+  // ── SELECTOR DE DÍA (fijo, fuera del scroll) ──
+  let diasHtml = `<div style="display:flex;gap:5px;flex-wrap:wrap">`;
   D.forEach((dia, i) => {
     const esActivo = i === mcDiaActual;
     const esHoy = i === hoy;
-    html += `<button onclick="mcCambiarDia(${i})"
+    diasHtml += `<button onclick="mcCambiarDia(${i})"
       style="flex:1;min-width:44px;padding:10px 8px;border-radius:12px;
       border:2px solid ${esActivo?'#8ab850':'#3a5a20'};
       background:${esActivo?'#e8e0cc':'#1a3018'};
@@ -1687,7 +1681,8 @@ function renderMC(){
       <span style="font-size:16px;font-weight:700;letter-spacing:.3px">D${dia.n}</span>
     </button>`;
   });
-  html += `</div>`;
+  diasHtml += `</div>`;
+  document.getElementById('mc-dias-fijos').innerHTML = diasHtml;
 
   // ── Info del día ──
   html += `<div class="mc-dia-info">
@@ -1714,22 +1709,18 @@ function renderMC(){
     ${puntosHtml}
   </div>`;
 
-  // ── BOTÓN GOOGLE MAPS (fijo abajo, fuera del scroll) ──
+  // ── BOTÓN GOOGLE MAPS (siempre visible arriba) ──
   const mapsUrlInicial = buildGmapsUrl(d, 0);
-  let fixedBtn = document.getElementById('mc-maps-fixed');
-  if(!fixedBtn){
-    fixedBtn = document.createElement('div');
-    fixedBtn.id = 'mc-maps-fixed';
-    document.getElementById('modoConduccion').appendChild(fixedBtn);
-  }
-  fixedBtn.innerHTML = mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank"
+  html += `<div id="mc-maps-fixed">
+    ${mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank"
       style="display:flex;align-items:center;justify-content:center;gap:12px;
       background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
       color:#ffffff;width:100%;box-sizing:border-box;
       font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
       min-height:68px;text-decoration:none;letter-spacing:.3px">
       <span style="font-size:28px">🗺️</span> Abrir ruta en Google Maps
-    </a>` : '';
+    </a>` : ''}
+  </div>`;
 
   // ── Selector comida / cena ──
   if(listaComida.length > 0){
@@ -1823,54 +1814,68 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-// Funciona en ambos sistemas sin depender del ciclo de vida del SW
-const APP_VERSION = '9';
+const APP_VERSION = '10';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
-    .then(data => {
-      if(data.v && data.v !== APP_VERSION){
-        // Versión nueva en servidor — recargar para aplicar
-        window.location.reload(true);
-      }
-    })
-    .catch(() => {}); // Sin internet: no hacer nada
+    .then(data => { if(data.v && data.v !== APP_VERSION) window.location.reload(true); })
+    .catch(() => {});
 })();
 
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=9').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=10').then(reg => {
       console.log('SW registrado:', reg.scope);
-
-      // Forzar comprobación de actualización cada vez que se abre la app
-      reg.update();
-
-      // Detectar nuevo SW instalándose
+      // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
-        if(!newSW) return;
         newSW.addEventListener('statechange', () => {
-          if(newSW.state === 'activated'){
-            // Nuevo SW activo — recargar para aplicar
-            if(!window._reloading){
-              window._reloading = true;
-              window.location.reload();
-            }
+          if(newSW.state === 'installed' && navigator.serviceWorker.controller){
+            // Hay versión nueva lista → mostrar banner
+            mostrarBannerActualizacion(newSW);
           }
         });
       });
-
     }).catch(e => console.log('SW error:', e));
-  });
 
-  // Recargar cuando el nuevo SW toma el control (garantía adicional)
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if(window._reloading) return;
-    window._reloading = true;
-    window.location.reload();
+    // Si hay SW esperando al abrir (venía de antes)
+    navigator.serviceWorker.ready.then(reg => {
+      if(reg.waiting) mostrarBannerActualizacion(reg.waiting);
+    });
   });
 }
+
+function mostrarBannerActualizacion(sw){
+  if(document.getElementById('update-banner')) return; // ya visible
+  const b = document.createElement('div');
+  b.id = 'update-banner';
+  b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a52a8;color:#fff;padding:14px 16px 20px;z-index:99999;font-family:DM Sans,system-ui,sans-serif;display:flex;align-items:center;gap:12px;box-shadow:0 -2px 12px rgba(0,0,0,.3);';
+  b.innerHTML = `
+    <div style="flex:1;font-size:14px;line-height:1.4">
+      <strong>🆕 Nueva versión disponible</strong><br>
+      <span style="font-size:12px;opacity:.85">Pulsa para actualizar la app</span>
+    </div>
+    <button onclick="sw_update()" style="background:#fff;color:#1a52a8;border:none;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap">Actualizar</button>
+    <button onclick="this.parentElement.remove()" style="background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:8px;padding:8px 10px;font-size:16px;cursor:pointer">✕</button>`;
+  document.body.appendChild(b);
+  // Guardar referencia al SW para poder activarlo
+  window._swWaiting = sw;
+}
+
+function sw_update(){
+  if(window._swWaiting){
+    window._swWaiting.postMessage({type:'SKIP_WAITING'});
+  }
+  window.location.reload();
+}
+
+// Recargar cuando el nuevo SW tome el control
+navigator.serviceWorker && navigator.serviceWorker.addEventListener('controllerchange', () => {
+  if(window._reloading) return;
+  window._reloading = true;
+  window.location.reload();
+});
 
 // ━━━ iOS: mostrar instrucción de instalación ━━━
 function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent); }
