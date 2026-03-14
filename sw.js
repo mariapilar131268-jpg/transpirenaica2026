@@ -1,9 +1,10 @@
+// Transpirenaica 2026 — Service Worker v5
 const CACHE = 'transpi2026-v5';
-const URLS = ['./', './index.html', './manifest.json'];
+const ASSETS = ['./', './index.html'];
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(URLS))
+    caches.open(CACHE).then(cache => cache.addAll(ASSETS))
   );
 });
 
@@ -15,22 +16,21 @@ self.addEventListener('activate', e => {
   );
 });
 
-// Network-first
+// Network-first: intenta red, si falla usa caché
 self.addEventListener('fetch', e => {
+  if(e.request.method !== 'GET') return;
   e.respondWith(
     fetch(e.request)
-      .then(r => {
-        const clone = r.clone();
-        caches.open(CACHE).then(c => c.put(e.request, clone));
-        return r;
+      .then(res => {
+        const clone = res.clone();
+        caches.open(CACHE).then(cache => cache.put(e.request, clone));
+        return res;
       })
       .catch(() => caches.match(e.request))
   );
 });
 
-// Permite activar nueva versión inmediatamente cuando el usuario pulsa "Actualizar ahora"
+// Responder a SKIP_WAITING desde la app para activar nueva versión
 self.addEventListener('message', e => {
-  if(e.data && e.data.type === 'SKIP_WAITING'){
-    self.skipWaiting();
-  }
+  if(e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting();
 });

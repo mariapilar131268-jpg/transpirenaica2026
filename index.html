@@ -284,6 +284,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   font-weight:700;cursor:pointer;text-align:left;min-height:60px;margin-top:4px}
 .mc-btn-mc:active{background:#b4c890}
 </style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
 
@@ -1306,18 +1309,26 @@ renderSel();
 function renderRuta(){
  const cont=document.getElementById('rutacont');
 
- // URLs embed Google Maps por día (se muestran como iframe visual en la etapa)
- const EMBED_MAPAS = [
+ // Coordenadas clave por día para el mapa Leaflet
+ const RUTAS_COORDS = [
   // Día 0: Montcada → Port de la Selva
-  'https://maps.google.com/maps?f=d&hl=es&saddr=Montcada+i+Reixac&daddr=Figueres+to:Cap+de+Creus+to:Cadaques+to:Port+de+la+Selva&output=embed',
-  // Día 1: Port de la Selva → Sort
-  'https://maps.google.com/maps?f=d&hl=es&saddr=Port+de+la+Selva&daddr=Cap+de+Creus+to:Besalu+to:Olot+to:Collada+de+Toses+to:Puigcerda+to:La+Seu+d%27Urgell+to:Sort+Lleida&output=embed',
+  [[41.484,2.190],[41.976,2.820],[42.319,3.185],[42.328,3.162],[42.334,3.190]],
+  // Día 1: Cap de Creus → Sort
+  [[42.334,3.190],[42.319,3.185],[42.138,2.694],[42.183,2.490],[42.317,2.254],[42.403,2.004],[42.381,1.926],[42.360,1.851],[42.391,1.816],[42.368,1.456],[42.414,0.987]],
   // Día 2: Sort → Aínsa
-  'https://maps.google.com/maps?f=d&hl=es&saddr=Sort+Lleida&daddr=Puerto+de+la+Bonaigua+to:Arties+to:Vielha+to:Ainsa+Huesca&output=embed',
+  [[42.414,0.987],[42.526,1.005],[42.633,1.084],[42.700,0.845],[42.793,0.792],[42.785,0.656],[42.637,0.519],[42.424,0.274],[42.416,0.092]],
   // Día 3: Aínsa → Isaba (etapa reina)
-  'https://maps.google.com/maps?f=d&hl=es&saddr=Ainsa+Huesca&daddr=Biescas+to:Formigal+to:Col+du+Portalet+to:Laruns+to:Oloron-Sainte-Marie+to:Col+Aubisque+to:Isaba+Navarra&output=embed',
+  [[42.416,0.092],[42.620,0.098],[42.634,-0.118],[42.683,-0.439],[42.847,-0.437],[42.924,-0.436],[43.011,-0.438],[43.037,-0.517],[43.178,-0.605],[43.189,-0.602],[43.178,-0.758],[42.927,-0.937],[42.837,-0.900]],
   // Día 4: Isaba → Hondarribia
-  'https://maps.google.com/maps?f=d&hl=es&saddr=Isaba+Navarra&daddr=Roncesvalles+to:Urzainqui+to:Elizondo+to:Hondarribia&output=embed',
+  [[42.837,-0.900],[42.907,-0.887],[43.011,-1.320],[42.809,-1.018],[43.144,-1.514],[43.370,-1.795]],
+ ];
+ // Centro y zoom por día para encuadrar bien la ruta
+ const MAPA_VIEW = [
+  [42.0, 2.7, 9],   // Día 0
+  [42.38, 2.0, 8],  // Día 1
+  [42.55, 0.55, 8], // Día 2
+  [42.9, -0.4, 7],  // Día 3
+  [43.1, -1.35, 8], // Día 4
  ];
 
  // helper POI row
@@ -1464,15 +1475,9 @@ function renderRuta(){
     <div class="rkm">${d.km.split('·')[0].trim()}</div>
    </div>
    <div class="rcard-body">
-    ${EMBED_MAPAS[eIdx] ? `<div class="rmapa-wrap">
-     <iframe
-      src="${EMBED_MAPAS[eIdx]}"
-      class="rmapa-iframe"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-     </iframe>
-     <div class="rmapa-hint">👆 Toca el mapa para interactuar</div>
+    ${RUTAS_COORDS[eIdx] ? `<div class="rmapa-wrap">
+     <div id="leaflet-dia-${eIdx}" class="rmapa-iframe"></div>
+     <div class="rmapa-hint">🗺️ Mapa del recorrido · Pellizca para hacer zoom</div>
     </div>` : ''}
     <div class="rstarr">${starsHtml}</div>
     ${tipsHtml}
@@ -1492,6 +1497,37 @@ function renderRuta(){
   </div>`;
  });
  cont.innerHTML=html;
+ // Inicializar mapas Leaflet para cada etapa
+ setTimeout(() => initMapasLeaflet(), 100);
+}
+
+function initMapasLeaflet(){
+ if(typeof L === 'undefined') return; // Leaflet no cargado (sin internet)
+ const RUTAS_COORDS_REF = [
+  [[41.484,2.190],[41.976,2.820],[42.319,3.185],[42.328,3.162],[42.334,3.190]],
+  [[42.334,3.190],[42.319,3.185],[42.138,2.694],[42.183,2.490],[42.317,2.254],[42.403,2.004],[42.381,1.926],[42.360,1.851],[42.391,1.816],[42.368,1.456],[42.414,0.987]],
+  [[42.414,0.987],[42.526,1.005],[42.633,1.084],[42.700,0.845],[42.793,0.792],[42.785,0.656],[42.637,0.519],[42.424,0.274],[42.416,0.092]],
+  [[42.416,0.092],[42.620,0.098],[42.634,-0.118],[42.683,-0.439],[42.847,-0.437],[42.924,-0.436],[43.011,-0.438],[43.037,-0.517],[43.178,-0.605],[43.189,-0.602],[43.178,-0.758],[42.927,-0.937],[42.837,-0.900]],
+  [[42.837,-0.900],[42.907,-0.887],[43.011,-1.320],[42.809,-1.018],[43.144,-1.514],[43.370,-1.795]],
+ ];
+ const MAPA_VIEW_REF = [
+  [42.0,2.7,9],[42.38,2.0,8],[42.55,0.55,8],[42.9,-0.4,7],[43.1,-1.35,8],
+ ];
+ RUTAS_COORDS_REF.forEach((coords, i) => {
+  const el = document.getElementById('leaflet-dia-' + i);
+  if(!el || el._leaflet_id) return; // ya inicializado
+  const [lat, lng, zoom] = MAPA_VIEW_REF[i];
+  const map = L.map(el, {zoomControl:true, attributionControl:false, dragging:true, scrollWheelZoom:false});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18}).addTo(map);
+  map.setView([lat, lng], zoom);
+  // Dibujar la ruta en rojo/naranja
+  L.polyline(coords, {color:'#e05500', weight:4, opacity:0.85}).addTo(map);
+  // Marcador inicio (verde) y fin (rojo)
+  const iconIni = L.divIcon({html:'<div style="background:#2e7d32;width:12px;height:12px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.5)"></div>',iconSize:[12,12],className:''});
+  const iconFin = L.divIcon({html:'<div style="background:#c62828;width:14px;height:14px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.5)"></div>',iconSize:[14,14],className:''});
+  L.marker(coords[0], {icon:iconIni}).addTo(map);
+  L.marker(coords[coords.length-1], {icon:iconFin}).addTo(map);
+ });
 }
 
 
@@ -1805,11 +1841,57 @@ function mcSelComida(almIdx){
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=5')
-      .then(r => console.log('SW registrado:', r.scope))
-      .catch(e => console.log('SW error:', e));
+    navigator.serviceWorker.register('./sw.js?v=5').then(reg => {
+      console.log('SW registrado:', reg.scope);
+      // Detectar nueva versión disponible
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if(newSW.state === 'installed' && navigator.serviceWorker.controller){
+            // Hay versión nueva lista → mostrar banner
+            mostrarBannerActualizacion(newSW);
+          }
+        });
+      });
+    }).catch(e => console.log('SW error:', e));
+
+    // Si hay SW esperando al abrir (venía de antes)
+    navigator.serviceWorker.ready.then(reg => {
+      if(reg.waiting) mostrarBannerActualizacion(reg.waiting);
+    });
   });
 }
+
+function mostrarBannerActualizacion(sw){
+  if(document.getElementById('update-banner')) return; // ya visible
+  const b = document.createElement('div');
+  b.id = 'update-banner';
+  b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a52a8;color:#fff;padding:14px 16px 20px;z-index:99999;font-family:DM Sans,system-ui,sans-serif;display:flex;align-items:center;gap:12px;box-shadow:0 -2px 12px rgba(0,0,0,.3);';
+  b.innerHTML = `
+    <div style="flex:1;font-size:14px;line-height:1.4">
+      <strong>🆕 Nueva versión disponible</strong><br>
+      <span style="font-size:12px;opacity:.85">Pulsa para actualizar la app</span>
+    </div>
+    <button onclick="sw_update()" style="background:#fff;color:#1a52a8;border:none;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap">Actualizar</button>
+    <button onclick="this.parentElement.remove()" style="background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:8px;padding:8px 10px;font-size:16px;cursor:pointer">✕</button>`;
+  document.body.appendChild(b);
+  // Guardar referencia al SW para poder activarlo
+  window._swWaiting = sw;
+}
+
+function sw_update(){
+  if(window._swWaiting){
+    window._swWaiting.postMessage({type:'SKIP_WAITING'});
+  }
+  window.location.reload();
+}
+
+// Recargar cuando el nuevo SW tome el control
+navigator.serviceWorker && navigator.serviceWorker.addEventListener('controllerchange', () => {
+  if(window._reloading) return;
+  window._reloading = true;
+  window.location.reload();
+});
 
 // ━━━ iOS: mostrar instrucción de instalación ━━━
 function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent); }
