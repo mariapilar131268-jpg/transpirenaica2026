@@ -282,6 +282,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   border:2px solid #8ab850;border-radius:14px;padding:16px 20px;font-size:17px;
   font-weight:700;cursor:pointer;text-align:left;min-height:60px;margin-top:4px}
 .mc-btn-mc:active{background:#b4c890}
+.mc-maps-btn{display:flex;align-items:center;justify-content:center;gap:12px;background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;color:#ffffff;width:100%;box-sizing:border-box;font-size:20px;font-weight:700;padding:20px 16px;text-align:center;min-height:68px;text-decoration:none;letter-spacing:.3px}
 </style>
 
 </head>
@@ -1008,27 +1009,9 @@ function renderDias(){
    html+=`<div class="dsec"><div class="ftip"><div class="ftip-l">💬 Lo dicen los foros moteros</div><p>${d.foro}</p></div></div>`;
   }
 
-  // Botón Ver ruta del día en Google Maps
-  const MAPS_DIAS = [
-    'https://www.google.com/maps/dir/Area+Servicio+Montcada+La+Pausa+C33/Figueres/Cap+de+Creus/Cadaques/Port+de+la+Selva/Hotel+Beri+Llanca',
-    'https://www.google.com/maps/dir/Port+de+la+Selva/Llanca/Besalu/Ripoll/Puigcerda/La+Seu+d+Urgell/Sort',
-    'https://www.google.com/maps/dir/Sort/Port+de+la+Bonaigua/Vielha/Bagneres-de-Luchon/Col+de+Peyresourde/Saint-Lary-Soulan/Tunel+de+Bielsa/Ainsa',
-    'https://www.google.com/maps/dir/Ainsa/Biescas/Puerto+del+Portalet/Laruns/Col+d+Aubisque/Oloron-Sainte-Marie/La+Pierre+Saint-Martin/Isaba',
-    'https://www.google.com/maps/dir/Isaba/Urzainqui/Ochagavia/Roncesvalles/Elizondo/Bera/Hondarribia',
-  ];
-  if(MAPS_DIAS[i]){
-    html+=`<div class="dsec">
-     <a href="${MAPS_DIAS[i]}" target="_blank"
-      style="display:flex;align-items:center;justify-content:center;gap:10px;
-      background:#1a52a8;color:#fff;border-radius:14px;padding:16px 20px;
-      font-size:17px;font-weight:700;text-decoration:none;
-      box-shadow:0 3px 10px rgba(26,82,168,.35)">
-      🗺️ Ver ruta completa del día
-     </a>
-    </div>`;
-  }
+  const _mu=buildGmapsUrl(d,0); if(_mu&&d.n<5){ html+=`<div class="dsec"><a href="${_mu}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35)">🗺️ Ver ruta completa del día</a></div>`; }
 
-  html+='</div></div>'; // dbody + dcard
+    html+='</div></div>'; // dbody + dcard
 
   // Cargar meteo si el día está abierto por defecto
   if(open){
@@ -1252,20 +1235,20 @@ function renderPagos(){
   aPedro.forEach(p=>{ totalPedro+=p.v; if(p.ok) pagadoPedro+=p.v; });
   const pendPedro = (totalPedro - pagadoPedro).toFixed(2);
   const pendColP = parseFloat(pendPedro)>0 ? 'var(--red)' : 'var(--grn)';
-  const pendTxP  = parseFloat(pendPedro)>0 ? '\u23f3 Te faltan \u20ac'+pendPedro.replace('.',',') : '\u2705 \u00a1Todo pagado!';
+  const pendTxP  = parseFloat(pendPedro)>0 ? '⏳ Te faltan €'+pendPedro.replace('.',',') : '✅ \u00a1Todo pagado!';
 
-  html+=`<div class="pp"><div class="pph pph-r"><div class="ppico">\ud83d\udcb3</div>
-   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">\u26a0\ufe0f Antes del 31 de marzo de 2026</div></div></div>`;
+  html+=`<div class="pp"><div class="pph pph-r"><div class="ppico">💳</div>
+   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">⚠️ Antes del 31 de marzo de 2026</div></div></div>`;
 
   aPedro.forEach((p,i)=>{
     const idx = curP.pagos.indexOf(p);
     const col = p.ok ? 'var(--grn)' : 'var(--red)';
     const tx  = p.ok ? 'text-decoration:line-through;color:var(--mu)' : '';
-    const notaHtml = p.nota ? `<div style="font-size:11px;color:#8faa6a;margin-top:2px">\u2139\ufe0f ${p.nota}</div>` : '';
+    const notaHtml = p.nota ? `<div style="font-size:11px;color:#8faa6a;margin-top:2px">ℹ️ ${p.nota}</div>` : '';
     html+=`<div class="pr">
       <input type="checkbox" ${p.ok?'checked':''} onchange="togglePago(${idx})" style="width:18px;height:18px;accent-color:var(--grn);cursor:pointer;flex-shrink:0">
       <div class="prn" style="${tx}"><div>${p.h}</div>${notaHtml}</div>
-      <div class="pra" style="color:${col}">${p.ok?'\u2705':'\u23f3'} \u20ac${p.v.toFixed(2).replace('.',',')}</div>
+      <div class="pra" style="color:${col}">${p.ok?'✅':'⏳'} €${p.v.toFixed(2).replace('.',',')}</div>
     
       ${(!p.ok&&p.date)?`<button class="calb" style="background:var(--red);font-size:11px;padding:4px 8px" onclick="addCal('${p.h}','${p.date}','${p.desc||p.h}','pago')">📅 Añadir</button>`:''}
     </div>`;
@@ -1280,19 +1263,19 @@ function renderPagos(){
   const directos = [];
   const ainsa = aPedro.find(p => p.h && p.h.includes('\u00c1\u00ednsa'));
   if(ainsa && ainsa.nota){
-    directos.push({nm:'Hostal Pirineos \u00b7 A\u00ednsa', sub: ainsa.nota, v: ainsa.nota.match(/Resto ([\u20ac\d,\.]+)/)?ainsa.nota.match(/Resto ([\u20ac\d,\.]+)/)[1]:'ver nota'});
+    directos.push({nm:'Hostal Pirineos \u00b7 A\u00ednsa', sub: ainsa.nota, v: ainsa.nota.match(/Resto ([€\d,\.]+)/)?ainsa.nota.match(/Resto ([€\d,\.]+)/)[1]:'ver nota'});
   }
   curP.pagos.filter(p=>p.directo).forEach(p=>{
     const fecha = p.h.includes('Casa Lola')?'21/06 en el hostal':p.h.includes('Jauregui')?'22/06 en el hotel':'en el hotel';
-    directos.push({nm:p.h, sub:'Pago '+fecha, v:'\u20ac'+p.v.toFixed(2).replace('.',',')});
+    directos.push({nm:p.h, sub:'Pago '+fecha, v:'€'+p.v.toFixed(2).replace('.',',')});
   });
 
   if(directos.length>0){
-    html+=`<div class="pp"><div class="pph" style="background:linear-gradient(135deg,#2c5f8a,#1a4a70)"><div class="ppico">\ud83c\udfe8</div>
+    html+=`<div class="pp"><div class="pph" style="background:linear-gradient(135deg,#2c5f8a,#1a4a70)"><div class="ppico">🏨</div>
      <div><div class="ppt">PAGO DIRECTO EN HOTEL</div><div class="pps">Llevar efectivo o tarjeta \u2014 no pasa por Pedro</div></div></div>`;
     directos.forEach(d=>{
       html+=`<div class="pr">
-        <span style="font-size:20px;flex-shrink:0">\ud83d\udcb6</span>
+        <span style="font-size:20px;flex-shrink:0">💶</span>
         <div class="prn"><div>${d.nm}</div><div style="font-size:11px;color:var(--mu);margin-top:2px">${d.sub}</div></div>
         <div class="pra" style="color:#4a9eca;font-weight:700">${d.v}</div>
       </div>`;
@@ -1567,10 +1550,10 @@ function buildGmapsUrl(d, almIdx){
       'Monestir+de+Sant+Pere+de+Rodes',
       'Hotel+Beri+Llanca'
     ],
-    // ── DÍA 1 ── Hotel Beri → Roses(gas) → Cap de Creus(foto) → La Seu(comida) → Sort
-    // Cap de Creus está al este: Google fuerza el desvío correctamente
+    // ── DÍA 1 ── Llançà → Cap de Creus (inicio oficial) → Besalú → Toses → La Seu → Sort
     1: [
       'Hotel+Beri+Llanca',
+      'Cap+de+Creus+Girona',
       'Vilajuiga',
       'Besalu',
       'Olot',
@@ -1618,7 +1601,7 @@ function buildGmapsUrl(d, almIdx){
       'Casa+Lola+Isaba+Navarra+Mendigatxa+17',   // origen: salen del hotel
       'Orbaitzeta+Navarra',                      // entrada Bosque de Irati
       'Roncesvalles+Navarra',                    // colegiata s.XII (20min)
-      'Petronor+Urzainqui+Navarra',              // gas ÚNICA en 100km
+      'Petronor+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui,+Navarra', // gas ÚNICA en 100km
       qComida,                                   // comida Elizondo (Valle Baztán)
       'Hotel+Jauregui+Hondarribia'               // destino: LLEGADA 🏁
     ],
@@ -1821,7 +1804,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '11';
+const APP_VERSION = '12';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1832,7 +1815,7 @@ const APP_VERSION = '11';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=11').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=12').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
