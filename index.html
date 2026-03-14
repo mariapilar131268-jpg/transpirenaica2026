@@ -1814,46 +1814,55 @@ function mcSelComida(almIdx){
   }
 }
 
+// ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
+// Funciona en ambos sistemas sin depender del ciclo de vida del SW
+const APP_VERSION = '9';
+(function checkVersion(){
+  fetch('./version.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      if(data.v && data.v !== APP_VERSION){
+        // Versión nueva en servidor — recargar para aplicar
+        window.location.reload(true);
+      }
+    })
+    .catch(() => {}); // Sin internet: no hacer nada
+})();
+
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=7').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=9').then(reg => {
       console.log('SW registrado:', reg.scope);
-      // Detectar nueva versión instalándose
+
+      // Forzar comprobación de actualización cada vez que se abre la app
+      reg.update();
+
+      // Detectar nuevo SW instalándose
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
+        if(!newSW) return;
         newSW.addEventListener('statechange', () => {
-          // 'installed': nuevo SW listo. Con skipWaiting en el SW,
-          // tomará control solo y controllerchange recargará.
-          // Si hay controller previo, mostramos aviso brevemente.
-          if(newSW.state === 'installed' && navigator.serviceWorker.controller){
-            mostrarBannerActualizacion();
+          if(newSW.state === 'activated'){
+            // Nuevo SW activo — recargar para aplicar
+            if(!window._reloading){
+              window._reloading = true;
+              window.location.reload();
+            }
           }
         });
       });
+
     }).catch(e => console.log('SW error:', e));
   });
-}
 
-function mostrarBannerActualizacion(){
-  if(document.getElementById('update-banner')) return; // ya visible
-  const b = document.createElement('div');
-  b.id = 'update-banner';
-  b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#1a52a8;color:#fff;padding:14px 16px 20px;z-index:99999;font-family:DM Sans,system-ui,sans-serif;display:flex;align-items:center;gap:12px;box-shadow:0 -2px 12px rgba(0,0,0,.3);';
-  b.innerHTML = `
-    <div style="flex:1;font-size:14px;line-height:1.4">
-      <strong>🆕 Nueva versión disponible</strong><br>
-      <span style="font-size:12px;opacity:.85">Actualizando automáticamente…</span>
-    </div>`;
-  document.body.appendChild(b);
+  // Recargar cuando el nuevo SW toma el control (garantía adicional)
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if(window._reloading) return;
+    window._reloading = true;
+    window.location.reload();
+  });
 }
-
-// Recargar cuando el nuevo SW tome el control (ocurre automáticamente con skipWaiting)
-navigator.serviceWorker && navigator.serviceWorker.addEventListener('controllerchange', () => {
-  if(window._reloading) return;
-  window._reloading = true;
-  window.location.reload();
-});
 
 // ━━━ iOS: mostrar instrucción de instalación ━━━
 function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent); }
