@@ -515,7 +515,7 @@ const D=[
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
        inf:'⭐ Recomendado en foros moteros. En Arties, antes de Vielha. Cocina aranesa. Cerrado lunes.',
-       mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Bossost/Bagneres-de-Luchon/Col+de+Peyresourde/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
+       mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Bossost/Bagneres-de-Luchon/42.7697,0.4542/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
       {mo:'COMIDA — Opción B 🥞',nm:'Crêperie du Col de Peyresourde',loc:'Loudervielle, Francia',tel:null,map:'https://maps.google.com/?q=Creperie+du+Col+de+Peyresourde+6088+Route+du+Col+de+Peyresourde+65240+Loudervielle',pr:'~12-18€/p',
        inf:'En el propio col de Peyresourde. Crepes y platos montañeses. Abierto en verano.',
        mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/Creperie+du+Col+de+Peyresourde,+6088+Route+du+Col+de+Peyresourde,+65240+Loudervielle,+Francia/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Intermarche+Ancizan,+Route+de+Saint-Lary,+65440+Ancizan,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
@@ -1009,7 +1009,11 @@ function renderDias(){
    html+=`<div class="dsec"><div class="ftip"><div class="ftip-l">💬 Lo dicen los foros moteros</div><p>${d.foro}</p></div></div>`;
   }
 
-  const _mu=buildGmapsUrl(d,0); if(_mu&&d.n<5){ html+=`<div class="dsec"><a href="${_mu}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35)">🗺️ Ver ruta completa del día</a></div>`; }
+  const ORIGENES={0:'Area+Servicio+Montcada+La+Pausa+C33',1:'Hotel+Beri+Llanca',2:'Hotel+Les+Brases+Sort+Lleida',3:'Hostal+Pirineos+Ainsa+Sobrarbe+7',4:'Casa+Lola+Isaba+Navarra+Mendigatxa+17',5:'Hotel+Jauregui+Hondarribia'};
+  const _muBase=buildGmapsUrl(d,0);
+  const _origen=ORIGENES[d.n]||'';
+  const _mu=_muBase&&_origen ? _muBase.replace('https://www.google.com/maps/dir//','https://www.google.com/maps/dir/'+_origen+'/') : _muBase;
+  if(_mu&&d.n<5){ html+=`<div class="dsec"><a href="${_mu}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35)">🗺️ Ver ruta completa del día</a></div>`; }
 
     html+='</div></div>'; // dbody + dcard
 
@@ -1559,12 +1563,12 @@ function buildGmapsUrl(d, almIdx){
       'Olot',
       'Camprodon',
       'Ribes+de+Freser',
-      'Collada+de+Toses',
+      '42.3167,2.0833',
       'Puigcerda',
       'Restaurant+Ruta+260+Prullans+de+Cerdanya',
       'Repsol+Puigcerda+N-152',
       'Repsol+ES+La+Seu+d%27Urgell,+Avinguda+Valira,+25,+La+Seu+d%27Urgell',
-      'Port+del+Canto',
+      'Puerto+del+Cant%C3%B3+Lleida',
       'Hotel+Les+Brases+Sort'
     ],
     // ── DÍA 2 ── Sort → bonÀrea(gas) → Bonaigua → Arties(comida) → Vielha → Aínsa
@@ -1804,7 +1808,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '13';
+const APP_VERSION = '18';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1815,7 +1819,7 @@ const APP_VERSION = '13';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=13').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=18').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
