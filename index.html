@@ -927,7 +927,16 @@ function renderDias(){
 
   // Ruta
   if(d.ruta&&d.ruta.length){
-   html+='<div class="dsec"><div class="dstit">🗺️ ruta del día</div><div class="rl">';
+   html+='<div class="dsec"><div class="dstit">🗺️ ruta del día</div>';
+   html+='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding:8px 10px;background:var(--s2);border-radius:8px;font-size:11px;color:var(--mu)">';
+   html+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--grn);margin-right:4px;vertical-align:middle"></span>Salida</span>';
+   html+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);margin-right:4px;vertical-align:middle"></span>Destino</span>';
+   html+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blu);margin-right:4px;vertical-align:middle"></span>Punto especial</span>';
+   html+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ora);margin-right:4px;vertical-align:middle"></span>Gasolinera</span>';
+   html+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--pur,#7c4daa);margin-right:4px;vertical-align:middle"></span>Comida</span>';
+   html+='<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--red);background:var(--bg);margin-right:4px;vertical-align:middle"></span>Parada</span>';
+   html+='</div>';
+   html+='<div class="rl">';
    d.ruta.forEach((r,j)=>{
     const last=j===d.ruta.length-1;
     html+=`<div class="ri"><div class="rline"><div class="rdot ${r.d||'mid'}"></div>${!last?'<div class="rvert"></div>':''}</div><div class="rinfo"><div class="rp">${r.p}</div>${r.n?`<div class="rn">${r.n}</div>`:''}</div></div>`;
