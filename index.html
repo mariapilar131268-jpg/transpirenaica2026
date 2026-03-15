@@ -306,6 +306,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div class="mtit">CAP DE <span>CREUS</span></div>
   <div class="mtit" style="color:#6ab4e8">→ FARO HIGUER</div>
   <div class="msub">18 – 23 junio 2026 · ~1.923 km</div>
+  <div id="portada-countdown" style="margin:18px auto 22px;text-align:center"></div>
   <div class="slbl">¿Quién eres?</div>
   <div class="pgrid" id="pgrid"></div>
   <button class="rtabtn" onclick="showRuta()">🗺️ Análisis de Ruta · Ojos de Motero</button>
@@ -465,7 +466,7 @@ const D=[
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:'Cancelación gratuita hasta 11/06/2026',pag:null},
  alm:[],
- cen:[{mo:'CENA',nm:'Ca la Herminda',loc:'Port de la Selva',tel:'+34972387975',map:'https://maps.google.com/?q=Ca+la+Herminda+Port+de+la+Selva',pr:'~25-35€/p',inf:'Arroces y mariscos. Referente de la Costa Brava.'}],
+ cen:[{mo:'CENA',nm:'Can Narra',loc:'Port de la Selva',tel:'+34972387020',map:'https://maps.google.com/?q=Can+Narra+Port+de+la+Selva',pr:'~25-35€/p',inf:'⚠️ RESERVA OBLIGATORIA — llamar antes de salir. Cocina de temporada, producto local. Referente del Port de la Selva.'}],
  als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
@@ -669,6 +670,7 @@ function renderSel(){
 function selectP(id){
  curP=PI.find(p=>p.id===id);
  loadState(curP);
+ try{localStorage.setItem('transpi2026_piloto',id);}catch(e){}
  document.getElementById('hnam').textContent=curP.nm;
  document.getElementById('hmot').textContent=curP.mot+' · '+curP.dep+'L · ~'+curP.aut+' km/dep';
  document.getElementById('hbdg').textContent=curP.ico;
@@ -1387,6 +1389,27 @@ function renderPagos(){
 
 // ━━━ ARRANQUE ━━━
 renderSel();
+// Restaurar piloto si había uno guardado (tras reload de actualización)
+(function(){
+  try{
+    const saved = localStorage.getItem('transpi2026_piloto');
+    if(saved && PI.find(p=>p.id===saved)) selectP(saved);
+  }catch(e){}
+})();
+
+// ── CUENTA ATRÁS PORTADA ──
+(function(){
+  const el = document.getElementById("portada-countdown");
+  if(!el) return;
+  const hoy = new Date();
+  const viaje = new Date(2026,5,18);
+  const dias = Math.ceil((viaje - hoy)/(1000*60*60*24));
+  if(dias <= 0){ el.style.display="none"; return; }
+  const color = dias <= 7 ? "#b5341a" : dias <= 30 ? "#9a6200" : "#1a52a8";
+  const fondo = dias <= 7 ? "#fff4f0" : dias <= 30 ? "#fffbf0" : "rgba(255,255,255,0.10)";
+  const borde = dias <= 7 ? "#e0a090" : dias <= 30 ? "#e8cc80" : "rgba(255,255,255,0.25)";
+  el.innerHTML = `<div style="background:${fondo};border:2px solid ${borde};border-radius:14px;padding:14px 24px;display:inline-block;min-width:160px"><div style="font-size:10px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:1.5px;margin-bottom:2px">Faltan</div><div style="font-size:56px;font-weight:900;color:${color};line-height:1">${dias}</div><div style="font-size:13px;font-weight:600;color:${color}">días</div></div>`;
+})();
 
 function renderRuta(){
  const cont=document.getElementById('rutacont');
@@ -1435,7 +1458,7 @@ function renderRuta(){
    ],
    pois:[
     {ico:'🌊',nm:'Cala de Port de la Selva',det:'<span class="tm">⏱ 15 min a pie desde el hotel</span> Cala tranquila, aguas cristalinas. Paseo por el paseo marítimo antes de la cena.',mapq:'Port de la Selva playa Costa Brava'},
-    {ico:'🦞',nm:'Ca la Herminda — Cena Día 0',det:'<span class="tt">🍽️ Cena recomendada</span><span class="tm">⏱ 19:30h</span> Referencia gastronómica del Cap de Creus. Reservar con antelación.',mapq:'Ca la Herminda Port de la Selva'},
+    {ico:'🍽️',nm:'Can Narra — Cena Día 0',det:'<span class="tt">🍽️ Cena reservada</span><span class="tm">⏱ 19:30h</span> ⚠️ RESERVA OBLIGATORIA — llamar antes de salir. Cocina local, producto de temporada.',mapq:'Can Narra Port de la Selva'},
    ],
    meteo:{alt:'~0m',tmin:'9°C',tmax:'26°C',lluvia:'☁️ Baja',viento:'💨 Suave'}},
   {dia:'DÍA 1 · 19 Jun',tit:'Cap de Creus → Sort',km:'318 km · ~5-6h con paradas',tipo:'Cap de Creus + Pirineo catalán',
@@ -1878,7 +1901,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '21';
+const APP_VERSION = '24';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1889,7 +1912,7 @@ const APP_VERSION = '21';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=21').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=24').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
