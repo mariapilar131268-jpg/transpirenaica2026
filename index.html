@@ -668,6 +668,7 @@ function renderSel(){
 
 function selectP(id){
  curP=PI.find(p=>p.id===id);
+ loadState(curP);
  document.getElementById('hnam').textContent=curP.nm;
  document.getElementById('hmot').textContent=curP.mot+' · '+curP.dep+'L · ~'+curP.aut+' km/dep';
  document.getElementById('hbdg').textContent=curP.ico;
@@ -1039,6 +1040,18 @@ function renderCK(){
  });
  if(its.length)html+=`<div class="ck-sec"><div class="ck-sh">${sec}</div>${its.join('')}${tip?`<div class="ck-tip">💬 ${tip}</div>`:''}</div>`;
  document.getElementById('tab-ck').innerHTML=html;
+ // Restaurar checks guardados
+ try{
+  const key='transpi2026_'+curP.id;
+  const raw=localStorage.getItem(key);
+  if(raw){
+   const data=JSON.parse(raw);
+   if(data.ck){
+    const inputs=document.querySelectorAll('#tab-ck input[type=checkbox]');
+    data.ck.forEach((v,i)=>{ if(inputs[i]) inputs[i].checked=v; });
+   }
+  }
+ }catch(e){}
  updCK();
 }
 
@@ -1049,6 +1062,17 @@ function updCK(){
  const f=document.getElementById('ckf'),l=document.getElementById('ckp');
  if(f)f.style.width=pct+'%';
  if(l)l.textContent=pct+'% · '+done+'/'+all.length;
+ // Guardar estado del checklist
+ if(curP){
+  const ckState=[...all].map(x=>x.checked);
+  try{
+   const key='transpi2026_'+curP.id;
+   const raw=localStorage.getItem(key);
+   const data=raw?JSON.parse(raw):{pagos:[],cobros:[]};
+   data.ck=ckState;
+   localStorage.setItem(key,JSON.stringify(data));
+  }catch(e){}
+ }
 }
 
 // ━━━ PAGOS ━━━
@@ -1062,21 +1086,49 @@ function addCal(title,date,desc,fn){
  var a=document.createElement('a');a.href=u;a.download=(fn||'trip')+'.ics';a.click();URL.revokeObjectURL(u);
 }
 
+// ━━━ PERSISTENCIA localStorage ━━━
+function saveState(){
+ if(!curP) return;
+ const key='transpi2026_'+curP.id;
+ const data={
+  pagos: curP.pagos.map(p=>p.ok),
+  cobros: curP.cobros ? curP.cobros.map(c=>c.ok) : []
+ };
+ try{ localStorage.setItem(key, JSON.stringify(data)); }catch(e){}
+}
+
+function loadState(piloto){
+ const key='transpi2026_'+piloto.id;
+ try{
+  const raw=localStorage.getItem(key);
+  if(!raw) return;
+  const data=JSON.parse(raw);
+  if(data.pagos && piloto.pagos){
+   data.pagos.forEach((ok,i)=>{ if(piloto.pagos[i]) piloto.pagos[i].ok=ok; });
+  }
+  if(data.cobros && piloto.cobros){
+   data.cobros.forEach((ok,i)=>{ if(piloto.cobros[i]) piloto.cobros[i].ok=ok; });
+  }
+ }catch(e){}
+}
+
 function marcarTodoAPedro(){
  if(!curP||curP.esPedro) return;
  const aPedro = curP.pagos.filter(p=>!p.directo&&!p.skipPedro);
  const todoPagado = aPedro.every(p=>p.ok);
- // Si ya están todos marcados, desmarcar; si no, marcar todos
  aPedro.forEach(p=>p.ok=!todoPagado);
+ saveState();
  renderPagos();
 }
 function togglePagoPedro(i){
   if(curP&&curP.pagos)curP.pagos[i].ok=!curP.pagos[i].ok;
+  saveState();
   renderPagos();
 }
 function togglePago(i){
  if(curP.esPedro)curP.cobros[i].ok=!curP.cobros[i].ok;
  else curP.pagos[i].ok=!curP.pagos[i].ok;
+ saveState();
  renderPagos();
 }
 
@@ -1808,7 +1860,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '18';
+const APP_VERSION = '19';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1819,7 +1871,7 @@ const APP_VERSION = '18';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=18').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=19').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;

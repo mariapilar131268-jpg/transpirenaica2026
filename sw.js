@@ -1,4 +1,4 @@
-const CACHE='transpi2026-v18';
+const CACHE='transpi2026-v19';
 const ASSETS=['./','./?source=pwa','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',e=>{
