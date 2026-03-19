@@ -359,12 +359,12 @@ const PAG_INDIV=[
  {h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}
 ];
 const PAG_PEDRO=[
- {h:'Hotel Beri · Llançà',v:88.66,ok:true,skipPedro:true},
- {h:'Hotel Les Brases · Sort',v:64.00,ok:true,directo:false,skipPedro:true},
- {h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,skipPedro:true,date:'20260331',desc:'Apartar señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a ti mismo · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},
- {h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada'},
- {h:'Casa Lola · Isaba',v:106.00,ok:false,directo:true,nota:'Pago directo en el hostal el 21/06'},
- {h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}
+ {h:'Hotel Beri · Llançà',v:44.66,ok:true,skipPedro:true},
+ {h:'Hotel Les Brases · Sort',v:37.00,ok:true,directo:false,skipPedro:true},
+ {h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,skipPedro:true,date:'20260331',desc:'Apartar señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p · Resto en hostal 20/06: €17,50 · Total: €37,50 (desayuno incluido)'},
+ {h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada'},
+ {h:'Casa Lola · Isaba',v:57.40,ok:false,directo:true,nota:'Pago directo en el hostal el 21/06'},
+ {h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}
 ];
 // ━━━ PILOTOS ━━━
 const NOCHES=[
@@ -414,19 +414,27 @@ const PI=[
   al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
       {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en TotalEnergies Oloron ANTES del Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~247€ · Gasolina ~112€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~572€</strong>'}]},
- {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'individual',comp:null,esPedro:true,
-  pres:{aloj:466,gas:146,cenas:133,comidas:80,total:825},
+ {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'doble',comp:'Vicenç',esPedro:true,
+  pres:{aloj:247,gas:146,cenas:133,comidas:80,total:606},
   pagos:PAG_PEDRO,
   cobros:[
    {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
    {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
    {p:'🥷 Antonio',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
    {p:'🏁 Mónica',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'✈️ Vicenç',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
    {p:'📋 Xavi',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false},
    {p:'🎭 Antonio J.',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false}],
   al:[{t:'s',h:'🎯 EL ANTIRADARES OFICIAL DEL GRUPO',b:'No hace falta Waze ni TomTom: con Pedro delante, los radares no existen. Olfato sobrenatural. El grupo te lo agradece... y Tráfico también 😅'},
       {t:'s',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
-      {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~466€ · Gasolina ~146€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~825€</strong>'}]},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~247€ · Gasolina ~146€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~606€</strong>'}]},
+ {id:'vicenc',nm:'Vicenç',ico:'✈️',mot:'Yamaha R7',dep:13,aut:200,badge:'A',hab:'doble',comp:'Pedro',
+  pres:{aloj:247,gas:125,cenas:133,comidas:80,total:585},
+  pagos:PAG_DOBLE,
+  al:[{t:'s',h:'✈️ EL PILOTO CON MÁS HORAS DE VUELO',b:'Experiencia, calma y criterio. Con Vicenç en el grupo, cualquier puerto del Pirineo se convierte en pista de aterrizaje VIP.'},
+      {t:'s',h:'YAMAHA R7 — DEPORTIVA PURA',b:'689cc de adrenalina bien administrada. Ligera, ágil, precisa. En los puertos, el R7 es pez en el agua.'},
+      {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~247€ · Gasolina ~125€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~585€</strong>'},
+      {t:'i',h:'⛽ DEPÓSITO 13 L — ATENCIÓN EN ETAPAS LARGAS',b:'Autonomía ~200 km. En los días 1 y 3 repostar puntualmente con el grupo. Llenar siempre que el grupo llene.'}]},
  {id:'xavi',nm:'Xavi',ico:'🏅',mot:'Ducati Multistrada',dep:20,aut:300,badge:'A',hab:'individual',comp:null,
   pres:{aloj:466,gas:146,cenas:133,comidas:80,total:825},
   pagos:PAG_INDIV,
@@ -564,7 +572,7 @@ const D=[
  hotel:{ok:true,pagdirecto:true,nm:'Hotel Jauregui ⭐⭐⭐ · Hondarribia',desayuno:true,dir:'Calle Zuloaga 5, 20280 Hondarribia',tel:'+34943641400',web:'https://www.hoteljauregui.com/',map:'https://maps.google.com/?q=Hotel+Jauregui+Hondarribia',
    res:'SYN2774-60096',pin:'UZGUQHXZ4X',
    can:'Cancelación gratuita hasta 19/06/2026',pag:'💳 Pago directo en el hotel · Total €660,25 · Desayuno incluido',
-   inf:'Casco histórico medieval · 2 dobles + 1 individual + 2 doble uso'},
+   inf:'Casco histórico medieval · 3 dobles + 2 individuales'},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Restaurante La Posada · Roncesvalles',loc:'Roncesvalles, Navarra',tel:null,map:'https://maps.google.com/?q=Restaurante+La+Posada+Roncesvalles+Navarra',pr:'~20-28€/p',
        inf:'En Roncesvalles, junto a la colegiata. Cocina navarra. Ambiente peregrino.',
        mapsRuta:'https://www.google.com/maps/dir//Urzainqui/Repsol+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui/Ochagavia/Roncesvalles/Restaurante+La+Posada,+Roncesvalles/Eugi/Bera/Hotel+Jauregui+Hondarribia'},
@@ -1901,7 +1909,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '24';
+const APP_VERSION = '25';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1912,7 +1920,7 @@ const APP_VERSION = '24';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=24').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=25').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
