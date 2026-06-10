@@ -401,7 +401,7 @@ const PI=[
   pres:{aloj:247,gas:144,cenas:133,comidas:80,total:604},
   pagos:PAG_DOBLE,
   al:[{t:'w',h:'🎓 CARNET A2 — EL OTRO JOVEN PROMESA 😄',b:'La KTM ya pide todo el carnet A a gritos. Aguanta un poco que ya te lo ganas. Los mayores os vigilan con cariño 👀'},
-      {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en TotalEnergies Oloron ANTES del Aubisque. Capa térmica a mano para Bonaigua y Aubisque.'},
+      {t:'w',h:'⚠️ DEPÓSITO 14,5 L — SIN PROTECCIÓN AL VIENTO',b:'Vigilar día 3 (Francia). Repostar en TotalEnergies Oloron DESPUÉS del Aubisque (antes de La Pierre Saint-Martin). Capa térmica a mano para Bonaigua y Aubisque.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~247€ · Gasolina ~144€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~604€</strong>'}]},
  {id:'antonio',nm:'Antonio',ico:'🏅',mot:'Kawasaki Ninja 1000SX',dep:19,aut:300,badge:'A',hab:'doble',comp:'Mónica',
   pres:{aloj:247,gas:139,cenas:133,comidas:80,total:599},
@@ -412,7 +412,7 @@ const PI=[
   pres:{aloj:247,gas:112,cenas:133,comidas:80,total:572},
   pagos:PAG_DOBLE,
   al:[{t:'s',h:'🏁 LA INGENIERA DE LAS CURVAS',b:'No va rápida, va perfecta. Mientras los demás negocian la curva, ella ya está en la siguiente. La CB650R en sus manos: un escalpelo 🔪'},
-      {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en TotalEnergies Oloron ANTES del Aubisque.'},
+      {t:'w',h:'⚠️ DEPÓSITO 15,4 L',b:'Vigilar día 3. Repostar en TotalEnergies Oloron DESPUÉS del Aubisque (antes de La Pierre Saint-Martin).'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~247€ · Gasolina ~112€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~572€</strong>'}]},
  {id:'pedro',nm:'Pedro',ico:'🏅',mot:'BMW S1000XR',dep:20,aut:300,badge:'A',hab:'doble',comp:'Vicenç',esPedro:true,
   pres:{aloj:247,gas:146,cenas:133,comidas:80,total:606},
@@ -431,7 +431,8 @@ const PI=[
  {id:'vicenc',nm:'Vicenç',ico:'✈️',mot:'Yamaha R7',dep:13,aut:200,badge:'A',hab:'doble',comp:'Pedro',
   pres:{aloj:247,gas:125,cenas:133,comidas:80,total:585},
   pagos:PAG_DOBLE,
-  al:[{t:'s',h:'✈️ EL PILOTO CON MÁS HORAS DE VUELO',b:'Experiencia, calma y criterio. Con Vicenç en el grupo, cualquier puerto del Pirineo se convierte en pista de aterrizaje VIP.'},
+  al:[{t:'w',h:'🏨 IMPORTANTE — TU PLAZA EN HOTEL BERI Y LES BRASES',b:'Las reservas originales eran para 7 personas. Pili llamó a los dos hoteles y <strong>tu plaza está confirmada por teléfono</strong>: compartes habitación doble con Pedro las noches del 18/06 (Hotel Beri, Llançà) y 19/06 (Les Brases, Sort). Si en el check-in no apareces en la lista, basta decir que se añadió por teléfono. Tu parte se paga a Pedro como el resto.'},
+      {t:'s',h:'✈️ EL PILOTO CON MÁS HORAS DE VUELO',b:'Experiencia, calma y criterio. Con Vicenç en el grupo, cualquier puerto del Pirineo se convierte en pista de aterrizaje VIP.'},
       {t:'s',h:'YAMAHA R7 — DEPORTIVA PURA',b:'689cc de adrenalina bien administrada. Ligera, ágil, precisa. En los puertos, el R7 es pez en el agua.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~247€ · Gasolina ~125€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~585€</strong>'},
       {t:'i',h:'⛽ DEPÓSITO 13 L — ATENCIÓN EN ETAPAS LARGAS',b:'Autonomía ~200 km. En los días 1 y 3 repostar puntualmente con el grupo. Llenar siempre que el grupo llene.'}]},
@@ -542,18 +543,19 @@ const D=[
        {p:'⛽ Repsol — Biescas',n:'CR C-136 pk 72 · Llenar antes del Portalet',d:'gas'},
        {p:'Formigal → Col du Portalet',n:'Puerto Portalet 1.794m — frontera con Francia',d:'special'},
        {p:'Laruns — Valle d\'Ossau',n:'🍽️ COMIDA ~13:00h · Hôtel-Restaurant d\'Ossau',d:'food'},
+       {p:'Col d\'Aubisque — 1.709m',n:'⭐ Subida tras la comida, ida y vuelta desde Laruns (~36 km · ~1h) · El más bonito del viaje',d:'special'},
        {p:'Oloron-Sainte-Marie',n:'Ciudad vasca francesa'},
-       {p:'⛽ TotalEnergies — Oloron',n:'28 Rue Charles et Henri Moureu · Llenar antes del Aubisque',d:'gas'},
+       {p:'⛽ TotalEnergies — Oloron',n:'28 Rue Charles et Henri Moureu · Llenar después del Aubisque, antes de La Pierre Saint-Martin',d:'gas'},
        {p:'Arette → La Pierre Saint-Martin',n:'Puerto fronterizo espectacular',d:'special'},
        {p:'🏁 Casa Lola — Isaba',n:'Llegada ~19:00h',d:'end'}],
  gas:[{nm:'Repsol — Biescas',hr:'8:00-21:00h',dir:'CR C-136 km 72, Biescas',tel:null,map:'https://maps.google.com/?q=Repsol+ES+Gasolinera+de+Biescas+C136',key:true,not:'Llenar AQUÍ antes del Portalet. En Francia las gasolineras son escasas en montaña.'},
-      {nm:'TotalEnergies — Oloron-Sainte-Marie',hr:'Lun-Sáb 7:00-20:00h',dir:'28 Rue Charles et Henri Moureu, Oloron-Sainte-Marie',tel:null,map:'https://maps.google.com/?q=TotalEnergies+28+Rue+Charles+et+Henri+Moureu+64400+Oloron-Sainte-Marie',key:true,not:'⚠️ ES DOMINGO. Confirmar horario. Llenar antes del Aubisque y La Pierre Saint-Martin.'}],
+      {nm:'TotalEnergies — Oloron-Sainte-Marie',hr:'Lun-Sáb 7:00-20:00h',dir:'28 Rue Charles et Henri Moureu, Oloron-Sainte-Marie',tel:null,map:'https://maps.google.com/?q=TotalEnergies+28+Rue+Charles+et+Henri+Moureu+64400+Oloron-Sainte-Marie',key:true,not:'⚠️ ES DOMINGO. Confirmar horario. Llenar después del Aubisque, antes de La Pierre Saint-Martin.'}],
  hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,pagdirecto:true,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:'https://www.hostal-lola.com/',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
    inf:'€547,60 total · Pago directo en el hostal',
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 01/06/2026',pag:'€547,60 — confirmar con tarjeta'},
  alm:[{mo:'COMIDA — Laruns 🍽️',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Menú del día.'}],
  cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 Cena reservada a las 21:30h'}],
- als:[{t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron antes del Aubisque. No improvisar.'}],
+ als:[{t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron después del Aubisque. No improvisar.'}],
  foro:'El Col d\'Aubisque es uno de los puertos míticos del Tour. La Pierre Saint-Martin es frontera con España por pista. Etapa épica.',
  nesp:null},
 
@@ -657,9 +659,21 @@ async function loadMeteo(lat,lon,nm,eid){
   const mn=Math.round(js.daily.temperature_2m_min[idx]);
   const pr=js.daily.precipitation_sum[idx];
   const wi=Math.round(js.daily.wind_speed_10m_max[idx]);
-  el.innerHTML='<div class="mbox"><div class="mico">'+(WI[wc]||'🌤️')+'</div><div class="mdata"><div class="mtemp">'+mx+'° <span style="font-size:13px;font-weight:400">/ '+mn+'°</span></div><div class="mdesc">'+(WD[wc]||'Variable')+' · <strong>'+nm+'</strong></div><div class="mdet">🌧 '+pr+' mm · 💨 '+wi+' km/h'+(nota?' — <em>'+nota+'</em>':'')+'</div></div></div>';
+  let alerta='';
+  if(wi>=40) alerta+='<div style="font-size:11px;font-weight:800;color:#b5341a;margin-top:3px">⚠️ Viento fuerte previsto — precaución en los puertos</div>';
+  if(pr>=5) alerta+='<div style="font-size:11px;font-weight:800;color:#1a52a8;margin-top:3px">🌧️ Lluvia significativa prevista — impermeable a mano</div>';
+  el.innerHTML='<div class="mbox"><div class="mico">'+(WI[wc]||'🌤️')+'</div><div class="mdata"><div class="mtemp">'+mx+'° <span style="font-size:13px;font-weight:400">/ '+mn+'°</span></div><div class="mdesc">'+(WD[wc]||'Variable')+' · <strong>'+nm+'</strong></div><div class="mdet">🌧 '+pr+' mm · 💨 '+wi+' km/h'+(nota?' — <em>'+nota+'</em>':'')+'</div>'+alerta+'</div></div>';
+  // Guardar última previsión para verla sin cobertura
+  try{ localStorage.setItem('transpi2026_meteo_'+eid, JSON.stringify({t:Date.now(),h:el.innerHTML})); }catch(_e){}
  }catch(e){
-  el.innerHTML='<div class="mload" style="font-size:11px">⚠️ Meteo no disponible. Consulta <a href="https://www.tiempo.es" target="_blank" style="color:var(--blu)">tiempo.es</a></div>';
+  let guardada=null;
+  try{ guardada=JSON.parse(localStorage.getItem('transpi2026_meteo_'+eid)); }catch(_e){}
+  if(guardada&&guardada.h){
+   const hrs=Math.round((Date.now()-guardada.t)/3600000);
+   el.innerHTML=guardada.h+'<div style="font-size:10px;color:#9a6200;margin-top:2px">📡 Sin conexión — previsión guardada '+(hrs<1?'hace menos de 1 h':'hace '+hrs+' h')+'</div>';
+  }else{
+   el.innerHTML='<div class="mload" style="font-size:11px">⚠️ Meteo no disponible. Consulta <a href="https://www.tiempo.es" target="_blank" style="color:var(--blu)">tiempo.es</a></div>';
+  }
  }
 }
 
@@ -810,7 +824,7 @@ function renderResumenRuta(){
     const dotEmoji = r.d==='start'?'🟢':r.d==='end'?'🏁':r.d==='gas'?'⛽':r.d==='food'?'🍽️':r.d==='special'?'⭐':'•';
 
     // URL Cómo llegar — usar el nombre del punto para Google Maps
-    const nombreLimpio = r.p.replace(/^[⭐🏁⛽🍽️\s]+/u,'').replace(/\s*—\s*(COMIDA|CRÍTICO|CENA|SALIDA)\S*/gi,'').split('·')[0].trim();
+    const nombreLimpio = r.p.split('→').pop().replace(/^[^\p{L}\d]+/u,'').replace(/\s*—\s*(COMIDA|CRÍTICO|CENA|SALIDA)\S*/gi,'').split('·')[0].trim();
     const mapsUrl = 'https://maps.google.com/?q='+encodeURIComponent(nombreLimpio);
     const mostrarBtn = r.d !== 'start'; // no mostrar en el punto de salida
 
@@ -1029,11 +1043,10 @@ function renderDias(){
    html+=`<div class="dsec"><div class="ftip"><div class="ftip-l">💬 Lo dicen los foros moteros</div><p>${d.foro}</p></div></div>`;
   }
 
-  const ORIGENES={0:'Area+Servicio+Montcada+La+Pausa+C33',1:'Hotel+Beri+Llanca',2:'Hotel+Les+Brases+Sort+Lleida',3:'Hostal+Pirineos+Ainsa+Sobrarbe+7',4:'Casa+Lola+Isaba+Navarra+Mendigatxa+17',5:'Hotel+Jauregui+Hondarribia'};
-  const _muBase=buildGmapsUrl(d,0);
-  const _origen=ORIGENES[d.n]||'';
-  const _mu=_muBase&&_origen ? _muBase.replace('https://www.google.com/maps/dir//','https://www.google.com/maps/dir/'+_origen+'/') : _muBase;
-  if(_mu&&d.n<5){ html+=`<div class="dsec"><a href="${_mu}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35)">🗺️ Ver ruta completa del día</a></div>`; }
+  const _tramos=buildGmapsTramos(d,0,true);
+  if(_tramos.length&&d.n<5){
+   html+=`<div class="dsec">`+_tramos.map(t=>`<a href="${t.url}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35);margin-bottom:8px">🗺️ ${t.lb||'Ver ruta completa del día'}</a>`).join('')+`</div>`;
+  }
 
     html+='</div></div>'; // dbody + dcard
 
@@ -1067,7 +1080,13 @@ function renderCK(){
    const data=JSON.parse(raw);
    if(data.ck){
     const inputs=document.querySelectorAll('#tab-ck input[type=checkbox]');
-    data.ck.forEach((v,i)=>{ if(inputs[i]) inputs[i].checked=v; });
+    if(Array.isArray(data.ck)){
+     // formato antiguo (por posición)
+     data.ck.forEach((v,i)=>{ if(inputs[i]) inputs[i].checked=v; });
+    }else{
+     // formato nuevo (por texto del ítem — resistente a cambios entre versiones)
+     inputs.forEach(x=>{ const lb=document.querySelector('label[for="'+x.id+'"]'); if(lb&&data.ck[lb.textContent]!==undefined) x.checked=data.ck[lb.textContent]; });
+    }
    }
   }
  }catch(e){}
@@ -1083,7 +1102,8 @@ function updCK(){
  if(l)l.textContent=pct+'% · '+done+'/'+all.length;
  // Guardar estado del checklist
  if(curP){
-  const ckState=[...all].map(x=>x.checked);
+  const ckState={};
+  [...all].forEach(x=>{ const lb=document.querySelector('label[for="'+x.id+'"]'); ckState[lb?lb.textContent:x.id]=x.checked; });
   try{
    const key='transpi2026_'+curP.id;
    const raw=localStorage.getItem(key);
@@ -1256,14 +1276,16 @@ function renderPagos(){
  }
 
  if(curP.esPedro){
-  const tot=791.96,suParte=192.66;
-  let cobrado=0;curP.cobros.forEach(c=>{if(c.ok)cobrado+=c.t;});
-  const pend=(tot-suParte-cobrado).toFixed(2);
+  // Importes calculados desde la tabla real — sin cifras fijas que se queden viejas
+  let totalCobros=0,pendNum=0;
+  curP.cobros.forEach(c=>{ totalCobros+=c.t; if(!c.ok)pendNum+=c.t; });
+  const suParte=curP.pagos.filter(p=>p.skipPedro).reduce((s,p)=>s+p.v,0);
+  const pend=pendNum.toFixed(2);
   const pendCol=parseFloat(pend)>0?'var(--red)':'var(--grn)';
   const pendTx=parseFloat(pend)>0?'⏳ Te deben €'+pend.replace('.',','):'✅ ¡Todo cobrado!';
 
   html+=`<div class="pp"><div class="pph pph-g"><div class="ppico">🏦</div>
-   <div><div class="ppt">PANEL TESORERO — PEDRO</div><div class="pps">Total adelantado: €1.409,62 · Tu parte: €298.66</div></div></div>
+   <div><div class="ppt">PANEL TESORERO — PEDRO</div><div class="pps">Total adelantado: €${(totalCobros+suParte).toFixed(2).replace('.',',')} · Tu parte: €${suParte.toFixed(2).replace('.',',')}</div></div></div>
    <div style="overflow-x:auto"><table class="ctab">
     <tr><th>Piloto</th><th>Beri</th><th>Brases</th><th>Aínsa señal</th><th>Total</th><th>✓</th></tr>`;
   curP.cobros.forEach((c,i)=>{
@@ -1508,7 +1530,7 @@ function renderRuta(){
     {ico:'⏰',tx:'<strong>SALIDA 7:30-8:00h — obligatorio.</strong> La etapa reina. En junio hay menos tráfico, pero cuanto antes subas el Aubisque, más lo disfrutas sin caravanas y con mejor tiempo.'},
     {ico:'🏔️',tx:'<strong>Col du Portalet (1.794m):</strong> frontera España-Francia. Bajada espectacular al Valle de Ossau. Punto de reagrupamiento antes de entrar en Francia.'},
     {ico:'🏔️',tx:'<strong>Col d\u2019Aubisque (1.709m):</strong> para muchos el más bonito del viaje. El tramo Soulor-Aubisque (7 km) es espectacular — vacas, caballos y ovejas en la calzada. <strong>Reducir velocidad.</strong>'},
-    {ico:'⛽',tx:'<strong>Repostar en TotalEnergies Oloron</strong> ANTES del Aubisque — es la gasolinera con personal más estratégica de la zona. Alberto 🐛: <em>200 km de autonomía — momento más crítico del viaje.</em> ⚠️ Es domingo: confirmar horario antes de salir. Todos repostan aquí sin excepción.'},
+    {ico:'⛽',tx:'<strong>Repostar en TotalEnergies Oloron</strong> DESPUÉS del Aubisque — es la gasolinera con personal más estratégica de la zona. Alberto 🐛: <em>200 km de autonomía — momento más crítico del viaje.</em> ⚠️ Es domingo: confirmar horario antes de salir. Todos repostan aquí sin excepción.'},
     {ico:'🌡️',tx:'Aubisque en la cima: <strong>10-12°C con viento.</strong> Capa térmica en la mochila. El tramo Soulor-Aubisque (7 km) es espectacular — carretera excavada en la roca. Pedro y Xavi van cubiertos; el resto que prepare capas.'},
     {ico:'🦌',tx:'<strong>Bajada Aubisque a Laruns:</strong> fauna en libertad. Se han visto ovejas, caballos y algún oso en la zona. Ojos bien abiertos y velocidad moderada.'},
     {ico:'💳',tx:'<strong>Gasolineras en Francia:</strong> muchas son automáticas 24h solo con tarjeta bancaria chip+pin. Las tarjetas españolas a veces fallan en máquinas sin personal. Llevar siempre algo de efectivo en euros — en los pueblos pequeños se puede pagar en bares o tiendas cercanas.'},
@@ -1516,7 +1538,7 @@ function renderRuta(){
    pois:[
     {ico:'🏔️',nm:'Col du Portalet — 1.794m (frontera)',det:'<span class="tm">⏱ ~9:00h</span> Paso fronterizo España-Francia. Punto de reagrupamiento antes de entrar en territorio francés.',mapq:'Col du Portalet frontera Formigal Francia'},
     {ico:'🏞️',nm:'Valle de Ossau — Laruns',det:'<span class="tm">⏱ ~10:30h · Parada comida</span> Valle glaciar espectacular. Laruns es el pueblo del valle — comida en el Hôtel-Restaurant d\'Ossau. Paisaje de postal.',mapq:'Laruns Valle Ossau Francia'},
-    {ico:'⛽',nm:'TotalEnergies — Oloron-Sainte-Marie',det:'<span class="tt">⛽ REPOSTAR TODOS</span><span class="tm">⏱ Antes del Aubisque · ⚠️ ES DOMINGO</span> Confirmar horario. Última gasolinera antes del Aubisque y La Pierre Saint-Martin. Obligatorio para Alberto 🐛.',mapq:'TotalEnergies Oloron-Sainte-Marie Francia'},
+    {ico:'⛽',nm:'TotalEnergies — Oloron-Sainte-Marie',det:'<span class="tt">⛽ REPOSTAR TODOS</span><span class="tm">⏱ Después del Aubisque · ⚠️ ES DOMINGO</span> Confirmar horario. Última gasolinera antes de La Pierre Saint-Martin. Obligatorio para Alberto 🐛.',mapq:'TotalEnergies Oloron-Sainte-Marie Francia'},
     {ico:'🏔️',nm:'Col d\u2019Aubisque — 1.709m',det:'<span class="tt">⭐ El más bonito</span><span class="tm">⏱ ~14:00h</span> Carretera excavada en la roca. Escultura de 3 bicicletas gigantes. Fauna libre en la calzada — vacas, caballos, ovejas.',mapq:'Col Aubisque cima Francia'},
     {ico:'🏔️',nm:'Arette — La Pierre Saint-Martin',det:'<span class="tm">⏱ ~16:00h</span> Puerto fronterizo espectacular. Bajada a Isaba por carretera navarra de montaña. Tramo final del día.',mapq:'Col Pierre Saint Martin Arette Francia'},
    ],
@@ -1544,7 +1566,7 @@ function renderRuta(){
  const cgs=[
   {ico:'🌤️',tx:'<strong>Junio = la fecha perfecta.</strong> Puertos recién abiertos, días largos, menos tráfico que julio-agosto. Según foros moteros, junio ya no llueve tanto y los puertos están abiertos con luz hasta las 21h. El Pirineo siempre sorprende — traje de agua a mano, no en el fondo de las maletas.'},
   {ico:'⏰',tx:'<strong>Madrugar = disfrutar.</strong> Salida antes de las 8h en etapas largas. Los puertos por la mañana son magia pura. Las tormentas de verano llegan habitualmente a partir de las 14-15h. Quienes los suben tarde se encuentran con niebla cerrada o cierres preventivos.'},
-  {ico:'⛽',tx:'<strong>Regla de oro del repostaje en montaña:</strong> en cada parada con gasolinera, <em>todos</em> repostan aunque les quede. Las gasolineras en Francia son escasas y muchas solo admiten tarjeta bancaria sin personal (no todas admiten tarjetas españolas). Aprovecha siempre TotalEnergies Oloron antes del Aubisque.'},
+  {ico:'⛽',tx:'<strong>Regla de oro del repostaje en montaña:</strong> en cada parada con gasolinera, <em>todos</em> repostan aunque les quede. Las gasolineras en Francia son escasas y muchas solo admiten tarjeta bancaria sin personal (no todas admiten tarjetas españolas). Aprovecha siempre TotalEnergies Oloron, después del Aubisque.'},
   {ico:'🔧',tx:'<strong>Revisión antes de salir:</strong> neumáticos (clavar la uña — si no cede, cristalizados), pastillas de freno, aceite, cadena y líquido de frenos. En puertos largos cargados los frenos trabajan de verdad. Llevar kit antipinchazos + mini compresor — según veteranos de la ruta, ya les ha salvado el viaje más de una vez.'},
   {ico:'🚴',tx:'<strong>Ciclistas:</strong> en junio hay grupos en todos los puertos famosos, especialmente en el Aubisque. Paciencia y respeto total — adelantar con mucho espacio y nunca en curva. Recordad que el Tour de Francia pasa por la zona a primeros de julio: cuanto antes mejor.'},
   {ico:'🐄',tx:'<strong>Fauna en calzada:</strong> Aubisque e Irati especialmente. Vacas, caballos, ovejas con cencerros y en el entorno del Aubisque hay osos. Velocidad moderada siempre en estas zonas — los animales no avisan.'},
@@ -1665,9 +1687,8 @@ function buildGmapsUrl(d, almIdx){
       'Camprodon',
       'Ribes+de+Freser',
       '42.3167,2.0833',
-      'Puigcerda',
-      'Restaurant+Ruta+260+Prullans+de+Cerdanya',
       'Repsol+Puigcerda+N-152',
+      'Restaurant+Ruta+260+Prullans+de+Cerdanya',
       'Repsol+ES+La+Seu+d%27Urgell,+Avinguda+Valira,+25,+La+Seu+d%27Urgell',
       'Puerto+del+Cant%C3%B3+Lleida',
       'Hotel+Les+Brases+Sort'
@@ -1694,6 +1715,7 @@ function buildGmapsUrl(d, almIdx){
       'Col+du+Portalet',
       'Laruns',
       'Hotel+Restaurant+d%27Ossau,+Place+de+la+Mairie,+Laruns,+Francia',
+      'Col+d%27Aubisque',                       // ⭐ ida y vuelta desde Laruns (~36 km)
       'Oloron-Sainte-Marie',
       'TotalEnergies+d%27Oloron,+28+Rue+Charles+et+Henri+Moureu,+64400+Oloron-Sainte-Marie,+Francia',
       'Arette',
@@ -1729,6 +1751,45 @@ function buildGmapsUrl(d, almIdx){
   const paradas = todasParadas.slice(1); // sin origen fijo
   if(paradas.length < 2) return null;
   return 'https://www.google.com/maps/dir//' + paradas.join('/');
+}
+
+// Origen fijo de cada día (hotel / punto de salida)
+const ORIGENES={0:'Area+Servicio+Montcada+La+Pausa+C33',1:'Hotel+Beri+Llanca',2:'Hotel+Les+Brases+Sort+Lleida',3:'Hostal+Pirineos+Ainsa+Sobrarbe+7',4:'Casa+Lola+Isaba+Navarra+Mendigatxa+17',5:'Hotel+Jauregui+Hondarribia'};
+
+// Google Maps admite ~10 paradas por ruta. Si un día tiene más, se divide
+// en dos tramos: mañana (hasta la comida) y tarde (comida → hotel).
+function buildGmapsTramos(d, almIdx, conOrigen){
+  const full = buildGmapsUrl(d, almIdx);
+  if(!full) return [];
+  const pref='https://www.google.com/maps/dir//';
+  if(!full.startsWith(pref)) return [{lb:null,url:full}];
+  const paradas = full.slice(pref.length).split('/').filter(Boolean);
+  const origen = ORIGENES[d.n]||'';
+  if(paradas.length<=9){
+    const url = (conOrigen&&origen) ? 'https://www.google.com/maps/dir/'+origen+'/'+paradas.join('/') : full;
+    return [{lb:null,url:url}];
+  }
+  let cut = paradas.findIndex(p=>/Restaurant|Ossau|Herminda|Pigal|Urtau|Creperie|Posada|Sabina/i.test(p));
+  if(cut<1||cut>=paradas.length-1) cut = Math.ceil(paradas.length/2)-1;
+  const man = paradas.slice(0,cut+1), tar = paradas.slice(cut+1);
+  const urlMan = (conOrigen&&origen) ? 'https://www.google.com/maps/dir/'+origen+'/'+man.join('/') : pref+man.join('/');
+  return [
+    {lb:'☀️ Mañana — hasta la comida', url:urlMan},
+    {lb:'🌄 Tarde — comida → hotel', url:pref+tar.join('/')}
+  ];
+}
+
+// Botón(es) Maps del modo conducción
+function mcMapsBtnHtml(d, almIdx){
+  const tramos = buildGmapsTramos(d, almIdx, false);
+  return tramos.map((t,i)=>`<a href="${t.url}" target="_blank"
+      style="display:flex;align-items:center;justify-content:center;gap:12px;
+      background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
+      color:#ffffff;width:100%;box-sizing:border-box;
+      font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
+      min-height:68px;text-decoration:none;letter-spacing:.3px;${i<tramos.length-1?'margin-bottom:10px;':''}">
+      <span style="font-size:28px">🗺️</span> ${t.lb||'Abrir ruta en Google Maps'}
+    </a>`).join('');
 }
 
 function renderMC(){
@@ -1805,17 +1866,7 @@ function renderMC(){
   </div>`;
 
   // ── BOTÓN GOOGLE MAPS (siempre visible arriba) ──
-  const mapsUrlInicial = buildGmapsUrl(d, 0);
-  html += `<div id="mc-maps-fixed">
-    ${mapsUrlInicial ? `<a href="${mapsUrlInicial}" target="_blank"
-      style="display:flex;align-items:center;justify-content:center;gap:12px;
-      background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
-      color:#ffffff;width:100%;box-sizing:border-box;
-      font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
-      min-height:68px;text-decoration:none;letter-spacing:.3px">
-      <span style="font-size:28px">🗺️</span> Abrir ruta en Google Maps
-    </a>` : ''}
-  </div>`;
+  html += `<div id="mc-maps-fixed">${mcMapsBtnHtml(d,0)}</div>`;
 
   // ── Selector comida / cena ──
   if(listaComida.length > 0){
@@ -1892,24 +1943,14 @@ function mcSelComida(almIdx){
   });
 
   // Actualizar botón Google Maps con la parada de comida elegida
-  const mapsUrl = buildGmapsUrl(d, almIdx);
   const btnDiv = document.getElementById('mc-maps-fixed');
   if(btnDiv){
-    btnDiv.innerHTML = mapsUrl
-      ? `<a href="${mapsUrl}" target="_blank"
-          style="display:flex;align-items:center;justify-content:center;gap:12px;
-          background:#1a52a8;border:3px solid #4a82d8;border-radius:16px;
-          color:#ffffff;width:100%;box-sizing:border-box;
-          font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
-          min-height:68px;text-decoration:none;letter-spacing:.3px">
-          <span style="font-size:28px">🗺️</span> Abrir ruta en Google Maps
-        </a>`
-      : '';
+    btnDiv.innerHTML = mcMapsBtnHtml(d, almIdx);
   }
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '25';
+const APP_VERSION = '27';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1920,7 +1961,7 @@ const APP_VERSION = '25';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=25').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=27').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
