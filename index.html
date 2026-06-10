@@ -1045,7 +1045,8 @@ function renderDias(){
 
   const _tramos=buildGmapsTramos(d,0,true);
   if(_tramos.length&&d.n<5){
-   html+=`<div class="dsec">`+_tramos.map(t=>`<a href="${t.url}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35);margin-bottom:8px">🗺️ ${t.lb||'Ver ruta completa del día'}</a>`).join('')+`</div>`;
+   const _nota=_tramos.length>1?`<div style="font-size:11.5px;color:#7a6a50;margin-top:4px;text-align:center;line-height:1.4">ℹ️ <strong>Abre cada tramo en su momento:</strong> Maps inicia la ruta desde donde estés. El de la <strong>tarde se abre al salir de comer</strong>, ya en el restaurante.</div>`:'';
+   html+=`<div class="dsec">`+_tramos.map(t=>`<a href="${t.url}" target="_blank" class="mc-maps-btn" style="border-radius:14px;box-shadow:0 3px 10px rgba(26,82,168,.35);margin-bottom:8px">🗺️ ${t.lb||'Ver ruta completa del día'}</a>`).join('')+_nota+`</div>`;
   }
 
     html+='</div></div>'; // dbody + dcard
@@ -1789,7 +1790,8 @@ function mcMapsBtnHtml(d, almIdx){
       font-size:20px;font-weight:700;padding:20px 16px;text-align:center;
       min-height:68px;text-decoration:none;letter-spacing:.3px;${i<tramos.length-1?'margin-bottom:10px;':''}">
       <span style="font-size:28px">🗺️</span> ${t.lb||'Abrir ruta en Google Maps'}
-    </a>`).join('');
+    </a>`).join('')
+    +(tramos.length>1?`<div style="font-size:14px;color:#c8d8b0;margin-top:10px;text-align:center;font-weight:600;line-height:1.4">ℹ️ Abre cada tramo en su momento — Maps empieza desde donde estés.<br>El de la tarde, al salir de comer.</div>`:'');
 }
 
 function renderMC(){
@@ -1950,7 +1952,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '27';
+const APP_VERSION = '28';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1961,7 +1963,7 @@ const APP_VERSION = '27';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=27').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=28').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
