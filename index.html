@@ -445,7 +445,7 @@ const PI=[
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
   pres:{aloj:466,gas:156,cenas:133,comidas:80,total:835},
   pagos:PAG_INDIV,
-  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde <strong>Sant Antoni de Calonge</strong> y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró entre las 16-18h y hará Cap de Creus y Cadaqués por la tarde. Sal con el depósito lleno y avisa al grupo cuando llegues al hotel.'},
+  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde casa (<strong>Carrer del Sard, 9 — Sant Antoni de Calonge</strong>) y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró entre las 16-18h y hará Cap de Creus y Cadaqués por la tarde. Sal con el depósito lleno y avisa al grupo cuando llegues. <a href="https://www.google.com/maps/dir/Carrer+del+Sard,+9,+17252+Calonge,+Girona/Hotel+Beri+Llanca" target="_blank" style="color:#1a52a8;font-weight:700">🗺️ Tu ruta directa al hotel</a>'},
       {t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~466€ · Gasolina ~156€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~835€</strong>'},
@@ -1957,7 +1957,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '30';
+const APP_VERSION = '31';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1968,7 +1968,7 @@ const APP_VERSION = '30';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=30').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=31').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
