@@ -452,6 +452,10 @@ const PI=[
       {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€40 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €35 · <strong>Total: €75</strong> (desayuno incluido)'}]}
 ];
 
+// Aviso común — equipación obligatoria en Francia (días 2 y 3) y España
+const AVISO_FRANCIA={t:'w',h:'🦺 OBLIGATORIO — CHALECO Y GUANTES (LÉELO, VA EN SERIO)',b:'Los días 2 y 3 rodamos por <strong>Francia</strong>: es obligatorio llevar <strong>chaleco reflectante a bordo</strong> (multa 11€ si no lo llevas · <strong>135€</strong> si no te lo pones al parar en el arcén por avería) y <strong>guantes homologados CE</strong> (multa 68€). Conductor Y pasajero. En España los guantes homologados (EN 13594) también son obligatorios desde enero 2026 (<strong>200€ y 2 puntos</strong>). El chaleco cabe bajo el asiento — sin excusas 😉'};
+PI.forEach(p=>{ if(p.al) p.al.unshift(AVISO_FRANCIA); });
+
 // Clonar pagos para que cada piloto tenga su propio estado independiente
 PI.forEach(p=>{
   if(p.pagos===PAG_DOBLE) p.pagos=PAG_DOBLE.map(x=>({...x}));
@@ -466,7 +470,7 @@ const D=[
  mlat:42.362,mlon:3.154,mnm:'Llançà',
  ruta:[{p:'Gasolinera Ctra. Barcelona PK 27 — Mataró',n:'08302 Mataró · Punto de encuentro · 16-18h · Antonio J. se une en el hotel de Llançà',d:'start'},
        {p:'Figueres',n:'Parada breve si conviene'},
-       {p:'Cap de Creus',n:'📸 Foto de grupo — el punto más oriental de España · ⚠️ Moto prohibida 9:30-21:30h · Llegar antes de 9:15h o después 21:30h',d:'special'},
+       {p:'Cap de Creus',n:'📸 Foto al atardecer (sin Antonio J., que se une en el hotel) · ⚠️ Moto prohibida 9:30-21:30h · Llegar después de las 21:30h',d:'special'},
        {p:'Cadaqués',n:'Costa Brava icónica'},
        {p:'El Port de la Selva',n:'Pueblo pesquero'},
        {p:'Monestir de Sant Pere de Rodes',n:'Vistas espectaculares — parada opcional',d:'special'},
@@ -481,10 +485,11 @@ const D=[
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
 
-{n:1,emo:'🏛️',f:'Vie 19 junio',ti:'Llançà → Besalú → Collada de Toses → Sort',km:'310-330 km',dest:'Sort',
- res:'Primera gran etapa pirenaica. Besalú medieval, Camprodon, Collada de Toses, Puigcerdà, La Seu d\'Urgell y el Port del Cantó hasta Sort.',
+{n:1,emo:'🏛️',f:'Vie 19 junio',ti:'Llançà → Cap de Creus → Besalú → Sort',km:'310-330 km',dest:'Sort',
+ res:'Primera gran etapa. INICIO OFICIAL en Cap de Creus con la foto de grupo de los 8. Después Besalú medieval, Camprodon, Collada de Toses, Puigcerdà, La Seu d\'Urgell y el Port del Cantó hasta Sort.',
  mlat:42.403,mlon:1.133,mnm:'Sort',
- ruta:[{p:'Hotel Beri · Llançà',n:'Salida 8:00h',d:'start'},
+ ruta:[{p:'Hotel Beri · Llançà',n:'Salida 8:00h PUNTUAL',d:'start'},
+       {p:'Cap de Creus — INICIO OFICIAL',n:'📸 FOTO DE GRUPO — los 8 al completo · Llegar antes de 9:15h (moto prohibida 9:30-21:30h) · 20 min a pie al faro',d:'special'},
        {p:'Vilajuïga → Besalú',n:'Pueblo medieval imprescindible — parada 30 min',d:'special'},
        {p:'Olot → Camprodon',n:'Garrotxa y Ripollès'},
        {p:'Ribes de Freser → Collada de Toses',n:'Puerto de Toses — primer puerto del viaje'},
@@ -556,7 +561,8 @@ const D=[
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 01/06/2026',pag:'€547,60 — confirmar con tarjeta'},
  alm:[{mo:'COMIDA — Laruns 🍽️',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Menú del día.'}],
  cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 Cena reservada a las 21:30h'}],
- als:[{t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron después del Aubisque. No improvisar.'}],
+ als:[{t:'w',h:'🚴 ZONA LLENA DE CICLISTAS — QUEBRANTAHUESOS',b:'Ayer sábado se corrió la Quebrantahuesos (8.000 ciclistas) por Sabiñánigo, Portalet y Valle de Tena. Hoy domingo la zona Biescas–Formigal–Portalet y el Aubisque seguirán llenos de ciclistas. Paciencia total: adelantar con mucho espacio y NUNCA en curva.'},
+     {t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron después del Aubisque. No improvisar.'}],
  foro:'El Col d\'Aubisque es uno de los puertos míticos del Tour. La Pierre Saint-Martin es frontera con España por pista. Etapa épica.',
  nesp:null},
 
@@ -616,11 +622,11 @@ const CK=[
  {it:'Neumáticos: dibujo mínimo 3 mm'},{it:'Frenos: pastillas, discos y líquido revisados'},
  {it:'Aceite motor revisado'},{it:'Cadena: tensión y lubricación (si aplica)'},
  {it:'Niveles: refrigerante e hidráulico'},{it:'Luces delanteras y traseras OK'},
- {it:'ITV en vigor (junio 2026)'},{it:'Seguro vigente con asistencia en carretera'},
+ {it:'ITV en vigor (junio 2026)'},{it:'Chaleco reflectante a bordo — en Francia es obligatorio llevarlo y ponérselo si paras en el arcén'},{it:'Seguro vigente con asistencia en carretera'},
  {it:'Kit antipinchazos — los foros lo recomiendan encarecidamente'},
  {cat:'🧥 EQUIPACIÓN',tip:'Prepárate para todo: calor mediterráneo abajo, frío intenso en los puertos de 2.000m. La clave es llevar capas accesibles, no en el fondo del baúl.'},
  {it:'Casco: homologado, visera limpia'},{it:'Chaqueta con armaduras: hombros, codos y espalda'},
- {it:'Guantes verano + guantes para el frío'},{it:'Pantalón con protecciones'},
+ {it:'Guantes HOMOLOGADOS (EN 13594) verano + frío — obligatorios en España desde 2026 (200€/2 puntos) y en Francia'},{it:'Pantalón con protecciones'},
  {it:'Botas de moto'},{it:'Capa de lluvia (siempre en el baúl, siempre)'},
  {it:'Capa térmica — imprescindible para Bonaigua (2.072m) y Aubisque (1.709m)'},
  {it:'Fundas impermeables para las botas'},
@@ -1496,14 +1502,14 @@ function renderRuta(){
   {dia:'DÍA 1 · 19 Jun',tit:'Cap de Creus → Sort',km:'318 km · ~5-6h con paradas',tipo:'Cap de Creus + Pirineo catalán',
    stars:[{t:'',l:'🏔️ Pirineos'},{t:'red',l:'📏 Etapa larga'},{t:'ora',l:'⛽ Vigilar depósito'}],
    tips:[
-    {ico:'📸',tx:'<strong>Cap de Creus — salida 8:00h.</strong> El faro se llena rápido. Las pistas de acceso son estrechas: ojo con motos grandes y maletas. 20 min a pie hasta el faro. Foto de grupo con el Mediterráneo antes de arrancar — tradición motera irrenunciable.'},
+    {ico:'📸',tx:'<strong>Cap de Creus — salida 8:00h.</strong> El faro se llena rápido. Las pistas de acceso son estrechas: ojo con motos grandes y maletas. 20 min a pie hasta el faro. 📸 <strong>FOTO OFICIAL DE GRUPO — los 8 al completo</strong> (Antonio J. ya está desde anoche) con el Mediterráneo antes de arrancar. Tradición motera irrenunciable.'},
     {ico:'🏔️',tx:'<strong>Collada de Toses (1.800m):</strong> joya del día. Veteranos de la ruta la destacan como uno de los mejores tramos. Pasar antes de las 11h para disfrutarlo sin ciclistas ni caravanas. Asfalto bueno. Alternativa recomendada por foros: carretera de Castellar de n\'Hug y La Molina (menos tráfico y muy bonita, aunque más lenta).'},
     {ico:'⛽',tx:'<strong>Alberto 🐛 y Oriol 🐣 — CRÍTICO:</strong> depósitos de 14L. Repostar obligatorio en Ripoll (km ~100). La bonÀrea de Sort tiene gasolinera justo antes de llegar desde el Coll del Canto — usarla siempre. No llegar a Sort con menos de ¼ de depósito.'},
     {ico:'☔',tx:'<strong>Niebla matinal</strong> habitual en el Pirineo catalán, sobre todo en fondos de valle. Traje de agua a mano. Cambios de tiempo rápidos y a menudo inesperados — el Pirineo tiene su propio microclima. Foros avisan: puede salirse de Sort con sol y encontrar tromba a los 20 km.'},
     {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Gasolinera bonÀrea antes del pueblo. Lo Pigal / Casa Kiko es referencia en todos los foros — cocina de montaña, raciones generosas, terraza con vistas al Noguera. Ideal punto de reagrupamiento.'},
    ],
    pois:[
-    {ico:'🏔️',nm:'Faro del Cap de Creus',det:'<span class="tt">🔑 Punto de salida oficial</span><span class="tm">⏱ 8:00h · 20 min a pie</span> El extremo más oriental de la Península. Foto obligatoria con las motos y el Mediterráneo.',mapq:'Faro Cap de Creus Girona'},
+    {ico:'🏔️',nm:'Faro del Cap de Creus',det:'<span class="tt">🔑 Punto de salida oficial</span><span class="tm">⏱ 8:00h · 20 min a pie</span> El extremo más oriental de la Península. 📸 Foto oficial con los 8 al completo, las motos y el Mediterráneo.',mapq:'Faro Cap de Creus Girona'},
     {ico:'⛽',nm:'Gasolinera Ripoll',det:'<span class="tt">⛽ Repostaje km ~100</span><span class="tm">⏱ Parada técnica</span> Último repostaje seguro antes del Pirineo para depósitos pequeños.',mapq:'gasolinera Ripoll Catalunya'},
     {ico:'🏔️',nm:'Collada de Toses — 1.800m',det:'<span class="tm">⏱ ~11:00h</span> Punto de foto y reagrupamiento. Vistas espectaculares al Pirineo. Cuidado con ciclistas en la bajada.',mapq:'Collada de Toses La Molina'},
     {ico:'🍴',nm:'Lo Pigal / Casa Kiko — Sort',det:'<span class="tt">🍽️ Comida</span><span class="tm">⏱ 13:30-14:00h</span> Referencia gastronómica motera en Sort. Cocina de montaña, terraza.',mapq:'Lo Pigal Sort Lleida'},
@@ -1957,7 +1963,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '31';
+const APP_VERSION = '35';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1968,7 +1974,7 @@ const APP_VERSION = '31';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=31').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=35').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
