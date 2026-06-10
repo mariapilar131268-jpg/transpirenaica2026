@@ -559,7 +559,7 @@ const D=[
  hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,pagdirecto:true,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:'https://www.hostal-lola.com/',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
    inf:'€547,60 total · Pago directo en el hostal · ⚠️ <strong>AL HACER CHECK-IN: la cena está reservada para 7 — avisar que seréis 8</strong>',
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 01/06/2026',pag:'€547,60 — confirmar con tarjeta'},
- alm:[{mo:'COMIDA — Laruns 🍽️',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:null,map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Menú del día.'}],
+ alm:[{mo:'COMIDA — Laruns 🍽️',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:'+33559053014',map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Comidas 12:00-14:30h. ✉️ <strong>Reserva para 8 solicitada por email el 10/06</strong> (a nombre de Pedro) — pendiente de confirmación. Si no contestan, llamar: es el domingo post-Quebrantahuesos y Laruns estará lleno'}],
  cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 Cena reservada a las 21:30h · ⚠️ Reserva hecha para 7 — avisar en el check-in que seréis 8'}],
  als:[{t:'w',h:'🚴 ZONA LLENA DE CICLISTAS — QUEBRANTAHUESOS',b:'Ayer sábado se corrió la Quebrantahuesos (8.000 ciclistas) por Sabiñánigo, Portalet y Valle de Tena. Hoy domingo la zona Biescas–Formigal–Portalet y el Aubisque seguirán llenos de ciclistas. Paciencia total: adelantar con mucho espacio y NUNCA en curva.'},
      {t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron después del Aubisque. No improvisar.'}],
@@ -1963,7 +1963,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '36';
+const APP_VERSION = '39';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1974,7 +1974,7 @@ const APP_VERSION = '36';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=36').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=39').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
