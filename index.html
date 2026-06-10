@@ -445,7 +445,8 @@ const PI=[
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
   pres:{aloj:466,gas:156,cenas:133,comidas:80,total:835},
   pagos:PAG_INDIV,
-  al:[{t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
+  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde <strong>Sant Antoni de Calonge</strong> y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró entre las 16-18h y hará Cap de Creus y Cadaqués por la tarde. Sal con el depósito lleno y avisa al grupo cuando llegues al hotel.'},
+      {t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~466€ · Gasolina ~156€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~835€</strong>'},
       {t:'i',h:'🏨 AÍNSA — HOSTAL PIRINEOS',b:'Señal: <strong>€40 a Pedro antes del 31/03</strong> · Resto en el hostal el 20/06: €35 · <strong>Total: €75</strong> (desayuno incluido)'}]}
@@ -461,16 +462,16 @@ PI.forEach(p=>{
 // ━━━ DÍAS ━━━
 const D=[
 {n:0,emo:'🌅',f:'Jue 18 junio',ti:'Traslado previo — Inicio de la aventura',km:'160-175 km',dest:'Port de la Selva',
- res:'Salida en la tarde desde el Área de Servicio Montcada La Pausa. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
+ res:'Salida en la tarde desde la gasolinera Ctra. de Barcelona PK 27 (Mataró). Antonio J. sale desde Sant Antoni de Calonge y se une al grupo en el hotel de Llançà. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
  mlat:42.362,mlon:3.154,mnm:'Llançà',
- ruta:[{p:'Área Montcada La Pausa',n:'C-33 km 82,5 sentido Norte · Todos quedan aquí · 16-18h',d:'start'},
+ ruta:[{p:'Gasolinera Ctra. Barcelona PK 27 — Mataró',n:'08302 Mataró · Punto de encuentro · 16-18h · Antonio J. se une en el hotel de Llançà',d:'start'},
        {p:'Figueres',n:'Parada breve si conviene'},
        {p:'Cap de Creus',n:'📸 Foto de grupo — el punto más oriental de España · ⚠️ Moto prohibida 9:30-21:30h · Llegar antes de 9:15h o después 21:30h',d:'special'},
        {p:'Cadaqués',n:'Costa Brava icónica'},
        {p:'El Port de la Selva',n:'Pueblo pesquero'},
        {p:'Monestir de Sant Pere de Rodes',n:'Vistas espectaculares — parada opcional',d:'special'},
        {p:'🏁 Llançà — Hotel Beri',n:'Llegar de noche · Cenar y descansar',d:'end'}],
- gas:[{nm:'Área Montcada La Pausa',hr:'24h',dir:'C-33 km 82,5, Montcada i Reixac',tel:'+34935640681',map:'https://maps.google.com/?q=Area+Servicio+Montcada+La+Pausa+C33',key:true,not:'Punto de salida de todos. Llenar antes de salir.'}],
+ gas:[{nm:'Gasolinera Ctra. Barcelona PK 27 — Mataró',hr:'—',dir:'Ctra. de Barcelona PK 27, 08302 Mataró',tel:null,map:'https://maps.google.com/?q=Carretera+de+Barcelona+PK+27,+08302+Mataro',key:true,not:'Punto de salida del grupo. Llenar antes de salir.'}],
  hotel:{ok:true,nm:'Hotel Beri · Llançà',desayuno:true,dir:'Carrer Castelló, 4, 17490 Llançà',tel:'+34972380108',web:'https://www.hotel-beri.com/es',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:'Cancelación gratuita hasta 11/06/2026',pag:null},
@@ -525,7 +526,7 @@ const D=[
    res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
        inf:'⭐ Recomendado en foros moteros. En Arties, antes de Vielha. Cocina aranesa. Cerrado lunes.',
-       mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Bossost/Bagneres-de-Luchon/42.7697,0.4542/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
+       mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/42.7697,0.4542/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
       {mo:'COMIDA — Opción B 🥞',nm:'Crêperie du Col de Peyresourde',loc:'Loudervielle, Francia',tel:null,map:'https://maps.google.com/?q=Creperie+du+Col+de+Peyresourde+6088+Route+du+Col+de+Peyresourde+65240+Loudervielle',pr:'~12-18€/p',
        inf:'En el propio col de Peyresourde. Crepes y platos montañeses. Abierto en verano.',
        mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/Creperie+du+Col+de+Peyresourde,+6088+Route+du+Col+de+Peyresourde,+65240+Loudervielle,+Francia/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Intermarche+Ancizan,+Route+de+Saint-Lary,+65440+Ancizan,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
@@ -1479,7 +1480,7 @@ function renderRuta(){
 
  // ── ETAPAS CON POIs ──────────────────────────────────────────────────────
  const etapas=[
-  {dia:'DÍA 0 · 18 Jun',tit:'Montcada → Port de la Selva',km:'165 km · ~2h sin paradas',tipo:'Autopista C-32 + Costa Brava',
+  {dia:'DÍA 0 · 18 Jun',tit:'Mataró → Port de la Selva',km:'165 km · ~2h sin paradas',tipo:'Autopista C-32 + Costa Brava',
    stars:[{t:'',l:'🌊 Costa Brava'},{t:'',l:'🕐 Día corto'},{t:'',l:'🛣️ Fácil'}],
    tips:[
     {ico:'⚡',tx:'<strong>Etapa de rodaje.</strong> Autopista C-32 hasta Girona, luego N-260 hasta Llançà y bajada a Port de la Selva. Perfecto para que el grupo se compacte y ajuste ritmos.'},
@@ -1667,10 +1668,11 @@ function buildGmapsUrl(d, almIdx){
   // Rutas definidas manualmente por día para respetar el orden real de puertos
   // Formato: array de parámetros ?q= ya codificados, en orden geográfico correcto
   const RUTAS = {
-    // ── DÍA 0 ── Tarde: Montcada → Figueres → Roses → Cadaqués → Llançà
-    // La Pausa ES el punto de encuentro de todos → correcto como origen
+    // ── DÍA 0 ── Tarde: Mataró → Figueres → Cap de Creus → Cadaqués → Llançà
+    // Punto de encuentro: gasolinera Ctra. Barcelona PK 27 (Mataró)
+    // Antonio J. sale de Sant Antoni de Calonge y se une en el hotel
     0: [
-      'Area+de+servicio+La+Pausa+Montcada+i+Reixac',
+      'Carretera+de+Barcelona+PK+27,+08302+Mataro',
       'Figueres',
       'Cap+de+Creus',
       'Cadaques',
@@ -1727,10 +1729,13 @@ function buildGmapsUrl(d, almIdx){
     // Urzainqui está entre Roncesvalles y Elizondo en la ruta real (N-135 sur)
     4: [
       'Casa+Lola+Isaba+Navarra+Mendigatxa+17',   // origen: salen del hotel
-      'Orbaitzeta+Navarra',                      // entrada Bosque de Irati
+      'Petronor+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui,+Navarra', // gas a 7 km de Isaba — ÚNICA en 100km
+      'Ochagavia+Navarra',                       // puerta del Bosque de Irati
+      'Orbaitzeta+Navarra',                      // Irati · fábrica de armas
       'Roncesvalles+Navarra',                    // colegiata s.XII (20min)
-      'Petronor+E.S.+Valle+de+Roncal,+CR+NA-137,+28.7,+Urzainqui,+Navarra', // gas ÚNICA en 100km
-      qComida,                                   // comida Elizondo (Valle Baztán)
+      qComida,                                   // comida Roncesvalles
+      'Eugi',
+      'Bera',
       'Hotel+Jauregui+Hondarribia'               // destino: LLEGADA 🏁
     ],
     // ── DÍA 5 ── Hondarribia → autopía → Santa Coloma (620km vuelta)
@@ -1741,7 +1746,7 @@ function buildGmapsUrl(d, almIdx){
       'Repsol+CRED+Zaragoza,+Avenida+de+la+Hispanidad,+15,+Zaragoza',
       'Lleida',
       'Repsol+RP+Centre+Lleida,+Carrer+Academia,+30,+Lleida',
-      'Barcelona'
+      'Santa+Coloma+de+Gramenet'
     ]
   };
 
@@ -1755,7 +1760,7 @@ function buildGmapsUrl(d, almIdx){
 }
 
 // Origen fijo de cada día (hotel / punto de salida)
-const ORIGENES={0:'Area+Servicio+Montcada+La+Pausa+C33',1:'Hotel+Beri+Llanca',2:'Hotel+Les+Brases+Sort+Lleida',3:'Hostal+Pirineos+Ainsa+Sobrarbe+7',4:'Casa+Lola+Isaba+Navarra+Mendigatxa+17',5:'Hotel+Jauregui+Hondarribia'};
+const ORIGENES={0:'Carretera+de+Barcelona+PK+27,+08302+Mataro',1:'Hotel+Beri+Llanca',2:'Hotel+Les+Brases+Sort+Lleida',3:'Hostal+Pirineos+Ainsa+Sobrarbe+7',4:'Casa+Lola+Isaba+Navarra+Mendigatxa+17',5:'Hotel+Jauregui+Hondarribia'};
 
 // Google Maps admite ~10 paradas por ruta. Si un día tiene más, se divide
 // en dos tramos: mañana (hasta la comida) y tarde (comida → hotel).
@@ -1952,7 +1957,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '28';
+const APP_VERSION = '30';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1963,7 +1968,7 @@ const APP_VERSION = '28';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=28').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=30').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
