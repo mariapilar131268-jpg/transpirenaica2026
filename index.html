@@ -94,6 +94,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .rgeneral .rtip{border-bottom-color:#f0e8c0}
 .rgeneral .rtip-tx strong{color:#6a4a00}
 .a2tag{font-size:11px;background:#3a6a1a;color:#e8f4c8;padding:2px 6px;border-radius:10px;vertical-align:middle;margin-left:4px}
+.testag{font-size:11px;background:#b8860b;color:#fff8e0;padding:2px 6px;border-radius:10px;vertical-align:middle;margin-left:4px;font-weight:700}
 
 /* APP */
 #app{display:none;min-height:100vh;flex-direction:column}
@@ -692,7 +693,7 @@ function renderSel(){
   <button class="pbtn" onclick="selectP('${p.id}')">
    <span class="pico">${p.ico}</span>
    <span style="display:flex;flex-direction:column;gap:3px;text-align:left">
-    <span class="pnm">${p.nm}${p.badge==='A2'?'<span class="a2tag">A2</span>':''}</span>
+    <span class="pnm">${p.nm}${p.badge==='A2'?'<span class="a2tag">A2</span>':''}${p.esPedro?'<span class="testag">💶 Tesorero</span>':''}</span>
     <span class="pmot">${p.mot}</span>
    </span>
   </button>`).join('');
@@ -2002,7 +2003,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '43';
+const APP_VERSION = '44';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2013,7 +2014,7 @@ const APP_VERSION = '43';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=43').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=44').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
