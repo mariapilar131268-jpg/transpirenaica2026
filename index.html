@@ -445,7 +445,7 @@ const PI=[
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
   pres:{aloj:466,gas:156,cenas:133,comidas:80,total:835},
   pagos:PAG_INDIV,
-  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde casa (<strong>Carrer del Sard, 9 — Sant Antoni de Calonge</strong>) y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró a las 16:00h y hará la ruta de la tarde hasta Llançà. Sal con el depósito lleno y avisa al grupo cuando llegues. <a href="https://www.google.com/maps/dir/Carrer+del+Sard,+9,+17252+Calonge,+Girona/Hotel+Beri+Llanca" target="_blank" style="color:#1a52a8;font-weight:700">🗺️ Tu ruta directa al hotel</a>'},
+  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde casa (<strong>Carrer del Sard, 9 — Sant Antoni de Calonge</strong>) y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró entre las 16-18h y hará la ruta de la tarde hasta Llançà. Sal con el depósito lleno y avisa al grupo cuando llegues. <a href="https://www.google.com/maps/dir/Carrer+del+Sard,+9,+17252+Calonge,+Girona/Hotel+Beri+Llanca" target="_blank" style="color:#1a52a8;font-weight:700">🗺️ Tu ruta directa al hotel</a>'},
       {t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~466€ · Gasolina ~156€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~835€</strong>'},
@@ -466,9 +466,9 @@ PI.forEach(p=>{
 // ━━━ DÍAS ━━━
 const D=[
 {n:0,emo:'🌅',f:'Jue 18 junio',ti:'Traslado previo — Inicio de la aventura',km:'160-175 km',dest:'Port de la Selva',
- res:'Salida 16:00h EN PUNTO desde la gasolinera Ctra. de Barcelona PK 27 (Mataró). Antonio J. sale desde Sant Antoni de Calonge y se une al grupo en el hotel de Llançà. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
+ res:'Salida en la tarde desde la gasolinera Ctra. de Barcelona PK 27 (Mataró). Antonio J. sale desde Sant Antoni de Calonge y se une al grupo en el hotel de Llançà. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
  mlat:42.362,mlon:3.154,mnm:'Llançà',
- ruta:[{p:'Gasolinera Ctra. Barcelona PK 27 — Mataró',n:'08302 Mataró · Punto de encuentro · ⏰ SALIDA 16:00h EN PUNTO (la cena en Llançà cierra cocina a las 22h) · Antonio J. se une en el hotel',d:'start'},
+ ruta:[{p:'Gasolinera Ctra. Barcelona PK 27 — Mataró',n:'08302 Mataró · Punto de encuentro · 16-18h · Antonio J. se une en el hotel de Llançà',d:'start'},
        {p:'Figueres',n:'Parada breve si conviene'},
        {p:'Cap de Creus',n:'📸 Foto al atardecer (sin Antonio J., que se une en el hotel) · ⚠️ Moto prohibida 9:30-21:30h · Llegar después de las 21:30h',d:'special'},
        {p:'Cadaqués',n:'Costa Brava icónica'},
@@ -480,7 +480,7 @@ const D=[
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:null,pag:null},
  alm:[],
- cen:[{mo:'CENA — Llançà',nm:'El Vaixell',loc:'Llançà, Carrer Castellar 62 — puerto, a 5 min del hotel',tel:'+34972380295',map:'https://maps.google.com/?q=El+Vaixell+Carrer+Castellar+62+Llanca',pr:'~30-45€/p',inf:'Guía Michelin. Cocina marinera familiar: suquets (¡tres distintos!), arroces, calamares. Cocina 20:00-22:00h. 📧 <strong>Reserva para 8 solicitada por email</strong> (~20:30h) — pendiente de respuesta. 🌱 Avisar: 1 vegana.'}],
+ cen:[{mo:'CENA — en el hotel 🏨',nm:'Restaurante Hotel Beri',loc:'En el propio hotel — cero desplazamiento',tel:'+34972380198',map:'https://maps.google.com/?q=Hotel+Beri+Carrer+de+la+Creu+16+Llanca',pr:'menú ~4 platos, económico',inf:'Cocina mediterránea casera, menú con dos opciones por plato. Ambiente familiar, tratan genial a los moteros. ☎️ Avisar al hotel: cena para 8 y 🌱 1 vegana. Sobremesa: paseo de 15 min hasta el puerto para la primera caña del viaje.'}],
  als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
@@ -1214,6 +1214,43 @@ function syncCobrosFromShared(piloto){
   }catch(e){}
 }
 
+function resumenViajeHTML(){
+ // Tarjetas resumen visibles para TODOS los pilotos
+ const accion = (curP&&curP.esPedro) ? 'cobrar' : 'pagar';
+ let h='';
+ h+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🏨</div>
+  <div><div class="ppt">ALOJAMIENTOS — TODO RESERVADO</div><div class="pps">Localizadores y pagos · todo aceptado por el grupo</div></div></div>`;
+ const rs=[
+  {ico:'🛏️',tx:'<strong>18/06 Hotel Beri (Llançà)</strong> · Nº 6331.570.462 · PIN 9967 · ✅ Pagado',bg:'#edf7ef',date:null},
+  {ico:'🛏️',tx:'<strong>19/06 Les Brases (Sort)</strong> · Loc 20528 · puerta 1234V · ✅ Pagado',bg:'#edf7ef',date:null},
+  {ico:'🛏️',tx:`<strong>20/06 Hostal Pirineos (Aínsa)</strong> · Señal pagada · 💶 ${accion} resto in situ: €17,50/p dobles · €35 indiv`,bg:false,date:'20260620',desc:'Resto Hostal Pirineos Ainsa'},
+  {ico:'🛏️',tx:'<strong>21/06 Casa Lola (Isaba)</strong> · 💶 pago directo €547,60 total · cena 21:30h reservada',bg:false,date:'20260621',desc:'Pago directo Casa Lola Isaba 547,60'},
+  {ico:'🛏️',tx:'<strong>22/06 Hotel Jauregui (Hondarribia)</strong> · Loc SYN2774-60096 · PIN UZGUQHXZ4X · 💶 pago directo €660,25 total',bg:false,date:'20260622',desc:'Pago directo Hotel Jauregui 660,25'}
+ ];
+ rs.forEach(r=>{
+  h+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span>
+   ${r.date?`<button class="calb" style="background:var(--red)" onclick="addCal('${r.tx.replace(/<[^>]*>/g,'')}','${r.date}','${r.desc||''}','rec')">📅 Añadir</button>`:''}
+  </div>`;
+ });
+ h+='</div>';
+
+ h+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🍽️</div>
+  <div><div class="ppt">RESTAURANTES</div><div class="pps">Reservados y propuestos · 🌱 Mónica vegana: avisar siempre</div></div></div>`;
+ const rests=[
+  {ico:'🏨',tx:'<strong>Jue 18 · Cena en el Hotel Beri</strong> · menú del hotel · ☎️ avisar 972 380 198: mesa para 8 + 1 vegana',bg:false},
+  {ico:'⏰',tx:'<strong>Vie 19 · Can Punyetes (Sort)</strong> · NO reservan — llegar 20:30h · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
+  {ico:'☎️',tx:'<strong>Sáb 20 · Casa Alfonso (Aínsa) 21:00h</strong> · reservar SOLO por teléfono: 974 500 981 · avisar 1 vegana',bg:false},
+  {ico:'✅',tx:'<strong>Dom 21 · Hôtel d\'Ossau (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
+  {ico:'✅',tx:'<strong>Dom 21 · Hostal Lola (Isaba) 21:30h</strong> — cena reservada para 8',bg:'#edf7ef'},
+  {ico:'🍢',tx:'<strong>Lun 22 · Pintxos Hondarribia</strong> — Gran Sol → Danontzat → Mika · sin reserva, son barras',bg:'#edf7ef'}
+ ];
+ rests.forEach(r=>{
+  h+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span></div>`;
+ });
+ h+='</div>';
+ return h;
+}
+
 function renderPagos(){
  if(curP&&curP.esPedro) syncCobrosFromShared(curP);
  let html='';
@@ -1343,39 +1380,6 @@ function renderPagos(){
   });
   html+=`</div>`;
 
-  // Resumen alojamientos + restaurantes + pagos en ruta
-  html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🏨</div>
-   <div><div class="ppt">ALOJAMIENTOS — TODO RESERVADO</div><div class="pps">Localizadores y pagos · todo aceptado por el grupo</div></div></div>`;
-  const rs=[
-   {ico:'🛏️',tx:'<strong>18/06 Hotel Beri (Llançà)</strong> · Nº 6331.570.462 · PIN 9967 · ✅ Pagado (Revolut)',bg:'#edf7ef',date:null},
-   {ico:'🛏️',tx:'<strong>19/06 Les Brases (Sort)</strong> · Loc 20528 · puerta 1234V · ✅ Pagado (Santander €340)',bg:'#edf7ef',date:null},
-   {ico:'🛏️',tx:'<strong>20/06 Hostal Pirineos (Aínsa)</strong> · Señal pagada · 💶 cobrar resto in situ: €17,50/p dobles · €35 indiv',bg:false,date:'20260620',desc:'Cobrar resto Hostal Pirineos Ainsa'},
-   {ico:'🛏️',tx:'<strong>21/06 Casa Lola (Isaba)</strong> · 💶 pago directo €547,60 total · cena 21:30h reservada',bg:false,date:'20260621',desc:'Pago directo Casa Lola Isaba 547,60'},
-   {ico:'🛏️',tx:'<strong>22/06 Hotel Jauregui (Hondarribia)</strong> · Loc SYN2774-60096 · PIN UZGUQHXZ4X · 💶 pago directo €660,25 total',bg:false,date:'20260622',desc:'Pago directo Hotel Jauregui 660,25'}
-  ];
-  rs.forEach(r=>{
-   html+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span>
-    ${r.date?`<button class="calb" style="background:var(--red)" onclick="addCal('${r.tx.replace(/<[^>]*>/g,'')}','${r.date}','${r.desc||''}','rec')">📅 Añadir</button>`:''}
-   </div>`;
-  });
-  html+='</div>';
-
-  // Tarjeta restaurantes
-  html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🍽️</div>
-   <div><div class="ppt">RESTAURANTES</div><div class="pps">Reservados y propuestos · 🌱 Mónica vegana: avisar siempre</div></div></div>`;
-  const rests=[
-   {ico:'📧',tx:'<strong>Jue 18 · El Vaixell (Llançà)</strong> ~20:30h · reserva solicitada por email — pendiente respuesta · ☎️ 972 380 295',bg:false},
-   {ico:'⏰',tx:'<strong>Vie 19 · Can Punyetes (Sort)</strong> · NO reservan — llegar 20:30h · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
-   {ico:'☎️',tx:'<strong>Sáb 20 · Casa Alfonso (Aínsa) 21:00h</strong> · reservar SOLO por teléfono: 974 500 981 · avisar 1 vegana',bg:false},
-   {ico:'✅',tx:'<strong>Dom 21 · Hôtel d\'Ossau (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
-   {ico:'✅',tx:'<strong>Dom 21 · Hostal Lola (Isaba) 21:30h</strong> — cena reservada para 8',bg:'#edf7ef'},
-   {ico:'🍢',tx:'<strong>Lun 22 · Pintxos Hondarribia</strong> — Gran Sol → Danontzat → Mika · sin reserva, son barras',bg:'#edf7ef'}
-  ];
-  rests.forEach(r=>{
-   html+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span></div>`;
-  });
-  html+='</div>';
-
 
    // ── BLOQUE 1: PAGOS A PEDRO ──
   const aPedro = curP.pagos.filter(p => !p.directo && !p.skipPedro);
@@ -1455,6 +1459,7 @@ function renderPagos(){
   html+=rhtml;
  }
 
+ html+=resumenViajeHTML();
  document.getElementById('tab-pagos').innerHTML=html;
 }
 
@@ -1529,7 +1534,7 @@ function renderRuta(){
    ],
    pois:[
     {ico:'🌊',nm:'Cala de Port de la Selva',det:'<span class="tm">⏱ 15 min a pie desde el hotel</span> Cala tranquila, aguas cristalinas. Paseo por el paseo marítimo antes de la cena.',mapq:'Port de la Selva playa Costa Brava'},
-    {ico:'🍽️',nm:'El Vaixell — Cena Día 0',det:'<span class="tt">🍽️ Cena solicitada</span><span class="tm">⏱ ~20:30h</span> Guía Michelin, puerto de Llançà. Suquets y arroces marineros. ⚠️ Cocina cierra a las 22:00h — salida de Mataró a las 16:00h en punto.',mapq:'El Vaixell Carrer Castellar 62 Llanca'},
+    {ico:'🍽️',nm:'Cena Día 0 — en el Hotel Beri',det:'<span class="tt">🍽️ Cena en el hotel</span> Menú casero de 4 platos en el propio hotel — sin moverse tras la ruta. Avisar en recepción: 8 personas, 1 vegana. Después, paseo al puerto (15 min).',mapq:'Hotel Beri Llanca'},
    ],
    meteo:{alt:'~0m',tmin:'9°C',tmax:'26°C',lluvia:'☁️ Baja',viento:'💨 Suave'}},
   {dia:'DÍA 1 · 19 Jun',tit:'Cap de Creus → Sort',km:'318 km · ~5-6h con paradas',tipo:'Cap de Creus + Pirineo catalán',
