@@ -418,13 +418,13 @@ const PI=[
   pres:{aloj:247,gas:146,cenas:133,comidas:80,total:606},
   pagos:PAG_PEDRO,
   cobros:[
-   {p:'🐛 Alberto',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
-   {p:'🐣 Oriol',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
-   {p:'🥷 Antonio',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
-   {p:'🏁 Mónica',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
-   {p:'✈️ Vicenç',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
-   {p:'📋 Xavi',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false},
-   {p:'🎭 Antonio J.',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false}],
+   {p:'🐛 Alberto',pid:'alberto',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'🐣 Oriol',pid:'oriol',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'🥷 Antonio',pid:'antonio',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'🏁 Mónica',pid:'monica',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'✈️ Vicenç',pid:'vicenc',b:44.66,br:37.00,a:20.00,s:0,t:101.66,ok:false},
+   {p:'📋 Xavi',pid:'xavi',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false},
+   {p:'🎭 Antonio J.',pid:'jaen',b:88.66,br:64.00,a:40.00,s:0,t:192.66,ok:false}],
   al:[{t:'s',h:'🎯 EL ANTIRADARES OFICIAL DEL GRUPO',b:'No hace falta Waze ni TomTom: con Pedro delante, los radares no existen. Olfato sobrenatural. El grupo te lo agradece... y Tráfico también 😅'},
       {t:'s',h:'DEPÓSITO 20 L — GRAN AUTONOMÍA',b:'Sin ansiedad de combustible. Puede ir de explorador tranquilamente.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO (sin adelantos)',b:'Alojamiento ~247€ · Gasolina ~146€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~606€</strong>'}]},
@@ -1174,11 +1174,13 @@ function marcarTodoAPedro(){
  const todoPagado = aPedro.every(p=>p.ok);
  aPedro.forEach(p=>p.ok=!todoPagado);
  saveState();
+ syncPagosPedroShared();
  renderPagos();
 }
 function togglePagoPedro(i){
   if(curP&&curP.pagos)curP.pagos[i].ok=!curP.pagos[i].ok;
   saveState();
+  syncPagosPedroShared();
   renderPagos();
 }
 function togglePago(i){
@@ -1188,7 +1190,31 @@ function togglePago(i){
  renderPagos();
 }
 
+// ━━━ SYNC PAGOS A PEDRO — clave compartida ━━━
+// Escribe en localStorage compartido cuando un piloto marca/desmarca sus pagos a Pedro
+function syncPagosPedroShared(){
+  if(!curP||curP.esPedro) return;
+  try{
+    const aPedro=curP.pagos.filter(p=>!p.directo&&!p.skipPedro);
+    const todosPagado=aPedro.length>0&&aPedro.every(p=>p.ok);
+    const shared=JSON.parse(localStorage.getItem('transpi2026_pagos_a_pedro')||'{}');
+    shared[curP.id]=todosPagado;
+    localStorage.setItem('transpi2026_pagos_a_pedro',JSON.stringify(shared));
+  }catch(e){}
+}
+// Lee la clave compartida y actualiza los cobros de Pedro
+function syncCobrosFromShared(piloto){
+  if(!piloto||!piloto.esPedro||!piloto.cobros) return;
+  try{
+    const shared=JSON.parse(localStorage.getItem('transpi2026_pagos_a_pedro')||'{}');
+    piloto.cobros.forEach(c=>{
+      if(c.pid&&shared[c.pid]!==undefined) c.ok=shared[c.pid];
+    });
+  }catch(e){}
+}
+
 function renderPagos(){
+ if(curP&&curP.esPedro) syncCobrosFromShared(curP);
  let html='';
 
  // ── TARJETA PRESUPUESTO TOTAL DEL VIAJE ──
@@ -1963,7 +1989,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '40';
+const APP_VERSION = '41';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1974,7 +2000,7 @@ const APP_VERSION = '40';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=40').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=41').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
