@@ -343,17 +343,17 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 <script>
 // ━━━ PAGOS COMPARTIDOS — se clonan por piloto al cargar ━━━
 const PAG_DOBLE=[
- {h:'Hotel Beri · Llançà',v:44.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},
- {h:'Hotel Les Brases · Sort',v:37.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},
- {h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},
+ {h:'Hotel Beri · Llançà',v:44.66,ok:false},
+ {h:'Hotel Les Brases · Sort',v:37.00,ok:false},
+ {h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,nota:'Señal €40/hab ÷ 2 = €20/p a Pedro · Resto en hostal 20/06: €17,50/p · Total por piloto: €37,50 (desayuno incluido)'},
  {h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},
  {h:'Casa Lola · Isaba',v:57.40,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},
  {h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}
 ];
 const PAG_INDIV=[
- {h:'Hotel Beri · Llançà',v:88.66,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Beri Llançà'},
- {h:'Hotel Les Brases · Sort',v:64.00,ok:false,date:'20260331',desc:'Pagar a Pedro: Hotel Les Brases Sort'},
- {h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,date:'20260331',desc:'Pagar a Pedro: señal Hostal Pirineos Aínsa',nota:'Señal €40/hab a Pedro · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},
+ {h:'Hotel Beri · Llançà',v:88.66,ok:false},
+ {h:'Hotel Les Brases · Sort',v:64.00,ok:false},
+ {h:'Hostal Pirineos · Aínsa — señal',v:40.00,ok:false,nota:'Señal €40/hab a Pedro · Resto en hostal 20/06: €35 · Total: €75 (desayuno incluido)'},
  {h:'Hostal Pirineos · Aínsa — resto',v:35.00,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada a Pedro'},
  {h:'Casa Lola · Isaba',v:106.00,ok:false,nota:'Pago directo en el hostal el 21/06',directo:true},
  {h:'Hotel Jauregui · Hondarribia',v:132.05,ok:false,directo:true}
@@ -361,7 +361,7 @@ const PAG_INDIV=[
 const PAG_PEDRO=[
  {h:'Hotel Beri · Llançà',v:44.66,ok:true,skipPedro:true},
  {h:'Hotel Les Brases · Sort',v:37.00,ok:true,directo:false,skipPedro:true},
- {h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,skipPedro:true,date:'20260331',desc:'Apartar señal Hostal Pirineos Aínsa',nota:'Señal €40/hab ÷ 2 = €20/p · Resto en hostal 20/06: €17,50 · Total: €37,50 (desayuno incluido)'},
+ {h:'Hostal Pirineos · Aínsa — señal',v:20.00,ok:false,skipPedro:true,nota:'Señal €40/hab ÷ 2 = €20/p · Resto en hostal 20/06: €17,50 · Total: €37,50 (desayuno incluido)'},
  {h:'Hostal Pirineos · Aínsa — resto',v:17.50,ok:false,directo:true,nota:'Pago directo en hostal 20/06 · Señal ya adelantada'},
  {h:'Casa Lola · Isaba',v:57.40,ok:false,directo:true,nota:'Pago directo en el hostal el 21/06'},
  {h:'Hotel Jauregui · Hondarribia',v:70.78,ok:false,directo:true}
@@ -1295,10 +1295,6 @@ function renderPagos(){
       <div style="font-size:11px;color:#7a7060;margin-top:2px">Marca esto cuando hagas la transferencia</div>
      </div>
     </label>
-    <button onclick="addCal('💳 Pagar a Pedro — Transpi 2026','20260331','Transferir ${importeTxt}€ a Pedro antes del 31/03/2026','pago')"
-     style="width:100%;padding:12px;background:${uc};color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit">
-     📅 Añadir recordatorio al calendario
-    </button>
    </div>`;
   } else {
    html+=`<div style="background:#f0fff4;border:2px solid #80c080;border-radius:14px;padding:16px;margin-bottom:14px;text-align:center">
@@ -1348,18 +1344,14 @@ function renderPagos(){
 
   // Recordatorios
   html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">📅</div>
-   <div><div class="ppt">RECORDATORIOS — PEDRO</div><div class="pps">Fechas clave de pago y cancelación</div></div></div>`;
+   <div><div class="ppt">RECORDATORIOS — PEDRO</div><div class="pps">A una semana del viaje · solo lo vigente</div></div></div>`;
   const rs=[
-   {ico:'💳',tx:'Pagar Hotel Beri — 09/06/2026 con Revolut',bg:false,date:'20260609',desc:'Pagar Hotel Beri Llança con Revolut'},
-   {ico:'🚫',tx:'Cancelación Hotel Beri — hasta 11/06/2026',bg:false,date:'20260611',desc:'Limite cancelacion Hotel Beri'},
-   {ico:'✅',tx:'Hotel Les Brases PAGADO el 08/03/2026 con Santander (€340)',bg:'#edf7ef',date:null},
-   {ico:'🚫',tx:'Cancelación Les Brases — hasta 17/06/2026 antes 12:00h',bg:false,date:'20260617',desc:'Limite cancelacion Les Brases'},
-   {ico:'💳',tx:'Cobrar señal Aínsa — €20 dobles / €40 individuales (antes 31/03) · Total €200 para pagar al Hostal Pirineos en mayo',bg:false,date:'20260331',desc:'Cobrar señal Ainsa de los pilotos antes 31/03'},
-   {ico:'🚫',tx:'Cancelación Hostal Pirineos Aínsa — hasta 10/06/2026',bg:false,date:'20260610',desc:'Limite cancelacion Ainsa'},
-   {ico:'💳',tx:'Confirmar Casa Lola Isaba — dar datos tarjeta · Total hab+desayuno €547,60',bg:false,date:'20260601',desc:'Confirmar Casa Lola Isaba datos tarjeta'},
-   {ico:'🚫',tx:'Cancelación Casa Lola — hasta 01/06/2026',bg:false,date:'20260601',desc:'Limite cancelacion Casa Lola Isaba'},
-   {ico:'✅',tx:'Hotel Jauregui CONFIRMADO (SYN2774-60096) · Pago directo en el hotel · €660,25',bg:'#edf7ef',date:null},
-   {ico:'🚫',tx:'Cancelación Jauregui — hasta 19/06/2026',bg:false,date:'20260619',desc:'Limite cancelacion Hotel Jauregui Hondarribia'}
+   {ico:'✅',tx:'Hotel Beri PAGADO (Revolut) · Les Brases PAGADO (Santander €340) · Señal Aínsa cobrada y pagada · Casa Lola confirmada con tarjeta',bg:'#edf7ef',date:null},
+   {ico:'🚫',tx:'Cancelación Les Brases — hasta 17/06/2026 antes 12:00h (última vigente antes de salir)',bg:false,date:'20260617',desc:'Limite cancelacion Les Brases'},
+   {ico:'🚫',tx:'Cancelación Hotel Jauregui — hasta 19/06/2026',bg:false,date:'20260619',desc:'Limite cancelacion Hotel Jauregui Hondarribia'},
+   {ico:'💶',tx:'PAGOS EN RUTA · 20/06 Hostal Pirineos Aínsa: resto €17,50/p dobles · €35 indiv (cobrar in situ)',bg:false,date:'20260620',desc:'Cobrar resto Hostal Pirineos Ainsa'},
+   {ico:'💶',tx:'PAGOS EN RUTA · 21/06 Casa Lola Isaba: pago directo €547,60 total',bg:false,date:'20260621',desc:'Pago directo Casa Lola Isaba 547,60'},
+   {ico:'💶',tx:'PAGOS EN RUTA · 22/06 Hotel Jauregui: pago directo €660,25 total',bg:false,date:'20260622',desc:'Pago directo Hotel Jauregui 660,25'}
   ];
   rs.forEach(r=>{
    html+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span>
@@ -1378,7 +1370,7 @@ function renderPagos(){
   const pendTxP  = parseFloat(pendPedro)>0 ? '⏳ Te faltan €'+pendPedro.replace('.',',') : '✅ \u00a1Todo pagado!';
 
   html+=`<div class="pp"><div class="pph pph-r"><div class="ppico">💳</div>
-   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">⚠️ Antes del 31 de marzo de 2026</div></div></div>`;
+   <div><div class="ppt">PAGOS A PEDRO</div><div class="pps">Marca lo que ya le has transferido</div></div></div>`;
 
   aPedro.forEach((p,i)=>{
     const idx = curP.pagos.indexOf(p);
@@ -1396,7 +1388,6 @@ function renderPagos(){
 
   html+=`<div class="ppf"><div><div class="ppfl">Pendiente a Pedro</div>
     <div class="ppfv" style="color:${pendCol}">${pendTx}</div></div>
-    <button class="calb" style="background:var(--ora)" onclick="addCal('Pagar a Pedro (Transpirenaica)','20260331','Pagar alojamientos a Pedro antes del 31/03/2026','pago')">\ud83d\udcc5 31/03</button>
   </div></div>`;
 
   // ── BLOQUE 2: PAGO DIRECTO EN HOTEL ──
