@@ -369,23 +369,23 @@ const PAG_PEDRO=[
 // ━━━ PILOTOS ━━━
 const NOCHES=[
  {n:0,f:'18/06',lu:'Llançà',nm:'Hotel Beri',ok:true,
-  det:'Nº 6331.570.462 · PIN 9967 · Cancelación hasta 11/06',
+  det:'Nº 6331.570.462 · PIN 9967',
   desayuno:true,pagdirecto:false,
   señal:{doble:44.66,individual:88.66}},
  {n:1,f:'19/06',lu:'Sort',nm:'Hotel Les Brases',ok:true,
-  det:'Loc 20528 · Código acceso: <strong>1234V</strong> · Cancelación hasta 17/06',
+  det:'Loc 20528 · Código acceso: <strong>1234V</strong>',
   desayuno:true,pagdirecto:false,
   señal:{doble:37.00,individual:64.00}},
  {n:2,f:'20/06',lu:'Aínsa',nm:'Hostal Pirineos',ok:true,
-  det:'Avda. Sobrarbe 7 · Cancelación hasta 10/06',
+  det:'Avda. Sobrarbe 7 · Resto a pagar in situ: €17,50/p dobles · €35 indiv',
   desayuno:true,pagdirecto:false,
   señal:{doble:20.00,individual:40.00}},
  {n:3,f:'21/06',lu:'Isaba',nm:'Casa Lola',ok:true,
-  det:'Mendigatxa 17 · Cancelación hasta 01/06/2026',
+  det:'Mendigatxa 17 · Pago directo €547,60 total · Cena 21:30h reservada',
   desayuno:true,pagdirecto:true,
   señal:null},
  {n:4,f:'22/06',lu:'Hondarribia',nm:'Hotel Jauregui ⭐⭐⭐',ok:true,
-  det:'Loc SYN2774-60096 · PIN UZGUQHXZ4X · Cancelación hasta 19/06',
+  det:'Loc SYN2774-60096 · PIN UZGUQHXZ4X · Pago directo €660,25 total',
   desayuno:true,pagdirecto:true,
   señal:null}
 ];
@@ -445,7 +445,7 @@ const PI=[
  {id:'jaen',nm:'Antonio J.',ico:'🏅',mot:'BMW R1300RT',dep:25,aut:350,badge:'A',hab:'individual',comp:null,
   pres:{aloj:466,gas:156,cenas:133,comidas:80,total:835},
   pagos:PAG_INDIV,
-  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde casa (<strong>Carrer del Sard, 9 — Sant Antoni de Calonge</strong>) y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró entre las 16-18h y hará Cap de Creus y Cadaqués por la tarde. Sal con el depósito lleno y avisa al grupo cuando llegues. <a href="https://www.google.com/maps/dir/Carrer+del+Sard,+9,+17252+Calonge,+Girona/Hotel+Beri+Llanca" target="_blank" style="color:#1a52a8;font-weight:700">🗺️ Tu ruta directa al hotel</a>'},
+  al:[{t:'w',h:'🏁 DÍA 0 — TU SALIDA ES DISTINTA',b:'Sales por tu cuenta desde casa (<strong>Carrer del Sard, 9 — Sant Antoni de Calonge</strong>) y te unes al grupo directamente en el <strong>Hotel Beri (Llançà)</strong>. El resto sale de Mataró a las 16:00h y hará la ruta de la tarde hasta Llançà. Sal con el depósito lleno y avisa al grupo cuando llegues. <a href="https://www.google.com/maps/dir/Carrer+del+Sard,+9,+17252+Calonge,+Girona/Hotel+Beri+Llanca" target="_blank" style="color:#1a52a8;font-weight:700">🗺️ Tu ruta directa al hotel</a>'},
       {t:'s',h:'🎭 NO CONDUCE UNA RT: LA INTERPRETA',b:'Rider de altísimo nivel. Ha rodado en circuito y se nota: con él la R1300RT no es una gran turista, es una obra de arte en movimiento 🎶'},
       {t:'s',h:'DEPÓSITO 25 L — LA MAYOR AUTONOMÍA DEL GRUPO',b:'~350 km en montaña. Nunca habrá problemas de combustible en ninguna etapa del viaje.'},
       {t:'i',h:'💰 PRESUPUESTO ESTIMADO',b:'Alojamiento ~466€ · Gasolina ~156€ · Cenas ~133€ · Comidas ~80€ — <strong>TOTAL ~835€</strong>'},
@@ -466,9 +466,9 @@ PI.forEach(p=>{
 // ━━━ DÍAS ━━━
 const D=[
 {n:0,emo:'🌅',f:'Jue 18 junio',ti:'Traslado previo — Inicio de la aventura',km:'160-175 km',dest:'Port de la Selva',
- res:'Salida en la tarde desde la gasolinera Ctra. de Barcelona PK 27 (Mataró). Antonio J. sale desde Sant Antoni de Calonge y se une al grupo en el hotel de Llançà. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
+ res:'Salida 16:00h EN PUNTO desde la gasolinera Ctra. de Barcelona PK 27 (Mataró). Antonio J. sale desde Sant Antoni de Calonge y se une al grupo en el hotel de Llançà. Figueres, Cap de Creus (⚠️ acceso restringido 9:30-21:30h — llegar fuera de ese horario), Cadaqués, Port de la Selva, Monestir de Sant Pere de Rodes. Llegada de noche a Llançà.',
  mlat:42.362,mlon:3.154,mnm:'Llançà',
- ruta:[{p:'Gasolinera Ctra. Barcelona PK 27 — Mataró',n:'08302 Mataró · Punto de encuentro · 16-18h · Antonio J. se une en el hotel de Llançà',d:'start'},
+ ruta:[{p:'Gasolinera Ctra. Barcelona PK 27 — Mataró',n:'08302 Mataró · Punto de encuentro · ⏰ SALIDA 16:00h EN PUNTO (la cena en Llançà cierra cocina a las 22h) · Antonio J. se une en el hotel',d:'start'},
        {p:'Figueres',n:'Parada breve si conviene'},
        {p:'Cap de Creus',n:'📸 Foto al atardecer (sin Antonio J., que se une en el hotel) · ⚠️ Moto prohibida 9:30-21:30h · Llegar después de las 21:30h',d:'special'},
        {p:'Cadaqués',n:'Costa Brava icónica'},
@@ -478,9 +478,9 @@ const D=[
  gas:[{nm:'Gasolinera Ctra. Barcelona PK 27 — Mataró',hr:'—',dir:'Ctra. de Barcelona PK 27, 08302 Mataró',tel:null,map:'https://maps.google.com/?q=Carretera+de+Barcelona+PK+27,+08302+Mataro',key:true,not:'Punto de salida del grupo. Llenar antes de salir.'}],
  hotel:{ok:true,nm:'Hotel Beri · Llançà',desayuno:true,dir:'Carrer Castelló, 4, 17490 Llançà',tel:'+34972380108',web:'https://www.hotel-beri.com/es',map:'https://maps.google.com/?q=Hotel+Beri+Llanca',
    inf:'Llegada de noche · Parking motos disponible',
-   res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:'Cancelación gratuita hasta 11/06/2026',pag:null},
+   res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:null,pag:null},
  alm:[],
- cen:[{mo:'CENA',nm:'Can Narra',loc:'Port de la Selva',tel:'+34972387020',map:'https://maps.google.com/?q=Can+Narra+Port+de+la+Selva',pr:'~25-35€/p',inf:'⚠️ RESERVA OBLIGATORIA — llamar antes de salir. Cocina de temporada, producto local. Referente del Port de la Selva.'}],
+ cen:[{mo:'CENA — Llançà',nm:'El Vaixell',loc:'Llançà, Carrer Castellar 62 — puerto, a 5 min del hotel',tel:'+34972380295',map:'https://maps.google.com/?q=El+Vaixell+Carrer+Castellar+62+Llanca',pr:'~30-45€/p',inf:'Guía Michelin. Cocina marinera familiar: suquets (¡tres distintos!), arroces, calamares. Cocina 20:00-22:00h. 📧 <strong>Reserva para 8 solicitada por email</strong> (~20:30h) — pendiente de respuesta. 🌱 Avisar: 1 vegana.'}],
  als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
@@ -502,10 +502,11 @@ const D=[
  gas:[{nm:'Repsol — Puigcerdà',hr:'24h',dir:'CR N-152 km 171, Puigcerdà',tel:null,map:'https://maps.google.com/?q=Area+Servei+Puigcerda+Gasolinera+Repsol+N152',key:true,not:'Llenar bien antes de entrar en la Cerdanya y el Pallars.'},
       {nm:'Repsol — La Seu d\'Urgell',hr:'7:00-22:00h',dir:'Avinguda Valira 25, La Seu d\'Urgell',tel:null,map:'https://maps.google.com/?q=Repsol+La+Seu+d+Urgell+Avinguda+Valira',key:true,not:'Llenar obligatorio antes del Port del Cantó. Sin gasolinera entre La Seu y Sort.'}],
  hotel:{ok:true,nm:'Hotel Les Brases · Sort',desayuno:true,dir:'Sort, Lleida',tel:'+34973620089',web:'https://www.hotellesbrases.com/',map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',
-   inf:'Loc: 20528 · Cancelación hasta 17/06/2026',
-   res:'Confirmado',cod:'1234V',codlabel:'🚪 Acceso puerta',can:'Cancelación gratuita hasta 17/06/2026',pag:null},
+   inf:'Loc: 20528',
+   res:'Confirmado',cod:'1234V',codlabel:'🚪 Acceso puerta',can:null,pag:null},
  alm:[{mo:'COMIDA 🍽️',nm:'Restaurant Ruta 260',loc:'N-260 km 200 · Prullans, Cerdanya',tel:null,map:'https://maps.google.com/?q=Ruta+260,+Ctra+Nacional+260,+Km+200,+Prullans',pr:'~15-20€/p',inf:'En ruta, antes de La Seu d\'Urgell. Punto kilométrico N-260 km 200.'}],
- cen:[{mo:'CENA — Sort',nm:'Lo Pigal Casa Kiko',loc:'Sort, Lleida',tel:null,map:'https://maps.google.com/?q=Lo+Pigal+Casa+Kiko+Sort+Lleida',pr:'~20-25€/p',inf:'Referente gastronómico de Sort. Cocina tradicional del Pallars.'}],
+ cen:[{mo:'CENA — Sort',nm:'Can Punyetes',loc:'Sort centro, a pie del hotel',tel:null,map:'https://maps.google.com/?q=Can+Punyetes+Sort+Lleida',pr:'~30-35€/p',inf:'⭐4,4 · Carnes a la brasa y cocina catalana. ⚠️ NO acepta reservas — <strong>llegar a las 20:30h</strong> para asegurar mesa de 8.'},
+{mo:'ALTERNATIVA — Sort',nm:'Café Pessets',loc:'Av. Comtes del Pallars 28 — bajos Hotel Pessets',tel:'+34973620517',map:'https://maps.google.com/?q=Cafe+Pessets+Sort',pr:'~25-30€/p',inf:'⭐4,5 · Solete Guía Repsol. Tapas y platillos para compartir, vinos y quesos. ✅ Acepta reservas y 🌱 tiene opciones veganas. Cocina hasta tarde. Plan B perfecto si Can Punyetes está lleno.'}],
  als:[],
  foro:'La Collada de Toses y el Port del Cantó son dos joyas poco conocidas. Besalú merece la parada.',
  nesp:null},
@@ -528,14 +529,14 @@ const D=[
       {nm:'Repsol CRED — Vielha',hr:'7:00-23:00h',dir:'CR N-230 pk 163.7, Vielha',tel:'+34973642277',map:'https://maps.google.com/?q=Repsol+CRED+Vielha+N230',key:true,not:'Llenar antes de entrar a Francia. Siguiente gasolinera: Arreau o Saint-Lary.'}],
  hotel:{ok:true,nm:'Hostal Pirineos · Aínsa',desayuno:true,nobadge:true,dir:'Avda. Sobrarbe 7, 22330 Aínsa',tel:'+34 974 500 008',web:'https://hostalpirineosainsa.com/',map:'https://maps.google.com/?q=Hostal+Pirineos+Ainsa+Sobrarbe+7',
    inf:'5 hab dobles · ☕ Desayuno incluido · 🏍 Garaje motos GRATUITO (avisar) · Señal €200 pendiente',
-   res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 10/06/2026',pag:null},
+   res:'Confirmado',cod:null,can:null,pag:null},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
        inf:'⭐ Recomendado en foros moteros. En Arties, antes de Vielha. Cocina aranesa. Cerrado lunes.',
        mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/42.7697,0.4542/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
       {mo:'COMIDA — Opción B 🥞',nm:'Crêperie du Col de Peyresourde',loc:'Loudervielle, Francia',tel:null,map:'https://maps.google.com/?q=Creperie+du+Col+de+Peyresourde+6088+Route+du+Col+de+Peyresourde+65240+Loudervielle',pr:'~12-18€/p',
        inf:'En el propio col de Peyresourde. Crepes y platos montañeses. Abierto en verano.',
        mapsRuta:'https://www.google.com/maps/dir//Port+de+la+Bonaigua/Repsol+CRED+Vielha,+CR+N-230,+163.7,+Vielha/Bossost/Bagneres-de-Luchon/Creperie+du+Col+de+Peyresourde,+6088+Route+du+Col+de+Peyresourde,+65240+Loudervielle,+Francia/Carrefour+Contact,+Lieu-dit+Plas,+65240+Arreau,+Francia/Intermarche+Ancizan,+Route+de+Saint-Lary,+65440+Ancizan,+Francia/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
- cen:[{mo:'CENA — Aínsa 🏆',nm:"L'Alfil",loc:'Aínsa, Calle Travesera de la Iglesia 3',tel:'+34974500299',map:'https://maps.google.com/?q=L+Alfil+Calle+Travesera+de+la+Iglesia+3+22330+Ainsa',pr:'~25-35€/p',inf:'Cocina aragonesa. Casco medieval de Aínsa.'}],
+ cen:[{mo:'CENA — Aínsa 🏆 21:00h',nm:'Casa Alfonso',loc:'Calle Mayor 17 — casco antiguo, junto a Plaza Mayor (8-10 min a pie del hostal, subida)',tel:'+34974500981',map:'https://maps.google.com/?q=Casa+Alfonso+Calle+Mayor+17+Ainsa',pr:'~27-35€/p',inf:'⭐4,3 · Chuletón y cordero del Pirineo + 🌱 plato vegano avisando (¡avisado!). Cocina 20:00-22:00h. ☎️ <strong>Reserva 21:00h para 8 — solo por teléfono</strong>. Sobremesa: paseo por el casco antiguo iluminado y última caña en la Plaza Mayor (L\'Alfil).'}],
  als:[{t:'d',h:'⛽ BONAIGUA — DEPÓSITOS PEQUEÑOS EN ALERTA',b:'Alberto (14L) y Oriol (14,5L): LLENAR en bonÀrea Sort al 100%. No hay gasolineras entre Sort y Vielha (~150 km).'},
       {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío en la cima. Capa térmica A MANO antes de subir.'}],
  foro:'Peyresourde es un col del Tour de France. La ruta por Francia y el túnel Bielsa-Aragnouet es espectacular y poco transitada.',
@@ -558,9 +559,9 @@ const D=[
       {nm:'TotalEnergies — Oloron-Sainte-Marie',hr:'Lun-Sáb 7:00-20:00h',dir:'28 Rue Charles et Henri Moureu, Oloron-Sainte-Marie',tel:null,map:'https://maps.google.com/?q=TotalEnergies+28+Rue+Charles+et+Henri+Moureu+64400+Oloron-Sainte-Marie',key:true,not:'⚠️ ES DOMINGO. Confirmar horario. Llenar después del Aubisque, antes de La Pierre Saint-Martin.'}],
  hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,pagdirecto:true,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:'https://www.hostal-lola.com/',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
    inf:'€547,60 total · Pago directo en el hostal · ⚠️ <strong>AL HACER CHECK-IN: la cena está reservada para 7 — avisar que seréis 8</strong>',
-   res:'Confirmado',cod:null,can:'Cancelación gratuita hasta 01/06/2026',pag:'€547,60 — confirmar con tarjeta'},
+   res:'Confirmado',cod:null,can:null,pag:'€547,60 — confirmar con tarjeta'},
  alm:[{mo:'COMIDA — Laruns 🍽️✅',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:'+33559053014',map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Comidas 12:00-14:30h. ✅ <strong>RESERVA CONFIRMADA</strong> a nombre de Pedro para 8 personas. Especialidad: Garbure béarnaise y queso de Ossau.'}],
- cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 Cena reservada a las 21:30h · ⚠️ Reserva hecha para 7 — avisar en el check-in que seréis 8'}],
+ cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 ✅ Cena reservada a las 21:30h para 8. 🌱 Avisar en el check-in: 1 vegana.'}],
  als:[{t:'w',h:'🚴 ZONA LLENA DE CICLISTAS — QUEBRANTAHUESOS',b:'Ayer sábado se corrió la Quebrantahuesos (8.000 ciclistas) por Sabiñánigo, Portalet y Valle de Tena. Hoy domingo la zona Biescas–Formigal–Portalet y el Aubisque seguirán llenos de ciclistas. Paciencia total: adelantar con mucho espacio y NUNCA en curva.'},
      {t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron después del Aubisque. No improvisar.'}],
  foro:'El Col d\'Aubisque es uno de los puertos míticos del Tour. La Pierre Saint-Martin es frontera con España por pista. Etapa épica.',
@@ -580,7 +581,7 @@ const D=[
  gas:[{nm:'Repsol — Valle de Roncal · Urzainqui',hr:'8:00-21:00h',dir:'CR NA-137 km 28.7, Urzainqui, Navarra',tel:'+34948475013',map:'https://maps.google.com/?q=Repsol+E.S.+Valle+de+Roncal+NA-137+Urzainqui',key:true,not:'⚠️ LA ÚNICA EN 100 KM. No hay más gasolineras en la montaña navarra. Repostar siempre aquí.'}],
  hotel:{ok:true,pagdirecto:true,nm:'Hotel Jauregui ⭐⭐⭐ · Hondarribia',desayuno:true,dir:'Calle Zuloaga 5, 20280 Hondarribia',tel:'+34943641400',web:'https://www.hoteljauregui.com/',map:'https://maps.google.com/?q=Hotel+Jauregui+Hondarribia',
    res:'SYN2774-60096',pin:'UZGUQHXZ4X',
-   can:'Cancelación gratuita hasta 19/06/2026',pag:'💳 Pago directo en el hotel · Total €660,25 · Desayuno incluido',
+   can:null,pag:'💳 Pago directo en el hotel · Total €660,25 · Desayuno incluido',
    inf:'Casco histórico medieval · 3 dobles + 2 individuales'},
  alm:[{mo:'COMIDA — Opción A 🏆',nm:'Restaurante La Posada · Roncesvalles',loc:'Roncesvalles, Navarra',tel:null,map:'https://maps.google.com/?q=Restaurante+La+Posada+Roncesvalles+Navarra',pr:'~20-28€/p',
        inf:'En Roncesvalles, junto a la colegiata. Cocina navarra. Ambiente peregrino.',
@@ -1342,21 +1343,36 @@ function renderPagos(){
   });
   html+=`</div>`;
 
-  // Recordatorios
-  html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">📅</div>
-   <div><div class="ppt">RECORDATORIOS — PEDRO</div><div class="pps">A una semana del viaje · solo lo vigente</div></div></div>`;
+  // Resumen alojamientos + restaurantes + pagos en ruta
+  html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🏨</div>
+   <div><div class="ppt">ALOJAMIENTOS — TODO RESERVADO</div><div class="pps">Localizadores y pagos · todo aceptado por el grupo</div></div></div>`;
   const rs=[
-   {ico:'✅',tx:'Hotel Beri PAGADO (Revolut) · Les Brases PAGADO (Santander €340) · Señal Aínsa cobrada y pagada · Casa Lola confirmada con tarjeta',bg:'#edf7ef',date:null},
-   {ico:'🚫',tx:'Cancelación Les Brases — hasta 17/06/2026 antes 12:00h (última vigente antes de salir)',bg:false,date:'20260617',desc:'Limite cancelacion Les Brases'},
-   {ico:'🚫',tx:'Cancelación Hotel Jauregui — hasta 19/06/2026',bg:false,date:'20260619',desc:'Limite cancelacion Hotel Jauregui Hondarribia'},
-   {ico:'💶',tx:'PAGOS EN RUTA · 20/06 Hostal Pirineos Aínsa: resto €17,50/p dobles · €35 indiv (cobrar in situ)',bg:false,date:'20260620',desc:'Cobrar resto Hostal Pirineos Ainsa'},
-   {ico:'💶',tx:'PAGOS EN RUTA · 21/06 Casa Lola Isaba: pago directo €547,60 total',bg:false,date:'20260621',desc:'Pago directo Casa Lola Isaba 547,60'},
-   {ico:'💶',tx:'PAGOS EN RUTA · 22/06 Hotel Jauregui: pago directo €660,25 total',bg:false,date:'20260622',desc:'Pago directo Hotel Jauregui 660,25'}
+   {ico:'🛏️',tx:'<strong>18/06 Hotel Beri (Llançà)</strong> · Nº 6331.570.462 · PIN 9967 · ✅ Pagado (Revolut)',bg:'#edf7ef',date:null},
+   {ico:'🛏️',tx:'<strong>19/06 Les Brases (Sort)</strong> · Loc 20528 · puerta 1234V · ✅ Pagado (Santander €340)',bg:'#edf7ef',date:null},
+   {ico:'🛏️',tx:'<strong>20/06 Hostal Pirineos (Aínsa)</strong> · Señal pagada · 💶 cobrar resto in situ: €17,50/p dobles · €35 indiv',bg:false,date:'20260620',desc:'Cobrar resto Hostal Pirineos Ainsa'},
+   {ico:'🛏️',tx:'<strong>21/06 Casa Lola (Isaba)</strong> · 💶 pago directo €547,60 total · cena 21:30h reservada',bg:false,date:'20260621',desc:'Pago directo Casa Lola Isaba 547,60'},
+   {ico:'🛏️',tx:'<strong>22/06 Hotel Jauregui (Hondarribia)</strong> · Loc SYN2774-60096 · PIN UZGUQHXZ4X · 💶 pago directo €660,25 total',bg:false,date:'20260622',desc:'Pago directo Hotel Jauregui 660,25'}
   ];
   rs.forEach(r=>{
    html+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span>
-    ${r.date?`<button class="calb" style="background:var(--red)" onclick="addCal('${r.tx}','${r.date}','${r.desc||r.tx}','rec')">📅 Añadir</button>`:''}
+    ${r.date?`<button class="calb" style="background:var(--red)" onclick="addCal('${r.tx.replace(/<[^>]*>/g,'')}','${r.date}','${r.desc||''}','rec')">📅 Añadir</button>`:''}
    </div>`;
+  });
+  html+='</div>';
+
+  // Tarjeta restaurantes
+  html+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🍽️</div>
+   <div><div class="ppt">RESTAURANTES</div><div class="pps">Reservados y propuestos · 🌱 Mónica vegana: avisar siempre</div></div></div>`;
+  const rests=[
+   {ico:'📧',tx:'<strong>Jue 18 · El Vaixell (Llançà)</strong> ~20:30h · reserva solicitada por email — pendiente respuesta · ☎️ 972 380 295',bg:false},
+   {ico:'⏰',tx:'<strong>Vie 19 · Can Punyetes (Sort)</strong> · NO reservan — llegar 20:30h · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
+   {ico:'☎️',tx:'<strong>Sáb 20 · Casa Alfonso (Aínsa) 21:00h</strong> · reservar SOLO por teléfono: 974 500 981 · avisar 1 vegana',bg:false},
+   {ico:'✅',tx:'<strong>Dom 21 · Hôtel d\'Ossau (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
+   {ico:'✅',tx:'<strong>Dom 21 · Hostal Lola (Isaba) 21:30h</strong> — cena reservada para 8',bg:'#edf7ef'},
+   {ico:'🍢',tx:'<strong>Lun 22 · Pintxos Hondarribia</strong> — Gran Sol → Danontzat → Mika · sin reserva, son barras',bg:'#edf7ef'}
+  ];
+  rests.forEach(r=>{
+   html+=`<div class="rrow" style="${r.bg?'background:'+r.bg:''}"><span style="font-size:16px">${r.ico}</span><span style="flex:1">${r.tx}</span></div>`;
   });
   html+='</div>';
 
@@ -1513,7 +1529,7 @@ function renderRuta(){
    ],
    pois:[
     {ico:'🌊',nm:'Cala de Port de la Selva',det:'<span class="tm">⏱ 15 min a pie desde el hotel</span> Cala tranquila, aguas cristalinas. Paseo por el paseo marítimo antes de la cena.',mapq:'Port de la Selva playa Costa Brava'},
-    {ico:'🍽️',nm:'Can Narra — Cena Día 0',det:'<span class="tt">🍽️ Cena reservada</span><span class="tm">⏱ 19:30h</span> ⚠️ RESERVA OBLIGATORIA — llamar antes de salir. Cocina local, producto de temporada.',mapq:'Can Narra Port de la Selva'},
+    {ico:'🍽️',nm:'El Vaixell — Cena Día 0',det:'<span class="tt">🍽️ Cena solicitada</span><span class="tm">⏱ ~20:30h</span> Guía Michelin, puerto de Llançà. Suquets y arroces marineros. ⚠️ Cocina cierra a las 22:00h — salida de Mataró a las 16:00h en punto.',mapq:'El Vaixell Carrer Castellar 62 Llanca'},
    ],
    meteo:{alt:'~0m',tmin:'9°C',tmax:'26°C',lluvia:'☁️ Baja',viento:'💨 Suave'}},
   {dia:'DÍA 1 · 19 Jun',tit:'Cap de Creus → Sort',km:'318 km · ~5-6h con paradas',tipo:'Cap de Creus + Pirineo catalán',
@@ -1523,13 +1539,13 @@ function renderRuta(){
     {ico:'🏔️',tx:'<strong>Collada de Toses (1.800m):</strong> joya del día. Veteranos de la ruta la destacan como uno de los mejores tramos. Pasar antes de las 11h para disfrutarlo sin ciclistas ni caravanas. Asfalto bueno. Alternativa recomendada por foros: carretera de Castellar de n\'Hug y La Molina (menos tráfico y muy bonita, aunque más lenta).'},
     {ico:'⛽',tx:'<strong>Alberto 🐛 y Oriol 🐣 — CRÍTICO:</strong> depósitos de 14L. Repostar obligatorio en Ripoll (km ~100). La bonÀrea de Sort tiene gasolinera justo antes de llegar desde el Coll del Canto — usarla siempre. No llegar a Sort con menos de ¼ de depósito.'},
     {ico:'☔',tx:'<strong>Niebla matinal</strong> habitual en el Pirineo catalán, sobre todo en fondos de valle. Traje de agua a mano. Cambios de tiempo rápidos y a menudo inesperados — el Pirineo tiene su propio microclima. Foros avisan: puede salirse de Sort con sol y encontrar tromba a los 20 km.'},
-    {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Gasolinera bonÀrea antes del pueblo. Lo Pigal / Casa Kiko es referencia en todos los foros — cocina de montaña, raciones generosas, terraza con vistas al Noguera. Ideal punto de reagrupamiento.'},
+    {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Gasolinera bonÀrea antes del pueblo. Cena en Can Punyetes (brasa catalana, no reserva: llegar 20:30h) o Café Pessets (Solete Repsol, sí reserva). Ambos a pie del hotel.'},
    ],
    pois:[
     {ico:'🏔️',nm:'Faro del Cap de Creus',det:'<span class="tt">🔑 Punto de salida oficial</span><span class="tm">⏱ 8:00h · 20 min a pie</span> El extremo más oriental de la Península. 📸 Foto oficial con los 8 al completo, las motos y el Mediterráneo.',mapq:'Faro Cap de Creus Girona'},
     {ico:'⛽',nm:'Gasolinera Ripoll',det:'<span class="tt">⛽ Repostaje km ~100</span><span class="tm">⏱ Parada técnica</span> Último repostaje seguro antes del Pirineo para depósitos pequeños.',mapq:'gasolinera Ripoll Catalunya'},
     {ico:'🏔️',nm:'Collada de Toses — 1.800m',det:'<span class="tm">⏱ ~11:00h</span> Punto de foto y reagrupamiento. Vistas espectaculares al Pirineo. Cuidado con ciclistas en la bajada.',mapq:'Collada de Toses La Molina'},
-    {ico:'🍴',nm:'Lo Pigal / Casa Kiko — Sort',det:'<span class="tt">🍽️ Comida</span><span class="tm">⏱ 13:30-14:00h</span> Referencia gastronómica motera en Sort. Cocina de montaña, terraza.',mapq:'Lo Pigal Sort Lleida'},
+    {ico:'🍴',nm:'Can Punyetes — Cena en Sort',det:'<span class="tt">🍽️ Cena</span><span class="tm">⏱ 20:30h — llegar pronto, no reservan</span> Brasa catalana a pie del hotel. Alternativa con reserva: Café Pessets (+34 973 62 05 17).',mapq:'Can Punyetes Sort Lleida'},
     {ico:'🍀',nm:'Administración de Lotería de Sort',det:'<span class="tt">⭐ Tradición motera</span><span class="tm">⏱ 5 min · en el pueblo</span> Sort significa "suerte" en catalán. Comprar un décimo es tradición entre moteros que hacen la Transpirenaica. Citado en todos los foros. ¡Obligatorio!',mapq:'administracion loteria Sort Lleida'},
    ],
    meteo:{alt:'1.800m',tmin:'8°C',tmax:'24°C',lluvia:'☁️ Posible',viento:'💨 Moderado'}},
@@ -1980,7 +1996,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '41';
+const APP_VERSION = '42';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -1991,7 +2007,7 @@ const APP_VERSION = '41';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=41').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=42').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
