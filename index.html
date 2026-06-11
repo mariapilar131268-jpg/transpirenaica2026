@@ -1526,16 +1526,16 @@ function renderRuta(){
 
  // ── ETAPAS CON POIs ──────────────────────────────────────────────────────
  const etapas=[
-  {dia:'DÍA 0 · 18 Jun',tit:'Mataró → Port de la Selva',km:'165 km · ~2h sin paradas',tipo:'Autopista C-32 + Costa Brava',
+  {dia:'DÍA 0 · 18 Jun',tit:'Mataró → Llançà',km:'160-175 km · ~2-3h con la ruta turística',tipo:'Autopista C-32 + Costa Brava',
    stars:[{t:'',l:'🌊 Costa Brava'},{t:'',l:'🕐 Día corto'},{t:'',l:'🛣️ Fácil'}],
    tips:[
-    {ico:'⚡',tx:'<strong>Etapa de rodaje.</strong> Autopista C-32 hasta Girona, luego N-260 hasta Llançà y bajada a Port de la Selva. Perfecto para que el grupo se compacte y ajuste ritmos.'},
-    {ico:'⛽',tx:'<strong>Repostar en Llançà</strong> antes de bajar al puerto. En Port de la Selva no hay gasolinera.'},
-    {ico:'🅿️',tx:'<strong>Parking motos:</strong> zona sin asfaltar junto a la cala. Llegar antes de las 18h — el pueblo se llena de turistas en junio.'},
+    {ico:'⚡',tx:'<strong>Etapa de rodaje.</strong> Salida de la gasolinera Ctra. de Barcelona PK 27 (Mataró) entre las 16-18h. C-32 + N-260 hasta Llançà. Ruta turística opcional por la tarde: Figueres, Cadaqués, Cap de Creus y Sant Pere de Rodes. Antonio J. 🎭 se une directo en el hotel desde Calonge. Perfecto para que el grupo se compacte.'},
+    {ico:'⛽',tx:'<strong>Repostar en Llançà</strong> al llegar — así el Día 1 se sale con depósito lleno hacia Cap de Creus.'},
+    {ico:'🏨',tx:'<strong>Hotel Beri (Llançà):</strong> garaje para las motos, trato excelente a moteros. Cena fuera: El Pati Blanc (a 4 min) o La Brasa de plan B. Llegada de noche, sin prisas.'},
     {ico:'🌡️',tx:'Costa a nivel del mar: <strong>22-26°C</strong>. Ropa de verano pero chaqueta en la moto por si refresca de noche en la terraza.'},
    ],
    pois:[
-    {ico:'🌊',nm:'Cala de Port de la Selva',det:'<span class="tm">⏱ 15 min a pie desde el hotel</span> Cala tranquila, aguas cristalinas. Paseo por el paseo marítimo antes de la cena.',mapq:'Port de la Selva playa Costa Brava'},
+    {ico:'⛪',nm:'Sant Pere de Rodes (opcional)',det:'<span class="tm">⏱ Parada turística de la tarde</span> Monasterio benedictino del s. X con vistas espectaculares al Cap de Creus. Si el grupo sale pronto, parada que merece la pena de camino a Llançà.',mapq:'Sant Pere de Rodes monasterio'},
     {ico:'🍽️',nm:'El Pati Blanc — Cena Día 0',det:'<span class="tt">🍽️ Cena solicitada</span> A 4 min a pie del Hotel Beri. Patio, tapas y menú del día, cerveza artesana. Reserva para 8 pedida por email (1 vegana). Plan B: La Brasa (centro).',mapq:'Pati Blanc Carrer Rafael Estela 6 Llanca'},
    ],
    meteo:{alt:'~0m',tmin:'9°C',tmax:'26°C',lluvia:'☁️ Baja',viento:'💨 Suave'}},
@@ -1556,7 +1556,7 @@ function renderRuta(){
     {ico:'🍀',nm:'Administración de Lotería de Sort',det:'<span class="tt">⭐ Tradición motera</span><span class="tm">⏱ 5 min · en el pueblo</span> Sort significa "suerte" en catalán. Comprar un décimo es tradición entre moteros que hacen la Transpirenaica. Citado en todos los foros. ¡Obligatorio!',mapq:'administracion loteria Sort Lleida'},
    ],
    meteo:{alt:'1.800m',tmin:'8°C',tmax:'24°C',lluvia:'☁️ Posible',viento:'💨 Moderado'}},
-  {dia:'DÍA 2 · 20 Jun',tit:'Sort → Bonaigua → Vielha → Aínsa',km:'300 km · ~5h con paradas',tipo:'Puerto Bonaigua + Val d\u2019Arán',
+  {dia:'DÍA 2 · 20 Jun',tit:'Sort → Bonaigua → Vielha → Peyresourde → Aínsa',km:'295-320 km · ~5-6h con paradas',tipo:'Puerto Bonaigua + Val d\u2019Arán',
    stars:[{t:'',l:'🥇 Joya del viaje'},{t:'',l:'🏔️ 2.072m'},{t:'',l:'🌿 Val d\u2019Arán'}],
    tips:[
     {ico:'🏔️',tx:'<strong>Port de la Bonaigua (2.072m):</strong> el más alto de Cataluña. Asfalto variable — baches entre Baqueira y la cima después del invierno. <em>Motos grandes con maletas: ir suave.</em>'},
@@ -1570,12 +1570,14 @@ function renderRuta(){
     
     {ico:'🏘️',nm:'Vielha — Val d\u2019Arán',det:'<span class="tm">⏱ 15 min parada</span> Capital del Arán. Paseo rápido por el casco antiguo, iglesia románica. Última gasolinera antes de Bielsa.',mapq:'Vielha centro Val Aran'},
     {ico:'🏰',nm:'Casco medieval de Aínsa',det:'<span class="tt">🏨 Noche Día 2</span><span class="tm">⏱ Llegada ~18h</span> Plaza mayor del siglo XI rodeada de arcadas. Pasear antes de cenar. Impresionante al atardecer.',mapq:'Plaza Mayor Ainsa Huesca'},
+    {ico:'🍺',nm:'Mora de Nuei — Cena en Aínsa',det:'<span class="tt">🍽️ Cena ~21:00h</span><span class="tm">⏱ No reservan: avanzadilla a las 20:40h</span> Terraza, cerveza artesana y buena música, a 5 min del hostal. 💚 La noche de Mónica: carta vegana de verdad. Plan C: restaurante del propio hostal.',mapq:'Mora de Nuei Portal de Abajo 2 Ainsa'},
    ],
    meteo:{alt:'2.072m',tmin:'7°C',tmax:'25°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
-  {dia:'DÍA 3 · 21 Jun',tit:'Aínsa → Portalet → Ossau → Aubisque → Isaba',km:'320 km · ~6-7h con paradas',tipo:'🏆 LA ETAPA REINA',
+  {dia:'DÍA 3 · 21 Jun',tit:'Aínsa → Portalet → Ossau → Aubisque → Isaba',km:'315-340 km · ~7-8h con paradas',tipo:'🏆 LA ETAPA REINA',
    stars:[{t:'red',l:'🏆 Día épico'},{t:'',l:'🇫🇷 Francia'},{t:'ora',l:'🚴 Ciclistas · Salida 7:30h'}],
    tips:[
-    {ico:'⏰',tx:'<strong>SALIDA 7:30-8:00h — obligatorio.</strong> La etapa reina. En junio hay menos tráfico, pero cuanto antes subas el Aubisque, más lo disfrutas sin caravanas y con mejor tiempo.'},
+    {ico:'⏰',tx:'<strong>SALIDA 7:30h — innegociable.</strong> La etapa reina, la más larga y bonita. Cuanto antes subáis el Aubisque, mejor tiempo y menos caravanas.'},
+    {ico:'🚴',tx:'<strong>⚠️ Es DOMINGO 21/06.</strong> Zona de la Quebrantahuesos (gran marcha cicloturista de la zona): habrá MUCHOS ciclistas en Portalet y Aubisque, y comercios/gasolineras francesas con horario reducido. Madrugar es doblemente importante hoy.'},
     {ico:'🏔️',tx:'<strong>Col du Portalet (1.794m):</strong> frontera España-Francia. Bajada espectacular al Valle de Ossau. Punto de reagrupamiento antes de entrar en Francia.'},
     {ico:'🏔️',tx:'<strong>Col d\u2019Aubisque (1.709m):</strong> para muchos el más bonito del viaje. El tramo Soulor-Aubisque (7 km) es espectacular — vacas, caballos y ovejas en la calzada. <strong>Reducir velocidad.</strong>'},
     {ico:'⛽',tx:'<strong>Repostar en TotalEnergies Oloron</strong> DESPUÉS del Aubisque — es la gasolinera con personal más estratégica de la zona. Alberto 🐛: <em>200 km de autonomía — momento más crítico del viaje.</em> ⚠️ Es domingo: confirmar horario antes de salir. Todos repostan aquí sin excepción.'},
@@ -1585,10 +1587,10 @@ function renderRuta(){
    ],
    pois:[
     {ico:'🏔️',nm:'Col du Portalet — 1.794m (frontera)',det:'<span class="tm">⏱ ~9:00h</span> Paso fronterizo España-Francia. Punto de reagrupamiento antes de entrar en territorio francés.',mapq:'Col du Portalet frontera Formigal Francia'},
-    {ico:'🏞️',nm:'Valle de Ossau — Laruns',det:'<span class="tm">⏱ ~10:30h · Parada comida</span> Valle glaciar espectacular. Laruns es el pueblo del valle — comida en el Hôtel-Restaurant d\'Ossau. Paisaje de postal.',mapq:'Laruns Valle Ossau Francia'},
+    {ico:'🍽️',nm:'Hôtel d\'Ossau — Comida en Laruns',det:'<span class="tt">✅ Comida CONFIRMADA para 8</span><span class="tm">⏱ ~13:00h</span> En el corazón del Valle de Ossau. Cocina de montaña francesa (garbure, queso de Ossau). 🌱 Avisar: la garbure lleva jamón, pedir opción para Mónica.',mapq:'Hotel Restaurant Ossau Laruns Francia'},
     {ico:'⛽',nm:'TotalEnergies — Oloron-Sainte-Marie',det:'<span class="tt">⛽ REPOSTAR TODOS</span><span class="tm">⏱ Después del Aubisque · ⚠️ ES DOMINGO</span> Confirmar horario. Última gasolinera antes de La Pierre Saint-Martin. Obligatorio para Alberto 🐛.',mapq:'TotalEnergies Oloron-Sainte-Marie Francia'},
-    {ico:'🏔️',nm:'Col d\u2019Aubisque — 1.709m',det:'<span class="tt">⭐ El más bonito</span><span class="tm">⏱ ~14:00h</span> Carretera excavada en la roca. Escultura de 3 bicicletas gigantes. Fauna libre en la calzada — vacas, caballos, ovejas.',mapq:'Col Aubisque cima Francia'},
-    {ico:'🏔️',nm:'Arette — La Pierre Saint-Martin',det:'<span class="tm">⏱ ~16:00h</span> Puerto fronterizo espectacular. Bajada a Isaba por carretera navarra de montaña. Tramo final del día.',mapq:'Col Pierre Saint Martin Arette Francia'},
+    {ico:'🏔️',nm:'Col d\u2019Aubisque — 1.709m',det:'<span class="tt">⭐ El más bonito</span><span class="tm">⏱ ~15:00-15:30h (tras la comida)</span> Carretera excavada en la roca. Escultura de 3 bicicletas gigantes. Fauna libre en la calzada — vacas, caballos, ovejas.',mapq:'Col Aubisque cima Francia'},
+    {ico:'🏔️',nm:'Arette — La Pierre Saint-Martin',det:'<span class="tm">⏱ ~17:30h</span> Puerto fronterizo espectacular. Bajada a Isaba por carretera navarra de montaña. Tramo final del día — llegada a Isaba al atardecer.',mapq:'Col Pierre Saint Martin Arette Francia'},
    ],
    meteo:{alt:'1.709m',tmin:'8°C',tmax:'22°C',lluvia:'⛈️ Tarde',viento:'💨 Fuerte cima'}},
   {dia:'DÍA 4 · 22 Jun',tit:'Isaba → Irati → Baztán → Hondarribia',km:'200 km · ~4-5h con paradas',tipo:'Navarra profunda + Meta final 🏁',
@@ -1603,11 +1605,24 @@ function renderRuta(){
    pois:[
     {ico:'🌲',nm:'Embalse de Irabia — Selva de Irati',det:'<span class="tm">⏱ ~9:30h · 20 min andando desde parking</span> El corazón de la Selva de Irati. Hayedos y abetos centenarios. Parking de pago ~5€.',mapq:'Embalse Irabia Selva Irati Navarra'},
     {ico:'⛽',nm:'Petronor Urzainqui — ÚNICA gasolinera',det:'<span class="tt">⛽ OBLIGATORIO</span> NA-137 km 28,7, Urzainqui, Navarra. No hay otra en 100 km de montaña navarra.',mapq:'Petronor Urzainqui Navarra'},
-    {ico:'✝️',nm:'Roncesvalles — Puerto histórico',det:'<span class="tt">⭐ Imprescindible</span><span class="tm">⏱ Desvío 20 min desde Isaba</span> Colegiata románica del siglo XII, punto del Camino de Santiago. Citado en todos los foros como parada obligatoria. Ambiente único.',mapq:'Roncesvalles Colegiata Navarra'},
+    {ico:'✝️',nm:'Roncesvalles — Puerto histórico (opcional)',det:'<span class="tt">⭐ Solo si vais sobrados de tiempo</span><span class="tm">⏱ Desvío ~20 min desde Isaba</span> Colegiata románica del s. XII en el Camino de Santiago. Hoy el día ya es completo (Irati + Baztán + meta antes de las 18h por San Joan): valorar sobre la marcha.',mapq:'Roncesvalles Colegiata Navarra'},
     {ico:'🏡',nm:'Elizondo — Valle del Baztán',det:'<span class="tm">⏱ ~12:30h · 30 min parada</span> Capital del Baztán. Chocolate Txokola, morcilla txuri ta beltz, queso Idiazabal. Caserío medieval.',mapq:'Elizondo Valle Baztan Navarra'},
     {ico:'🏁',nm:'Faro de Higuer — META FINAL 🏁',det:'<span class="tt">🏁 ¡LLEGADA!</span><span class="tm">⏱ ~16:00-17:00h</span> El extremo noroeste del Pirineo. Dejar motos en el aparcamiento y subir 10 min a pie. Foto de grupo obligatoria.',mapq:'Faro Cabo Higuer Hondarribia'},
    ],
    meteo:{alt:'0m',tmin:'15°C',tmax:'24°C',lluvia:'🌦️ Variable',viento:'💨 Brisa'}},
+  {dia:'DÍA 5 · 23 Jun',tit:'Hondarribia → Barcelona',km:'570-620 km · ~6-7h',tipo:'Vuelta a casa por autopista · 🔥 Sant Joan',
+   stars:[{t:'red',l:'📏 Etapa muy larga'},{t:'',l:'🛣️ Autopista'},{t:'',l:'🔥 Verbena al llegar'}],
+   tips:[
+    {ico:'⏰',tx:'<strong>Salida 8:00h en punto.</strong> 620 km de autopista (AP-8 → AP-68 → AP-2). El objetivo es estar en casa hacia las 14:30h para descansar antes de la Noche de Sant Joan.'},
+    {ico:'😴',tx:'<strong>El día más peligroso por monotonía y cansancio.</strong> Tras 5 días de viaje, la autopista larga adormece. Parada cada 1,5-2h sí o sí, hidratación y café. No tener prisa: la verbena no se va a ningún lado.'},
+    {ico:'⛽',tx:'<strong>Repostajes:</strong> áreas de servicio amplias en toda la AP-68 (zona Logroño/Zaragoza). Sin problema de autonomía hoy — pero parar a repostar es también parar a descansar.'},
+    {ico:'🔥',tx:'<strong>Noche de Sant Joan:</strong> hogueras, petardos y cava al llegar. Fin de la Transpirenaica 2026. ¡Lo habéis conseguido! 🏍️'},
+   ],
+   pois:[
+    {ico:'☕',nm:'Área de servicio AP-68 (Logroño/Tudela)',det:'<span class="tm">⏱ Parada técnica ~media mañana</span> Punto natural de descanso y café a mitad de camino. Estirar piernas tras el primer tramo.',mapq:'area servicio AP-68 Tudela'},
+    {ico:'🏠',nm:'Santa Coloma de Gramenet — FIN',det:'<span class="tt">🏁 Vuelta a casa</span><span class="tm">⏱ ~14:30h</span> Fin del viaje. A descansar y preparar la verbena de Sant Joan.',mapq:'Santa Coloma de Gramenet Barcelona'},
+   ],
+   meteo:{alt:'0m',tmin:'16°C',tmax:'28°C',lluvia:'☀️ Seco',viento:'💨 Suave'}},
  ];
 
  // ── CONSEJOS GENERALES ──────────────────────────────────────────────────
@@ -1619,9 +1634,10 @@ function renderRuta(){
   {ico:'🚴',tx:'<strong>Ciclistas:</strong> en junio hay grupos en todos los puertos famosos, especialmente en el Aubisque. Paciencia y respeto total — adelantar con mucho espacio y nunca en curva. Recordad que el Tour de Francia pasa por la zona a primeros de julio: cuanto antes mejor.'},
   {ico:'🐄',tx:'<strong>Fauna en calzada:</strong> Aubisque e Irati especialmente. Vacas, caballos, ovejas con cencerros y en el entorno del Aubisque hay osos. Velocidad moderada siempre en estas zonas — los animales no avisan.'},
   {ico:'📱',tx:'<strong>GPS y cobertura:</strong> zonas sin señal en Val d\u2019Arán, Pirineo aragonés y navarro. Descargar mapas offline (Google Maps, Maps.me o Calimoto) antes de salir cada mañana. Revisar la ruta del día en el hotel, así no hay sorpresas si el móvil se queda sin datos.'},
-  {ico:'🏍️',tx:'<strong>Grupo de 7 motos:</strong> dividir en 2 subgrupos para adelantar con seguridad. El último piloto señaliza los desvíos. Acordar puntos de reagrupamiento al inicio de cada etapa — en puertos y zonas sin cobertura es fácil disgregarse.'},
+  {ico:'🏍️',tx:'<strong>Grupo de 8 motos:</strong> dividir en 2 subgrupos de 4 para adelantar con seguridad. El último piloto señaliza los desvíos. Acordar puntos de reagrupamiento al inicio de cada etapa — en puertos y zonas sin cobertura es fácil disgregarse.'},
   {ico:'🎽',tx:'<strong>Ropa y equipaje:</strong> chubasquero SIEMPRE encima, nunca enterrado en maletas. Capa térmica fina para puertos +1.700m aunque abajo haya 25°C. En el Aubisque en la cima puede hacer 10-12°C con viento. Guantes de invierno o dobles son muy recomendables para los puertos.'},
   {ico:'🗺️',tx:'<strong>Esta ruta no es para correr.</strong> El Pirineo recompensa al que para, mira y respira. Cada mañana revisar el mapa, saber cuánto falta al siguiente punto y tener siempre un plan B por valle alternativo si el tiempo cierra un puerto.'},
+  {ico:'⚖️',tx:'<strong>Normativa 2026 — al cruzar a Francia (Días 2 y 3):</strong> guantes homologados CE obligatorios para piloto y pasajero (en España, EN 13594 desde enero 2026). En Francia, además: chaleco reflectante a bordo (obligatorio llevarlo, hay que poder mostrarlo) y luz de cruce siempre encendida. Multas in situ si falta algo. Llevad documentación, seguro y permiso siempre encima.'},
  ];
 
  let html='';
@@ -2003,7 +2019,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '44';
+const APP_VERSION = '45';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2014,7 +2030,7 @@ const APP_VERSION = '44';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=44').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=45').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
