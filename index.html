@@ -481,8 +481,8 @@ const D=[
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:null,pag:null},
  alm:[],
- cen:[{mo:'CENA — Llançà',nm:'El Pati Blanc',loc:'Carrer Rafael Estela 6 — a 4 min a pie del Hotel Beri',tel:'+34972380800',map:'https://maps.google.com/?q=Pati+Blanc+Carrer+Rafael+Estela+6+Llanca',pr:'~19€ menú / €€',inf:'⭐4,3 (1.700+ reseñas). Patio acogedor, tapas y menú del día con muchas opciones, cerveza artesana. Abierto jueves hasta 22h. 📧 <strong>Reserva para 8 solicitada por email</strong> — pendiente de respuesta. 🌱 Avisar: 1 vegana.'},
-{mo:'PLAN B — Llançà',nm:'La Brasa',loc:'Plaça Catalunya 6 — centro (20 min a pie o 3 min en moto)',tel:'+34659526851',map:'https://maps.google.com/?q=La+Brasa+Placa+Catalunya+6+Llanca',pr:'~25-35€/p',inf:'⭐4,4 · Brasa, tapas y raciones para compartir. Abierto jueves hasta 22:30h (más margen). Cuidadosos con dietas especiales. Alternativa si El Pati Blanc no confirma.'}],
+ cen:[{mo:'CENA — Llançà ✅ 21:30h',nm:'El Pati Blanc',loc:'Carrer Rafael Estela 6 — a 4 min a pie del Hotel Beri',tel:'+34972380800',map:'https://maps.google.com/?q=Pati+Blanc+Carrer+Rafael+Estela+6+Llanca',pr:'~19€ menú / €€',inf:'⭐4,3 (1.700+ reseñas). Patio acogedor, tapas y menú del día, cerveza artesana. ✅ <strong>Reserva CONFIRMADA para 8 a las 21:30h.</strong> 🌱 Avisada 1 vegana.'},
+{mo:'PLAN B — Llançà',nm:'La Brasa',loc:'Plaça Catalunya 6 — centro (20 min a pie o 3 min en moto)',tel:'+34659526851',map:'https://maps.google.com/?q=La+Brasa+Placa+Catalunya+6+Llanca',pr:'~25-35€/p',inf:'⭐4,4 · Brasa, tapas y raciones para compartir. Abierto jueves hasta 22:30h (más margen). Cuidadosos con dietas especiales. Alternativa de la zona si algún día queréis cambiar.'}],
  als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
@@ -1239,7 +1239,7 @@ function resumenViajeHTML(){
  h+=`<div class="pp"><div class="pph pph-b"><div class="ppico">🍽️</div>
   <div><div class="ppt">RESTAURANTES</div><div class="pps">Reservados y propuestos · 🌱 Mónica vegana: avisar siempre</div></div></div>`;
  const rests=[
-  {ico:'📧',tx:'<strong>Jue 18 · El Pati Blanc (Llançà)</strong> · a 4 min del hotel · reserva por email, pendiente · Plan B: La Brasa · ☎️ 972 380 800',bg:false},
+  {ico:'✅',tx:'<strong>Jue 18 · El Pati Blanc (Llançà) 21:30h</strong> · CONFIRMADA para 8 · a 4 min del hotel · 🌱 vegana avisada',bg:'#edf7ef'},
   {ico:'⏰',tx:'<strong>Vie 19 · Can Punyetes (Sort)</strong> · NO reservan — llegar 20:30h · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
   {ico:'🍺',tx:'<strong>Sáb 20 · Mora de Nuei (Aínsa) 21:00h</strong> · no reservan: avanzadilla a las 20:40h · 💚 ¡la noche de Mónica, carta vegana de verdad! 🌱 · ☎️ 676 415 404',bg:false},
   {ico:'✅',tx:'<strong>Dom 21 · Hôtel d\'Ossau (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
@@ -1536,7 +1536,7 @@ function renderRuta(){
    ],
    pois:[
     {ico:'⛪',nm:'Sant Pere de Rodes (opcional)',det:'<span class="tm">⏱ Parada turística de la tarde</span> Monasterio benedictino del s. X con vistas espectaculares al Cap de Creus. Si el grupo sale pronto, parada que merece la pena de camino a Llançà.',mapq:'Sant Pere de Rodes monasterio'},
-    {ico:'🍽️',nm:'El Pati Blanc — Cena Día 0',det:'<span class="tt">🍽️ Cena solicitada</span> A 4 min a pie del Hotel Beri. Patio, tapas y menú del día, cerveza artesana. Reserva para 8 pedida por email (1 vegana). Plan B: La Brasa (centro).',mapq:'Pati Blanc Carrer Rafael Estela 6 Llanca'},
+    {ico:'🍽️',nm:'El Pati Blanc — Cena Día 0',det:'<span class="tt">✅ Cena confirmada 21:30h</span> A 4 min a pie del Hotel Beri. Patio, tapas y menú del día, cerveza artesana. Reserva para 8 (1 vegana avisada).',mapq:'Pati Blanc Carrer Rafael Estela 6 Llanca'},
    ],
    meteo:{alt:'~0m',tmin:'9°C',tmax:'26°C',lluvia:'☁️ Baja',viento:'💨 Suave'}},
   {dia:'DÍA 1 · 19 Jun',tit:'Cap de Creus → Sort',km:'318 km · ~5-6h con paradas',tipo:'Cap de Creus + Pirineo catalán',
@@ -2019,7 +2019,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '45';
+const APP_VERSION = '46';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2030,7 +2030,7 @@ const APP_VERSION = '45';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=45').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=46').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
