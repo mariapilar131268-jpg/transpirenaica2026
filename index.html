@@ -333,7 +333,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <button class="ntab active" onclick="showTab('dia',this)">📅 MI DÍA</button>
     <button class="ntab" onclick="showTab('ck',this)">✓ CHECK</button>
     <button class="ntab" onclick="showTab('ruta',this)">🗺️ RUTA</button>
-    <button class="ntab" onclick="showTab('pagos',this)">💳 PAGOS</button>
+    <button class="ntab" onclick="showTab('pagos',this)">🏨 RESERVAS</button>
   </div>
   <div class="tcont show" id="tab-dia"></div>
   <div class="tcont" id="tab-ck"></div>
@@ -1257,90 +1257,41 @@ function renderPagos(){
  if(curP&&curP.esPedro) syncCobrosFromShared(curP);
  let html='';
 
- // ── TARJETA PRESUPUESTO TOTAL DEL VIAJE ──
- if(curP.pres){
-  const pr=curP.pres;
-  const cats=[
-   {ico:'🏨',lb:'Alojamiento',v:pr.aloj},
-   {ico:'⛽',lb:'Gasolina',v:pr.gas},
-   {ico:'🍽️',lb:'Cenas',v:pr.cenas},
-   {ico:'🥗',lb:'Comidas',v:pr.comidas},
-  ];
-  html+=`<div style="background:linear-gradient(135deg,#1c2b1a 0%,#2a3d28 100%);border-radius:14px;padding:18px 16px;margin-bottom:14px;color:#e8e0cc">
-   <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-    <span style="font-size:24px">💰</span>
-    <div>
-     <div style="font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#c8d8b0">Presupuesto estimado · Viaje completo</div>
-     <div style="font-size:11px;color:#8a9e80;margin-top:1px">${curP.mot} · hab. ${curP.hab}${curP.comp?' · con '+curP.comp:''}</div>
-    </div>
-   </div>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-    ${cats.map(c=>`<div style="background:rgba(255,255,255,.08);border-radius:8px;padding:10px 12px">
-     <div style="font-size:10px;color:#8a9e80;text-transform:uppercase;letter-spacing:1px">${c.ico} ${c.lb}</div>
-     <div style="font-size:20px;font-weight:700;color:#e8e0cc;margin-top:3px">~${c.v}€</div>
-    </div>`).join('')}
-   </div>
-   <div style="background:#e8e0cc;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between">
-    <div style="font-size:12px;font-weight:700;color:#1c2b1a;text-transform:uppercase;letter-spacing:.5px">TOTAL estimado</div>
-    <div style="font-size:32px;font-weight:800;color:#1c2b1a;line-height:1">~${pr.total}€</div>
-   </div>
-   <div style="font-size:10px;color:#6a8060;margin-top:8px;text-align:center">* Estimación orientativa · Gasolina según autonomía de tu moto · Sin extras personales</div>
-  </div>`;
- }
+ // ── 1. ALOJAMIENTOS + RESTAURANTES (lo que se consulta a diario) ──
+ html+=resumenViajeHTML();
 
- // ── BANNER CUENTA ATRÁS (solo pilotos no-Pedro con pagos pendientes) ──
+ // ── ESTADO PAGO A PEDRO (solo no-Pedro): pagado o deuda ──
  if(!curP.esPedro){
-  const hoy = new Date();
-  const limite = new Date(2026,2,31); // 31 marzo
-  const diffMs = limite - hoy;
-  const dias = Math.max(0, Math.ceil(diffMs/(1000*60*60*24)));
-  const vencido = diffMs < 0;
   const aPedroCalc = curP.pagos.filter(p=>!p.directo&&!p.skipPedro);
   let totalAP=0; aPedroCalc.forEach(p=>totalAP+=p.v);
   const todoPagado = aPedroCalc.every(p=>p.ok);
-
-  if(!todoPagado){
-   const uc = vencido?'#8b0000':dias<=7?'#b5341a':dias<=14?'#9a6200':'#1a5c2a';
-   const ub = vencido?'#fff0f0':dias<=7?'#fff4f0':dias<=14?'#fffbf0':'#f0fff4';
-   const ubr= vencido?'#e08080':dias<=7?'#e0a090':dias<=14?'#e8cc80':'#80c080';
-   const ue = vencido?'🚨':dias<=7?'🔴':dias<=14?'🟠':'🟡';
+  if(todoPagado){
+   html+=`<div style="background:#f0fff4;border:2px solid #80c080;border-radius:14px;padding:16px;margin-bottom:14px;text-align:center">
+    <div style="font-size:36px">✅</div>
+    <div style="font-size:16px;font-weight:800;color:#1a5c2a;margin-top:6px">¡Pagado a Pedro!</div>
+    <div style="font-size:12px;color:#3a7a4a;margin-top:4px">Alojamientos cubiertos. ¡A disfrutar la ruta! 🏍️</div>
+   </div>`;
+  } else {
    const importeTxt = totalAP.toFixed(2).replace('.',',');
-   html+=`<div style="background:${ub};border:2px solid ${ubr};border-radius:14px;padding:18px 16px;margin-bottom:14px">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-     <span style="font-size:28px">${ue}</span>
+   html+=`<div style="background:#fff4f0;border:2px solid #e0a090;border-radius:14px;padding:18px 16px;margin-bottom:14px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+     <span style="font-size:28px">⏳</span>
      <div>
-      <div style="font-size:13px;font-weight:800;color:${uc};letter-spacing:.5px;text-transform:uppercase">Pago a Pedro — plazo límite</div>
-      <div style="font-size:11px;color:${uc};opacity:.75;margin-top:1px">Hotel Beri · Les Brases · Señal Aínsa</div>
+      <div style="font-size:13px;font-weight:800;color:#b5341a;letter-spacing:.5px;text-transform:uppercase">Pendiente a Pedro</div>
+      <div style="font-size:11px;color:#b5341a;opacity:.75;margin-top:1px">Hotel Beri · Les Brases · Señal Aínsa</div>
      </div>
     </div>
-    <div style="background:#fff;border-radius:10px;padding:16px;margin-bottom:12px;border:1px solid ${ubr};text-align:center">
-     <div style="font-size:11px;color:#7a7060;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px">Tu importe total</div>
-     <div style="font-size:48px;font-weight:800;color:${uc};line-height:1">${importeTxt} €</div>
+    <div style="background:#fff;border-radius:10px;padding:16px;margin-bottom:12px;border:1px solid #e0a090;text-align:center">
+     <div style="font-size:48px;font-weight:800;color:#b5341a;line-height:1">${importeTxt} €</div>
      <div style="font-size:11px;color:#7a7060;margin-top:8px">Bizum · Efectivo · Transferencia → a Pedro</div>
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;background:${uc};border-radius:8px;padding:12px 14px;margin-bottom:10px">
+    <label onclick="marcarTodoAPedro()" style="display:flex;align-items:center;gap:14px;background:#fff;border:2px solid #e0a090;border-radius:10px;padding:14px 16px;cursor:pointer">
+     <input type="checkbox" id="ckBanner" ${aPedroCalc.every(p=>p.ok)?'checked':''} style="width:26px;height:26px;accent-color:#b5341a;cursor:pointer;flex-shrink:0">
      <div>
-      <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">Fecha límite</div>
-      <div style="font-size:15px;font-weight:800;color:#fff">31 de marzo de 2026</div>
-     </div>
-     <div style="text-align:right">
-      <div style="font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px">${vencido?'Hace':'Faltan'}</div>
-      <div style="font-size:30px;font-weight:800;color:#fff;line-height:1">${vencido?'⚠️':dias}<span style="font-size:12px;font-weight:400;margin-left:2px">${vencido?'':'días'}</span></div>
-     </div>
-    </div>
-    <label onclick="marcarTodoAPedro()" style="display:flex;align-items:center;gap:14px;background:#fff;border:2px solid ${ubr};border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer">
-     <input type="checkbox" id="ckBanner" ${aPedroCalc.every(p=>p.ok)?'checked':''} style="width:26px;height:26px;accent-color:${uc};cursor:pointer;flex-shrink:0">
-     <div>
-      <div style="font-size:15px;font-weight:800;color:${uc}">✔ Ya he pagado a Pedro</div>
+      <div style="font-size:15px;font-weight:800;color:#b5341a">✔ Ya he pagado a Pedro</div>
       <div style="font-size:11px;color:#7a7060;margin-top:2px">Marca esto cuando hagas la transferencia</div>
      </div>
     </label>
-   </div>`;
-  } else {
-   html+=`<div style="background:#f0fff4;border:2px solid #80c080;border-radius:14px;padding:16px;margin-bottom:14px;text-align:center">
-    <div style="font-size:36px">✅</div>
-    <div style="font-size:16px;font-weight:800;color:#1a5c2a;margin-top:6px">¡Todo pagado a Pedro!</div>
-    <div style="font-size:12px;color:#3a7a4a;margin-top:4px">Alojamientos cubiertos. ¡A disfrutar la ruta! 🏍️</div>
    </div>`;
   }
  }
@@ -1461,7 +1412,38 @@ function renderPagos(){
   html+=rhtml;
  }
 
- html+=resumenViajeHTML();
+ // ── ÚLTIMO: PRESUPUESTO ESTIMADO (referencia) ──
+ // ── TARJETA PRESUPUESTO TOTAL DEL VIAJE ──
+ if(curP.pres){
+  const pr=curP.pres;
+  const cats=[
+   {ico:'🏨',lb:'Alojamiento',v:pr.aloj},
+   {ico:'⛽',lb:'Gasolina',v:pr.gas},
+   {ico:'🍽️',lb:'Cenas',v:pr.cenas},
+   {ico:'🥗',lb:'Comidas',v:pr.comidas},
+  ];
+  html+=`<div style="background:linear-gradient(135deg,#1c2b1a 0%,#2a3d28 100%);border-radius:14px;padding:18px 16px;margin-bottom:14px;color:#e8e0cc">
+   <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+    <span style="font-size:24px">💰</span>
+    <div>
+     <div style="font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#c8d8b0">Presupuesto estimado · Viaje completo</div>
+     <div style="font-size:11px;color:#8a9e80;margin-top:1px">${curP.mot} · hab. ${curP.hab}${curP.comp?' · con '+curP.comp:''}</div>
+    </div>
+   </div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+    ${cats.map(c=>`<div style="background:rgba(255,255,255,.08);border-radius:8px;padding:10px 12px">
+     <div style="font-size:10px;color:#8a9e80;text-transform:uppercase;letter-spacing:1px">${c.ico} ${c.lb}</div>
+     <div style="font-size:20px;font-weight:700;color:#e8e0cc;margin-top:3px">~${c.v}€</div>
+    </div>`).join('')}
+   </div>
+   <div style="background:#e8e0cc;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between">
+    <div style="font-size:12px;font-weight:700;color:#1c2b1a;text-transform:uppercase;letter-spacing:.5px">TOTAL estimado</div>
+    <div style="font-size:32px;font-weight:800;color:#1c2b1a;line-height:1">~${pr.total}€</div>
+   </div>
+   <div style="font-size:10px;color:#6a8060;margin-top:8px;text-align:center">* Estimación orientativa · Gasolina según autonomía de tu moto · Sin extras personales</div>
+  </div>`;
+ }
+
  document.getElementById('tab-pagos').innerHTML=html;
 }
 
@@ -2019,7 +2001,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '46';
+const APP_VERSION = '47';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2030,7 +2012,7 @@ const APP_VERSION = '46';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=46').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=47').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
