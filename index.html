@@ -1941,6 +1941,7 @@ function renderMC(){
     const resBadgeMC = item.reservado ? `<span style="background:#2e7d32;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">🔒 RESERVADO</span>` : '';
     html += `<div class="mc-bloque" style="border-color:#3a5a3a">
       <div style="padding:10px 14px;color:#c8e8a8;font-size:13px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.5px;color:#7ec87e;text-transform:uppercase;margin-bottom:5px">${item.mo}</div>
         <strong>${item.nm}</strong>${resBadgeMC}
         <span style="color:#5a9a5a;font-size:11px;display:block;margin-top:2px">${item.loc||''} ${item.pr?'· '+item.pr:''}</span>
       </div>
@@ -2011,7 +2012,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '52';
+const APP_VERSION = '53';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2022,7 +2023,7 @@ const APP_VERSION = '52';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=52').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=53').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
