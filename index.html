@@ -481,8 +481,7 @@ const D=[
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:null,pag:null},
  alm:[],
- cen:[{mo:'CENA — Llançà ✅ 21:30h',nm:'El Pati Blanc',loc:'Carrer Rafael Estela 6 — a 4 min a pie del Hotel Beri',tel:'+34972380800',map:'https://maps.google.com/?q=Pati+Blanc+Carrer+Rafael+Estela+6+Llanca',pr:'~19€ menú / €€',reservado:true,inf:'⭐4,3 (1.700+ reseñas). Patio acogedor, tapas y menú del día, cerveza artesana. ✅ <strong>Reserva CONFIRMADA para 8 a las 21:30h.</strong> 🌱 Avisada 1 vegana.'},
-{mo:'PLAN B — Llançà',nm:'La Brasa',loc:'Plaça Catalunya 6 — centro (20 min a pie o 3 min en moto)',tel:'+34659526851',map:'https://maps.google.com/?q=La+Brasa+Placa+Catalunya+6+Llanca',pr:'~25-35€/p',inf:'⭐4,4 · Brasa, tapas y raciones para compartir. Abierto jueves hasta 22:30h (más margen). Cuidadosos con dietas especiales. Alternativa de la zona si algún día queréis cambiar.'}],
+ cen:[{mo:'CENA — Llançà ✅ 21:30h',nm:'El Pati Blanc',loc:'Carrer Rafael Estela 6 — a 4 min a pie del Hotel Beri',tel:'+34972380800',map:'https://maps.google.com/?q=Pati+Blanc+Carrer+Rafael+Estela+6+Llanca',pr:'~19€ menú / €€',reservado:true,inf:'⭐4,3 (1.700+ reseñas). Patio acogedor, tapas y menú del día, cerveza artesana. ✅ <strong>Reserva CONFIRMADA para 8 a las 21:30h.</strong> 🌱 Avisada 1 vegana.'}],
  als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
  nesp:null},
@@ -1514,7 +1513,7 @@ function renderRuta(){
    tips:[
     {ico:'⚡',tx:'<strong>Etapa de rodaje.</strong> Salida de la gasolinera Ctra. de Barcelona PK 27 (Mataró) entre las 16-18h. C-32 + N-260 hasta Llançà. Ruta turística opcional por la tarde: Figueres, Cadaqués, Cap de Creus y Sant Pere de Rodes. Antonio J. 🎭 se une directo en el hotel desde Calonge. Perfecto para que el grupo se compacte.'},
     {ico:'⛽',tx:'<strong>Repostar en Llançà</strong> al llegar — así el Día 1 se sale con depósito lleno hacia Cap de Creus.'},
-    {ico:'🏨',tx:'<strong>Hotel Beri (Llançà):</strong> garaje para las motos, trato excelente a moteros. Cena fuera: El Pati Blanc (a 4 min) o La Brasa de plan B. Llegada de noche, sin prisas.'},
+    {ico:'🏨',tx:'<strong>Hotel Beri (Llançà):</strong> garaje para las motos, trato excelente a moteros. Cena confirmada: El Pati Blanc (a 4 min del hotel) a las 21:30h. ✅ Llegada de noche, sin prisas.'},
     {ico:'🌡️',tx:'Costa a nivel del mar: <strong>22-26°C</strong>. Ropa de verano pero chaqueta en la moto por si refresca de noche en la terraza.'},
    ],
    pois:[
@@ -2003,7 +2002,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '49';
+const APP_VERSION = '50';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2014,7 +2013,7 @@ const APP_VERSION = '49';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=49').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=50').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
