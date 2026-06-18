@@ -481,7 +481,7 @@ const D=[
    inf:'Llegada de noche · Parking motos disponible',
    res:'Reserva confirmada',cod:'6331.570.462',pin:'9967',can:null,pag:null},
  alm:[],
- cen:[{mo:'CENA — Llançà ✅ 21:30h',nm:'El Pati Blanc',loc:'Carrer Rafael Estela 6 — a 4 min a pie del Hotel Beri',tel:'+34972380800',map:'https://maps.google.com/?q=Pati+Blanc+Carrer+Rafael+Estela+6+Llanca',pr:'~19€ menú / €€',inf:'⭐4,3 (1.700+ reseñas). Patio acogedor, tapas y menú del día, cerveza artesana. ✅ <strong>Reserva CONFIRMADA para 8 a las 21:30h.</strong> 🌱 Avisada 1 vegana.'},
+ cen:[{mo:'CENA — Llançà ✅ 21:30h',nm:'El Pati Blanc',loc:'Carrer Rafael Estela 6 — a 4 min a pie del Hotel Beri',tel:'+34972380800',map:'https://maps.google.com/?q=Pati+Blanc+Carrer+Rafael+Estela+6+Llanca',pr:'~19€ menú / €€',reservado:true,inf:'⭐4,3 (1.700+ reseñas). Patio acogedor, tapas y menú del día, cerveza artesana. ✅ <strong>Reserva CONFIRMADA para 8 a las 21:30h.</strong> 🌱 Avisada 1 vegana.'},
 {mo:'PLAN B — Llançà',nm:'La Brasa',loc:'Plaça Catalunya 6 — centro (20 min a pie o 3 min en moto)',tel:'+34659526851',map:'https://maps.google.com/?q=La+Brasa+Placa+Catalunya+6+Llanca',pr:'~25-35€/p',inf:'⭐4,4 · Brasa, tapas y raciones para compartir. Abierto jueves hasta 22:30h (más margen). Cuidadosos con dietas especiales. Alternativa de la zona si algún día queréis cambiar.'}],
  als:[{t:'warn',h:'⚠️ Acceso al Faro de Cap de Creus RESTRINGIDO',b:'El acceso en moto está <strong>prohibido de 9:30 a 21:30h</strong> (10 jun – 30 sep). Multa de 200€ por matrícula. Plan: llegar al faro <strong>antes de las 9:15h</strong> o después de las 21:30h. Aparcar en <em>Corral d\'en Morell</em> (gratuito) y tomar la lanzadera (7-8€ ida/vuelta) si se llega en horario restringido.'}],
  foro:'Primera etapa corta para llegar frescos. Cap de Creus es el inicio oficial de la Transpirenaica.',
@@ -562,8 +562,8 @@ const D=[
  hotel:{ok:true,nm:'Casa Lola · Isaba',desayuno:false,pagdirecto:true,dir:'Mendigatxa 17, Isaba, Navarra',tel:'+34948893012',web:'https://www.hostal-lola.com/',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra+Mendigatxa+17',
    inf:'€547,60 total · Pago directo en el hostal · ⚠️ <strong>AL HACER CHECK-IN: la cena está reservada para 7 — avisar que seréis 8</strong>',
    res:'Confirmado',cod:null,can:null,pag:'€547,60 — confirmar con tarjeta'},
- alm:[{mo:'COMIDA — Laruns 🍽️✅',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:'+33559053014',map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Comidas 12:00-14:30h. ✅ <strong>RESERVA CONFIRMADA</strong> a nombre de Pedro para 8 personas. Especialidad: Garbure béarnaise y queso de Ossau.'}],
- cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 ✅ Cena reservada a las 21:30h para 8. 🌱 Avisar en el check-in: 1 vegana.'}],
+ alm:[{mo:'COMIDA — Laruns 🍽️✅',nm:'Hôtel-Restaurant d\'Ossau',loc:'Place de la Mairie, Laruns, Francia',tel:'+33559053014',map:'https://maps.google.com/?q=Hotel+Restaurant+d+Ossau+Place+de+la+Mairie+Laruns+Francia',pr:'~18-25€/p',reservado:true,inf:'En el corazón del Valle de Ossau. Cocina de montaña francesa. Comidas 12:00-14:30h. ✅ <strong>RESERVA CONFIRMADA</strong> a nombre de Pedro para 8 personas. Especialidad: Garbure béarnaise y queso de Ossau.'}],
+ cen:[{mo:'CENA — Isaba',nm:'Hostal Lola',loc:'Isaba, Navarra',tel:'+34948893012',map:'https://maps.google.com/?q=Casa+Lola+Isaba+Navarra',pr:'~18-25€/p',reservado:true,inf:'Cocina navarra de montaña. En el propio alojamiento. 🕘 ✅ Cena reservada a las 21:30h para 8. 🌱 Avisar en el check-in: 1 vegana.'}],
  als:[{t:'w',h:'🚴 ZONA LLENA DE CICLISTAS — QUEBRANTAHUESOS',b:'Ayer sábado se corrió la Quebrantahuesos (8.000 ciclistas) por Sabiñánigo, Portalet y Valle de Tena. Hoy domingo la zona Biescas–Formigal–Portalet y el Aubisque seguirán llenos de ciclistas. Paciencia total: adelantar con mucho espacio y NUNCA en curva.'},
      {t:'w',h:'⛽ ES DOMINGO — GASOLINERAS MUY LIMITADAS',b:'En Francia el domingo muchas gasolineras están cerradas o son solo automáticas. Llenar en Biescas (España) y en TotalEnergies Oloron después del Aubisque. No improvisar.'}],
  foro:'El Col d\'Aubisque es uno de los puertos míticos del Tour. La Pierre Saint-Martin es frontera con España por pista. Etapa épica.',
@@ -996,8 +996,9 @@ function renderDias(){
   if(d.alm&&d.alm.length){
    html+='<div class="dsec"><div class="dstit">🍽️ comida</div>';
    d.alm.forEach((r,j)=>{
+    const resBadgeAlm=r.reservado?`<span style="background:var(--grn);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;margin-left:6px">🔒 RESERVADO</span>`:'';
     html+=`<div class="rbox${j===0?' top':''}">
-     <div class="rmom">${r.mo}</div><div class="rnm">${r.nm}</div>
+     <div class="rmom">${r.mo}${resBadgeAlm}</div><div class="rnm">${r.nm}</div>
      <div class="rinf">${r.loc} · ${r.pr}<br>${r.inf}</div>
      <div class="lrow"><a class="lk map" href="${r.map}" target="_blank">🗺 Mapa</a>${r.tel?`<a class="lk tel" href="tel:${r.tel}">📞 ${r.tel}</a>`:''}</div>
     </div>`;
@@ -2001,7 +2002,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '47';
+const APP_VERSION = '48';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2012,7 +2013,7 @@ const APP_VERSION = '47';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=47').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=48').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
