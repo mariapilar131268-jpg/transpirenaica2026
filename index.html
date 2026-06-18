@@ -1948,6 +1948,20 @@ function renderMC(){
     </div>`;
   }
 
+  // ── Cena (solo si el día tiene también comida) ──
+  if(d.alm && d.alm.length > 0 && d.cen && d.cen.length > 0){
+    const cena = d.cen[0];
+    const resBadgeCen = cena.reservado ? `<span style="background:#2e7d32;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">🔒 RESERVADO</span>` : '';
+    html += `<div class="mc-bloque" style="border-color:#3a5a3a">
+      <div style="padding:10px 14px;color:#c8e8a8;font-size:13px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.5px;color:#7ec87e;text-transform:uppercase;margin-bottom:5px">${cena.mo}</div>
+        <strong>${cena.nm}</strong>${resBadgeCen}
+        <span style="color:#5a9a5a;font-size:11px;display:block;margin-top:2px">${cena.loc||''} ${cena.pr?'· '+cena.pr:''}</span>
+        <div style="margin-top:8px"><a href="${cena.map}" target="_blank" class="mc-btn-mc">🗺️ Mapa</a>${cena.tel?` <a href="tel:${cena.tel}" class="mc-btn-mc">📞 ${cena.tel}</a>`:''}</div>
+      </div>
+    </div>`;
+  }
+
   // ── Gasolinera crítica ──
   if(gasCrit){
     html += `<div class="mc-bloque ${gasCrit.key ? 'rojo' : ''}">
@@ -2012,7 +2026,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '53';
+const APP_VERSION = '54';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2023,7 +2037,7 @@ const APP_VERSION = '53';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=53').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=54').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
