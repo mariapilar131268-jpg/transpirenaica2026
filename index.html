@@ -1926,12 +1926,13 @@ function renderMC(){
       <div class="mc-label">${labelComida} <span style="font-size:11px;color:#5a9a5a">(cambia la parada en el mapa)</span></div>`;
     listaComida.forEach((item, i) => {
       const medal = i===0?'🏆':i===1?'🥈':'🥉';
+      const resBadgeMC = item.reservado ? `<span style="background:#2e7d32;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle">🔒 RESERVADO</span>` : '';
       html += `<button onclick="mcSelComida(${i})" id="mc-alm-${mcDiaActual}-${i}"
         style="width:100%;text-align:left;background:${i===0?'#1a3a1a':'#0f2a0f'};
         border:2px solid ${i===0?'#7ec87e':'#2a4a2a'};
         border-radius:10px;padding:10px 14px;color:#c8e8a8;font-size:13px;
         cursor:pointer;margin-bottom:6px">
-        ${medal} <strong>${item.nm}</strong>
+        ${medal} <strong>${item.nm}</strong>${resBadgeMC}
         <span style="color:#5a9a5a;font-size:11px;display:block;margin-top:2px">${item.loc||''} ${item.pr?'· '+item.pr:''}</span>
       </button>`;
     });
@@ -2002,7 +2003,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '48';
+const APP_VERSION = '49';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2013,7 +2014,7 @@ const APP_VERSION = '48';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=48').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=49').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;

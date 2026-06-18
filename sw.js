@@ -1,4 +1,4 @@
-const CACHE = 'transpi2026-v48';
+const CACHE = 'transpi2026-v49';
 const ASSETS = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', e => {
