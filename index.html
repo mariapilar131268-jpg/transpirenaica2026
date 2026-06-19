@@ -501,15 +501,15 @@ const D=[
        {p:'⛽ Repsol — La Seu d\'Urgell',n:'Avinguda Valira 25 · Llenar antes del Cantó',d:'gas'},
        {p:'Port del Cantó',n:'Puerto de montaña con vistas al Pallars',d:'special'},
        {p:'🏁 Sort — Hotel Les Brases',n:'Llegada ~18:30h',d:'end'},
-       {p:'🍽️ Can Punyetes — Cena ~20:30h',n:'No reservan · Llegar pronto para mesa de 8 · a pie del hotel',d:'food'}],
+       {p:'🍽️ Escalarre Rock-Café — Cena ~20:30h',n:'Centro de Sort · Hamburguesas, pizzas y tapas · Cocina hasta 22:45h',d:'food'}],
  gas:[{nm:'Repsol — Puigcerdà',hr:'24h',dir:'CR N-152 km 171, Puigcerdà',tel:null,map:'https://maps.google.com/?q=Area+Servei+Puigcerda+Gasolinera+Repsol+N152',key:true,not:'Llenar bien antes de entrar en la Cerdanya y el Pallars.'},
       {nm:'Repsol — La Seu d\'Urgell',hr:'7:00-22:00h',dir:'Avinguda Valira 25, La Seu d\'Urgell',tel:null,map:'https://maps.google.com/?q=Repsol+La+Seu+d+Urgell+Avinguda+Valira',key:true,not:'Llenar obligatorio antes del Port del Cantó. Sin gasolinera entre La Seu y Sort.'}],
  hotel:{ok:true,nm:'Hotel Les Brases · Sort',desayuno:true,dir:'Sort, Lleida',tel:'+34973620089',web:'https://www.hotellesbrases.com/',map:'https://maps.google.com/?q=Hotel+Les+Brases+Sort+Lleida',
    inf:'Loc: 20528',
    res:'Confirmado',cod:'1234V',codlabel:'🚪 Acceso puerta',can:null,pag:null},
  alm:[{mo:'COMIDA 🍽️',nm:'Restaurant Ruta 260',loc:'N-260 km 200 · Prullans, Cerdanya',tel:null,map:'https://maps.google.com/?q=Ruta+260,+Ctra+Nacional+260,+Km+200,+Prullans',pr:'~15-20€/p',inf:'En ruta, antes de La Seu d\'Urgell. Punto kilométrico N-260 km 200.'}],
- cen:[{mo:'CENA — Sort',nm:'Can Punyetes',loc:'Sort centro, a pie del hotel',tel:null,map:'https://maps.google.com/?q=Can+Punyetes+Sort+Lleida',pr:'~30-35€/p',inf:'⭐4,4 · Carnes a la brasa y cocina catalana. ⚠️ NO acepta reservas — <strong>llegar a las 20:30h</strong> para asegurar mesa de 8.'},
-{mo:'ALTERNATIVA — Sort',nm:'Café Pessets',loc:'Av. Comtes del Pallars 28 — bajos Hotel Pessets',tel:'+34973620517',map:'https://maps.google.com/?q=Cafe+Pessets+Sort',pr:'~25-30€/p',inf:'⭐4,5 · Solete Guía Repsol. Tapas y platillos para compartir, vinos y quesos. ✅ Acepta reservas y 🌱 tiene opciones veganas. Cocina hasta tarde. Plan B perfecto si Can Punyetes está lleno.'}],
+ cen:[{mo:'CENA — Sort',nm:'Escalarre Rock-Café',loc:'Av. Comtes del Pallars 39, Sort centro',tel:'+34973620694',map:'https://maps.google.com/?q=Escalarre+Rock+Cafe+Av+Comtes+del+Pallars+39+Sort',pr:'~15-25€/p',inf:'Bar-restaurante-pizzería en pleno centro de Sort, a pie del hotel. Hamburguesas pallaresas, pizzas, tapas y menú diario. Cocina hasta las 22:45h (abierto hasta 23:30h). Sin reserva, local amplio (aforo 60).'},
+{mo:'ALTERNATIVA — Sort',nm:'Café Pessets',loc:'Av. Comtes del Pallars 28 — bajos Hotel Pessets',tel:'+34973620517',map:'https://maps.google.com/?q=Cafe+Pessets+Sort',pr:'~25-30€/p',inf:'⭐4,5 · Solete Guía Repsol. Tapas y platillos para compartir, vinos y quesos. ✅ Acepta reservas y 🌱 tiene opciones veganas. Cocina hasta tarde.'}],
  als:[],
  foro:'La Collada de Toses y el Port del Cantó son dos joyas poco conocidas. Besalú merece la parada.',
  nesp:null},
@@ -1245,7 +1245,8 @@ function resumenViajeHTML(){
   <div><div class="ppt">RESTAURANTES</div><div class="pps">Reservados y propuestos · 🌱 Mónica vegana: avisar siempre</div></div></div>`;
  const rests=[
   {ico:'✅',tx:'<strong>Jue 18 · El Pati Blanc (Llançà) 21:30h</strong> · CONFIRMADA para 8 · a 4 min del hotel · 🌱 vegana avisada',bg:'#edf7ef'},
-  {ico:'⏰',tx:'<strong>Vie 19 · Can Punyetes (Sort)</strong> · NO reservan — llegar 20:30h · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
+  {ico:'🍔',tx:'<strong>Vie 19 · Escalarre Rock-Café (Sort) ~20:30h</strong> · centro de Sort, sin reserva · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
+  {ico:'✅',tx:'<strong>Sáb 20 · Casa Pau Sidrería (Arties) 14:00h</strong> — comida CONFIRMADA para 8 · Plan B: Tauèrna Urtau',bg:'#edf7ef'},
   {ico:'🍺',tx:'<strong>Sáb 20 · Mora de Nuei (Aínsa) 21:00h</strong> · no reservan: avanzadilla a las 20:40h · 💚 ¡la noche de Mónica, carta vegana de verdad! 🌱 · ☎️ 676 415 404',bg:false},
   {ico:'✅',tx:'<strong>Dom 21 · L\'Estive (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
   {ico:'✅',tx:'<strong>Dom 21 · Hostal Lola (Isaba) 21:30h</strong> — cena reservada para 8',bg:'#edf7ef'},
@@ -1533,13 +1534,13 @@ function renderRuta(){
     {ico:'🏔️',tx:'<strong>Collada de Toses (1.800m):</strong> joya del día. Veteranos de la ruta la destacan como uno de los mejores tramos. Pasar antes de las 11h para disfrutarlo sin ciclistas ni caravanas. Asfalto bueno. Alternativa recomendada por foros: carretera de Castellar de n\'Hug y La Molina (menos tráfico y muy bonita, aunque más lenta).'},
     {ico:'⛽',tx:'<strong>Alberto 🐛 y Oriol 🐣 — CRÍTICO:</strong> depósitos de 14L. Repostar obligatorio en Ripoll (km ~100). La bonÀrea de Sort tiene gasolinera justo antes de llegar desde el Coll del Canto — usarla siempre. No llegar a Sort con menos de ¼ de depósito.'},
     {ico:'☔',tx:'<strong>Niebla matinal</strong> habitual en el Pirineo catalán, sobre todo en fondos de valle. Traje de agua a mano. Cambios de tiempo rápidos y a menudo inesperados — el Pirineo tiene su propio microclima. Foros avisan: puede salirse de Sort con sol y encontrar tromba a los 20 km.'},
-    {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Gasolinera bonÀrea antes del pueblo. Cena en Can Punyetes (brasa catalana, no reserva: llegar 20:30h) o Café Pessets (Solete Repsol, sí reserva). Ambos a pie del hotel.'},
+    {ico:'🍺',tx:'<strong>Sort:</strong> pueblo motero por excelencia. Gasolinera bonÀrea antes del pueblo. Cena en Escalarre Rock-Café (hamburguesas, pizzas, tapas, sin reserva) o Café Pessets (Solete Repsol, sí reserva). Ambos a pie del hotel.'},
    ],
    pois:[
     {ico:'🏔️',nm:'Faro del Cap de Creus',det:'<span class="tt">🔑 Punto de salida oficial</span><span class="tm">⏱ 8:00h · 20 min a pie</span> El extremo más oriental de la Península. 📸 Foto oficial con los 8 al completo, las motos y el Mediterráneo.',mapq:'Faro Cap de Creus Girona'},
     {ico:'⛽',nm:'Gasolinera Ripoll',det:'<span class="tt">⛽ Repostaje km ~100</span><span class="tm">⏱ Parada técnica</span> Último repostaje seguro antes del Pirineo para depósitos pequeños.',mapq:'gasolinera Ripoll Catalunya'},
     {ico:'🏔️',nm:'Collada de Toses — 1.800m',det:'<span class="tm">⏱ ~11:00h</span> Punto de foto y reagrupamiento. Vistas espectaculares al Pirineo. Cuidado con ciclistas en la bajada.',mapq:'Collada de Toses La Molina'},
-    {ico:'🍴',nm:'Can Punyetes — Cena en Sort',det:'<span class="tt">🍽️ Cena</span><span class="tm">⏱ 20:30h — llegar pronto, no reservan</span> Brasa catalana a pie del hotel. Alternativa con reserva: Café Pessets (+34 973 62 05 17).',mapq:'Can Punyetes Sort Lleida'},
+    {ico:'🍴',nm:'Escalarre Rock-Café — Cena en Sort',det:'<span class="tt">🍽️ Cena</span><span class="tm">⏱ ~20:30h — sin reserva</span> Hamburguesas, pizzas y tapas en pleno centro, a pie del hotel. Alternativa con reserva: Café Pessets (+34 973 62 05 17).',mapq:'Escalarre Rock Cafe Sort Lleida'},
     {ico:'🍀',nm:'Administración de Lotería de Sort',det:'<span class="tt">⭐ Tradición motera</span><span class="tm">⏱ 5 min · en el pueblo</span> Sort significa "suerte" en catalán. Comprar un décimo es tradición entre moteros que hacen la Transpirenaica. Citado en todos los foros. ¡Obligatorio!',mapq:'administracion loteria Sort Lleida'},
    ],
    meteo:{alt:'1.800m',tmin:'8°C',tmax:'24°C',lluvia:'☁️ Posible',viento:'💨 Moderado'}},
@@ -2031,7 +2032,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '60';
+const APP_VERSION = '61';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2042,7 +2043,7 @@ const APP_VERSION = '60';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=60').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=61').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
