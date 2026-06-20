@@ -1855,9 +1855,10 @@ function buildGmapsTramos(d, almIdx, conOrigen){
   if(!cutValido) cut = Math.ceil(paradas.length/2)-1;
   const man = paradas.slice(0,cut+1), tar = paradas.slice(cut+1);
   const urlMan = (conOrigen&&origen) ? 'https://www.google.com/maps/dir/'+origen+'/'+man.join('/') : pref+man.join('/');
+  const urlTar = pref+man[man.length-1]+'/'+tar.join('/'); // la comida (último punto de la mañana) como origen explícito, no en blanco
   return [
     {lb:'☀️ Mañana — hasta la comida', url:urlMan},
-    {lb:'🌄 Tarde — comida → hotel', url:pref+tar.join('/')}
+    {lb:'🌄 Tarde — comida → hotel', url:urlTar}
   ];
 }
 
@@ -2058,7 +2059,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '81';
+const APP_VERSION = '82';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2069,7 +2070,7 @@ const APP_VERSION = '81';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=81').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=82').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
