@@ -1257,11 +1257,13 @@ function resumenViajeHTML(){
   <div><div class="ppt">RESTAURANTES</div><div class="pps">Reservados y propuestos · 🌱 Mónica vegana: avisar siempre</div></div></div>`;
  const rests=[
   {ico:'✅',tx:'<strong>Jue 18 · El Pati Blanc (Llançà) 21:30h</strong> · CONFIRMADA para 8 · a 4 min del hotel · 🌱 vegana avisada',bg:'#edf7ef'},
+  {ico:'🥪',tx:'<strong>Vie 19 · Restaurant Ruta 260 (Prullans) ~13:00h</strong> · de paso, N-260 km 200 · sin reserva',bg:false},
   {ico:'🍔',tx:'<strong>Vie 19 · Escalarre Rock-Café (Sort) ~20:30h</strong> · centro de Sort, sin reserva · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
   {ico:'✅',tx:'<strong>Sáb 20 · Casa Pau Sidrería (Arties) 14:00h</strong> — comida CONFIRMADA para 8 · Plan B: Tauèrna Urtau',bg:'#edf7ef'},
   {ico:'🍺',tx:'<strong>Sáb 20 · Mora de Nuei (Aínsa) 21:00h</strong> · no reservan: avanzadilla a las 20:40h · 💚 ¡la noche de Mónica, carta vegana de verdad! 🌱 · ☎️ 676 415 404',bg:false},
   {ico:'✅',tx:'<strong>Dom 21 · L\'Estive (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
   {ico:'✅',tx:'<strong>Dom 21 · Hostal Lola (Isaba) 21:30h</strong> — cena reservada para 8',bg:'#edf7ef'},
+  {ico:'🥘',tx:'<strong>Lun 22 · Roncesvalles ~13:00h</strong> — sin reserva · Opción A: Restaurante La Posada · Opción B: Casa Sabina',bg:false},
   {ico:'🍢',tx:'<strong>Lun 22 · Pintxos Hondarribia</strong> — Gran Sol (obligado) → Bar Mika (gin-tonics brindis final) · sin reserva, son barras',bg:'#edf7ef'}
  ];
  rests.forEach(r=>{
@@ -2060,7 +2062,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '73';
+const APP_VERSION = '74';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2071,7 +2073,7 @@ const APP_VERSION = '73';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=73').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=74').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
