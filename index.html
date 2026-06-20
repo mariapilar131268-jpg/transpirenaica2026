@@ -523,7 +523,9 @@ const D=[
        {p:'Salardú → Arties',n:'Valle de Arán'},
        {p:'🍽️ Casa Pau Sidrería — Comida 14:00h',n:'✅ Reserva confirmada para 8 · Arties, Val d\'Arán',d:'food',mapq:'Casa Pau Sidreria, Calle Molino 14, Arties'},
        {p:'⛽ Repsol CRED — Vielha',n:'CR N-230 pk 163.7 · Llenar para Francia',d:'gas',mapq:'CR N-230, km 163.7, Vielha, Lleida'},
-       {p:'Bossòst → Bagnères-de-Luchon',n:'Entrada a Francia'},
+       {p:'Bossòst',n:'Último pueblo español antes de cruzar a Francia'},
+       {p:'Port del Portillón — 1.293m',n:'Frontera con Francia · Recomendado por los lugareños de la zona',d:'special',mapq:'42.76917,0.66000'},
+       {p:'Bagnères-de-Luchon',n:'Ya en Francia'},
        {p:'Col de Peyresourde',n:'Puerto francés con vistas espectaculares',d:'special',mapq:'42.80222,0.46278'},
        {p:'Saint-Lary-Soulan → Túnel Bielsa-Aragnouet',n:'Vuelta a España por el túnel'},
        {p:'Bielsa',n:'Pueblo aragonés de montaña'},
@@ -536,10 +538,7 @@ const D=[
    res:'Confirmado',cod:null,can:null,pag:null},
  alm:[{mo:'COMIDA — Arties ✅ 14:00h',nm:'Casa Pau Sidrería',loc:'Arties, Val d\'Arán',tel:'+34973645231',map:'https://maps.google.com/?q=Casa+Pau+Sidreria+Calle+Molino+14+Arties',pr:'~20-30€/p (menú sidrería completo ~40€/p)',reservado:true,
        inf:'En Arties, junto al recinto de los osos. Cocina vasco-aranesa, parrilla y menú sidrería (bacalao, chuletón, sidra de barrica). ✅ <strong>Reserva CONFIRMADA a las 14:00h</strong> para 8.',
-       mapsRuta:'https://www.google.com/maps/dir//Poligon+Ind.+Els+Salancons+1-4,+25560+Sort,+Lleida/42.66389,0.98194/Casa+Pau+Sidreria,+Calle+Molino+14,+Arties/CR+N-230,+km+163.7,+Vielha,+Lleida/Bossost/Bagneres-de-Luchon/42.80222,0.46278/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'},
-      {mo:'ALTERNATIVA — Arties',nm:'Tauèrna Urtau',loc:'Arties, Val d\'Arán',tel:'+34973641648',map:'https://maps.google.com/?q=Tauerna+Urtau+Arties+Plaza+Urtau+10',pr:'~15-20€/p',
-       inf:'⭐ Recomendado en foros moteros. Mismo pueblo que Casa Pau. Cocina aranesa. Cerrado lunes. Plan B solo si hay algún problema con la reserva.',
-       mapsRuta:'https://www.google.com/maps/dir//Poligon+Ind.+Els+Salancons+1-4,+25560+Sort,+Lleida/42.66389,0.98194/Tauerna+Urtau+Arties,+Plaza+Urtau,+10,+Arties/CR+N-230,+km+163.7,+Vielha,+Lleida/Bossost/Bagneres-de-Luchon/42.80222,0.46278/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
+       mapsRuta:'https://www.google.com/maps/dir//Poligon+Ind.+Els+Salancons+1-4,+25560+Sort,+Lleida/42.66389,0.98194/Casa+Pau+Sidreria,+Calle+Molino+14,+Arties/CR+N-230,+km+163.7,+Vielha,+Lleida/Bossost/42.76917,0.66000/Bagneres-de-Luchon/42.80222,0.46278/Saint-Lary-Soulan/Tunel+de+Bielsa-Aragnouet/Bielsa/Hostal+Pirineos+Ainsa'}],
  cen:[{mo:'CENA — Aínsa 🍺 21:00h',nm:'Mora de Nuei',loc:'C. Portal de Abajo 2 — entrada al casco antiguo, ~5 min del hostal',tel:'+34676415404',map:'https://maps.google.com/?q=Mora+de+Nuei+Portal+de+Abajo+2+Ainsa',pr:'~20-28€/p',inf:'⭐4,5 · Terraza con vistas, cerveza artesana y buena música. Cocina hasta las 23h. <strong>NO cogen reservas</strong>: el plan es que una avanzadilla baje a las 20:40h a pedir cervezas mientras montan la mesa de 8 (comedor casi seguro, terraza según esté). ☎️ Llamar esa tarde para tantear: 676 415 404. 💚 <strong>¡La noche de Mónica! Carta vegana de verdad</strong> — falafel, timbal de verduras, curry... aquí cena de lujo 🌱. Plan C: restaurante del propio Hostal Pirineos.'}],
  als:[{t:'d',h:'⛽ BONAIGUA — DEPÓSITOS PEQUEÑOS EN ALERTA',b:'Alberto (14L) y Oriol (14,5L): LLENAR en bonÀrea Sort al 100%. No hay gasolineras entre Sort y Vielha (~75 km).'},
       {t:'w',h:'🥶 FRÍO EN EL BONAIGUA (2.072m)',b:'En junio puede hacer frío en la cima. Capa térmica A MANO antes de subir.'},
@@ -757,6 +756,7 @@ function showTab(id,btn){
 function renderResumenRuta(){
  const puertosGlobales=[
   {nm:'Port de la Bonaigua',alt:'2.072',dia:'Día 2',stars:'★★★',color:'#1a5a7a'},
+  {nm:'Port del Portillón',alt:'1.293',dia:'Día 2',stars:'★★',color:'#1a5a7a'},
   {nm:'Col de Peyresourde',alt:'1.569',dia:'Día 2',stars:'★★',color:'#1a5a7a'},
   {nm:"Col d'Aubisque",alt:'1.709',dia:'Día 3',stars:'★★★',color:'#7a3a00'},
   {nm:'Puerto del Portalet',alt:'1.794',dia:'Día 3',stars:'★★',color:'#7a3a00'},
@@ -1257,7 +1257,7 @@ function resumenViajeHTML(){
   {ico:'✅',tx:'<strong>Jue 18 · El Pati Blanc (Llançà) 21:30h</strong> · CONFIRMADA para 8 · a 4 min del hotel · 🌱 vegana avisada',bg:'#edf7ef'},
   {ico:'🥪',tx:'<strong>Vie 19 · Restaurant Ruta 260 (Prullans) ~13:00h</strong> · de paso, N-260 km 200 · sin reserva',bg:false},
   {ico:'🍔',tx:'<strong>Vie 19 · Escalarre Rock-Café (Sort) ~20:30h</strong> · centro de Sort, sin reserva · Plan B: Café Pessets ☎️ 973 620 517 (sí reserva, opciones veganas)',bg:false},
-  {ico:'✅',tx:'<strong>Sáb 20 · Casa Pau Sidrería (Arties) 14:00h</strong> — comida CONFIRMADA para 8 · Plan B: Tauèrna Urtau',bg:'#edf7ef'},
+  {ico:'✅',tx:'<strong>Sáb 20 · Casa Pau Sidrería (Arties) 14:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
   {ico:'🍺',tx:'<strong>Sáb 20 · Mora de Nuei (Aínsa) 21:00h</strong> · no reservan: avanzadilla a las 20:40h · 💚 ¡la noche de Mónica, carta vegana de verdad! 🌱 · ☎️ 676 415 404',bg:false},
   {ico:'✅',tx:'<strong>Dom 21 · L\'Estive (Laruns) ~13:00h</strong> — comida CONFIRMADA para 8',bg:'#edf7ef'},
   {ico:'✅',tx:'<strong>Dom 21 · Hostal Lola (Isaba) 21:30h</strong> — cena reservada para 8',bg:'#edf7ef'},
@@ -1564,15 +1564,16 @@ function renderRuta(){
     {ico:'🏔️',tx:'<strong>Port de la Bonaigua (2.072m):</strong> el más alto de Cataluña. Asfalto variable — baches entre Baqueira y la cima después del invierno. <em>Motos grandes con maletas: ir suave.</em>'},
     {ico:'🌡️',tx:'En el puerto puede hacer <strong>8-12°C</strong> aunque abajo haya 25°C. Capa térmica a mano, especialmente Oriol 🐣 (naked sin carenado).'},
     {ico:'☔',tx:'<strong>Regla de oro:</strong> puedes salir de Sort con sol y encontrarte tormenta en la Bonaigua. Hacer el puerto antes de las 13h.'},
-    {ico:'🍖',tx:'<strong>Comida en Arties — Casa Pau Sidrería:</strong> ✅ reserva confirmada para 8 a las 14:00h. Cocina vasco-aranesa, parrilla y menú sidrería. Plan B si hiciera falta: Tauèrna Urtau, mismo pueblo.'},
-    {ico:'🛣️',tx:'<strong>Vielha → Peyresourde → Aínsa:</strong> salida de España por Bossòst, Col de Peyresourde en Francia y vuelta por el túnel de Bielsa. Carreteras del Pirineo aragonés espectaculares y poco transitadas.'},
+    {ico:'🍖',tx:'<strong>Comida en Arties — Casa Pau Sidrería:</strong> ✅ reserva confirmada para 8 a las 14:00h. Cocina vasco-aranesa, parrilla y menú sidrería.'},
+    {ico:'🛣️',tx:'<strong>Vielha → Portillón → Peyresourde → Aínsa:</strong> salida de España por Bossòst y el Port del Portillón (1.293m, frontera, recomendado por los lugareños), Col de Peyresourde en Francia y vuelta por el túnel de Bielsa. Carreteras del Pirineo aragonés espectaculares y poco transitadas.'},
     {ico:'🏘️',tx:'<strong>Aínsa:</strong> casco medieval del siglo XI. Llegar con luz — la plaza mayor es impresionante. '},
     {ico:'🛣️',tx:'<strong>Configurar Maps SIN peajes ni autopistas</strong> antes de salir (Ajustes → Opciones de ruta). Si no, puede recalcular por una vía rápida distinta a la de puertos.'},
    ],
    pois:[
     {ico:'🏔️',nm:'Port de la Bonaigua — 2.072m',det:'<span class="tm">⏱ ~9:30h · Parada foto</span> El paso de montaña más alto de Cataluña. Vistas al Val d\u2019Arán. Señal de móvil nula.',mapq:'42.66389,0.98194'},
-    {ico:'🍖',nm:'Casa Pau Sidrería — Comida en Arties',det:'<span class="tt">✅ Reserva CONFIRMADA para 8</span><span class="tm">⏱ 14:00h</span> Junto al recinto de los osos. Cocina vasco-aranesa, parrilla y menú sidrería. Plan B: Tauèrna Urtau, mismo pueblo.',mapq:'Casa Pau Sidreria Calle Molino 14 Arties'},
+    {ico:'🍖',nm:'Casa Pau Sidrería — Comida en Arties',det:'<span class="tt">✅ Reserva CONFIRMADA para 8</span><span class="tm">⏱ 14:00h</span> Junto al recinto de los osos. Cocina vasco-aranesa, parrilla y menú sidrería.',mapq:'Casa Pau Sidreria Calle Molino 14 Arties'},
     {ico:'🏘️',nm:'Vielha — Val d\u2019Arán',det:'<span class="tm">⏱ 15 min parada</span> Capital del Arán. Paseo rápido por el casco antiguo, iglesia románica. Última gasolinera antes de Francia.',mapq:'Vielha centro Val Aran'},
+    {ico:'🇫🇷',nm:'Port del Portillón — 1.293m',det:'<span class="tm">⏱ Frontera con Francia</span> Recomendado por los lugareños de la zona. Puerto histórico (Vuelta a España y Tour de Francia), entre Bossòst y Bagnères-de-Luchon.',mapq:'42.76917,0.66000'},
     {ico:'🏰',nm:'Casco medieval de Aínsa',det:'<span class="tt">🏨 Noche Día 2</span><span class="tm">⏱ Llegada ~18h</span> Plaza mayor del siglo XI rodeada de arcadas. Pasear antes de cenar. Impresionante al atardecer.',mapq:'Plaza Mayor Ainsa Huesca'},
     {ico:'🍺',nm:'Mora de Nuei — Cena en Aínsa',det:'<span class="tt">🍽️ Cena ~21:00h</span><span class="tm">⏱ No reservan: avanzadilla a las 20:40h</span> Terraza, cerveza artesana y buena música, a 5 min del hostal. 💚 La noche de Mónica: carta vegana de verdad. Plan C: restaurante del propio hostal.',mapq:'Mora de Nuei Portal de Abajo 2 Ainsa'},
    ],
@@ -1773,6 +1774,7 @@ function buildGmapsUrl(d, almIdx){
       qComida,                                   // comida Arties
       'CR+N-230,+km+163.7,+Vielha,+Lleida',      // gas Vielha, antes de Francia
       'Bossost',
+      '42.76917,0.66000', // Port del Portillón 1.293m, frontera con Francia
       'Bagneres-de-Luchon',
       '42.80222,0.46278',
       'Saint-Lary-Soulan',
@@ -1844,7 +1846,7 @@ function buildGmapsTramos(d, almIdx, conOrigen){
   if(!full.startsWith(pref)) return [{lb:null,url:full}];
   const paradas = full.slice(pref.length).split('/').filter(Boolean);
   const origen = ORIGENES[d.n]||'';
-  let cut = paradas.findIndex(p=>/Restaurant|Ossau|Estive|Herminda|Pigal|Urtau|Pau|Posada|Sabina/i.test(p));
+  let cut = paradas.findIndex(p=>/Restaurant|Ossau|Estive|Herminda|Pigal|Pau|Posada|Sabina/i.test(p));
   const cutValido = cut>=1 && cut<paradas.length-1;
   if(paradas.length<=9 && !cutValido){
     const url = (conOrigen&&origen) ? 'https://www.google.com/maps/dir/'+origen+'/'+paradas.join('/') : full;
@@ -2056,7 +2058,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '79';
+const APP_VERSION = '81';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2067,7 +2069,7 @@ const APP_VERSION = '79';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=79').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=81').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
