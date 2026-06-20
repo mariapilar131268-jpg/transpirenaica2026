@@ -1563,7 +1563,7 @@ function renderRuta(){
    ],
    pois:[
     {ico:'🏔️',nm:'Port de la Bonaigua — 2.072m',det:'<span class="tm">⏱ ~9:30h · Parada foto</span> El paso de montaña más alto de Cataluña. Vistas al Val d\u2019Arán. Señal de móvil nula.',mapq:'42.66389,0.98194'},
-    {ico:'🏔️',nm:'Pla de Beret — nacimiento del Garona',det:'<span class="tt">🛣️ Desvío ~24 km ida y vuelta</span><span class="tm">⏱ Desde Baqueira</span> Llano de alta montaña a 1.860m, divisoria entre el Atlántico y el Mediterráneo. Carretera asfaltada en buen estado.',mapq:'Pla de Beret Baqueira Val Aran'},
+    {ico:'🏔️',nm:'Pla de Beret — nacimiento del Garona',det:'<span class="tt">🛣️ Desvío ~24 km ida y vuelta</span><span class="tm">⏱ Desde Baqueira</span> Llano de alta montaña a 1.860m, divisoria entre el Atlántico y el Mediterráneo. Carretera asfaltada en buen estado.',mapq:'Raquetas Nieve Snowshoes Beret 25598 Beret Lleida'},
     {ico:'🏘️',nm:'Vielha — Val d\u2019Arán',det:'<span class="tm">⏱ 15 min parada</span> Capital del Arán. Paseo rápido por el casco antiguo, iglesia románica. Gasolinera antes del desvío a Les.',mapq:'Vielha centro Val Aran'},
     {ico:'🇫🇷',nm:'Les — frontera del Pont de Rei',det:'<span class="tt">🛣️ Desvío ~40 km ida y vuelta</span><span class="tm">⏱ Desde Vielha</span> Último pueblo del valle antes de Francia. El puente sobre el Garona marca la frontera — lugar con mucha historia (ruta de exilio en 1939 y 1944).',mapq:'Les Lleida frontera Pont de Rei'},
     {ico:'🍰',nm:'Casa Pau Sidrería — Comida en Arties',det:'<span class="tt">✅ Reserva CONFIRMADA para 8</span><span class="tm">⏱ 14:00h</span> Junto al recinto de los osos. Cocina vasco-aranesa, parrilla y menú sidrería. Plan B: Tauèrna Urtau, mismo pueblo.',mapq:'Casa Pau Sidreria Calle Molino 14 Arties'},
@@ -1756,8 +1756,8 @@ function buildGmapsUrl(d, almIdx){
       'Puerto+del+Cant%C3%B3+Lleida',
       'Hotel+Les+Brases+Sort'
     ],
-    // ── DÍA 2 ── Sort → bonÀrea(gas) → Bonaigua → Arties(comida) → Vielha → Aínsa
-    // ORDEN CORRECTO: Arties está ANTES de Vielha subiendo desde Bonaigua
+    // ── DÍA 2 ── Sort → bonÀrea(gas) → Bonaigua → Beret(desvío) → Vielha(gas) → Les(desvío) → Arties(comida) → Aínsa
+    // ORDEN ACTUALIZADO: gas en Vielha pasa ANTES del desvío a Les y de la comida en Arties
     2: [
       'Hotel+Les+Brases+Sort+Lleida',            // origen: salen del hotel
       'bonArea+Sort',                     // gas crítica (llenar AL 100% antes Bonaigua)
@@ -2049,7 +2049,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '67';
+const APP_VERSION = '68';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2060,7 +2060,7 @@ const APP_VERSION = '67';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=67').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=68').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
