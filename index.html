@@ -1851,12 +1851,13 @@ function buildGmapsTramos(d, almIdx, conOrigen){
   if(!full.startsWith(pref)) return [{lb:null,url:full}];
   const paradas = full.slice(pref.length).split('/').filter(Boolean);
   const origen = ORIGENES[d.n]||'';
-  if(paradas.length<=9){
+  let cut = paradas.findIndex(p=>/Restaurant|Ossau|Estive|Herminda|Pigal|Urtau|Pau|Posada|Sabina/i.test(p));
+  const cutValido = cut>=1 && cut<paradas.length-1;
+  if(paradas.length<=9 && !cutValido){
     const url = (conOrigen&&origen) ? 'https://www.google.com/maps/dir/'+origen+'/'+paradas.join('/') : full;
     return [{lb:null,url:url}];
   }
-  let cut = paradas.findIndex(p=>/Restaurant|Ossau|Estive|Herminda|Pigal|Urtau|Pau|Posada|Sabina/i.test(p));
-  if(cut<1||cut>=paradas.length-1) cut = Math.ceil(paradas.length/2)-1;
+  if(!cutValido) cut = Math.ceil(paradas.length/2)-1;
   const man = paradas.slice(0,cut+1), tar = paradas.slice(cut+1);
   const urlMan = (conOrigen&&origen) ? 'https://www.google.com/maps/dir/'+origen+'/'+man.join('/') : pref+man.join('/');
   return [
@@ -2062,7 +2063,7 @@ function mcSelComida(almIdx){
 }
 
 // ━━━ COMPROBACIÓN DE VERSIÓN — iOS + Android PWA ━━━
-const APP_VERSION = '74';
+const APP_VERSION = '75';
 (function checkVersion(){
   fetch('./version.json?t=' + Date.now())
     .then(r => r.json())
@@ -2073,7 +2074,7 @@ const APP_VERSION = '74';
 // ━━━ PWA: Registro del Service Worker ━━━
 if('serviceWorker' in navigator){
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=74').then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=75').then(reg => {
       // Detectar nueva versión disponible
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
