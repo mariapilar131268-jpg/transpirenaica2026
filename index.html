@@ -583,7 +583,7 @@ const D=[
        {p:'Roncesvalles ★',n:'🍽️ COMIDA ~13:00h · Camino de Santiago · Hayas centenarias',d:'food'},
        {p:'Elizondo — Valle del Baztán ★',n:'⏱ ~14:30h · 30 min parada · Chocolate artesano y casas blasonadas'},
        {p:'⛰️ Puerto de Otxondo — 602m',n:'Último puerto de la Transpirenaica · Bunkers de la Guerra Civil'},
-       {p:'Bera → Hondarribia',n:'Las últimas curvas del viaje · ¡Ya se huele el Cantábrico!'},
+
        {p:'🏁 FARO DE HIGUER',n:'¡TRANSPIRENAICA COMPLETADA! 🌊 Tocar el Cantábrico',d:'end',mapq:'Faro Cabo Higuer Hondarribia'},
        {p:'Hotel Jauregui — Hondarribia',n:'Celebración 🎉',d:'end',mapq:'Zuloaga Kalea 5, Hondarribia'},
        {p:'🏆 Bar Gran Sol — Cena 19:00h',n:'⚠️ LLEGAR ANTES DE ABRIR · Pintxos más premiados de Euskadi · Calle San Pedro 63',d:'food',mapq:'Bar Gran Sol Hondarribia Calle San Pedro 63'},
@@ -1802,7 +1802,7 @@ function buildGmapsUrl(d, almIdx){
       'La+Pierre+Saint-Martin',
       'Casa+Lola+Isaba'
     ],
-    // ── DÍA 4 ── Isaba → Urzainqui(gas) → Ochagavía → Roncesvalles(comida) → Eugi → Elizondo → Bera → Faro de Higuer → Hotel Jauregui
+    // ── DÍA 4 ── Isaba → Urzainqui(gas) → Ochagavía → Roncesvalles(comida) → Eugi → Elizondo → Faro de Higuer → Hotel Jauregui
     4: [
       'Casa+Lola+Isaba+Navarra+Mendigatxa+17',   // origen: salen del hotel
       'NA-137,+Navarra', // gas a 7 km de Isaba — ÚNICA en 100km
@@ -1811,9 +1811,8 @@ function buildGmapsUrl(d, almIdx){
       qComida,                                   // comida Roncesvalles
       'Eugi',
       '43.1480,-1.5177',                         // Elizondo, capital del Baztán — parada ~14:30h
-      '43.2815,-1.6814',                        // Vera de Bidasoa (Bera) — evita confusión con restaurante
       'Faro+Cabo+Higuer+Hondarribia',             // 🏁 META — Transpirenaica completada
-      'Zuloaga+Kalea+5+Hondarribia+Gipuzkoa'    // Hotel Jauregui — destino final
+      'Hotel+Jauregui+Zuloaga+Kalea+5+Hondarribia' // Hotel Jauregui — destino final
     ],
     // ── DÍA 5 ── Hondarribia → autopía → Santa Coloma (620km vuelta)
     5: [
